@@ -62,7 +62,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     }
 
     private void doScreenshotFor(String methodName) {
-        var localPath = "C:\\Users\\ElenaShapoval\\IdeaProjects\\sgp-qa-tests\\screenshots\\";
+        var localPath = "screenshots\\";
         var SCREENSHOTS_PATH = Paths.get(localPath + methodName
                 + "_" + Util.getTimestampNowAsString() + ".png");
         var screenshotPath = new Page.ScreenshotOptions().setPath(SCREENSHOTS_PATH);

@@ -11,7 +11,7 @@ public class SgpMainTest {
     @Test
     void openMainPage() throws InterruptedException {
         var page = new SgpMain().openMainPage();
-        page.getPage().waitForTimeout(1000);
+        page.getPage().waitForTimeout(1500);
         assertEquals(SGP_URL_DEV, page.getPage().url());
     }
 

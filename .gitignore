@@ -4,6 +4,8 @@
 allure-results/
 # Log file
 *.log
+.gradle
+build
 
 # BlueJ files
 *.ctxt

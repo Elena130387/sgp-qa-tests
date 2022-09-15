@@ -1,16 +1,20 @@
 package util;
 
 import com.microsoft.playwright.BrowserContext;
+
+import java.io.*;
+
 import static util.Constants.STORAGE_PATH;
 import static util.JunitExtension.LOG;
-import static util.JunitExtension.browserContext;
+
 
 
 public class MsHelper {
     private static final String LOGIN_URL = "https://login.microsoftonline.com/";
 
-    public static void login() {
-        if(browserContext.storageState().length() > 0){
+    public static void login() throws FileNotFoundException {
+        BufferedReader storageStateFile = new BufferedReader (new FileReader(new File(String.valueOf(STORAGE_PATH))));
+        if(storageStateFile.lines().count() == 0){
             var USERNAME = Util.getVariable("EMAIL");
             var PASSWORD = Util.getVariable("PASSWORD");
 
