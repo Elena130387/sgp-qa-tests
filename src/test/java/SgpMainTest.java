@@ -18,6 +18,8 @@ public class SgpMainTest {
     @Test
     void checkFullscreenMode() {
         var mainPage = new SgpMain().openMainPage();
+        mainPage.getPage().waitForTimeout(1000);
         mainPage.openFullScreen();
+        mainPage.getPage().waitForTimeout(1000);
     }
 }

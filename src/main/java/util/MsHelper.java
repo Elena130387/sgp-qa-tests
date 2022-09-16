@@ -1,9 +1,7 @@
 package util;
 
 import com.microsoft.playwright.BrowserContext;
-
 import java.io.*;
-
 import static util.Constants.STORAGE_PATH;
 import static util.JunitExtension.LOG;
 
