@@ -7,12 +7,11 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import static org.junit.jupiter.api.Assertions.fail;
+import static util.Constants.SCREENSHOTS_DIR;
 import static util.Constants.STORAGE_PATH;
 
 public class JunitExtension implements BeforeAllCallback, AfterEachCallback, AfterAllCallback {
@@ -62,7 +61,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     }
 
     private void doScreenshotFor(String methodName) {
-        var localPath = "screenshots\\";
+        var localPath = SCREENSHOTS_DIR;
         var SCREENSHOTS_PATH = Paths.get(localPath + methodName
                 + "_" + Util.getTimestampNowAsString() + ".png");
         var screenshotPath = new Page.ScreenshotOptions().setPath(SCREENSHOTS_PATH);

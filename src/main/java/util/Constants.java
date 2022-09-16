@@ -7,4 +7,6 @@ public class Constants {
     public static final String SGP_URL_DEV = "https://sgp-dev.syncretis.com/";
 
     public static final Path STORAGE_PATH = Paths.get("storage-state.json");
+
+    public static final String SCREENSHOTS_DIR = "screenshots\\";
 };
