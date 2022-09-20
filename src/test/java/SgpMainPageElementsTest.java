@@ -12,13 +12,13 @@ public class SgpMainPageElementsTest {
     SgpMain mainPage;
 
     @BeforeEach
-    void openMainPage() throws InterruptedException {
+    void openMainPage() {
         mainPage = new SgpMain().openMainPage();
-        mainPage.getPage().waitForTimeout(1500);
+        mainPage.getPage().waitForLoadState();
     }
 
     @Test
-    void checkLink() throws InterruptedException {
+    void checkLink() {
         assertEquals(SGP_URL_DEV, mainPage.getPage().url());
     }
 
