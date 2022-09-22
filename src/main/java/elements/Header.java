@@ -59,4 +59,8 @@ public class Header {
         this.fullScreenBtn = this.header.locator(SELECTOR_FULL_SCREEN);
         this.colorModeBtn = this.header.locator(SELECTOR_COLOR_MODE);
     }
+
+    public void waitForHeader(){
+        this.page.waitForSelector(SELECTOR_HEADER);
+    }
 }

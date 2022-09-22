@@ -9,9 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.fail;
-import static util.Constants.SCREENSHOTS_DIR;
+import static util.Constants.FAILURE_SCREENSHOTS_DIR;
 import static util.Constants.STORAGE_PATH;
 
 public class JunitExtension implements BeforeAllCallback, AfterEachCallback, AfterAllCallback {
@@ -54,18 +55,19 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     @Override
     public void afterEach(ExtensionContext context) throws Exception {
         context.getExecutionException().ifPresent(e -> {
-            doScreenshotFor(context.getRequiredTestMethod().getName());
+            Path path = doScreenshotFor(context.getRequiredTestMethod().getName());
         });
 
 //        page.waitForTimeout(10000);
     }
 
-    private void doScreenshotFor(String methodName) {
-        var localPath = SCREENSHOTS_DIR;
-        var SCREENSHOTS_PATH = Paths.get(localPath + methodName
+    public static Path doScreenshotFor(String methodName) {
+        String localPath = FAILURE_SCREENSHOTS_DIR;
+        Path SCREENSHOTS_PATH = Paths.get(localPath + methodName
                 + "_" + Util.getTimestampNowAsString() + ".png");
-        var screenshotPath = new Page.ScreenshotOptions().setPath(SCREENSHOTS_PATH);
+        Page.ScreenshotOptions screenshotPath = new Page.ScreenshotOptions().setPath(SCREENSHOTS_PATH);
         page.screenshot(screenshotPath);
+        return SCREENSHOTS_PATH;
     }
 
     @Override
