@@ -30,6 +30,6 @@ public class SgpMainPageElementsTest {
        assertThat(mainPage.header.getFullScreenBtn()).isVisible();
        mainPage.header.getFullScreenBtn().click();
        mainPage.getPage().waitForTimeout(2500);
-       Util.checkScreenshot("checkFullscreenModeOn", "FullscreenModeOn", "FullscreenModeOn");
+       Util.checkScreenshot("actualFullScreenModeOn", "FullscreenModeOn", "checkFullscreenModeOn");
     }
 }
