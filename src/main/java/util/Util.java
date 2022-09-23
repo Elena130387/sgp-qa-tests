@@ -33,7 +33,7 @@ public class Util {
         }
     }
 
-    public static void imageComparison(Path imgNow, Path imgExpect, String testName) throws IOException {
+    private static void imageComparison(Path imgNow, Path imgExpect, String testName) throws IOException {
         BufferedImage expected = ImageComparisonUtil.readImageFromResources(String.valueOf(imgExpect));
         BufferedImage actual = ImageComparisonUtil.readImageFromResources(String.valueOf(imgNow));
 
