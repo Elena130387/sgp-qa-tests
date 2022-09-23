@@ -13,7 +13,9 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import static org.junit.jupiter.api.Assertions.fail;
+import static util.Constants.EXPECTED_SCREENSHOTS_DIR;
 import static util.Constants.FAILURE_SCREENSHOTS_DIR;
+import static util.JunitExtension.doScreenshotFor;
 
 public class Util {
     public static String getTimestampNowAsString() {
@@ -31,14 +33,15 @@ public class Util {
         }
     }
 
-    public static void imageComparison(Path imgNew, Path imgExpect, String testName) throws IOException {
-        BufferedImage source = ImageComparisonUtil.readImageFromResources(String.valueOf(imgExpect));
-        BufferedImage newImg = ImageComparisonUtil.readImageFromResources(String.valueOf(imgNew));
+    public static void imageComparison(Path imgNow, Path imgExpect, String testName) throws IOException {
+        BufferedImage expected = ImageComparisonUtil.readImageFromResources(String.valueOf(imgExpect));
+        BufferedImage actual = ImageComparisonUtil.readImageFromResources(String.valueOf(imgNow));
 
         File diffFile = new File(FAILURE_SCREENSHOTS_DIR + "image_comparison_" + testName + Util.getTimestampNowAsString() + ".png");
-        ImageComparison comparison = new ImageComparison(source,newImg, diffFile);
+        ImageComparison comparison = new ImageComparison(expected,actual, diffFile);
         ImageComparisonResult result = comparison.compareImages();
-        Files.delete(imgNew);
+
+        Files.delete(imgNow);
         float diffPercentage = result.getDifferencePercent();
         if (diffPercentage > 0.01) {
             BufferedImage resultImage = result.getResult();
@@ -46,5 +49,11 @@ public class Util {
 
             fail("Comparison failed, difference is " + diffPercentage);
         }
+    }
+
+    public static void checkScreenshot(String actual, String expected, String testName) throws IOException {
+        Path screenshot = doScreenshotFor(actual);
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expected + ".png");
+        imageComparison(screenshot,expectedScreenshot, testName);
     }
 }
