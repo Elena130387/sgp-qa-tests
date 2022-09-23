@@ -8,5 +8,7 @@ public class Constants {
 
     public static final Path STORAGE_PATH = Paths.get("storage-state.json");
 
-    public static final String SCREENSHOTS_DIR = "screenshots\\";
+    public static final String FAILURE_SCREENSHOTS_DIR = "failureScreenshots\\";
+
+    public static final String EXPECTED_SCREENSHOTS_DIR = "expectedScreenshots\\";
 };

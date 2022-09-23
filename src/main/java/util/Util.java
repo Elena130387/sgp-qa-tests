@@ -1,8 +1,21 @@
 package util;
 
+import com.github.romankh3.image.comparison.ImageComparison;
+import com.github.romankh3.image.comparison.ImageComparisonUtil;
+import com.github.romankh3.image.comparison.model.ImageComparisonResult;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import static org.junit.jupiter.api.Assertions.fail;
+import static util.Constants.EXPECTED_SCREENSHOTS_DIR;
+import static util.Constants.FAILURE_SCREENSHOTS_DIR;
+import static util.JunitExtension.doScreenshotFor;
 
 public class Util {
     public static String getTimestampNowAsString() {
@@ -18,5 +31,29 @@ public class Util {
         } else {
             return Dotenv.configure().load().get(variableName);
         }
+    }
+
+    private static void imageComparison(Path imgNow, Path imgExpect, String testName) throws IOException {
+        BufferedImage expected = ImageComparisonUtil.readImageFromResources(String.valueOf(imgExpect));
+        BufferedImage actual = ImageComparisonUtil.readImageFromResources(String.valueOf(imgNow));
+
+        File diffFile = new File(FAILURE_SCREENSHOTS_DIR + "image_comparison_" + testName + Util.getTimestampNowAsString() + ".png");
+        ImageComparison comparison = new ImageComparison(expected,actual, diffFile);
+        ImageComparisonResult result = comparison.compareImages();
+
+        Files.delete(imgNow);
+        float diffPercentage = result.getDifferencePercent();
+        if (diffPercentage > 0.01) {
+            BufferedImage resultImage = result.getResult();
+            ImageComparisonUtil.saveImage(diffFile, resultImage);
+
+            fail("Comparison failed, difference is " + diffPercentage);
+        }
+    }
+
+    public static void checkScreenshot(String actual, String expected, String testName) throws IOException {
+        Path screenshot = doScreenshotFor(actual);
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expected + ".png");
+        imageComparison(screenshot,expectedScreenshot, testName);
     }
 }
