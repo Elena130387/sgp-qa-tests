@@ -4,7 +4,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import pages.SgpMain;
 import util.JunitExtension;
 import util.Util;
+
 import java.io.IOException;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.Constants.*;
@@ -27,9 +29,13 @@ public class SgpMainPageElementsTest {
 
     @Test
     void checkFullscreenMode() throws IOException {
-       assertThat(mainPage.header.getFullScreenBtn()).isVisible();
-       mainPage.header.getFullScreenBtn().click();
-       mainPage.getPage().waitForTimeout(2500);
-       Util.checkScreenshot("actFullScreenModeOn", "expFullScreenModeOn", "checkFullscreenModeOn");
+        assertThat(mainPage.header.getFullScreenBtn()).isVisible();
+        mainPage.header.getFullScreenBtn().click();
+        mainPage.getPage().waitForTimeout(2500);
+        Util.checkScreenshot("actFullScreenModeOn", "expFullScreenModeOn", "checkFullscreenModeOn");
+
+        mainPage.header.getFullScreenBtn().click();
+        mainPage.getPage().waitForTimeout(2500);
+        Util.checkScreenshot("actFullScreenModeOff", "expFullScreenModeOff", "checkFullscreenModeOff");
     }
 }
