@@ -3,6 +3,7 @@ package util;
 import com.github.romankh3.image.comparison.ImageComparison;
 import com.github.romankh3.image.comparison.ImageComparisonUtil;
 import com.github.romankh3.image.comparison.model.ImageComparisonResult;
+import com.microsoft.playwright.Locator;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,10 +13,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static util.Constants.EXPECTED_SCREENSHOTS_DIR;
 import static util.Constants.FAILURE_SCREENSHOTS_DIR;
 import static util.JunitExtension.doScreenshotFor;
+import static util.JunitExtension.page;
 
 public class Util {
     public static String getTimestampNowAsString() {
@@ -52,8 +56,16 @@ public class Util {
     }
 
     public static void checkScreenshot(String actual, String expected, String testName) throws IOException {
+        page.waitForTimeout(3000);
         Path screenshot = doScreenshotFor(actual);
         Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expected + ".png");
         imageComparison(screenshot,expectedScreenshot, testName);
+    }
+
+    public static void assertTooltip(Locator element, String text) {
+        element.hover();
+        String tooltipLocator = element.getAttribute("aria-describedby");
+        Locator tooltipItself = element.page().locator(String.format("#%s", tooltipLocator));
+        assertEquals(text, tooltipItself.textContent());
     }
 }
