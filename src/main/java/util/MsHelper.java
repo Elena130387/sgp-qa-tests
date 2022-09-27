@@ -13,8 +13,8 @@ public class MsHelper {
     public static void login() throws FileNotFoundException {
         BufferedReader storageStateFile = new BufferedReader (new FileReader(new File(String.valueOf(STORAGE_PATH))));
         if(storageStateFile.lines().count() == 0){
-            var USERNAME = Util.getVariable("EMAIL");
-            var PASSWORD = Util.getVariable("PASSWORD");
+            String USERNAME = Util.getVariable("EMAIL");
+            String PASSWORD = Util.getVariable("PASSWORD");
 
             var page = JunitExtension.page;
             page.navigate(LOGIN_URL);

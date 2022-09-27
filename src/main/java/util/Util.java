@@ -13,7 +13,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static util.Constants.EXPECTED_SCREENSHOTS_DIR;
@@ -29,7 +28,7 @@ public class Util {
     }
 
     public static String getVariable(String variableName) {
-        var systemVariable = System.getenv(variableName);
+        String systemVariable = System.getenv(variableName);
         if (systemVariable != null) {
             return systemVariable;
         } else {
