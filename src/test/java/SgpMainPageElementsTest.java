@@ -7,6 +7,7 @@ import util.Util;
 import java.io.IOException;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static util.Constants.NEW_CALCULATION_URL;
 import static util.Constants.SGP_URL_DEV;
 
 
@@ -22,12 +23,12 @@ public class SgpMainPageElementsTest {
 
     @Test
     void checkLink() {
-        assertEquals(SGP_URL_DEV, mainPage.getPage().url());
+        assertEquals(SGP_URL_DEV, mainPage.getPage().url(), "Неверный URL");
     }
 
     @Test
     void checkFullscreenMode() throws IOException {
-        assertThat(mainPage.header.getFullScreenBtn()).isVisible();
+        assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
         mainPage.header.getFullScreenBtn().click();
         Util.checkScreenshot("actFullScreenModeOn", "expFullScreenModeOn", "checkFullscreenModeOn");
 
@@ -37,7 +38,7 @@ public class SgpMainPageElementsTest {
 
     @Test
     void checkColorMode() throws IOException {
-        assertThat(mainPage.header.getColorModeBtn()).isVisible();
+        assertThat(mainPage.header.getColorModeBtn()).isEnabled();
         mainPage.header.getColorModeBtn().click();
         Util.checkScreenshot("actColorModeOn", "expColorModeOn", "checkColorModeOn");
 
@@ -46,12 +47,17 @@ public class SgpMainPageElementsTest {
     }
 
     @Test
-    void checkAddShapeMenuItemPosition()  {
-        assertThat(mainPage.header.getNewShape()).isVisible();
-        mainPage.header.getNewShape().click();
-        assertThat(mainPage.header.getAddShapePopup()).isVisible();
+    void checkAddShapeMenuItemsOrder()  {
+        mainPage.header.checkAddShapePopupMenu();
         mainPage.header.checkMenuItemText(0, "Создать вручную");
-
         mainPage.header.checkMenuItemText(1, "Импортировать .json");
+    }
+
+    @Test
+    void checkAddShapeMenuCreateManualClick()  {
+        mainPage.header.checkAddShapePopupMenu();
+        mainPage.header.getPopupMenuItem().nth(0).click();
+        assertEquals(NEW_CALCULATION_URL, mainPage.getPage().url(), "Неверный URL");
+        assertThat(mainPage.header.getNewShape()).isHidden();
     }
 }

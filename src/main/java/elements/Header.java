@@ -3,7 +3,7 @@ package elements;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
-
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Header {
@@ -14,7 +14,7 @@ public class Header {
     private static final String SELECTOR_TEXT_LOGO = "[data-cy=text_logo]";
     private static final String SELECTOR_FULL_SCREEN = "[data-cy=fullScreen]";
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
-    private static final String SELECTOR_ADD_SHAPE_POPUP = ".css-1jwepc6";
+    private static final String SELECTOR_ADD_SHAPE_POPUPMENU = ".css-1jwepc6";
     private static final String SELECTOR_POPUP_ITEM = "[data-cy=menuItem]";
     //</editor-fold>
 
@@ -25,7 +25,7 @@ public class Header {
     private final Locator textLogo;
     private final Locator fullScreenBtn;
     private final Locator colorModeBtn;
-    private final Locator addShapePopup;
+    private final Locator addShapePopupMenu;
     private final Locator popupMenuItem;
     //</editor-fold>
 
@@ -55,8 +55,8 @@ public class Header {
     }
 
 
-    public Locator getAddShapePopup() {
-        return addShapePopup;
+    public Locator getAddShapePopupMenu() {
+        return addShapePopupMenu;
     }
 
     public Locator getPopupMenuItem() {
@@ -73,7 +73,7 @@ public class Header {
         this.textLogo = this.header.locator(SELECTOR_TEXT_LOGO);
         this.fullScreenBtn = this.header.locator(SELECTOR_FULL_SCREEN);
         this.colorModeBtn = this.header.locator(SELECTOR_COLOR_MODE);
-        this.addShapePopup = this.header.locator(SELECTOR_ADD_SHAPE_POPUP);
+        this.addShapePopupMenu = this.header.locator(SELECTOR_ADD_SHAPE_POPUPMENU);
         this.popupMenuItem = this.header.locator(SELECTOR_POPUP_ITEM);
     }
 
@@ -84,6 +84,12 @@ public class Header {
     public void checkMenuItemText( int itemNum, String text){
         assertEquals(text,
                 this.popupMenuItem.nth(itemNum).textContent(),
-                "Wrong text for the " + itemNum + " position in popup");
+                "Wrong text for the " + itemNum + " position in popup menu");
+    }
+
+    public void checkAddShapePopupMenu(){
+        assertThat(this.newShape).isEnabled();
+        this.newShape.click();
+        assertThat(this.addShapePopupMenu).isVisible();
     }
 }
