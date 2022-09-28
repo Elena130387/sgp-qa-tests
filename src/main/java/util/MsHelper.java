@@ -1,6 +1,7 @@
 package util;
 
 import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.Page;
 import java.io.*;
 import static util.Constants.STORAGE_PATH;
 import static util.JunitExtension.LOG;
@@ -16,7 +17,7 @@ public class MsHelper {
             String USERNAME = Util.getVariable("EMAIL");
             String PASSWORD = Util.getVariable("PASSWORD");
 
-            var page = JunitExtension.page;
+            Page page = JunitExtension.page;
             page.navigate(LOGIN_URL);
             page.locator("[type=email]").type(USERNAME);
             page.locator("[value=Next]").click();

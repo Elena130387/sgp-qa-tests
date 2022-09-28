@@ -3,8 +3,8 @@ package elements;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Header {
     //<editor-fold desc="Selectors">
@@ -14,8 +14,7 @@ public class Header {
     private static final String SELECTOR_TEXT_LOGO = "[data-cy=text_logo]";
     private static final String SELECTOR_FULL_SCREEN = "[data-cy=fullScreen]";
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
-    private static final String SELECTOR_ADD_SHAPE_POPUPMENU = ".css-1jwepc6";
-    private static final String SELECTOR_POPUP_ITEM = "[data-cy=menuItem]";
+    private static final String SELECTOR_DROPDOWN_MENU = ".css-1jwepc6";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
@@ -25,8 +24,8 @@ public class Header {
     private final Locator textLogo;
     private final Locator fullScreenBtn;
     private final Locator colorModeBtn;
-    private final Locator addShapePopupMenu;
-    private final Locator popupMenuItem;
+    private final Locator addShapeDropdownMenu;
+    private final Locator chooseMapTypeDropdownMenu;
     //</editor-fold>
 
     //<editor-fold desc="Getters">
@@ -55,13 +54,14 @@ public class Header {
     }
 
 
-    public Locator getAddShapePopupMenu() {
-        return addShapePopupMenu;
+    public Locator getAddShapeDropdownMenu() {
+        return addShapeDropdownMenu;
     }
 
-    public Locator getPopupMenuItem() {
-        return popupMenuItem;
+    public Locator getChooseMapTypeDropdownMenu() {
+        return chooseMapTypeDropdownMenu;
     }
+
     //</editor-fold>
 
     private final Page page = JunitExtension.page;
@@ -73,23 +73,23 @@ public class Header {
         this.textLogo = this.header.locator(SELECTOR_TEXT_LOGO);
         this.fullScreenBtn = this.header.locator(SELECTOR_FULL_SCREEN);
         this.colorModeBtn = this.header.locator(SELECTOR_COLOR_MODE);
-        this.addShapePopupMenu = this.header.locator(SELECTOR_ADD_SHAPE_POPUPMENU);
-        this.popupMenuItem = this.header.locator(SELECTOR_POPUP_ITEM);
+        this.addShapeDropdownMenu = this.newShape.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
+        this.chooseMapTypeDropdownMenu = this.chooseMapType.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
     }
 
     public void waitForHeader(){
         this.page.waitForSelector(SELECTOR_HEADER);
     }
 
-    public void checkMenuItemText( int itemNum, String text){
-        assertEquals(text,
-                this.popupMenuItem.nth(itemNum).textContent(),
-                "Wrong text for the " + itemNum + " position in popup menu");
-    }
-
-    public void checkAddShapePopupMenu(){
+    public void checkAddShapeMenu(){
         assertThat(this.newShape).isEnabled();
         this.newShape.click();
-        assertThat(this.addShapePopupMenu).isVisible();
+        assertThat(this.addShapeDropdownMenu).isVisible();
+    }
+
+    public void checkChooseMapTypeMenu(){
+        assertThat(this.chooseMapType).isEnabled();
+        this.chooseMapType.click();
+        assertThat(this.chooseMapTypeDropdownMenu).isVisible();
     }
 }

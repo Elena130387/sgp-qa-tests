@@ -5,6 +5,7 @@ import com.github.romankh3.image.comparison.ImageComparisonUtil;
 import com.github.romankh3.image.comparison.model.ImageComparisonResult;
 import com.microsoft.playwright.Locator;
 import io.github.cdimascio.dotenv.Dotenv;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static util.Constants.EXPECTED_SCREENSHOTS_DIR;
@@ -41,7 +43,7 @@ public class Util {
         BufferedImage actual = ImageComparisonUtil.readImageFromResources(String.valueOf(imgNow));
 
         File diffFile = new File(FAILURE_SCREENSHOTS_DIR + "image_comparison_" + testName + Util.getTimestampNowAsString() + ".png");
-        ImageComparison comparison = new ImageComparison(expected,actual, diffFile);
+        ImageComparison comparison = new ImageComparison(expected, actual, diffFile);
         ImageComparisonResult result = comparison.compareImages();
 
         Files.delete(imgNow);
@@ -55,10 +57,10 @@ public class Util {
     }
 
     public static void checkScreenshot(String actual, String expected, String testName) throws IOException {
-        page.waitForTimeout(3000);
+        page.waitForTimeout(4000);
         Path screenshot = doScreenshotFor(actual);
         Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expected + ".png");
-        imageComparison(screenshot,expectedScreenshot, testName);
+        imageComparison(screenshot, expectedScreenshot, testName);
     }
 
     public static void assertTooltip(Locator element, String text) {
