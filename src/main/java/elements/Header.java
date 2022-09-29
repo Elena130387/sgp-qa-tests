@@ -5,6 +5,7 @@ import com.microsoft.playwright.Page;
 import util.JunitExtension;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static elements.Dropdown.SELECTOR_DROPDOWN_MENU;
 
 public class Header {
     //<editor-fold desc="Selectors">
@@ -14,7 +15,6 @@ public class Header {
     private static final String SELECTOR_TEXT_LOGO = "[data-cy=text_logo]";
     private static final String SELECTOR_FULL_SCREEN = "[data-cy=fullScreen]";
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
-    private static final String SELECTOR_DROPDOWN_MENU = ".css-1jwepc6";
     //</editor-fold>
 
     //<editor-fold desc="Elements">

@@ -12,17 +12,30 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class Dropdown {
 
     //<editor-fold desc="Selectors">
+    public static final String SELECTOR_DROPDOWN_MENU = ".css-1jwepc6";
     private static final String SELECTOR_DROPDOWN_ITEM = "[data-cy=menuItem]";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
     private final Locator dropdownMenuItem;
+    private final Locator dropdownMenu;
+    //</editor-fold>
+
+    //<editor-fold desc="Getters">
+    public Locator getDropdownMenu() {
+        return dropdownMenu;
+    }
+
+    public Locator getDropdownMenuItem() {
+        return dropdownMenuItem;
+    }
     //</editor-fold>
 
     private final Page page = JunitExtension.page;
 
     public Dropdown() {
-        this.dropdownMenuItem = page.locator(SELECTOR_DROPDOWN_ITEM);
+        this.dropdownMenu = page.locator(SELECTOR_DROPDOWN_MENU);
+        this.dropdownMenuItem = this.dropdownMenu.locator(SELECTOR_DROPDOWN_ITEM);
     }
 
     public void clickItemByText(String itemText) {
