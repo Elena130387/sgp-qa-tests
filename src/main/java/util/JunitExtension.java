@@ -29,7 +29,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
         playwright = Playwright.create();
         browser = playwright.firefox().launch(
                 new BrowserType.LaunchOptions()
-                        .setHeadless(false)
+                        .setHeadless(true)
                         .setSlowMo(100)
         );
 
@@ -41,7 +41,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
             }
         }
         browserContext = browser.newContext(
-                new Browser.NewContextOptions().setStorageStatePath(STORAGE_PATH));
+                new Browser.NewContextOptions().setStorageStatePath(STORAGE_PATH).setViewportSize(1500,1000));
         page = browserContext.newPage();
 
         try {
@@ -71,5 +71,8 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     }
 
     @Override
-    public void afterAll(ExtensionContext context) throws Exception {}
+    public void afterAll(ExtensionContext context) throws Exception {
+        browserContext.close();
+        browser.close();
+    }
 }

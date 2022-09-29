@@ -13,9 +13,4 @@ public class SgpMain extends BasePage {
     public Page getPage() {
         return this.page;
     }
-
-    public SgpMain openFullScreen() {
-        header.getFullScreenBtn().click();
-        return this;
-    }
 }
