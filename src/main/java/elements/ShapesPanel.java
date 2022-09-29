@@ -8,19 +8,21 @@ public class ShapesPanel {
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_ADDED_SHAPES = "[data-cy=shape]";
     private static final String SELECTOR_SHAPES_PANEL = "[data-cy=aside]";
-    private static final String SELECTOR_CRUD_SHAPE = "[data-cy=crudShape]";
-    private static final String SELECTOR_NEW_SHAPE_NAME = "[data-cy=name]";
-    private static final String SELECTOR_ADD_SHAPE_CANCEL = "[data-cy=cancel]";
-    private static final String SELECTOR_CREATE_PROCESS = "[data-cy=createProcess]";
+    private static final String SELECTOR_SHAPE_SEARCH = "[data-cy=search]";
+    private static final String SELECTOR_SHAPE_NAME = "[data-cy=name]";
+    private static final String SELECTOR_SHAPE_OVERALL = "[data-cy=overall]";
+    private static final String SELECTOR_OPEN_DETAILS = "[data-cy=open]";
+    private static final String SELECTOR_STATUS_ICON = ".css-1wfct4i";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
     private final Locator addedShapes;
     private final Locator shapesPanel;
-    private final Locator crudShape;
-    private final Locator newShapeName;
-    private final Locator addShapeCancel;
-    private final Locator createProcess;
+    private final Locator shapeSearch;
+    private final Locator shapeName;
+    private final Locator shapeOverall;
+    private final Locator openDetailsBtn;
+    private final Locator statusIcon;
     //</editor-fold>
 
     //<editor-fold desc="Getters">
@@ -32,20 +34,24 @@ public class ShapesPanel {
         return shapesPanel;
     }
 
-    public Locator getCrudShape() {
-        return crudShape;
+    public Locator getShapeSearch() {
+        return shapeSearch;
     }
 
-    public Locator getNewShapeName() {
-        return newShapeName;
+    public Locator getShapeName() {
+        return shapeName;
     }
 
-    public Locator getAddShapeCancel() {
-        return addShapeCancel;
+    public Locator getShapeOverall() {
+        return shapeOverall;
     }
 
-    public Locator getCreateProcess() {
-        return createProcess;
+    public Locator getOpenDetailsBtn() {
+        return openDetailsBtn;
+    }
+
+    public Locator getStatusIcon() {
+        return statusIcon;
     }
     //</editor-fold>
 
@@ -54,9 +60,10 @@ public class ShapesPanel {
     public ShapesPanel() {
         this.shapesPanel = page.locator(SELECTOR_SHAPES_PANEL);
         this.addedShapes = this.shapesPanel.locator(SELECTOR_ADDED_SHAPES);
-        this.crudShape = this.shapesPanel.locator(SELECTOR_CRUD_SHAPE);
-        this.newShapeName = this.shapesPanel.locator(SELECTOR_NEW_SHAPE_NAME);
-        this.addShapeCancel = this.shapesPanel.locator(SELECTOR_ADD_SHAPE_CANCEL);
-        this.createProcess = this.shapesPanel.locator(SELECTOR_CREATE_PROCESS);
+        this.shapeSearch = this.shapesPanel.locator(SELECTOR_SHAPE_SEARCH);
+        this.shapeName = this.addedShapes.locator(SELECTOR_SHAPE_NAME);
+        this.shapeOverall = this.addedShapes.locator(SELECTOR_SHAPE_OVERALL);
+        this.openDetailsBtn = this.addedShapes.locator(SELECTOR_OPEN_DETAILS);
+        this.statusIcon = this.addedShapes.locator(SELECTOR_STATUS_ICON);
     }
 }
