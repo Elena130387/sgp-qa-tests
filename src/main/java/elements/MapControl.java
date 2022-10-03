@@ -7,7 +7,7 @@ import util.JunitExtension;
 public class MapControl {
 
     //<editor-fold desc="Selectors">
-    private static final String SELECTOR_NAVIGATION_BAR = ".mapboxgl-ctrl mapboxgl-ctrl-group";
+    private static final String SELECTOR_NAVIGATION_BAR = ".css-1crpbp0";
     private static final String SELECTOR_ZOOM_IN = ".mapboxgl-ctrl-zoom-in";
     private static final String SELECTOR_ZOOM_OUT = ".mapboxgl-ctrl-zoom-out";
     private static final String SELECTOR_COMPASS = ".mapboxgl-ctrl-compass";
@@ -87,5 +87,21 @@ public class MapControl {
         this.coverageBtn = this.coverageAndGridBar.locator(SELECTOR_COVERAGE);
         this.globalGridBtn = this.coverageAndGridBar.locator(SELECTOR_GLOBAL_GRID);
         this.gridLinesBtn = this.coverageAndGridBar.locator(SELECTOR_GRID_LINES);
+    }
+
+    private void clickZoom(String zoomLocator, int clickNum) {
+        int num = 0;
+        do {
+            num += 1;
+            page.locator(zoomLocator).click();
+        } while (num < Math.abs(clickNum));
+    }
+
+    public void clickZoomIn(int clickNum){
+        clickZoom(SELECTOR_ZOOM_IN, clickNum);
+    }
+
+    public void clickZoomOut(int clickNum){
+        clickZoom(SELECTOR_ZOOM_OUT, clickNum);
     }
 }

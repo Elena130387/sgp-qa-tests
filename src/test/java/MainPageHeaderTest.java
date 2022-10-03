@@ -1,4 +1,3 @@
-import elements.Dropdown;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,15 +13,13 @@ import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static util.Constants.NEW_CALCULATION_URL;
-import static util.Constants.SGP_URL_DEV;
+import static util.Constants.*;
 
 
 @ExtendWith(JunitExtension.class)
-public class SgpMainPageElementsTest {
+public class MainPageHeaderTest {
     SgpMain mainPage;
-    Dropdown dropdown = new Dropdown();
-    String BASE_MAP_TYPE = "Bing Satellite";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest\\";
     List<String> MAP_TYPES_LIST = Arrays.asList(
             "Bing Satellite",
             "Google Satellite",
@@ -33,37 +30,53 @@ public class SgpMainPageElementsTest {
     @BeforeEach
     void openMainPage() {
         mainPage = new SgpMain().openMainPage();
-        mainPage.header.waitForHeader();
-        if(!mainPage.header.getChooseMapType().textContent().equals(BASE_MAP_TYPE)){
-            mainPage.header.checkChooseMapTypeMenu();
-            dropdown.clickItemByText(BASE_MAP_TYPE);
-        }
+        mainPage.selectDefaultSettings();
     }
 
     @Test
     void checkMainPageViewAndUrl() throws IOException {
         assertEquals(SGP_URL_DEV, mainPage.getPage().url(), "Неверный URL");
-        Util.checkScreenshot("actMainPageView", "expMainPageView", "checkMainPageView");
+        Util.checkScreenshot(
+                "actMainPageView",
+                "expMainPageView",
+                "checkMainPageView",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
     void checkFullscreenMode() throws IOException {
         assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
         mainPage.header.getFullScreenBtn().click();
-        Util.checkScreenshot("actFullScreenModeOn", "expFullScreenModeOn", "checkFullscreenModeOn");
+        Util.checkScreenshot(
+                "actFullScreenModeOn",
+                "expFullScreenModeOn",
+                "checkFullscreenModeOn",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         mainPage.header.getFullScreenBtn().click();
-        Util.checkScreenshot("actFullScreenModeOff", "expFullScreenModeOff", "checkFullscreenModeOff");
+        Util.checkScreenshot(
+                "actFullScreenModeOff",
+                "expFullScreenModeOff",
+                "checkFullscreenModeOff",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
     void checkColorMode() throws IOException {
         assertThat(mainPage.header.getColorModeBtn()).isEnabled();
         mainPage.header.getColorModeBtn().click();
-        Util.checkScreenshot("actColorModeOn", "expColorModeOn", "checkColorModeOn");
+        Util.checkScreenshot(
+                "actColorModeOn",
+                "expColorModeOn",
+                "checkColorModeOn",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         mainPage.header.getColorModeBtn().click();
-        Util.checkScreenshot("actColorModeOff", "expColorModeOff", "checkColorModeOff");
+        Util.checkScreenshot(
+                "actColorModeOff",
+                "expColorModeOff",
+                "checkColorModeOff",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
@@ -71,13 +84,13 @@ public class SgpMainPageElementsTest {
         List<String> itemsList = Arrays.asList("Создать вручную",
                 "Импортировать .json");
         mainPage.header.checkAddShapeMenu();
-        dropdown.checkItemsOrder(itemsList);
+        mainPage.dropdown.checkItemsOrder(itemsList);
     }
 
     @Test
     void checkAddShapeMenuCreateManualClick() {
         mainPage.header.checkAddShapeMenu();
-        dropdown.clickItemByText("Создать вручную");
+        mainPage.dropdown.clickItemByText("Создать вручную");
         assertEquals(NEW_CALCULATION_URL, mainPage.getPage().url(), "Неверный URL");
         assertThat(mainPage.header.getNewShape()).isHidden();
     }
@@ -96,7 +109,7 @@ public class SgpMainPageElementsTest {
     @Test
     void checkChooseMapTypeItemsOrder() {
         mainPage.header.checkChooseMapTypeMenu();
-        dropdown.checkItemsOrder(MAP_TYPES_LIST);
+        mainPage.dropdown.checkItemsOrder(MAP_TYPES_LIST);
     }
 
     @ParameterizedTest
@@ -110,10 +123,14 @@ public class SgpMainPageElementsTest {
         List<String> mapTypeParams = Arrays.asList(mapTypeItem.split(","));
         mainPage.header.checkChooseMapTypeMenu();
         if (mapTypeParams.get(0).equals(BASE_MAP_TYPE)) {
-            dropdown.clickFirstClickableItem();
+            mainPage.dropdown.clickFirstClickableItem();
             mainPage.header.checkChooseMapTypeMenu();
         }
-        dropdown.clickItemByText(mapTypeParams.get(0));
-        Util.checkScreenshot(mapTypeParams.get(1), mapTypeParams.get(2), mapTypeParams.get(3));
+        mainPage.dropdown.clickItemByText(mapTypeParams.get(0));
+        Util.checkScreenshot(
+                mapTypeParams.get(1),
+                mapTypeParams.get(2),
+                mapTypeParams.get(3),
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 }

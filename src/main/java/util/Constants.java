@@ -14,4 +14,6 @@ public class Constants {
 
     public static final String EXPECTED_SCREENSHOTS_DIR = "expectedScreenshots\\";
 
+    public static final String BASE_MAP_TYPE = "Bing Satellite";
+
 };
