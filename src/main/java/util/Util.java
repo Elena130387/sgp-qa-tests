@@ -56,10 +56,10 @@ public class Util {
         }
     }
 
-    public static void checkScreenshot(String actual, String expected, String testName) throws IOException {
+    public static void checkScreenshot(String actual, String expected, String testName, String expDir) throws IOException {
         page.waitForTimeout(4000);
         Path screenshot = doScreenshotFor(actual);
-        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expected + ".png");
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
