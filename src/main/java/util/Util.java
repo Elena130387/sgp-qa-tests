@@ -4,6 +4,7 @@ import com.github.romankh3.image.comparison.ImageComparison;
 import com.github.romankh3.image.comparison.ImageComparisonUtil;
 import com.github.romankh3.image.comparison.model.ImageComparisonResult;
 import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Request;
 import io.github.cdimascio.dotenv.Dotenv;
 
 import java.awt.image.BufferedImage;
@@ -14,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -23,6 +25,8 @@ import static util.JunitExtension.doScreenshotFor;
 import static util.JunitExtension.page;
 
 public class Util {
+    static Predicate<Request> getImg = request ->"https://api.mapbox.com/*".equals(request.url());
+
     public static String getTimestampNowAsString() {
         var now = LocalDateTime.now();
         var formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
@@ -57,7 +61,17 @@ public class Util {
     }
 
     public static void checkScreenshot(String actual, String expected, String testName, String expDir) throws IOException {
-        page.waitForTimeout(4000);
+        page.waitForTimeout(3000);
+        Path screenshot = doScreenshotFor(actual);
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expDir + expected + ".png");
+        imageComparison(screenshot, expectedScreenshot, testName);
+    }
+
+    public static void checkScreenshotAfterWaitForRequest(String actual, String expected, String testName, String expDir) throws IOException {
+        Request request1 = page.waitForRequest(
+                getImg,
+                () -> {});
+        //   page.waitForTimeout(3000);
         Path screenshot = doScreenshotFor(actual);
         Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);

@@ -114,11 +114,11 @@ public class MainPageHeaderTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "Bing Satellite,actBingSatellite,expBingSatellite,checkBingSatelliteOn",
-            "Google Satellite,actGoogleSatellite,expGoogleSatellite,checkGoogleSatelliteOn",
-            "Mapbox Satellite,actMapboxSatellite,expMapboxSatellite,checkMapboxSatelliteOn",
-            "Mapbox Dark,actMapboxDark,expMapboxDark,checkMapboxDarkOn",
-            "Mapbox Light,actMapboxLight,expMapboxLight,checkMapboxLightOn"})
+            "Bing Satellite,actBingSatellite,expBingSatellite,checkBingSatelliteOn,No",
+            "Google Satellite,actGoogleSatellite,expGoogleSatellite,checkGoogleSatelliteOn,No",
+            "Mapbox Satellite,actMapboxSatellite,expMapboxSatellite,checkMapboxSatelliteOn,waitForRequest",
+            "Mapbox Dark,actMapboxDark,expMapboxDark,checkMapboxDarkOn,waitForRequest",
+            "Mapbox Light,actMapboxLight,expMapboxLight,checkMapboxLightOn,waitForRequest"})
     public void checkChooseMapTypeItemClick(String mapTypeItem) throws IOException {
         List<String> mapTypeParams = Arrays.asList(mapTypeItem.split(","));
         mainPage.header.checkChooseMapTypeMenu();
@@ -127,10 +127,19 @@ public class MainPageHeaderTest {
             mainPage.header.checkChooseMapTypeMenu();
         }
         mainPage.dropdown.clickItemByText(mapTypeParams.get(0));
-        Util.checkScreenshot(
-                mapTypeParams.get(1),
-                mapTypeParams.get(2),
-                mapTypeParams.get(3),
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+
+        if (mapTypeParams.get(4).equals("waitForRequest")){
+            Util.checkScreenshotAfterWaitForRequest(
+                    mapTypeParams.get(1),
+                    mapTypeParams.get(2),
+                    mapTypeParams.get(3),
+                    EXPSCREENSHOTS_TEST_CLASS_DIR);
+        } else {
+            Util.checkScreenshot(
+                    mapTypeParams.get(1),
+                    mapTypeParams.get(2),
+                    mapTypeParams.get(3),
+                    EXPSCREENSHOTS_TEST_CLASS_DIR);
+        }
     }
 }
