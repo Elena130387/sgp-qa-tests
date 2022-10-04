@@ -46,7 +46,9 @@ public class MainPageHeaderTest {
     @Test
     void checkFullscreenMode() throws IOException {
         assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
+        mainPage.header.getFullScreenBtn().focus();
         mainPage.header.getFullScreenBtn().click();
+        mainPage.getPage().pause();
         Util.checkScreenshot(
                 "actFullScreenModeOn",
                 "expFullScreenModeOn",
@@ -115,10 +117,10 @@ public class MainPageHeaderTest {
     @ParameterizedTest
     @ValueSource(strings = {
             "Bing Satellite,actBingSatellite,expBingSatellite,checkBingSatelliteOn,No",
+            "Mapbox Dark,actMapboxDark,expMapboxDark,checkMapboxDarkOn,longWaiting",
+            "Mapbox Light,actMapboxLight,expMapboxLight,checkMapboxLightOn,longWaiting",
             "Google Satellite,actGoogleSatellite,expGoogleSatellite,checkGoogleSatelliteOn,No",
-            "Mapbox Satellite,actMapboxSatellite,expMapboxSatellite,checkMapboxSatelliteOn,waitForRequest",
-            "Mapbox Dark,actMapboxDark,expMapboxDark,checkMapboxDarkOn,waitForRequest",
-            "Mapbox Light,actMapboxLight,expMapboxLight,checkMapboxLightOn,waitForRequest"})
+            "Mapbox Satellite,actMapboxSatellite,expMapboxSatellite,checkMapboxSatelliteOn,longWaiting"})
     public void checkChooseMapTypeItemClick(String mapTypeItem) throws IOException {
         List<String> mapTypeParams = Arrays.asList(mapTypeItem.split(","));
         mainPage.header.checkChooseMapTypeMenu();
@@ -128,8 +130,8 @@ public class MainPageHeaderTest {
         }
         mainPage.dropdown.clickItemByText(mapTypeParams.get(0));
 
-        if (mapTypeParams.get(4).equals("waitForRequest")){
-            Util.checkScreenshotAfterWaitForRequest(
+        if (mapTypeParams.get(4).equals("longWaiting")) {
+            Util.checkScreenshotLongWaiting(
                     mapTypeParams.get(1),
                     mapTypeParams.get(2),
                     mapTypeParams.get(3),

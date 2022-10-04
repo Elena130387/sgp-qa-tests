@@ -24,14 +24,24 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
 
     public static final Logger LOG = LoggerFactory.getLogger("[TEST INFO]");
 
+    public static final String BROWSER = Util.getVariable("BROWSER");
+
     @Override
     public void beforeAll(ExtensionContext context) throws Exception {
         playwright = Playwright.create();
-        browser = playwright.firefox().launch(
-                new BrowserType.LaunchOptions()
-                        .setHeadless(true)
-                        .setSlowMo(100)
-        );
+       if (BROWSER.equals("CHROME")){
+           browser = playwright.chromium().launch(
+                   new BrowserType.LaunchOptions()
+                           .setHeadless(true)
+                           .setSlowMo(100)
+           );
+       } else {
+           browser = playwright.firefox().launch(
+                   new BrowserType.LaunchOptions()
+                           .setHeadless(true)
+                           .setSlowMo(100)
+           );
+       }
 
         if(!Files.exists(STORAGE_PATH)){
             try {
@@ -62,7 +72,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     }
 
     public static Path doScreenshotFor(String methodName) {
-        String localPath = FAILURE_SCREENSHOTS_DIR;
+        String localPath = FAILURE_SCREENSHOTS_DIR + BROWSER + "\\";
         Path SCREENSHOTS_PATH = Paths.get(localPath + methodName
                 + "_" + Util.getTimestampNowAsString() + ".png");
         Page.ScreenshotOptions screenshotPath = new Page.ScreenshotOptions().setPath(SCREENSHOTS_PATH);

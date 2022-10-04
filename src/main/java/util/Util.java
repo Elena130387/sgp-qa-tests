@@ -4,7 +4,6 @@ import com.github.romankh3.image.comparison.ImageComparison;
 import com.github.romankh3.image.comparison.ImageComparisonUtil;
 import com.github.romankh3.image.comparison.model.ImageComparisonResult;
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Request;
 import io.github.cdimascio.dotenv.Dotenv;
 
 import java.awt.image.BufferedImage;
@@ -15,17 +14,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static util.Constants.EXPECTED_SCREENSHOTS_DIR;
 import static util.Constants.FAILURE_SCREENSHOTS_DIR;
-import static util.JunitExtension.doScreenshotFor;
-import static util.JunitExtension.page;
+import static util.JunitExtension.*;
 
 public class Util {
-    static Predicate<Request> getImg = request ->"https://api.mapbox.com/*".equals(request.url());
+ //   static Predicate<Request> getImg = request ->request.url().contains("sprite@");
+//            && request.url().contains("png");
 
     public static String getTimestampNowAsString() {
         var now = LocalDateTime.now();
@@ -46,7 +44,7 @@ public class Util {
         BufferedImage expected = ImageComparisonUtil.readImageFromResources(String.valueOf(imgExpect));
         BufferedImage actual = ImageComparisonUtil.readImageFromResources(String.valueOf(imgNow));
 
-        File diffFile = new File(FAILURE_SCREENSHOTS_DIR + "image_comparison_" + testName + Util.getTimestampNowAsString() + ".png");
+        File diffFile = new File(FAILURE_SCREENSHOTS_DIR + BROWSER + "\\" + "image_comparison_" + testName + Util.getTimestampNowAsString() + ".png");
         ImageComparison comparison = new ImageComparison(expected, actual, diffFile);
         ImageComparisonResult result = comparison.compareImages();
 
@@ -63,17 +61,18 @@ public class Util {
     public static void checkScreenshot(String actual, String expected, String testName, String expDir) throws IOException {
         page.waitForTimeout(3000);
         Path screenshot = doScreenshotFor(actual);
-        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expDir + expected + ".png");
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "\\" + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
-    public static void checkScreenshotAfterWaitForRequest(String actual, String expected, String testName, String expDir) throws IOException {
-        Request request1 = page.waitForRequest(
-                getImg,
-                () -> {});
-        //   page.waitForTimeout(3000);
+    public static void checkScreenshotLongWaiting(String actual, String expected, String testName, String expDir) throws IOException {
+//        page.setDefaultTimeout(50000);
+//        Request request1 = page.waitForRequest(
+//                getImg,
+//                () -> {});
+           page.waitForTimeout(5000);
         Path screenshot = doScreenshotFor(actual);
-        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + expDir + expected + ".png");
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "\\" + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
