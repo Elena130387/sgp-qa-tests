@@ -22,8 +22,6 @@ import static util.Constants.FAILURE_SCREENSHOTS_DIR;
 import static util.JunitExtension.*;
 
 public class Util {
- //   static Predicate<Request> getImg = request ->request.url().contains("sprite@");
-//            && request.url().contains("png");
 
     public static String getTimestampNowAsString() {
         var now = LocalDateTime.now();
@@ -65,12 +63,20 @@ public class Util {
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
+/*    For the map service Mapbox, there was an attempt to replace a simple wait with waiting for the
+    end of the request, but during the tests run, the system does not see this request, although when
+    you click F12 on the UI, the request is displayed in the spool. Therefore, we decided to leave
+    the method with a simple wait.
+    If you need to return to checking for the completion of loading the request, then instead of the
+    usual waiting, you need to write:
+
+    Predicate<Request> getImg = request ->request.url().contains("sprite@2x.png");
+         Request request1 = page.waitForRequest(
+               getImg,
+                () -> {});
+    */
     public static void checkScreenshotLongWaiting(String actual, String expected, String testName, String expDir) throws IOException {
-//        page.setDefaultTimeout(50000);
-//        Request request1 = page.waitForRequest(
-//                getImg,
-//                () -> {});
-           page.waitForTimeout(5000);
+        page.waitForTimeout(5000);
         Path screenshot = doScreenshotFor(actual);
         Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "\\" + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);

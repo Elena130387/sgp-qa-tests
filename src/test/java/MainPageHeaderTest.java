@@ -43,12 +43,24 @@ public class MainPageHeaderTest {
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 
-    @Test
+/*  FIREFOX: When running a test with authorization through an account
+    Microsoft (i.e without a file storage-state.json), the button FullScreenMod is not pressed,
+    although the element locator is determined correctly, the test falls. When starting a test
+    with an already generated file storage-state.json, the button FullScreenMod is pressed,
+    the test does not fall.
+
+    CHROME: When starting the test in the mode setHeadless(true), the button FullScreenMod is not
+    pressed, the test falls. When starting the test in the mode setHeadless(false), the button
+    FullScreenMod is pressed, the test does not fall. The presence or absence of the file
+    storage-state.json does not matter when running the test in this browser.
+
+    A task has been created to solve the problem:
+    https://dev.azure.com/Syncretis/SmartGeoPlatform-Ecomonitoring/_workitems/edit/23939
+    */    @Test
     void checkFullscreenMode() throws IOException {
         assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
         mainPage.header.getFullScreenBtn().focus();
         mainPage.header.getFullScreenBtn().click();
-        mainPage.getPage().pause();
         Util.checkScreenshot(
                 "actFullScreenModeOn",
                 "expFullScreenModeOn",
