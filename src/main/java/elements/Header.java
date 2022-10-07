@@ -71,7 +71,7 @@ public class Header {
         this.newShape = this.header.locator(SELECTOR_NEW_SHAPE);
         this.chooseMapType = this.header.locator(SELECTOR_CHOOSE_MAP_TYPE);
         this.textLogo = this.header.locator(SELECTOR_TEXT_LOGO);
-        this.fullScreenBtn = this.header.locator(SELECTOR_FULL_SCREEN);
+        this.fullScreenBtn = page.locator(SELECTOR_FULL_SCREEN);
         this.colorModeBtn = this.header.locator(SELECTOR_COLOR_MODE);
         this.addShapeDropdownMenu = this.newShape.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
         this.chooseMapTypeDropdownMenu = this.chooseMapType.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
