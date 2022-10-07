@@ -2,7 +2,12 @@ package util;
 
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 import static util.Constants.STORAGE_PATH;
 import static util.JunitExtension.LOG;
 
