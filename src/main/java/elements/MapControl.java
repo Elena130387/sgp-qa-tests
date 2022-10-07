@@ -15,7 +15,7 @@ public class MapControl {
     private static final String SELECTOR_COVERAGE = "[data-cy=coverage]";
     private static final String SELECTOR_GLOBAL_GRID = "[data-cy=globalGrid]";
     private static final String SELECTOR_GRID_LINES = "[data-cy=gridLines]";
-    private static final String SELECTOR_POLYGONS_SECTION = "[data-cy=polygon]";
+    private static final String SELECTOR_POLYGONS_SECTION_OPEN_BTN = "[data-cy=polygon]";
     private static final String SELECTOR_GEO_SEARCH = "[data-cy=geoSearch]";
     //</editor-fold>
 
@@ -79,7 +79,7 @@ public class MapControl {
     public MapControl() {
         this.navigationBar = page.locator(SELECTOR_NAVIGATION_BAR);
         this.coverageAndGridBar = page.locator(SELECTOR_COVERAGE_AND_GRID_BAR);
-        this.polygonsSectionBtn = page.locator(SELECTOR_POLYGONS_SECTION);
+        this.polygonsSectionBtn = page.locator(SELECTOR_POLYGONS_SECTION_OPEN_BTN);
         this.geoSearch = page.locator(SELECTOR_GEO_SEARCH);
         this.zoomOutBtn = this.navigationBar.locator(SELECTOR_ZOOM_OUT);
         this.zoomInBtn = this.navigationBar.locator(SELECTOR_ZOOM_IN);

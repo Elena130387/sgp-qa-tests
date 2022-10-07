@@ -55,19 +55,9 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
             }
         }
 
-   /*     In the browser Firefox, when running the test checkFullscreenMode(), the screenshot
-   for the mode FullScreenModeOn does not fit on the screen. For this reason, for the browser
-   Firefox, screen sizes are increased relative to standard sizes.
-   */
-        if (!Objects.isNull(BROWSER) && BROWSER.equals("CHROME")) {
-            browserContext = browser.newContext(
+        browserContext = browser.newContext(
                     new Browser.NewContextOptions().setStorageStatePath(STORAGE_PATH)); // View size 1280X720
             page = browserContext.newPage();
-        } else {
-            browserContext = browser.newContext(
-                    new Browser.NewContextOptions().setStorageStatePath(STORAGE_PATH).setViewportSize(1500, 1000));
-            page = browserContext.newPage();
-        }
 
         try {
             MsHelper.login();

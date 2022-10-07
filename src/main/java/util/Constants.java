@@ -16,4 +16,7 @@ public class Constants {
 
     public static final String BASE_MAP_TYPE = "Bing Satellite";
 
+    public static final int STANDART_PAGE_HEIGHT = 1280;
+
+    public static final int STANDART_PAGE_WIDTH = 720;
 };

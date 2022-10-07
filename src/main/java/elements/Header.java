@@ -15,6 +15,7 @@ public class Header {
     private static final String SELECTOR_TEXT_LOGO = "[data-cy=text_logo]";
     private static final String SELECTOR_FULL_SCREEN = "[data-cy=fullScreen]";
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
+    private static final String SELECTOR_IMG_DARK_COLOR = ".css-cjmj0z";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
@@ -24,6 +25,7 @@ public class Header {
     private final Locator textLogo;
     private final Locator fullScreenBtn;
     private final Locator colorModeBtn;
+    private final Locator darkModeImg;
     private final Locator addShapeDropdownMenu;
     private final Locator chooseMapTypeDropdownMenu;
     //</editor-fold>
@@ -53,6 +55,9 @@ public class Header {
         return fullScreenBtn;
     }
 
+    public Locator getDarkModeImg() {
+        return darkModeImg;
+    }
 
     public Locator getAddShapeDropdownMenu() {
         return addShapeDropdownMenu;
@@ -73,6 +78,7 @@ public class Header {
         this.textLogo = this.header.locator(SELECTOR_TEXT_LOGO);
         this.fullScreenBtn = page.locator(SELECTOR_FULL_SCREEN);
         this.colorModeBtn = this.header.locator(SELECTOR_COLOR_MODE);
+        this.darkModeImg = this.colorModeBtn.locator(SELECTOR_IMG_DARK_COLOR);
         this.addShapeDropdownMenu = this.newShape.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
         this.chooseMapTypeDropdownMenu = this.chooseMapType.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
     }

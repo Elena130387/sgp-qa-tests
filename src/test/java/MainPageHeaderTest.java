@@ -14,6 +14,7 @@ import java.util.List;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.Constants.*;
+import static util.JunitExtension.BROWSER;
 
 
 @ExtendWith(JunitExtension.class)
@@ -56,8 +57,18 @@ public class MainPageHeaderTest {
 
     A task has been created to solve the problem:
     https://dev.azure.com/Syncretis/SmartGeoPlatform-Ecomonitoring/_workitems/edit/23939
-    */    @Test
+    */
+
+    /* In the browser Firefox, when running the test checkFullscreenMode(), the screenshot
+   for the mode FullScreenModeOn does not fit on the screen. For this reason, for the browser
+   Firefox, screen sizes are increased relative to standard sizes.
+   */
+
+    @Test
     void checkFullscreenMode() throws IOException {
+    if (BROWSER.equals("FIREFOX")) {
+        mainPage.getPage().setViewportSize(1500, 1000);
+    }
         assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
         mainPage.header.getFullScreenBtn().focus();
         mainPage.header.getFullScreenBtn().click();

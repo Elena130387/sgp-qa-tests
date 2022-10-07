@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import pages.SgpMain;
+import pages.ShapeCalcPage;
 import util.JunitExtension;
 import util.Util;
 
@@ -9,25 +9,26 @@ import java.io.IOException;
 
 @ExtendWith(JunitExtension.class)
 public class MapControlTest {
-    SgpMain mainPage;
+    private final String SHAPE_LINK = "?showAside=true&shape=215&detailed=true";
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest\\";
+    ShapeCalcPage shapeCalcPage;
 
     @BeforeEach
     void openMainPage() {
-        mainPage = new SgpMain().openMainPage();
-        mainPage.selectDefaultSettings();
+        shapeCalcPage = new ShapeCalcPage().openShapeCalcPageWithMapWait(SHAPE_LINK);
+        shapeCalcPage.selectDefaultSettings();
     }
 
     @Test
     void checkZoom() throws IOException {
-        mainPage.mapControl.clickZoomIn(1);
+        shapeCalcPage.mapControl.clickZoomIn(1);
         Util.checkScreenshot(
                 "actMainPageZoomIn",
-                "expMainPageZoomIn",
+                "expMainPageZoomOut",
                 "checkMainPageZoomIn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
-        mainPage.mapControl.clickZoomOut(2);
+        shapeCalcPage.mapControl.clickZoomOut(2);
         Util.checkScreenshot(
                 "actMainPageZoomOut",
                 "expMainPageZoomOut",
