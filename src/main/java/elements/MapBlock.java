@@ -7,7 +7,7 @@ import util.JunitExtension;
 public class MapBlock {
 
     //<editor-fold desc="Selectors">
-    private static final String SELECTOR_MAP = ".mapboxgl-map";
+    private static final String SELECTOR_MAP = ".overlays";
     private static final String SELECTOR_STANDART_ZOOM = "text=300 m";
     //</editor-fold>
 
@@ -39,5 +39,15 @@ public class MapBlock {
 
     public void waitForStandartZoom(){
         this.page.waitForSelector(SELECTOR_STANDART_ZOOM);
+    }
+
+    public void turnMapToTheLeft(int countLeftClick){
+        int num = 0;
+        page.locator(SELECTOR_MAP).click();
+        do {
+            num += 1;
+            page.locator(SELECTOR_MAP).press("Control+ArrowLeft");
+
+        } while (num < Math.abs(countLeftClick));
     }
 }
