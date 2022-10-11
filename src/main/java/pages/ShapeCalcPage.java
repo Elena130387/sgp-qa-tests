@@ -13,10 +13,7 @@ public class ShapeCalcPage extends BasePage {
 
     public ShapeCalcPage openShapeCalcPageWithMapWait(int SHAPE_ID) {
         openShapeCalcPage(SHAPE_ID);
-  //      mapBlock.waitForMap();
-        mapBlock.waitForStandartZoom();
-        mapControl.getCompassBtn().click();
-        page.waitForTimeout(1000);
+        waitStandartMapZoom();
         return this;
     }
 

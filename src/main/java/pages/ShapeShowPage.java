@@ -13,10 +13,7 @@ public class ShapeShowPage extends BasePage {
 
     public ShapeShowPage openShapeShowPageWithMapWait(int SHAPE_ID) {
         openShapeShowPage(SHAPE_ID);
- //       mapBlock.waitForMap();
-        mapBlock.waitForStandartZoom();
-        mapControl.getCompassBtn().click();
-        page.waitForTimeout(1000);
+        waitStandartMapZoom();
         return this;
     }
 

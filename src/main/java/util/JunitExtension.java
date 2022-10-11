@@ -86,7 +86,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     }
 
     @Override
-    public void afterAll(ExtensionContext context) throws Exception {
+    public void afterAll(ExtensionContext context) {
         browserContext.close();
         browser.close();
     }

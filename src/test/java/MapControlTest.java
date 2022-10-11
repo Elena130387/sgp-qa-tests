@@ -7,6 +7,10 @@ import util.Util;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static util.Constants.MAP_COMPASS_IMG_STANDART;
+
 @ExtendWith(JunitExtension.class)
 public class MapControlTest {
     private final int SHAPE_ID = 215;
@@ -37,18 +41,38 @@ public class MapControlTest {
     }
 
     @Test
-    void checkResetNorth() throws IOException {
+    void checkResetNorth() {
         shapeShowPage.mapBlock.turnMapToTheLeft(2);
-        Util.checkScreenshot(
-                "actTurnMapToLeft",
-                "expTurnMapToLeft",
-                "checkTurnMapToLeft",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+        String compassState = shapeShowPage.mapControl.getCompassState();
+        assertNotEquals (
+                MAP_COMPASS_IMG_STANDART,
+                compassState,
+                "Поворот карты влево не выполнен");
+
         shapeShowPage.mapControl.getCompassBtn().click();
+        shapeShowPage.getPage().waitForTimeout(1000);
+
+        compassState = shapeShowPage.mapControl.getCompassState();
+        assertEquals (
+                MAP_COMPASS_IMG_STANDART,
+                compassState,
+                "Поворот карты к базовому расположению не выполнен");
+    }
+
+    @Test
+    void checkGlobalGrid() throws IOException {
+        shapeShowPage.mapControl.clickZoomOut(6);
+        shapeShowPage.mapControl.getGlobalGridBtn().click();
         Util.checkScreenshot(
-                "actResetNorth",
-                "expResetNorth",
-                "checkResetNorth",
+                "actGlobalGridOn",
+                "expGlobalGridOn",
+                "checkGlobalGridOn",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
+        shapeShowPage.mapControl.getGlobalGridBtn().click();
+        Util.checkScreenshot(
+                "actGlobalGridOff",
+                "expGlobalGridOff",
+                "checkGlobalGridOff",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 }

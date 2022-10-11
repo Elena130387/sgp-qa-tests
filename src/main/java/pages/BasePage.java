@@ -18,17 +18,33 @@ public class BasePage {
     public void selectDefaultSettings(){
         Integer height = page.viewportSize().height;
         Integer width = page.viewportSize().width;
+
+        // page size check
         if(!height.equals(STANDART_PAGE_HEIGHT) || !width.equals(STANDART_PAGE_WIDTH)){
             page.setViewportSize(STANDART_PAGE_HEIGHT,STANDART_PAGE_WIDTH);
         }
+
+        // checking the base type of the map
         header.waitForHeader();
         if(!header.getChooseMapType().textContent().equals(BASE_MAP_TYPE)){
             header.checkChooseMapTypeMenu();
             dropdown.clickItemByText(BASE_MAP_TYPE);
         }
 
+        // checking the dark mode is off
         if(!header.getDarkModeImg().isVisible()){
             header.getColorModeBtn().click();
         }
+
+        // checking that the map is not rotated
+        if(!mapControl.getCompassState().equals(MAP_COMPASS_IMG_STANDART)){
+            mapControl.getCompassBtn().click();
+            page.waitForTimeout(1000);
+        }
+    }
+
+    public void waitStandartMapZoom(){
+        mapBlock.waitForMap();
+        mapBlock.waitForStandartMapZoom();
     }
 }

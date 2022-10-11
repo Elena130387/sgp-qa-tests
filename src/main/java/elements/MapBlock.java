@@ -4,16 +4,20 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
 
+import static util.Constants.MAP_ZOOM_STANDART;
+
 public class MapBlock {
 
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_MAP = ".overlays";
-    private static final String SELECTOR_STANDART_ZOOM = "text=300 m";
+    private static final String SELECTOR_MAP_ZOOM = ".mapboxgl-ctrl-scale";
+    private static final String SELECTOR_STANDART_MAP_ZOOM = "text=" + MAP_ZOOM_STANDART;
     //</editor-fold>
 
     //<editor-fold desc="Elements">
     private final Locator map;
-    private final Locator standartZoom;
+    private final Locator mapZoom;
+    private final Locator standartMapZoom;
     //</editor-fold>
 
     //<editor-fold desc="Getters">
@@ -21,27 +25,39 @@ public class MapBlock {
         return map;
     }
 
-    public Locator getStandartZoom() {
-        return standartZoom;
+    public Locator getStandartMapZoom() {
+        return standartMapZoom;
     }
+
+    public Locator getMapZoom() {
+        return mapZoom;
+    }
+
     //</editor-fold>
 
     private final Page page = JunitExtension.page;
 
     public MapBlock() {
         this.map = page.locator(SELECTOR_MAP);
-        this.standartZoom = page.locator(SELECTOR_STANDART_ZOOM);
+        this.mapZoom = page.locator(SELECTOR_MAP_ZOOM);
+        this.standartMapZoom = page.locator(SELECTOR_STANDART_MAP_ZOOM);
     }
 
-    public void waitForMap(){
+    public void waitForMap() {
         this.page.waitForSelector(SELECTOR_MAP);
     }
 
-    public void waitForStandartZoom(){
-        this.page.waitForSelector(SELECTOR_STANDART_ZOOM);
+    public void waitForStandartMapZoom() {
+        this.page.waitForSelector(SELECTOR_STANDART_MAP_ZOOM);
     }
 
-    public void turnMapToTheLeft(int countLeftClick){
+    public String getActualMapZoomWithoutSpace() {
+        String actualMapZoom = this.mapZoom.textContent();
+        actualMapZoom = actualMapZoom.replaceAll("\\W+", "");
+        return actualMapZoom;
+    }
+
+    public void turnMapToTheLeft(int countLeftClick) {
         int num = 0;
         page.locator(SELECTOR_MAP).click();
         do {
@@ -49,5 +65,6 @@ public class MapBlock {
             page.locator(SELECTOR_MAP).press("Control+ArrowLeft");
 
         } while (num < Math.abs(countLeftClick));
+        page.waitForTimeout(1000);
     }
 }
