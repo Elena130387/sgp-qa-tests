@@ -14,9 +14,15 @@ public class Constants {
 
     public static final String EXPECTED_SCREENSHOTS_DIR = "expectedScreenshots\\";
 
+    //<editor-fold desc="Basic UI Settings">
     public static final String BASE_MAP_TYPE = "Bing Satellite";
 
     public static final int STANDART_PAGE_HEIGHT = 1280;
 
     public static final int STANDART_PAGE_WIDTH = 720;
+
+    public static final String MAP_COMPASS_IMG_STANDART = "transform: rotate(0deg)";
+
+    public static final String MAP_ZOOM_STANDART = "300 m";
+    //</editor-fold>
 };

@@ -6,15 +6,14 @@ import static util.Constants.SGP_URL_DEV;
 
 public class ShapeCalcPage extends BasePage {
 
-    public ShapeCalcPage openShapeCalcPage(String SHAPE_LINK) {
-        page.navigate(SGP_URL_DEV + SHAPE_LINK);
+    public ShapeCalcPage openShapeCalcPage(int SHAPE_ID) {
+        page.navigate(SGP_URL_DEV + "?showAside=true&shape=" + SHAPE_ID + "&detailed=true");
         return this;
     }
 
-    public ShapeCalcPage openShapeCalcPageWithMapWait(String SHAPE_LINK) {
-        openShapeCalcPage(SHAPE_LINK);
-        mapBlock.waitForMap();
-        mapBlock.waitForStandartZoom();
+    public ShapeCalcPage openShapeCalcPageWithMapWait(int SHAPE_ID) {
+        openShapeCalcPage(SHAPE_ID);
+        waitStandartMapZoom();
         return this;
     }
 
