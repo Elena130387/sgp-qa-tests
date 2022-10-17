@@ -19,6 +19,7 @@ public class MapControl {
     private static final String SELECTOR_VIEWPORT = "[data-cy=viewport]";
     private static final String SELECTOR_POLYGONS_SECTION_OPEN_BTN = "[data-cy=polygon]";
     private static final String SELECTOR_GEO_SEARCH = "[data-cy=geoSearch]";
+    private static final String SELECTOR_GEO_SEARCH_LIST = ".suggestions";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
@@ -27,6 +28,7 @@ public class MapControl {
     private final Locator polygonsSectionBtn;
     private final Locator geoSearch;
     private final Locator zoomInBtn;
+    private final Locator geoSearchList;
     private final Locator zoomOutBtn;
     private final Locator compassBtn;
     private final Locator compassBtnImg;
@@ -51,6 +53,10 @@ public class MapControl {
 
     public Locator getGeoSearch() {
         return geoSearch;
+    }
+
+    public Locator getGeoSearchList() {
+        return geoSearchList;
     }
 
     public Locator getZoomInBtn() {
@@ -94,6 +100,7 @@ public class MapControl {
         this.coverageAndGridBar = page.locator(SELECTOR_COVERAGE_AND_GRID_BAR);
         this.polygonsSectionBtn = page.locator(SELECTOR_POLYGONS_SECTION_OPEN_BTN);
         this.geoSearch = page.locator(SELECTOR_GEO_SEARCH);
+        this.geoSearchList = this.geoSearch.locator(SELECTOR_GEO_SEARCH_LIST);
         this.zoomOutBtn = this.navigationBar.locator(SELECTOR_ZOOM_OUT);
         this.zoomInBtn = this.navigationBar.locator(SELECTOR_ZOOM_IN);
         this.compassBtn = this.navigationBar.locator(SELECTOR_COMPASS);

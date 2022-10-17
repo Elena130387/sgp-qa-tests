@@ -11,13 +11,15 @@ import static util.Constants.MAP_ZOOM_STANDART;
 @ExtendWith(JunitExtension.class)
 public class MapControlOnCalcViewPageTest {
 
+    ShapeCalcPage shapeCalcPage;
     private final int SHAPE_ID = 215;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlOnCalcViewPageTest\\";
-    ShapeCalcPage shapeCalcPage;
+    private final String standartMapZoom = MAP_ZOOM_STANDART;
+
 
     @BeforeEach
     void openShapeCalcPage() {
-        shapeCalcPage = new ShapeCalcPage().openShapeCalcPageWithMapWait(SHAPE_ID);
+        shapeCalcPage = new ShapeCalcPage().openShapeCalcPageWithMapWait(SHAPE_ID, standartMapZoom);
         shapeCalcPage.selectDefaultSettings();
     }
 
@@ -38,6 +40,6 @@ public class MapControlOnCalcViewPageTest {
         assertEquals(
                 STANDART_ZOOM_WITHOUT_SPACE,
                 actualZoom,
-                "Возрат к стандартному zoom карты не выполнен");
+                "Возврат к стандартному zoom карты не выполнен");
     }
 }
