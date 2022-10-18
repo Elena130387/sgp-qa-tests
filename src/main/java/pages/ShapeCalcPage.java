@@ -11,9 +11,9 @@ public class ShapeCalcPage extends BasePage {
         return this;
     }
 
-    public ShapeCalcPage openShapeCalcPageWithMapWait(int SHAPE_ID) {
+    public ShapeCalcPage openShapeCalcPageWithMapWait(int SHAPE_ID, String standartMapZoom) {
         openShapeCalcPage(SHAPE_ID);
-        waitStandartMapZoom();
+        waitStandartMapZoom(standartMapZoom);
         return this;
     }
 

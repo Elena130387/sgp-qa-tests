@@ -43,8 +43,8 @@ public class BasePage {
         }
     }
 
-    public void waitStandartMapZoom(){
+    public void waitStandartMapZoom(String standartMapZoom) {
         mapBlock.waitForMap();
-        mapBlock.waitForStandartMapZoom();
+        mapBlock.waitForStandartMapZoom(standartMapZoom);
     }
 }

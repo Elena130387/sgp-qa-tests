@@ -42,7 +42,7 @@ public class Util {
         BufferedImage expected = ImageComparisonUtil.readImageFromResources(String.valueOf(imgExpect));
         BufferedImage actual = ImageComparisonUtil.readImageFromResources(String.valueOf(imgNow));
 
-        File diffFile = new File(FAILURE_SCREENSHOTS_DIR + BROWSER + "\\" + "image_comparison_" + testName + Util.getTimestampNowAsString() + ".png");
+        File diffFile = new File(FAILURE_SCREENSHOTS_DIR + BROWSER + "/" + "image_comparison_" + testName + Util.getTimestampNowAsString() + ".png");
         ImageComparison comparison = new ImageComparison(expected, actual, diffFile);
         ImageComparisonResult result = comparison.compareImages();
 
@@ -59,7 +59,7 @@ public class Util {
     public static void checkScreenshot(String actual, String expected, String testName, String expDir) throws IOException {
         page.waitForTimeout(3000);
         Path screenshot = doScreenshotFor(actual);
-        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "\\" + expDir + expected + ".png");
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "/" + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
@@ -78,7 +78,7 @@ public class Util {
     public static void checkScreenshotLongWaiting(String actual, String expected, String testName, String expDir) throws IOException {
         page.waitForTimeout(5000);
         Path screenshot = doScreenshotFor(actual);
-        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "\\" + expDir + expected + ".png");
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "/" + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
