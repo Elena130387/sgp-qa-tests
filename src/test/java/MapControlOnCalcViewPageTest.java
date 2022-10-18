@@ -13,7 +13,7 @@ public class MapControlOnCalcViewPageTest {
 
     ShapeCalcPage shapeCalcPage;
     private final int SHAPE_ID = 215;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlOnCalcViewPageTest\\";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlOnCalcViewPageTest/";
     private final String standartMapZoom = MAP_ZOOM_STANDART;
 
 

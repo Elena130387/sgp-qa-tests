@@ -18,7 +18,7 @@ public class MapControlTest {
 
     ShapeShowPage shapeShowPage;
     private final int SHAPE_ID = 215;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest\\";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
     private final String standartMapZoom = MAP_ZOOM_STANDART;
 
     @BeforeEach
@@ -86,7 +86,7 @@ public class MapControlTest {
         shapeShowPage.mapControl.getGeoSearch().click();
         shapeShowPage.mapControl.getGeoSearch().type("Москва");
         assertThat(shapeShowPage.mapControl.getGeoSearchList()).isVisible();
-        //       shapeShowPage.mapControl.getGeoSearchList().locator("text=Moscow").first().click();
+        shapeShowPage.mapControl.getGeoSearchList().locator("text=Moscow").first().click();
         Util.checkScreenshotLongWaiting(
                 "actGeoSearchResult",
                 "expGeoSearchResult",

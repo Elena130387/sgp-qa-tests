@@ -77,7 +77,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     }
 
     public static Path doScreenshotFor(String methodName) {
-        String localPath = FAILURE_SCREENSHOTS_DIR + BROWSER + "\\";
+        String localPath = FAILURE_SCREENSHOTS_DIR + BROWSER + "/";
         Path SCREENSHOTS_PATH = Paths.get(localPath + methodName
                 + "_" + Util.getTimestampNowAsString() + ".png");
         Page.ScreenshotOptions screenshotPath = new Page.ScreenshotOptions().setPath(SCREENSHOTS_PATH);

@@ -20,7 +20,7 @@ import static util.JunitExtension.BROWSER;
 @ExtendWith(JunitExtension.class)
 public class MainPageHeaderTest {
     SgpMain mainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest\\";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
     List<String> MAP_TYPES_LIST = Arrays.asList(
             "Bing Satellite",
             "Google Satellite",
@@ -74,7 +74,7 @@ public class MainPageHeaderTest {
         mainPage.header.getFullScreenBtn().click();
         Util.checkScreenshot(
                 "actFullScreenModeOn",
-                "expFullScreenModeOn",
+                "expFullScreenMModeOn",
                 "checkFullscreenModeOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
