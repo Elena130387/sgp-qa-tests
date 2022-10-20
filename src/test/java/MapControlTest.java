@@ -84,7 +84,7 @@ public class MapControlTest {
     @Test
     void checkGeoSearch() throws IOException {
         shapeShowPage.mapControl.getGeoSearch().click();
-        shapeShowPage.mapControl.getGeoSearch().type("Москва");
+        shapeShowPage.mapControl.getGeoSearch().type("Moscow");
         assertThat(shapeShowPage.mapControl.getGeoSearchList()).isVisible();
         shapeShowPage.mapControl.getGeoSearchList().locator("text=Moscow").first().click();
         Util.checkScreenshotLongWaiting(

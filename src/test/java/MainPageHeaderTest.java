@@ -67,22 +67,22 @@ public class MainPageHeaderTest {
     @Test
     void checkFullscreenMode() throws IOException {
     if (BROWSER.equals("FIREFOX")) {
-        mainPage.getPage().setViewportSize(1500, 1000);
+        mainPage.getPage().setViewportSize(1500, 800);
     }
         assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
         mainPage.header.getFullScreenBtn().focus();
         mainPage.header.getFullScreenBtn().click();
         Util.checkScreenshot(
                 "actFullScreenModeOn",
-                "expFullScreenMModeOn",
-                "checkFullscreenModeOn",
+                "expFullScreenModeOn",
+                "checkFullScreenModeOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         mainPage.header.getFullScreenBtn().click();
         Util.checkScreenshot(
                 "actFullScreenModeOff",
                 "expFullScreenModeOff",
-                "checkFullscreenModeOff",
+                "checkFullScreenModeOff",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 
