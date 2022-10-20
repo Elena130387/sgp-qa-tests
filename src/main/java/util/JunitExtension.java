@@ -35,14 +35,14 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
         if (!Objects.isNull(BROWSER) && BROWSER.equals("CHROME")) {
             browser = playwright.chromium().launch(
                     new BrowserType.LaunchOptions()
-                            .setHeadless(true)
+                            .setHeadless(false)
                             .setSlowMo(100)
             );
         } else {
             BROWSER = "FIREFOX";
             browser = playwright.firefox().launch(
                     new BrowserType.LaunchOptions()
-                            .setHeadless(true)
+                            .setHeadless(false)
                             .setSlowMo(100)
             );
         }
