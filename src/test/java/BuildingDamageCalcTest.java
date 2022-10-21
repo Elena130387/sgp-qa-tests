@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.SgpMain;
 import pages.ShapeCalcPage;
-import pages.ShapeShowPage;
 import util.Constants;
 import util.JunitExtension;
 
