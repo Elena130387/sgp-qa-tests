@@ -2,12 +2,12 @@ package pages;
 
 import com.microsoft.playwright.Page;
 
-import static util.Constants.SGP_URL_DEV;
+import static util.Constants.*;
 
 public class ShapeCalcPage extends BasePage {
 
     public ShapeCalcPage openShapeCalcPage(int SHAPE_ID) {
-        page.navigate(SGP_URL_DEV + "?showAside=true&shape=" + SHAPE_ID + "&detailed=true");
+        page.navigate(SHAPE_CHOOSE_URL_MID_TRUE + SHAPE_ID + SHAPE_DETAILS_URL_END);
         return this;
     }
 
