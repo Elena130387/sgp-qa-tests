@@ -1,5 +1,6 @@
 package pages;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import elements.*;
 import util.JunitExtension;
@@ -46,5 +47,9 @@ public class BasePage {
     public void waitStandartMapZoom(String standartMapZoom) {
         mapBlock.waitForMap();
         mapBlock.waitForStandartMapZoom(standartMapZoom);
+    }
+
+    public void openShapeWithName(String name) {
+        shapesPanel.getAddedShapes().filter(new Locator.FilterOptions().setHasText(name)).click();
     }
 }
