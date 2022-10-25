@@ -25,4 +25,22 @@ public class Constants {
 
     public static final String MAP_ZOOM_STANDART = "300 m";
     //</editor-fold>
+
+    //<editor-fold desc="Basic urls for project's models">
+    public static final String ESTIMATOR_URL = "/estimator";
+
+    public static final String CALC_MANAGEMENT_URL = "/calculation-management";
+
+    public static final String IMAGE_SERVICE_URL = "/image-service";
+
+    public static final String POLYGON_SPLITTER_URL = "/polygon-splitter";
+
+    public static final String FOOTPRINT_MODEL_URL = "/footprint-model";
+
+    public static final String BUILDING_HEIGHT_MODEL_URL = "/bhm";
+
+    public static final String POPULATION_MODEL_URL = "/pm";
+
+    public static final String LAND_USE_MODEL_URL = "/lum";
+    //</editor-fold>
 };
