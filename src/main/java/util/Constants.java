@@ -4,8 +4,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Constants {
+
     public static final String SGP_URL_DEV = "https://sgp-dev.syncretis.com/";
 
+
+    //<editor-fold desc="UI urls and dirs">
     public static final String SHAPE_CHOOSE_URL_MID_TRUE = SGP_URL_DEV + "?showAside=true&shape=";
 
     public static final String SHAPE_DETAILS_URL_END = "&detailed=true";
@@ -17,6 +20,7 @@ public class Constants {
     public static final String FAILURE_SCREENSHOTS_DIR = "failureScreenshots/";
 
     public static final String EXPECTED_SCREENSHOTS_DIR = "expectedScreenshots/";
+    //</editor-fold>
 
     //<editor-fold desc="Basic UI Settings">
     public static final String BASE_MAP_TYPE = "Bing Satellite";
