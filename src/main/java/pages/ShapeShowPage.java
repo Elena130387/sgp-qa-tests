@@ -1,14 +1,13 @@
 package pages;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import static util.Constants.SGP_URL_DEV;
+import static util.Constants.SHAPE_SHOW_PAGE_URL;
 
 public class ShapeShowPage extends BasePage {
 
     public ShapeShowPage openShapeShowPage(int SHAPE_ID) {
-        page.navigate(SGP_URL_DEV + "?showAside=false&shape=" + SHAPE_ID);
+        page.navigate(SHAPE_SHOW_PAGE_URL + SHAPE_ID);
         return this;
     }
 
