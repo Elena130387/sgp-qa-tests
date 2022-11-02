@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class jsonUtil {
+public class JsonUtil {
     // serialization
     public static <T> Object getDataFromJsonFile(String path, Class<T> classOfT) throws IOException {
         Gson gson = new Gson();

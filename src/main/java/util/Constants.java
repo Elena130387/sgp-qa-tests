@@ -8,12 +8,14 @@ public class Constants {
     public static final String SGP_URL_DEV = "https://sgp-dev.syncretis.com/";
 
 
-    //<editor-fold desc="UI urls and dirs">
+    //<editor-fold desc="Frontend tests urls and dirs">
     public static final String SHAPE_CHOOSE_URL_MID_TRUE = SGP_URL_DEV + "?showAside=true&shape=";
 
     public static final String SHAPE_DETAILS_URL_END = "&detailed=true";
 
     public static final String NEW_CALCULATION_URL = SGP_URL_DEV + "?newCalculation=true&showAside=true";
+
+    public static final String SHAPE_SHOW_PAGE_URL = SGP_URL_DEV + "?showAside=false&shape=";
 
     public static final Path STORAGE_PATH = Paths.get("storage-state.json");
 
@@ -50,5 +52,13 @@ public class Constants {
     public static final String POPULATION_MODEL_URL = "/pm";
 
     public static final String LAND_USE_MODEL_URL = "/lum";
+    //</editor-fold>
+
+    //<editor-fold desc="Endpoints">
+    public static final String EXECUTIONS_EP = "/executions";
+
+    public static final String CALC_MAN_SHAPES_EP = "/shapes";
+
+    public static final String CALC_MAN_SHAPES_ID_EP = CALC_MANAGEMENT_URL + CALC_MAN_SHAPES_EP + "/{id}";
     //</editor-fold>
 };

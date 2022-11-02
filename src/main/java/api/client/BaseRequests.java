@@ -11,15 +11,15 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static util.Constants.SGP_URL_DEV;
 
-public class baseRequests {
+public class BaseRequests {
 
     static {
         RestAssured.baseURI = SGP_URL_DEV;
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 
-    // POST
-    public static <T> ValidatableResponse postRequestWithBody(Class<T> input, String url) {
+    //<editor-fold desc="POST Requests">
+    public static <T> ValidatableResponse postRequestWithBody(T input, String url) {
         return given()
                 .contentType(ContentType.JSON)
                 .body(input)
@@ -35,8 +35,9 @@ public class baseRequests {
                 .post(url)
                 .then();
     }
+    //</editor-fold>
 
-    // GET
+    //<editor-fold desc="GET Requests">
     public static ValidatableResponse getRequest(int id, String url) {
         return given()
                 .when()
@@ -85,4 +86,27 @@ public class baseRequests {
                 .get(url)
                 .then();
     }
+    //</editor-fold>
+
+    //<editor-fold desc="PUT Request">
+    public static <T> ValidatableResponse putRequest(T input, int id, String url) {
+        return  given()
+                .contentType(ContentType.JSON)
+                .body(input)
+                .put(url, id)
+                .then();
+    }
+    //</editor-fold>
+
+
+    //<editor-fold desc="DELETE Request">
+    public static ValidatableResponse deleteRequest(int id, String url) {
+        return given()
+                .contentType(ContentType.JSON)
+                .delete(url, id)
+                .then();
+    }
+    //</editor-fold>
+
+
 }
