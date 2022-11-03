@@ -1,4 +1,4 @@
-package frontEndTests;
+package frontendTests;
 
 import elements.DetailedShapePanel;
 import elements.ShapeData;
