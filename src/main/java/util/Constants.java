@@ -60,5 +60,7 @@ public class Constants {
     public static final String CALC_MAN_SHAPES_EP = "/shapes";
 
     public static final String CALC_MAN_SHAPES_ID_EP = CALC_MANAGEMENT_URL + CALC_MAN_SHAPES_EP + "/{id}";
+
+    public static final String CALC_MAN_SHAPES_SET_NAME_EP = CALC_MAN_SHAPES_ID_EP + ":set-name";
     //</editor-fold>
 };
