@@ -7,7 +7,6 @@ import lombok.Data;
 import static util.Util.getTimestampNowAsString;
 
 @Data
-@Builder
 public class RenameShape {
     String value;
 
