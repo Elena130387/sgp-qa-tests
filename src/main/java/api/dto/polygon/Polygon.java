@@ -1,4 +1,4 @@
-package api.dto.shape;
+package api.dto.polygon;
 
 
 import lombok.Builder;

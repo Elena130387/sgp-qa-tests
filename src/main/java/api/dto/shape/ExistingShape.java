@@ -1,11 +1,12 @@
 package api.dto.shape;
 
+import api.dto.polygon.Polygon;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class Shape {
+public class ExistingShape {
     int id;
     String name;
     String createTime;
