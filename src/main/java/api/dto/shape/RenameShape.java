@@ -1,6 +1,5 @@
 package api.dto.shape;
 
-import lombok.Builder;
 import lombok.Data;
 
 
@@ -12,5 +11,9 @@ public class RenameShape {
 
     public RenameShape() {
         value = String.format("NEW_NAME_%s",getTimestampNowAsString());
+    }
+
+    public String getValue() {
+        return value;
     }
 }
