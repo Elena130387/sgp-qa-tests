@@ -2,8 +2,6 @@
   "name": "test shape",
   "polygons": [
     {
-      "name": "polygon test",
-      "description": "description: test",
       "coordinates": [
         {
           "lat": 26.136744666722507,
@@ -26,10 +24,9 @@
           "lon": -81.7996547336161
         }
       ],
-      "forceProcessing": false,
+      "name": "polygon test",
+      "forceProcessing": true,
       "testDataGenerating": true
     }
-  ],
-  "shapeGroupId": 0,
-  "pipelineType": "BUILDINGS"
+  ]
 }

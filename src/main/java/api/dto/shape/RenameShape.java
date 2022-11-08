@@ -2,7 +2,6 @@ package api.dto.shape;
 
 import lombok.Data;
 
-
 import static util.Util.getTimestampNowAsString;
 
 @Data
@@ -13,7 +12,4 @@ public class RenameShape {
         value = String.format("NEW_NAME_%s",getTimestampNowAsString());
     }
 
-    public String getValue() {
-        return value;
-    }
 }

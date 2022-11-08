@@ -13,8 +13,6 @@ import static util.Util.getTimestampNowAsString;
 public class NewShape {
     String name;
     List<PolygonInput> polygons;
-    int shapeGroupId;
-    String pipelineType;
 
     public void AddDateToShapeName() {
         name = name + "_" + getTimestampNowAsString();
