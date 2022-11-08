@@ -28,7 +28,7 @@ public class ShapeTests {
     private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/smallShapeWithOnePolygon.json";
 
     @BeforeEach
-    public void testShapeCreate() throws IOException {
+    public void createTestShape() throws IOException, InterruptedException {
         try {
             newShape = (NewShape) getDataFromJsonFile(SMALL_SHAPE_WITH_ONE_POLYGON_FILE, NewShape.class);
         } catch (JsonPathException exception) {
@@ -38,10 +38,11 @@ public class ShapeTests {
         responseCreateShape = createNewShape(newShape);
         responseCreateShape.statusCode(200);
         currentShapeId = getIntFromJson(responseCreateShape, "id");
+        Thread.sleep(500);
     }
 
     @Test
-    void shapeCreate() {
+    void createShape() {
         currentShapeName = getStringFromJson(responseCreateShape, "name");
         assertEquals(currentShapeName,
                 newShape.getName(), "У созданной области название не совпадает с заданным");
@@ -51,7 +52,7 @@ public class ShapeTests {
     }
 
     @Test
-    void shapeRename() {
+    void renameShape() {
         RenameShape renameShape = new RenameShape();
         ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, currentShapeId);
         responseRenameShape.statusCode(200);
@@ -63,7 +64,21 @@ public class ShapeTests {
     }
 
     @Test
-    void shapeDelete() {
+    void deleteJustCreatedShape() {
+        ValidatableResponse responseDeleteShape = deleteShapeDataById(currentShapeId);
+        responseDeleteShape.statusCode(200);
+
+        ValidatableResponse responseGetShapeData = getShapeDataById(currentShapeId);
+        assertEquals(DELETED.getStatusName(),
+                getStringFromJson(responseGetShapeData, "status"), "Область не была удалена");
+    }
+
+    @Test
+    void deleteChangedShape() {
+        RenameShape renameShape = new RenameShape();
+        ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, currentShapeId);
+        responseRenameShape.statusCode(200);
+
         ValidatableResponse responseDeleteShape = deleteShapeDataById(currentShapeId);
         responseDeleteShape.statusCode(200);
 
@@ -73,7 +88,7 @@ public class ShapeTests {
     }
 
     @AfterEach
-    public void testShapeDelete() {
+    public void deleteTestShape() {
         String testShapeStatus = getStringFromJson(getShapeDataById(currentShapeId), "status");
         if (!testShapeStatus.equals(DELETED.getStatusName())) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(currentShapeId);
