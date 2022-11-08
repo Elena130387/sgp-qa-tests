@@ -1,4 +1,4 @@
-package api.dto;
+package api.dto.jobExecution;
 
 import lombok.Getter;
 

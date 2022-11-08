@@ -3,7 +3,7 @@ package api.dto.shape;
 import lombok.Getter;
 
 @Getter
-public enum  ShapeStatus {
+public enum ShapeStatus {
     COMPLETED("completed"),
     STARTING("starting"),
     STOPPED("stopped"),

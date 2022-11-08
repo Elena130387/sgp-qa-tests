@@ -37,12 +37,12 @@ public class ShapeTests {
         newShape.AddDateToShapeName();
         responseCreateShape = createNewShape(newShape);
         responseCreateShape.statusCode(200);
-        currentShapeId = getIntFromJson(responseCreateShape,"id");
+        currentShapeId = getIntFromJson(responseCreateShape, "id");
     }
 
     @Test
     void shapeCreate() {
-        currentShapeName = getStringFromJson(responseCreateShape,"name");
+        currentShapeName = getStringFromJson(responseCreateShape, "name");
         assertEquals(currentShapeName,
                 newShape.getName(), "У созданной области название не совпадает с заданным");
         assertTrue(currentShapeId > 0, "ID созданной области должно быть > 0");
@@ -51,30 +51,30 @@ public class ShapeTests {
     }
 
     @Test
-    void shapeRename()  {
+    void shapeRename() {
         RenameShape renameShape = new RenameShape();
         ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, currentShapeId);
         responseRenameShape.statusCode(200);
 
         ValidatableResponse responseGetShapeData = getShapeDataById(currentShapeId);
-        currentShapeName = getStringFromJson(responseGetShapeData,"name");
+        currentShapeName = getStringFromJson(responseGetShapeData, "name");
         assertEquals(currentShapeName,
                 renameShape.getValue(), "Изменение наименования области не выполнено");
     }
 
     @Test
-    void shapeDelete()  {
+    void shapeDelete() {
         ValidatableResponse responseDeleteShape = deleteShapeDataById(currentShapeId);
         responseDeleteShape.statusCode(200);
 
         ValidatableResponse responseGetShapeData = getShapeDataById(currentShapeId);
         assertEquals(DELETED.getStatusName(),
-                getStringFromJson(responseGetShapeData,"status"), "Область не была удалена");
+                getStringFromJson(responseGetShapeData, "status"), "Область не была удалена");
     }
 
     @AfterEach
     public void testShapeDelete() {
-        String testShapeStatus= getStringFromJson(getShapeDataById(currentShapeId), "status");
+        String testShapeStatus = getStringFromJson(getShapeDataById(currentShapeId), "status");
         if (!testShapeStatus.equals(DELETED.getStatusName())) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(currentShapeId);
         }

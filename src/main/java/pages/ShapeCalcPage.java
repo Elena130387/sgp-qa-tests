@@ -2,7 +2,8 @@ package pages;
 
 import com.microsoft.playwright.Page;
 
-import static util.Constants.*;
+import static util.Constants.SHAPE_CHOOSE_URL_MID_TRUE;
+import static util.Constants.SHAPE_DETAILS_URL_END;
 
 public class ShapeCalcPage extends BasePage {
 

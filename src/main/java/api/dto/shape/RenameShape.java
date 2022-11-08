@@ -9,7 +9,7 @@ public class RenameShape {
     String value;
 
     public RenameShape() {
-        value = String.format("NEW_NAME_%s",getTimestampNowAsString());
+        value = String.format("NEW_NAME_%s", getTimestampNowAsString());
     }
 
 }

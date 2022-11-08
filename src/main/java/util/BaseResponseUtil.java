@@ -1,7 +1,6 @@
 package util;
 
 import api.dto.polygon.PointDto;
-import api.dto.polygon.Polygon;
 import api.dto.polygon.PolygonInput;
 
 import java.util.ArrayList;

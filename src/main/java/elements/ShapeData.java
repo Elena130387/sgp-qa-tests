@@ -39,6 +39,7 @@ public class ShapeData {
     //</editor-fold>
 
     private final Page page = JunitExtension.page;
+
     public ShapeData() {
         this.shapeName = page.locator(SELECTOR_SHAPE_NAME);
         this.shapeOverall = page.locator(SELECTOR_SHAPE_OVERALL);
