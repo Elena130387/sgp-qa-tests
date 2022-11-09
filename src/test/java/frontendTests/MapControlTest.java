@@ -50,7 +50,7 @@ public class MapControlTest {
     void checkResetNorth() {
         shapeShowPage.mapBlock.turnMapToTheLeft(2);
         String compassState = shapeShowPage.mapControl.getCompassState();
-        assertNotEquals (
+        assertNotEquals(
                 MAP_COMPASS_IMG_STANDART,
                 compassState,
                 "Поворот карты влево не выполнен");
@@ -59,7 +59,7 @@ public class MapControlTest {
         shapeShowPage.getPage().waitForTimeout(1000);
 
         compassState = shapeShowPage.mapControl.getCompassState();
-        assertEquals (
+        assertEquals(
                 MAP_COMPASS_IMG_STANDART,
                 compassState,
                 "Поворот карты к базовому расположению не выполнен");

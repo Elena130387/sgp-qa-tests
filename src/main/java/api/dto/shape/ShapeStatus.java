@@ -1,18 +1,18 @@
-package api.dto;
+package api.dto.shape;
 
 import lombok.Getter;
 
 @Getter
-public enum JobExecutionStatus {
+public enum ShapeStatus {
     COMPLETED("completed"),
     STARTING("starting"),
-    STARTED("started"),
     STOPPED("stopped"),
-    FAILED("failed");
+    FAILED("failed"),
+    DELETED("deleted");
 
     private final String statusName;
 
-    JobExecutionStatus(String name) {
+    ShapeStatus(String name) {
         this.statusName = name;
     }
 }

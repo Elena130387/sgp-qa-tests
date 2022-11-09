@@ -68,9 +68,9 @@ public class MainPageHeaderTest {
 
     @Test
     void checkFullscreenMode() throws IOException {
-    if (BROWSER.equals("FIREFOX")) {
-        mainPage.getPage().setViewportSize(1500, 800);
-    }
+        if (BROWSER.equals("FIREFOX")) {
+            mainPage.getPage().setViewportSize(1500, 800);
+        }
         assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
         mainPage.header.getFullScreenBtn().focus();
         mainPage.header.getFullScreenBtn().click();

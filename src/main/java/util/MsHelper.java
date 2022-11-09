@@ -12,13 +12,12 @@ import static util.Constants.STORAGE_PATH;
 import static util.JunitExtension.LOG;
 
 
-
 public class MsHelper {
     private static final String LOGIN_URL = "https://login.microsoftonline.com/";
 
     public static void login() throws FileNotFoundException {
-        BufferedReader storageStateFile = new BufferedReader (new FileReader(new File(String.valueOf(STORAGE_PATH))));
-        if(storageStateFile.lines().count() == 0){
+        BufferedReader storageStateFile = new BufferedReader(new FileReader(new File(String.valueOf(STORAGE_PATH))));
+        if (storageStateFile.lines().count() == 0) {
             String USERNAME = Util.getVariable("EMAIL");
             String PASSWORD = Util.getVariable("PASSWORD");
 

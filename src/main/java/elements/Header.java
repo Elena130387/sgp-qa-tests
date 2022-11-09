@@ -83,17 +83,17 @@ public class Header {
         this.chooseMapTypeDropdownMenu = this.chooseMapType.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
     }
 
-    public void waitForHeader(){
+    public void waitForHeader() {
         this.page.waitForSelector(SELECTOR_HEADER);
     }
 
-    public void checkAddShapeMenu(){
+    public void checkAddShapeMenu() {
         assertThat(this.newShape).isEnabled();
         this.newShape.click();
         assertThat(this.addShapeDropdownMenu).isVisible();
     }
 
-    public void checkChooseMapTypeMenu(){
+    public void checkChooseMapTypeMenu() {
         assertThat(this.chooseMapType).isEnabled();
         this.chooseMapType.click();
         assertThat(this.chooseMapTypeDropdownMenu).isVisible();

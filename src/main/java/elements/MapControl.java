@@ -120,17 +120,17 @@ public class MapControl {
         page.waitForTimeout(1000);
     }
 
-    public void clickZoomIn(int clickNum){
+    public void clickZoomIn(int clickNum) {
         clickZoom(SELECTOR_ZOOM_IN, clickNum);
     }
 
-    public void clickZoomOut(int clickNum){
+    public void clickZoomOut(int clickNum) {
         clickZoom(SELECTOR_ZOOM_OUT, clickNum);
     }
 
-    public String getCompassState(){
-        String state =  this.compassBtnImg.getAttribute("style");
-        state = state.substring(0,state.length()-1);
+    public String getCompassState() {
+        String state = this.compassBtnImg.getAttribute("style");
+        state = state.substring(0, state.length() - 1);
         return state;
     }
 }

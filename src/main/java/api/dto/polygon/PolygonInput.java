@@ -1,5 +1,4 @@
-package api.dto.shape;
-
+package api.dto.polygon;
 
 import lombok.Builder;
 import lombok.Data;
@@ -9,10 +8,8 @@ import java.util.List;
 @Data
 @Builder
 public class PolygonInput {
-    String name;
-    String description;
     List<PointDto> coordinates;
-    int shapeId;
+    String name;
     boolean forceProcessing;
     boolean testDataGenerating;
 }
