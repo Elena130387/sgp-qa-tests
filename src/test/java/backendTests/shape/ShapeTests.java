@@ -38,7 +38,7 @@ public class ShapeTests {
         responseCreateShape = createNewShape(newShape);
         responseCreateShape.statusCode(200);
         currentShapeId = getIntFromJson(responseCreateShape, "id");
-        Thread.sleep(500);
+        Thread.sleep(800);
     }
 
     @Test
