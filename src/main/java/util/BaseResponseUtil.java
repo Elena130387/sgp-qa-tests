@@ -5,6 +5,8 @@ import api.dto.polygon.PolygonInput;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -38,5 +40,9 @@ public class BaseResponseUtil {
                 assertEquals(1, correspondingPolygons.size(), String.format("В области отсутствует полигон %s", polygon));
             });
         });
+    }
+
+    public static boolean timeoutIsReached(long start, int timeoutInSeconds, int durationInSeconds) {
+        return (System.currentTimeMillis() - start) / TimeUnit.SECONDS.toMillis(durationInSeconds) > timeoutInSeconds;
     }
 }

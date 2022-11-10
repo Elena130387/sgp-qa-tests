@@ -11,20 +11,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 import static api.client.CalcManagement.*;
+import static api.client.ShapeHelper.waitForShapeStatusCompleted;
 import static api.dto.shape.ShapeStatus.DELETED;
+import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static util.BaseResponseUtil.verifyPolygonNumberAndCoordinates;
 import static util.JsonUtil.*;
 
 
-public class ShapeTests {
+public class SmallShapeTests {
     private static String currentShapeName;
-    private static int currentShapeId;
+    private static int shapeId;
     private static ValidatableResponse responseCreateShape;
     private static NewShape newShape;
+    private static final int CALCULATION_TIMEOUT_SEC = 60;
+    private static final int DURATION_SEC = 15;
     private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/smallShapeWithOnePolygon.json";
 
     @BeforeEach
@@ -37,61 +42,52 @@ public class ShapeTests {
         newShape.AddDateToShapeName();
         responseCreateShape = createNewShape(newShape);
         responseCreateShape.statusCode(200);
-        currentShapeId = getIntFromJson(responseCreateShape, "id");
-        Thread.sleep(800);
+        shapeId = getIntFromJson(responseCreateShape, "id");
+        sleep(800);
     }
 
     @Test
-    void createShape() {
+    void createSmallShape() {
         currentShapeName = getStringFromJson(responseCreateShape, "name");
         assertEquals(currentShapeName,
                 newShape.getName(), "У созданной области название не совпадает с заданным");
-        assertTrue(currentShapeId > 0, "ID созданной области должно быть > 0");
+        assertTrue(shapeId > 0, "ID созданной области должно быть > 0");
 
         verifyPolygonNumberAndCoordinates(newShape.getPolygons(), responseCreateShape.extract().as(NewShape.class, ObjectMapperType.GSON).getPolygons());
     }
 
     @Test
-    void renameShape() {
+    void renameCompletedShape() throws InterruptedException, TimeoutException {
+        waitForShapeStatusCompleted(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
+
         RenameShape renameShape = new RenameShape();
-        ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, currentShapeId);
+        ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, shapeId);
         responseRenameShape.statusCode(200);
 
-        ValidatableResponse responseGetShapeData = getShapeDataById(currentShapeId);
-        currentShapeName = getStringFromJson(responseGetShapeData, "name");
+        ValidatableResponse responseGetNewShapeData = getShapeDataById(shapeId);
+        currentShapeName = getStringFromJson(responseGetNewShapeData, "name");
         assertEquals(currentShapeName,
                 renameShape.getValue(), "Изменение наименования области не выполнено");
     }
 
     @Test
-    void deleteJustCreatedShape() {
-        ValidatableResponse responseDeleteShape = deleteShapeDataById(currentShapeId);
+    void deleteCompletedShape() throws InterruptedException, TimeoutException {
+        waitForShapeStatusCompleted(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
+
+        ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         responseDeleteShape.statusCode(200);
 
-        ValidatableResponse responseGetShapeData = getShapeDataById(currentShapeId);
+        ValidatableResponse responseGetNewShapeData = getShapeDataById(shapeId);
         assertEquals(DELETED.getStatusName(),
-                getStringFromJson(responseGetShapeData, "status"), "Область не была удалена");
+                getStringFromJson(responseGetNewShapeData, "status"), "Область не была удалена");
     }
 
-    @Test
-    void deleteChangedShape() {
-        RenameShape renameShape = new RenameShape();
-        ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, currentShapeId);
-        responseRenameShape.statusCode(200);
-
-        ValidatableResponse responseDeleteShape = deleteShapeDataById(currentShapeId);
-        responseDeleteShape.statusCode(200);
-
-        ValidatableResponse responseGetShapeData = getShapeDataById(currentShapeId);
-        assertEquals(DELETED.getStatusName(),
-                getStringFromJson(responseGetShapeData, "status"), "Область не была удалена");
-    }
 
     @AfterEach
     public void deleteTestShape() {
-        String testShapeStatus = getStringFromJson(getShapeDataById(currentShapeId), "status");
+        String testShapeStatus = getStringFromJson(getShapeDataById(shapeId), "status");
         if (!testShapeStatus.equals(DELETED.getStatusName())) {
-            ValidatableResponse responseDeleteShape = deleteShapeDataById(currentShapeId);
+            ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         }
     }
 }
