@@ -2,8 +2,8 @@ package api.client;
 
 import io.restassured.response.ValidatableResponse;
 
+import static api.helper.JsonHelper.getIntFromJson;
 import static util.Constants.*;
-import static util.JsonUtil.getIntFromJson;
 
 public class CalcManagement {
 

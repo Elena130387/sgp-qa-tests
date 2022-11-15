@@ -1,5 +1,6 @@
-package api.client;
+package api.helper;
 
+import api.client.CalcManagement;
 import api.dto.shape.NewShape;
 import io.restassured.path.json.exception.JsonPathException;
 import io.restassured.response.ValidatableResponse;
@@ -9,10 +10,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import static api.client.CalcManagement.getShapeDataById;
-import static api.dto.shape.ShapeStatus.COMPLETED;
-import static util.BaseResponseUtil.timeoutIsReached;
-import static util.JsonUtil.getDataFromJsonFile;
-import static util.JsonUtil.getStringFromJson;
+import static api.dto.StatusesList.COMPLETED;
+import static api.helper.JsonHelper.getDataFromJsonFile;
+import static api.helper.JsonHelper.getStringFromJson;
+import static util.Util.timeoutIsReached;
 
 public class ShapeHelper {
 
@@ -36,6 +37,6 @@ public class ShapeHelper {
                 Thread.sleep(TimeUnit.SECONDS.toMillis(durationInSeconds));
             }
         }
-        throw new TimeoutException("Fail to calculate test polygon in " + timeoutInSeconds + " seconds");
+        throw new TimeoutException("Калькуляция не выполнена за ожидаемое время: " + timeoutInSeconds + " секунд");
     }
 }

@@ -11,8 +11,8 @@ import static util.Util.getTimestampNowAsString;
 @Data
 @Builder
 public class NewShape {
-    String name;
-    List<PolygonInput> polygons;
+    private String name;
+    private List<PolygonInput> polygons;
 
     public void AddDateToShapeName() {
         name = name + "_" + getTimestampNowAsString();

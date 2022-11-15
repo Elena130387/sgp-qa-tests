@@ -25,7 +25,6 @@ public class BuildingDamageCalcTest {
     private final DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
 
 
-
     @BeforeEach
     void openMainPage() {
         mainPage = new SgpMain().openMainPage();
@@ -49,8 +48,8 @@ public class BuildingDamageCalcTest {
         shapeCalcPage = new ShapeCalcPage().openShapeCalcPage(SHAPE_ID);
         shapeCalcPage.selectDefaultSettings();
         assertEquals(TEST_SHAPE_NAME,
-            detailedShapePanel.getShapeName().textContent(),
-            "Неверное имя шейпа");
+                detailedShapePanel.getShapeName().textContent(),
+                "Неверное имя шейпа");
 
     }
 }

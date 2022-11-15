@@ -7,6 +7,8 @@ public class Constants {
 
     public static final String SGP_URL_DEV = "https://sgp-dev.syncretis.com/";
 
+    public static final int CALCULATION_TIMEOUT_SEC = 60;
+
 
     //<editor-fold desc="Frontend tests urls and dirs">
     public static final String SHAPE_CHOOSE_URL_MID_TRUE = SGP_URL_DEV + "?showAside=true&shape=";
@@ -62,5 +64,7 @@ public class Constants {
     public static final String CALC_MAN_SHAPES_ID_EP = CALC_MANAGEMENT_URL + CALC_MAN_SHAPES_EP + "/{id}";
 
     public static final String CALC_MAN_SHAPES_SET_NAME_EP = CALC_MAN_SHAPES_ID_EP + ":set-name";
+
+    public static final String ESTIMATOR_JOB_EXECUTION_ID_EP = ESTIMATOR_URL + EXECUTIONS_EP + "/{id}";
     //</editor-fold>
 };

@@ -46,7 +46,7 @@ public class Dropdown {
         for (int itemNum = 0; itemNum < itemsList.size(); ++itemNum) {
             assertEquals(itemsList.get(itemNum),
                     this.dropdownMenuItem.nth(itemNum).textContent(),
-                    "Wrong text for the " + itemNum + " position in dropdown menu");
+                    "Текст позиции " + itemNum + " в выпадающем списке не соответствует ожиданию");
         }
     }
 
@@ -61,7 +61,7 @@ public class Dropdown {
             }
         }
         if (itemNum > menuItemCount) {
-            fail("There are no clickable item in the dropdown list");
+            fail("В выпадающем списке нет элементов для нажатия");
         }
     }
 }

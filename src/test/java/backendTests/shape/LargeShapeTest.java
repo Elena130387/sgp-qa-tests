@@ -11,29 +11,31 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import static api.client.CalcManagement.*;
-import static api.client.ShapeHelper.waitForShapeStatusCompleted;
-import static api.dto.shape.ShapeStatus.DELETED;
+import static api.client.Estimator.deleteJobExecutionById;
+import static api.client.Estimator.getJobExecutionIds;
+import static api.dto.StatusesList.DELETED;
+import static api.helper.CalculationHelper.waitForCalculationStarting;
+import static api.helper.JsonHelper.*;
+import static api.helper.PolygonHelper.verifyPolygonNumberAndCoordinates;
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static util.BaseResponseUtil.verifyPolygonNumberAndCoordinates;
-import static util.JsonUtil.*;
+import static util.Constants.CALCULATION_TIMEOUT_SEC;
 
-
-public class SmallShapeTests {
-    private static String currentShapeName;
-    private static int shapeId;
-    private static ValidatableResponse responseCreateShape;
-    private static NewShape newShape;
-    private static final int CALCULATION_TIMEOUT_SEC = 60;
-    private static final int DURATION_SEC = 15;
-    private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/smallShapeWithOnePolygon.json";
+public class LargeShapeTest {
+    private String currentShapeName;
+    private int shapeId;
+    private ValidatableResponse responseCreateShape;
+    private NewShape newShape;
+    public static final int DURATION_SEC = 1;
+    private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/largeShapeWithTwoPolygons.json";
 
     @BeforeEach
-    public void createTestShape() throws IOException, InterruptedException {
+    public void createTestShape() throws IOException, InterruptedException, TimeoutException {
         try {
             newShape = (NewShape) getDataFromJsonFile(SMALL_SHAPE_WITH_ONE_POLYGON_FILE, NewShape.class);
         } catch (JsonPathException exception) {
@@ -43,11 +45,12 @@ public class SmallShapeTests {
         responseCreateShape = createNewShape(newShape);
         responseCreateShape.statusCode(200);
         shapeId = getIntFromJson(responseCreateShape, "id");
-        sleep(800);
+        System.out.println(shapeId);
+        waitForCalculationStarting(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
     }
 
     @Test
-    void createSmallShape() {
+    void createLargeShape() {
         currentShapeName = getStringFromJson(responseCreateShape, "name");
         assertEquals(currentShapeName,
                 newShape.getName(), "У созданной области название не совпадает с заданным");
@@ -57,9 +60,7 @@ public class SmallShapeTests {
     }
 
     @Test
-    void renameCompletedShape() throws InterruptedException, TimeoutException {
-        waitForShapeStatusCompleted(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
-
+    void renameCalculatingShape() {
         RenameShape renameShape = new RenameShape();
         ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, shapeId);
         responseRenameShape.statusCode(200);
@@ -71,9 +72,7 @@ public class SmallShapeTests {
     }
 
     @Test
-    void deleteCompletedShape() throws InterruptedException, TimeoutException {
-        waitForShapeStatusCompleted(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
-
+    void deleteCalculatingShape() {
         ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         responseDeleteShape.statusCode(200);
 
@@ -84,10 +83,15 @@ public class SmallShapeTests {
 
 
     @AfterEach
-    public void deleteTestShape() {
+    public void deleteTestShape() throws InterruptedException {
         String testShapeStatus = getStringFromJson(getShapeDataById(shapeId), "status");
         if (!testShapeStatus.equals(DELETED.getStatusName())) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         }
+
+        List<Integer> jobExecutionIds = getJobExecutionIds(shapeId, 2, 0);
+        sleep(10000);
+        ValidatableResponse responseDeleteShape = deleteJobExecutionById(jobExecutionIds);
     }
 }
+
