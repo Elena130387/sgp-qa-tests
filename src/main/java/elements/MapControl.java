@@ -7,12 +7,12 @@ import util.JunitExtension;
 public class MapControl {
 
     //<editor-fold desc="Selectors">
-    private static final String SELECTOR_NAVIGATION_BAR = ".css-1crpbp0";
+    private static final String SELECTOR_NAVIGATION_BAR = "[data-cy=map-navigation-controls]";
     private static final String SELECTOR_ZOOM_IN = ".mapboxgl-ctrl-zoom-in";
     private static final String SELECTOR_ZOOM_OUT = ".mapboxgl-ctrl-zoom-out";
     private static final String SELECTOR_COMPASS = ".mapboxgl-ctrl-compass";
     private static final String SELECTOR_COMPASS_IMG = ".mapboxgl-ctrl-icon";
-    private static final String SELECTOR_COVERAGE_AND_GRID_BAR = ".css-j7qwjs";
+    private static final String SELECTOR_COVERAGE_AND_GRID_BAR = "[data-cy=map-controls]";
     private static final String SELECTOR_COVERAGE = "[data-cy=coverage]";
     private static final String SELECTOR_GLOBAL_GRID = "[data-cy=globalGrid]";
     private static final String SELECTOR_GRID_LINES = "[data-cy=gridLines]";

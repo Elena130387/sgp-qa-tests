@@ -69,7 +69,7 @@ public class Header extends Dropdown {
     }
 
     public Locator getAddShapeDropdownMenuItem() {
-        return addShapeDropdownMenu;
+        return addShapeDropdownMenuItem;
     }
 
     public Locator getMapTypeDropdownMenu() {
@@ -87,7 +87,7 @@ public class Header extends Dropdown {
     public Header() {
         header = page.locator(SELECTOR_HEADER);
         newShape = header.locator(SELECTOR_NEW_SHAPE);
-        addShapeDropdownMenu = newShape.locator("..").locator("..").locator(SELECTOR_ADD_SHAPE_DROPDOWN_MENU);
+        addShapeDropdownMenu = page.locator(SELECTOR_ADD_SHAPE_DROPDOWN_MENU);
         addShapeDropdownMenuItem = addShapeDropdownMenu.locator(SELECTOR_DROPDOWN_ITEM);
         chooseMapType = header.locator(SELECTOR_CHOOSE_MAP_TYPE);
         mapTypeDropdownMenu = page.locator(SELECTOR_MAP_TYPE_DROPDOWN_MENU);
