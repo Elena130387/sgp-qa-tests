@@ -111,13 +111,13 @@ public class MainPageHeaderTest {
         List<String> itemsList = Arrays.asList("Создать вручную",
                 "Импортировать .json");
         mainPage.header.checkAddShapeMenu();
-        mainPage.dropdown.checkItemsOrder(itemsList);
+        mainPage.header.checkDropdownItemsOrder(itemsList, mainPage.header.getAddShapeDropdownMenuItem());
     }
 
     @Test
     void checkAddShapeMenuCreateManualClick() {
         mainPage.header.checkAddShapeMenu();
-        mainPage.dropdown.clickItemByText("Создать вручную");
+        mainPage.header.clickDropdownItemByText("Создать вручную", mainPage.header.getAddShapeDropdownMenuItem());
         assertEquals(NEW_CALCULATION_URL, mainPage.getPage().url(), "Неверный URL");
         assertThat(mainPage.header.getNewShape()).isHidden();
     }
@@ -136,7 +136,7 @@ public class MainPageHeaderTest {
     @Test
     void checkChooseMapTypeItemsOrder() {
         mainPage.header.checkChooseMapTypeMenu();
-        mainPage.dropdown.checkItemsOrder(MAP_TYPES_LIST);
+        mainPage.header.checkDropdownItemsOrder(MAP_TYPES_LIST, mainPage.header.getMapTypeDropdownMenuItem());
     }
 
     @ParameterizedTest
@@ -150,10 +150,10 @@ public class MainPageHeaderTest {
         List<String> mapTypeParams = Arrays.asList(mapTypeItem.split(","));
         mainPage.header.checkChooseMapTypeMenu();
         if (mapTypeParams.get(0).equals(BASE_MAP_TYPE)) {
-            mainPage.dropdown.clickFirstClickableItem();
+            mainPage.header.clickDropdownFirstClickableItem(mainPage.header.getMapTypeDropdownMenuItem());
             mainPage.header.checkChooseMapTypeMenu();
         }
-        mainPage.dropdown.clickItemByText(mapTypeParams.get(0));
+        mainPage.header.clickDropdownItemByText(mapTypeParams.get(0), mainPage.header.getMapTypeDropdownMenuItem());
 
         if (mapTypeParams.get(4).equals("longWaiting")) {
             Util.checkScreenshotLongWaiting(

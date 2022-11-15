@@ -48,11 +48,11 @@ public class DetailedShapePanel {
     private final Page page = JunitExtension.page;
 
     public DetailedShapePanel() {
-        this.buttonBack = page.locator(SELECTOR_BUTTON_BACK);
-        this.shapeName = page.locator(SELECTOR_SHAPE_NAME);
-        this.shapeOverall = page.locator(SELECTOR_SHAPE_OVERALL);
-        this.estimatedTab = page.locator(SELECTOR_ESTIMATED_TAB);
-        this.buildingDamageLayer = page.locator(SELECTOR_BUILDING_DAMAGE_LAYER);
+        buttonBack = page.locator(SELECTOR_BUTTON_BACK);
+        shapeName = page.locator(SELECTOR_SHAPE_NAME);
+        shapeOverall = page.locator(SELECTOR_SHAPE_OVERALL);
+        estimatedTab = page.locator(SELECTOR_ESTIMATED_TAB);
+        buildingDamageLayer = page.locator(SELECTOR_BUILDING_DAMAGE_LAYER);
     }
 
 

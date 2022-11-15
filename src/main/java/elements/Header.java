@@ -5,17 +5,20 @@ import com.microsoft.playwright.Page;
 import util.JunitExtension;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static elements.Dropdown.SELECTOR_DROPDOWN_MENU;
 
-public class Header {
+public class Header extends Dropdown {
     //<editor-fold desc="Selectors">
-    private static final String SELECTOR_HEADER = ".jsx-1466478689";
+    private static final String SELECTOR_HEADER = "[data-cy=header-div]";
     private static final String SELECTOR_NEW_SHAPE = "[data-cy=newShape]";
     private static final String SELECTOR_CHOOSE_MAP_TYPE = "[data-cy=chooseSatellite]";
     private static final String SELECTOR_TEXT_LOGO = "[data-cy=text_logo]";
     private static final String SELECTOR_FULL_SCREEN = "[data-cy=fullScreen]";
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
     private static final String SELECTOR_IMG_DARK_COLOR = ".css-cjmj0z";
+    public static final String SELECTOR_MAP_TYPE_DROPDOWN_MENU = "[data-cy=map-style-dropdown-list]";
+    public static final String SELECTOR_ADD_SHAPE_DROPDOWN_MENU = ".css-1jwepc6";
+    private static final String SELECTOR_DROPDOWN_ITEM = "[data-cy=menuItem]";
+
     //</editor-fold>
 
     //<editor-fold desc="Elements">
@@ -27,7 +30,9 @@ public class Header {
     private final Locator colorModeBtn;
     private final Locator darkModeImg;
     private final Locator addShapeDropdownMenu;
-    private final Locator chooseMapTypeDropdownMenu;
+    private final Locator addShapeDropdownMenuItem;
+    private final Locator mapTypeDropdownMenu;
+    private final Locator mapTypeDropdownMenuItem;
     //</editor-fold>
 
     //<editor-fold desc="Getters">
@@ -63,8 +68,16 @@ public class Header {
         return addShapeDropdownMenu;
     }
 
-    public Locator getChooseMapTypeDropdownMenu() {
-        return chooseMapTypeDropdownMenu;
+    public Locator getAddShapeDropdownMenuItem() {
+        return addShapeDropdownMenu;
+    }
+
+    public Locator getMapTypeDropdownMenu() {
+        return mapTypeDropdownMenu;
+    }
+
+    public Locator getMapTypeDropdownMenuItem() {
+        return mapTypeDropdownMenuItem;
     }
 
     //</editor-fold>
@@ -72,30 +85,32 @@ public class Header {
     private final Page page = JunitExtension.page;
 
     public Header() {
-        this.header = page.locator(SELECTOR_HEADER);
-        this.newShape = this.header.locator(SELECTOR_NEW_SHAPE);
-        this.chooseMapType = this.header.locator(SELECTOR_CHOOSE_MAP_TYPE);
-        this.textLogo = this.header.locator(SELECTOR_TEXT_LOGO);
-        this.fullScreenBtn = page.locator(SELECTOR_FULL_SCREEN);
-        this.colorModeBtn = this.header.locator(SELECTOR_COLOR_MODE);
-        this.darkModeImg = this.colorModeBtn.locator(SELECTOR_IMG_DARK_COLOR);
-        this.addShapeDropdownMenu = this.newShape.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
-        this.chooseMapTypeDropdownMenu = this.chooseMapType.locator("..").locator("..").locator(SELECTOR_DROPDOWN_MENU);
+        header = page.locator(SELECTOR_HEADER);
+        newShape = header.locator(SELECTOR_NEW_SHAPE);
+        addShapeDropdownMenu = newShape.locator("..").locator("..").locator(SELECTOR_ADD_SHAPE_DROPDOWN_MENU);
+        addShapeDropdownMenuItem = addShapeDropdownMenu.locator(SELECTOR_DROPDOWN_ITEM);
+        chooseMapType = header.locator(SELECTOR_CHOOSE_MAP_TYPE);
+        mapTypeDropdownMenu = page.locator(SELECTOR_MAP_TYPE_DROPDOWN_MENU);
+        mapTypeDropdownMenuItem = mapTypeDropdownMenu.locator(SELECTOR_DROPDOWN_ITEM);
+        textLogo = header.locator(SELECTOR_TEXT_LOGO);
+        fullScreenBtn = page.locator(SELECTOR_FULL_SCREEN);
+        colorModeBtn = header.locator(SELECTOR_COLOR_MODE);
+        darkModeImg = colorModeBtn.locator(SELECTOR_IMG_DARK_COLOR);
     }
 
     public void waitForHeader() {
-        this.page.waitForSelector(SELECTOR_HEADER);
+        page.waitForSelector(SELECTOR_HEADER);
     }
 
     public void checkAddShapeMenu() {
-        assertThat(this.newShape).isEnabled();
-        this.newShape.click();
-        assertThat(this.addShapeDropdownMenu).isVisible();
+        assertThat(newShape).isEnabled();
+        newShape.click();
+        assertThat(addShapeDropdownMenu).isVisible();
     }
 
     public void checkChooseMapTypeMenu() {
-        assertThat(this.chooseMapType).isEnabled();
-        this.chooseMapType.click();
-        assertThat(this.chooseMapTypeDropdownMenu).isVisible();
+        assertThat(chooseMapType).isEnabled();
+        chooseMapType.click();
+        assertThat(mapTypeDropdownMenu).isVisible();
     }
 }
