@@ -1,0 +1,59 @@
+{
+  "name": "Large test shape",
+  "polygons": [
+    {
+      "coordinates": [
+        {
+          "lat": 28.960212237341253,
+          "lon": -82
+        },
+        {
+          "lat": 28.958794025274564,
+          "lon": -81.908554905688
+        },
+        {
+          "lat": 29,
+          "lon": -81.90544890960811
+        },
+        {
+          "lat": 29,
+          "lon": -82
+        },
+        {
+          "lat": 28.960212237341253,
+          "lon": -82
+        }
+      ],
+      "name": "First polygon test",
+      "forceProcessing": true,
+      "testDataGenerating": true
+    },
+    {
+      "coordinates": [
+        {
+          "lat": 28.874182915172227,
+          "lon": -82.03274741593387
+        },
+        {
+          "lat": 28.87255435082273,
+          "lon": -82
+        },
+        {
+          "lat": 28.931176983424827,
+          "lon": -82
+        },
+        {
+          "lat": 28.93110207847745,
+          "lon": -82.0329505959833
+        },
+        {
+          "lat": 28.874182915172227,
+          "lon": -82.03274741593387
+        }
+      ],
+      "name": "Second polygon test",
+      "forceProcessing": true,
+      "testDataGenerating": true
+    }
+  ]
+}

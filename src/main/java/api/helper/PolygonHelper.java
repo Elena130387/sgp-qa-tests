@@ -1,4 +1,4 @@
-package util;
+package api.helper;
 
 import api.dto.polygon.PointDto;
 import api.dto.polygon.PolygonInput;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BaseResponseUtil {
+public class PolygonHelper {
 
     //this method compares polygon number and tries to find for each expected polygon actual polygon
     public static void verifyPolygonNumberAndCoordinates(List<PolygonInput> expected, List<PolygonInput> actual) {

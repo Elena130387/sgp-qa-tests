@@ -1,4 +1,4 @@
-package util;
+package api.helper;
 
 import com.google.gson.Gson;
 import io.restassured.response.ValidatableResponse;
@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 import static org.hamcrest.Matchers.hasKey;
 
-public class JsonUtil {
+public class JsonHelper {
     // serialization
     public static <T> Object getDataFromJsonFile(String path, Class<T> classOfT) throws IOException {
         Gson gson = new Gson();

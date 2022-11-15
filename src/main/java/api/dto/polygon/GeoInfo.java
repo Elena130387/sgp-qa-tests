@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class GeoInfo {
 
-    String countryCode;
-    String admin1;
-    String admin2;
+    private String countryCode;
+    private String admin1;
+    private String admin2;
 
 }

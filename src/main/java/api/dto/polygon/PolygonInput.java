@@ -8,8 +8,8 @@ import java.util.List;
 @Data
 @Builder
 public class PolygonInput {
-    List<PointDto> coordinates;
-    String name;
-    boolean forceProcessing;
-    boolean testDataGenerating;
+    private List<PointDto> coordinates;
+    private String name;
+    private boolean forceProcessing;
+    private boolean testDataGenerating;
 }

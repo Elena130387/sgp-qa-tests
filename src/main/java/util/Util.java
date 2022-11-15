@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -36,6 +37,10 @@ public class Util {
         } else {
             return Dotenv.configure().load().get(variableName);
         }
+    }
+
+    public static boolean timeoutIsReached(long start, int timeoutInSeconds, int durationInSeconds) {
+        return (System.currentTimeMillis() - start) / TimeUnit.SECONDS.toMillis(durationInSeconds) > timeoutInSeconds;
     }
 
     private static void imageComparison(Path imgNow, Path imgExpect, String testName) throws IOException {

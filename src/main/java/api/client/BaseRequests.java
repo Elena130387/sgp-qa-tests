@@ -4,6 +4,7 @@ package api.client;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
+
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +91,7 @@ public class BaseRequests {
 
     //<editor-fold desc="PUT Request">
     public static <T> ValidatableResponse putRequest(T input, int id, String url) {
-        return  given()
+        return given()
                 .contentType(ContentType.JSON)
                 .body(input)
                 .put(url, id)
@@ -104,6 +105,13 @@ public class BaseRequests {
         return given()
                 .contentType(ContentType.JSON)
                 .delete(url, id)
+                .then();
+    }
+
+    public static ValidatableResponse deleteRequestWithQueryParams(List<Integer> ids, String url) {
+        return given()
+                .queryParams("ids", ids)
+                .delete(url)
                 .then();
     }
     //</editor-fold>

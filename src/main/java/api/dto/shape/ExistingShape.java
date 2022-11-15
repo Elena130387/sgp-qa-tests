@@ -7,12 +7,12 @@ import java.util.List;
 
 @Data
 public class ExistingShape {
-    int id;
-    String name;
-    String createTime;
-    String status;
-    long orderIndex;
-    Progress progress;
-    List<Polygon> polygons;
-    double areaSize;
+    private int id;
+    private String name;
+    private String createTime;
+    private String status;
+    private long orderIndex;
+    private Progress progress;
+    private List<Polygon> polygons;
+    private double areaSize;
 }
