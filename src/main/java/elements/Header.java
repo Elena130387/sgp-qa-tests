@@ -16,7 +16,7 @@ public class Header extends Dropdown {
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
     private static final String SELECTOR_IMG_DARK_COLOR = ".css-cjmj0z";
     public static final String SELECTOR_MAP_TYPE_DROPDOWN_MENU = "[data-cy=map-style-dropdown-list]";
-    public static final String SELECTOR_ADD_SHAPE_DROPDOWN_MENU = ".css-1jwepc6";
+    public static final String SELECTOR_ADD_SHAPE_DROPDOWN_MENU = "[data-cy=create-shape-outer-dropdown-list]";
     private static final String SELECTOR_DROPDOWN_ITEM = "[data-cy=menuItem]";
 
     //</editor-fold>

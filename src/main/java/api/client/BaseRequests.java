@@ -20,6 +20,13 @@ public class BaseRequests {
     }
 
     //<editor-fold desc="POST Requests">
+    public static <T> ValidatableResponse postRequestWithId(int id, String url) {
+        return given()
+                .contentType(ContentType.JSON)
+                .post(url, id)
+                .then();
+    }
+
     public static <T> ValidatableResponse postRequestWithBody(T input, String url) {
         return given()
                 .contentType(ContentType.JSON)
@@ -29,7 +36,7 @@ public class BaseRequests {
                 .then();
     }
 
-    public static ValidatableResponse getRequestWithMultiPart(File file, String url) {
+    public static ValidatableResponse postRequestWithMultiPart(File file, String url) {
         return given()
                 .multiPart("image", file, "application/octet-stream")
                 .when()
@@ -39,7 +46,7 @@ public class BaseRequests {
     //</editor-fold>
 
     //<editor-fold desc="GET Requests">
-    public static ValidatableResponse getRequest(int id, String url) {
+    public static ValidatableResponse getRequestWithId(int id, String url) {
         return given()
                 .when()
                 .get(url, id)
@@ -99,9 +106,8 @@ public class BaseRequests {
     }
     //</editor-fold>
 
-
     //<editor-fold desc="DELETE Request">
-    public static ValidatableResponse deleteRequest(int id, String url) {
+    public static ValidatableResponse deleteRequestWithId(int id, String url) {
         return given()
                 .contentType(ContentType.JSON)
                 .delete(url, id)

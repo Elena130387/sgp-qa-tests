@@ -19,6 +19,14 @@ public class CalculationHelper {
         }
     }
 
+    public static void waitForCalculationStop(int shapeId, int timeoutInSeconds, int durationInSeconds) throws InterruptedException, TimeoutException {
+        String errorMsg = "Калькуляция не была остановлена за ожидаемое время: " + timeoutInSeconds + " секунд";
+        List<Integer> jobExecutionIds = getJobExecutionIds(shapeId, 10, 0);
+        for (Integer jobExecutionId : jobExecutionIds) {
+            waitForCalcStatus(jobExecutionId, timeoutInSeconds, durationInSeconds, STOPPED.getStatusName(), errorMsg);
+        }
+    }
+
     public static void waitForCalcStatus(int jobExecutionId, int timeoutInSeconds, int durationInSeconds, String statusName, String errorMsg) throws InterruptedException, TimeoutException {
         long start = System.currentTimeMillis();
         while (!timeoutIsReached(start, timeoutInSeconds, durationInSeconds)) {
