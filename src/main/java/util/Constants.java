@@ -59,12 +59,19 @@ public class Constants {
     //<editor-fold desc="Endpoints">
     public static final String EXECUTIONS_EP = "/executions";
 
-    public static final String CALC_MAN_SHAPES_EP = "/shapes";
+    public static final String SHAPES_EP = "/shapes";
 
-    public static final String CALC_MAN_SHAPES_ID_EP = CALC_MANAGEMENT_URL + CALC_MAN_SHAPES_EP + "/{id}";
+    public static final String ESTIMATOR_EXECUTIONS_EP = ESTIMATOR_URL + EXECUTIONS_EP;
+
+    public static final String ESTIMATOR_JOB_EXECUTION_ID_EP = ESTIMATOR_EXECUTIONS_EP + "/{id}";
+
+    public static final String ESTIMATOR_JOB_EXECUTION_STOP = ESTIMATOR_JOB_EXECUTION_ID_EP + ":stop";
+
+    public static final String CALC_MAN_SHAPES_EP = CALC_MANAGEMENT_URL + SHAPES_EP;
+
+    public static final String CALC_MAN_SHAPES_ID_EP = CALC_MAN_SHAPES_EP + "/{id}";
 
     public static final String CALC_MAN_SHAPES_SET_NAME_EP = CALC_MAN_SHAPES_ID_EP + ":set-name";
 
-    public static final String ESTIMATOR_JOB_EXECUTION_ID_EP = ESTIMATOR_URL + EXECUTIONS_EP + "/{id}";
     //</editor-fold>
 };

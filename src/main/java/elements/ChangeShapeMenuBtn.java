@@ -28,7 +28,7 @@ public class ChangeShapeMenuBtn {
     private final Page page = JunitExtension.page;
 
     public ChangeShapeMenuBtn() {
-        this.menuBtn = page.locator(SELECTOR_MENU_BTN);
-        this.renameBtn = this.menuBtn.locator(SELECTOR_RENAME_BTN);
+        menuBtn = page.locator(SELECTOR_MENU_BTN);
+        renameBtn = menuBtn.locator(SELECTOR_RENAME_BTN);
     }
 }

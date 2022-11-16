@@ -36,9 +36,9 @@ public class ShapeData {
     private final Page page = JunitExtension.page;
 
     public ShapeData() {
-        this.shapeName = page.locator(SELECTOR_SHAPE_NAME);
-        this.shapeOverall = page.locator(SELECTOR_SHAPE_OVERALL);
-        this.openDetailsBtn = page.locator(SELECTOR_OPEN_DETAILS);
+        shapeName = page.locator(SELECTOR_SHAPE_NAME);
+        shapeOverall = page.locator(SELECTOR_SHAPE_OVERALL);
+        openDetailsBtn = page.locator(SELECTOR_OPEN_DETAILS);
     }
 }
 

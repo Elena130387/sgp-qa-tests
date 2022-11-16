@@ -2,7 +2,10 @@ package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import elements.*;
+import elements.Header;
+import elements.MapBlock;
+import elements.MapControl;
+import elements.ShapesPanel;
 import util.JunitExtension;
 
 import static util.Constants.*;
@@ -13,8 +16,6 @@ public class BasePage {
     public final MapControl mapControl = new MapControl();
     public final MapBlock mapBlock = new MapBlock();
     public final ShapesPanel shapesPanel = new ShapesPanel();
-
-    public final Dropdown dropdown = new Dropdown();
 
     public void selectDefaultSettings() {
         Integer height = page.viewportSize().height;
@@ -29,7 +30,7 @@ public class BasePage {
         header.waitForHeader();
         if (!header.getChooseMapType().textContent().equals(BASE_MAP_TYPE)) {
             header.checkChooseMapTypeMenu();
-            dropdown.clickItemByText(BASE_MAP_TYPE);
+            header.clickDropdownItemByText(BASE_MAP_TYPE, header.getMapTypeDropdownMenuItem());
         }
 
         // checking the dark mode is off

@@ -12,11 +12,11 @@ public class CalcManagement {
     }
 
     public static ValidatableResponse getShapeDataById(int id) {
-        return BaseRequests.getRequest(id, CALC_MAN_SHAPES_ID_EP);
+        return BaseRequests.getRequestWithId(id, CALC_MAN_SHAPES_ID_EP);
     }
 
     public static <T> ValidatableResponse createNewShape(T input) {
-        return BaseRequests.postRequestWithBody(input, CALC_MANAGEMENT_URL + CALC_MAN_SHAPES_EP);
+        return BaseRequests.postRequestWithBody(input, CALC_MAN_SHAPES_EP);
     }
 
     public static <T> int createShapeAndGetId(T input) {
@@ -25,6 +25,6 @@ public class CalcManagement {
     }
 
     public static ValidatableResponse deleteShapeDataById(int id) {
-        return BaseRequests.deleteRequest(id, CALC_MAN_SHAPES_ID_EP);
+        return BaseRequests.deleteRequestWithId(id, CALC_MAN_SHAPES_ID_EP);
     }
 }

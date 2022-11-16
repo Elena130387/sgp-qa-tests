@@ -10,7 +10,7 @@ public class MapBlock {
 
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_MAP = ".overlays";
-    private static final String SELECTOR_MAP_ZOOM = ".mapboxgl-ctrl-scale";
+    private static final String SELECTOR_MAP_ZOOM = "[data-cy=scale-control]";
     private static final String SELECTOR_STANDART_MAP_ZOOM = "text=" + MAP_ZOOM_STANDART;
     //</editor-fold>
 
@@ -38,21 +38,21 @@ public class MapBlock {
     private final Page page = JunitExtension.page;
 
     public MapBlock() {
-        this.map = page.locator(SELECTOR_MAP);
-        this.mapZoom = page.locator(SELECTOR_MAP_ZOOM);
-        this.standartMapZoom = page.locator(SELECTOR_STANDART_MAP_ZOOM);
+        map = page.locator(SELECTOR_MAP);
+        mapZoom = page.locator(SELECTOR_MAP_ZOOM);
+        standartMapZoom = page.locator(SELECTOR_STANDART_MAP_ZOOM);
     }
 
     public void waitForMap() {
-        this.page.waitForSelector(SELECTOR_MAP);
+        page.waitForSelector(SELECTOR_MAP);
     }
 
     public void waitForStandartMapZoom(String standartMapZoom) {
-        this.page.waitForSelector("text=" + standartMapZoom);
+        page.waitForSelector("text=" + standartMapZoom);
     }
 
     public String getActualMapZoomWithoutSpace() {
-        String actualMapZoom = this.mapZoom.textContent();
+        String actualMapZoom = mapZoom.textContent();
         actualMapZoom = actualMapZoom.replaceAll("\\W+", "");
         return actualMapZoom;
     }

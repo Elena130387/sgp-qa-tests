@@ -36,8 +36,8 @@ public class ShapesPanel {
     private final Page page = JunitExtension.page;
 
     public ShapesPanel() {
-        this.shapesPanel = page.locator(SELECTOR_SHAPES_PANEL);
-        this.addedShapes = this.shapesPanel.locator(SELECTOR_ADDED_SHAPES);
-        this.shapeSearch = this.shapesPanel.locator(SELECTOR_SHAPE_SEARCH);
+        shapesPanel = page.locator(SELECTOR_SHAPES_PANEL);
+        addedShapes = shapesPanel.locator(SELECTOR_ADDED_SHAPES);
+        shapeSearch = shapesPanel.locator(SELECTOR_SHAPE_SEARCH);
     }
 }

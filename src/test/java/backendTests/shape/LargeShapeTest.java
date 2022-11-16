@@ -15,10 +15,11 @@ import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import static api.client.CalcManagement.*;
-import static api.client.Estimator.deleteJobExecutionById;
-import static api.client.Estimator.getJobExecutionIds;
+import static api.client.Estimator.*;
 import static api.dto.StatusesList.DELETED;
+import static api.dto.StatusesList.STOPPED;
 import static api.helper.CalculationHelper.waitForCalculationStarting;
+import static api.helper.CalculationHelper.waitForCalculationStop;
 import static api.helper.JsonHelper.*;
 import static api.helper.PolygonHelper.verifyPolygonNumberAndCoordinates;
 import static java.lang.Thread.sleep;
@@ -81,6 +82,20 @@ public class LargeShapeTest {
                 getStringFromJson(responseGetNewShapeData, "status"), "Область не была удалена");
     }
 
+    @Test
+    void stopCalculatingShape() throws InterruptedException, TimeoutException {
+        List<Integer> jobExecutionIds = getJobExecutionIds(shapeId, 10, 0);
+        for (Integer jobExecutionId : jobExecutionIds) {
+            stopJobExecutionById(jobExecutionId);
+        }
+
+        waitForCalculationStop(shapeId, 10, DURATION_SEC);
+
+        ValidatableResponse responseGetNewShapeData = getShapeDataById(shapeId);
+        assertEquals(STOPPED.getStatusName(),
+                getStringFromJson(responseGetNewShapeData, "status"), "Расчет области не был остановлен");
+    }
+
 
     @AfterEach
     public void deleteTestShape() throws InterruptedException {
@@ -90,7 +105,7 @@ public class LargeShapeTest {
         }
 
         List<Integer> jobExecutionIds = getJobExecutionIds(shapeId, 2, 0);
-        sleep(10000);
+        sleep(12000);
         ValidatableResponse responseDeleteShape = deleteJobExecutionById(jobExecutionIds);
     }
 }
