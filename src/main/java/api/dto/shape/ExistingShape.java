@@ -14,6 +14,7 @@ public class ExistingShape {
     private String status;
     private long orderIndex;
     private Progress progress;
+    private Models models;
     private List<Polygon> polygons = new ArrayList<>();
     private List<Polygon> initialPolygons;
     private double areaSize;
