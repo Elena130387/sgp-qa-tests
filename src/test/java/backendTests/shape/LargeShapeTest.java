@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
@@ -32,6 +33,7 @@ public class LargeShapeTest {
     private int shapeId;
     private ValidatableResponse responseCreateShape;
     private NewShape newShape;
+    private List<Integer> jobExecutionIds = new ArrayList<>();
     public static final int DURATION_SEC = 1;
     private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/largeShapeWithTwoPolygons.json";
 
@@ -48,6 +50,7 @@ public class LargeShapeTest {
         shapeId = getIntFromJson(responseCreateShape, "id");
         System.out.println(shapeId);
         waitForCalculationStarting(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
+        jobExecutionIds = getJobExecutionIds(shapeId, 2, 0);
     }
 
     @Test
@@ -84,7 +87,6 @@ public class LargeShapeTest {
 
     @Test
     void stopCalculatingShape() throws InterruptedException, TimeoutException {
-        List<Integer> jobExecutionIds = getJobExecutionIds(shapeId, 10, 0);
         for (Integer jobExecutionId : jobExecutionIds) {
             stopJobExecutionById(jobExecutionId);
         }
@@ -104,7 +106,6 @@ public class LargeShapeTest {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         }
 
-        List<Integer> jobExecutionIds = getJobExecutionIds(shapeId, 2, 0);
         sleep(12000);
         ValidatableResponse responseDeleteShape = deleteJobExecutionById(jobExecutionIds);
     }
