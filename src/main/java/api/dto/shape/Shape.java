@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class ExistingShape {
+public class Shape {
     private int id;
     private String name;
     private String createTime;

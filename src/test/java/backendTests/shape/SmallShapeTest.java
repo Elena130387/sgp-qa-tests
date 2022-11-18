@@ -1,22 +1,22 @@
 package backendTests.shape;
 
 import api.client.CalcManagement;
-import api.dto.shape.NewShape;
-import api.dto.shape.RenameShape;
+import api.dto.shape.ShapeInput;
+import api.dto.shape.ShapeRename;
 import io.restassured.mapper.ObjectMapperType;
-import io.restassured.path.json.exception.JsonPathException;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-import static api.client.CalcManagement.*;
+import static api.client.CalcManagement.deleteShapeDataById;
+import static api.client.CalcManagement.getShapeDataById;
 import static api.dto.StatusesList.DELETED;
 import static api.helper.JsonHelper.*;
 import static api.helper.PolygonHelper.verifyPolygonNumberAndCoordinates;
+import static api.helper.ShapeHelper.createShapeFromJson;
 import static api.helper.ShapeHelper.waitForShapeStatusCompleted;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,20 +27,15 @@ public class SmallShapeTest {
     private String currentShapeName;
     private int shapeId;
     private ValidatableResponse responseCreateShape;
-    private NewShape newShape;
+    private ShapeInput newShape;
     public static final int DURATION_SEC = 1;
     private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/smallShapeWithOnePolygon.json";
 
     @BeforeEach
-    public void createTestShape() throws IOException, InterruptedException, TimeoutException {
-        try {
-            newShape = (NewShape) getDataFromJsonFile(SMALL_SHAPE_WITH_ONE_POLYGON_FILE, NewShape.class);
-        } catch (JsonPathException exception) {
-            throw new RuntimeException("Не удалось создать область из файла  " + SMALL_SHAPE_WITH_ONE_POLYGON_FILE);
-        }
+    public void createTestShape() throws InterruptedException, TimeoutException {
+        newShape = (ShapeInput) getDataFromJsonFile(SMALL_SHAPE_WITH_ONE_POLYGON_FILE, ShapeInput.class);
         newShape.AddDateToShapeName();
-        responseCreateShape = createNewShape(newShape);
-        responseCreateShape.statusCode(200);
+        responseCreateShape = createShapeFromJson(newShape);
         shapeId = getIntFromJson(responseCreateShape, "id");
         System.out.println(shapeId);
         waitForShapeStatusCompleted(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
@@ -53,12 +48,12 @@ public class SmallShapeTest {
                 newShape.getName(), "У созданной области название не совпадает с заданным");
         assertTrue(shapeId > 0, "ID созданной области должно быть > 0");
 
-        verifyPolygonNumberAndCoordinates(newShape.getPolygons(), responseCreateShape.extract().as(NewShape.class, ObjectMapperType.GSON).getPolygons());
+        verifyPolygonNumberAndCoordinates(newShape.getPolygons(), responseCreateShape.extract().as(ShapeInput.class, ObjectMapperType.GSON).getPolygons());
     }
 
     @Test
     void renameCompletedShape() {
-        RenameShape renameShape = new RenameShape();
+        ShapeRename renameShape = new ShapeRename();
         ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, shapeId);
         responseRenameShape.statusCode(200);
 

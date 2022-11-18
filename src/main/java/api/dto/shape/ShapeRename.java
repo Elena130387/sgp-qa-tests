@@ -5,10 +5,10 @@ import lombok.Data;
 import static util.Util.getTimestampNowAsString;
 
 @Data
-public class RenameShape {
+public class ShapeRename {
     private String value;
 
-    public RenameShape() {
+    public ShapeRename() {
         value = String.format("NEW_NAME_%s", getTimestampNowAsString());
     }
 
