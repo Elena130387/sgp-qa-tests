@@ -32,12 +32,11 @@ public class SmallShapeTest {
     private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/smallShapeWithOnePolygon.json";
 
     @BeforeEach
-    public void createTestShape() throws InterruptedException, TimeoutException {
+    public void createTestShape() throws TimeoutException {
         newShape = (ShapeInput) getDataFromJsonFile(SMALL_SHAPE_WITH_ONE_POLYGON_FILE, ShapeInput.class);
         newShape.AddDateToShapeName();
         responseCreateShape = createShapeFromJson(newShape);
         shapeId = getIntFromJson(responseCreateShape, "id");
-        System.out.println(shapeId);
         waitForShapeStatusCompleted(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
     }
 
@@ -76,6 +75,8 @@ public class SmallShapeTest {
 
     @AfterEach
     public void deleteTestShape() {
+        System.out.println(shapeId);
+
         String testShapeStatus = getStringFromJson(getShapeDataById(shapeId), "status");
         if (!testShapeStatus.equals(DELETED.getStatusName())) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);

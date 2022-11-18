@@ -38,12 +38,11 @@ public class LargeShapeTest {
     private static final String LARGE_SHAPE_WITH_TWO_POLYGONS_FILE = "./src/test/resources/largeShapeWithTwoPolygons.json";
 
     @BeforeEach
-    public void createTestShape() throws InterruptedException, TimeoutException {
+    public void createTestShape() throws TimeoutException {
         newShape = (ShapeInput) getDataFromJsonFile(LARGE_SHAPE_WITH_TWO_POLYGONS_FILE, ShapeInput.class);
         newShape.AddDateToShapeName();
         responseCreateShape = createShapeFromJson(newShape);
         shapeId = getIntFromJson(responseCreateShape, "id");
-        System.out.println(shapeId);
         waitForCalculationStarting(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
         jobExecutionIds = getJobExecutionIds(shapeId, 2, 0);
     }
@@ -81,7 +80,7 @@ public class LargeShapeTest {
     }
 
     @Test
-    void stopCalculatingShape() throws InterruptedException, TimeoutException {
+    void stopCalculatingShape() throws TimeoutException {
         for (Integer jobExecutionId : jobExecutionIds) {
             stopJobExecutionById(jobExecutionId);
         }
@@ -95,13 +94,20 @@ public class LargeShapeTest {
 
 
     @AfterEach
-    public void deleteTestShape() throws InterruptedException {
+    public void deleteTestShape() {
+        System.out.println(shapeId);
+
         String testShapeStatus = getStringFromJson(getShapeDataById(shapeId), "status");
         if (!testShapeStatus.equals(DELETED.getStatusName())) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         }
 
-        sleep(12000);
+        try {
+            sleep(12000);
+        } catch (InterruptedException exception) {
+            System.out.println("Прервано ожидание обновления статуса области в базе данных");
+        }
+
         ValidatableResponse responseDeleteShape = deleteJobExecutionsByIds(jobExecutionIds);
     }
 }
