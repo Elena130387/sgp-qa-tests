@@ -12,8 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PolygonHelper {
 
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     //this method compares polygon number and tries to find for each expected polygon actual polygon
-    public static void verifyPolygonNumberAndCoordinates(List<PolygonInput> expected, List<PolygonInput> actual) {
+     public static void verifyPolygonNumberAndCoordinates(List<PolygonInput> expected, List<PolygonInput> actual) {
         assertEquals(expected.size(), actual.size(), "Ожидаемое количество полигонов в области не совпадает с актуальным");
         expected.forEach(polygon -> {
             List<PointDto> expectedCoordinates = polygon.getCoordinates();

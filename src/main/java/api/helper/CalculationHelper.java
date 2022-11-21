@@ -11,7 +11,7 @@ import static util.Util.timeoutIsReached;
 
 public class CalculationHelper {
 
-    public static void waitForCalculationStarting(int shapeId, int timeoutInSeconds, int durationInSeconds) throws InterruptedException, TimeoutException {
+    public static void waitForCalculationStarting(int shapeId, int timeoutInSeconds, int durationInSeconds) throws TimeoutException {
         String errorMsg = "Калькуляция не начата за ожидаемое время: " + timeoutInSeconds + " секунд";
         List<Integer> jobExecutionIds = getJobExecutionIds(shapeId, 10, 0);
         for (Integer jobExecutionId : jobExecutionIds) {
@@ -19,7 +19,7 @@ public class CalculationHelper {
         }
     }
 
-    public static void waitForCalculationStop(int shapeId, int timeoutInSeconds, int durationInSeconds) throws InterruptedException, TimeoutException {
+    public static void waitForCalculationStop(int shapeId, int timeoutInSeconds, int durationInSeconds) throws TimeoutException {
         String errorMsg = "Калькуляция не была остановлена за ожидаемое время: " + timeoutInSeconds + " секунд";
         List<Integer> jobExecutionIds = getJobExecutionIds(shapeId, 10, 0);
         for (Integer jobExecutionId : jobExecutionIds) {
@@ -27,20 +27,24 @@ public class CalculationHelper {
         }
     }
 
-    public static void waitForCalcStatus(int jobExecutionId, int timeoutInSeconds, int durationInSeconds, String statusName, String errorMsg) throws InterruptedException, TimeoutException {
+    public static void waitForCalcStatus(int jobExecutionId, int timeoutInSeconds, int durationInSeconds, String statusName, String errorMsg) throws TimeoutException {
         long start = System.currentTimeMillis();
         while (!timeoutIsReached(start, timeoutInSeconds, durationInSeconds)) {
             String status = getJobExecutionStatus(jobExecutionId);
             if (status.equals(statusName)) {
                 return;
             } else {
-                Thread.sleep(TimeUnit.SECONDS.toMillis(durationInSeconds));
+                try {
+                    Thread.sleep(TimeUnit.SECONDS.toMillis(durationInSeconds));
+                } catch (InterruptedException exception) {
+                    System.out.println("Ожидание изменения статуса калькуляции прервано");
+                }
             }
         }
         throw new TimeoutException(errorMsg);
     }
 
-    public static void waitForCalculationEnding(int jobExecutionId, int timeoutInSeconds, int durationInSeconds) throws InterruptedException, TimeoutException {
+    public static void waitForCalculationEnding(int jobExecutionId, int timeoutInSeconds, int durationInSeconds) throws TimeoutException {
         long start = System.currentTimeMillis();
         while (!timeoutIsReached(start, timeoutInSeconds, durationInSeconds)) {
             String status = getJobExecutionStatus(jobExecutionId);
@@ -49,7 +53,11 @@ public class CalculationHelper {
             } else if (status.equals(FAILED.getStatusName()) || status.equals(STOPPED.getStatusName())) {
                 throw new RuntimeException("Калькуляция остановлена");
             } else {
-                Thread.sleep(TimeUnit.SECONDS.toMillis(durationInSeconds));
+                try {
+                    Thread.sleep(TimeUnit.SECONDS.toMillis(durationInSeconds));
+                } catch (InterruptedException exception) {
+                    System.out.println("Ожидание окончания калькуляции прервано");
+                }
             }
         }
         throw new TimeoutException("Калькуляция не выполнена за ожидаемое время: " + timeoutInSeconds + " seconds");

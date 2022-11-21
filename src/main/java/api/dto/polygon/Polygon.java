@@ -1,13 +1,12 @@
 package api.dto.polygon;
 
 
-import lombok.Builder;
+import api.dto.shape.Models;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-@Builder
 public class Polygon {
     private int id;
     private long estimatorJobId;
@@ -20,4 +19,5 @@ public class Polygon {
     private int shapeId;
     private double areaSize;
     private List<GeoInfo> geoInfo;
+    private Models progress;
 }

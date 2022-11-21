@@ -1,32 +1,42 @@
 package api.helper;
 
-import api.client.CalcManagement;
-import api.dto.shape.NewShape;
-import io.restassured.path.json.exception.JsonPathException;
+import api.dto.shape.ShapeInput;
 import io.restassured.response.ValidatableResponse;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import static api.client.CalcManagement.createNewShape;
 import static api.client.CalcManagement.getShapeDataById;
 import static api.dto.StatusesList.COMPLETED;
-import static api.helper.JsonHelper.getDataFromJsonFile;
-import static api.helper.JsonHelper.getStringFromJson;
+import static api.helper.JsonHelper.*;
 import static util.Util.timeoutIsReached;
 
 public class ShapeHelper {
 
-    public static int createShapeAndGetId(String newShapeFile) throws IOException {
-        try {
-            NewShape newShape = (NewShape) getDataFromJsonFile(newShapeFile, NewShape.class);
-            return CalcManagement.createShapeAndGetId(newShape);
-        } catch (JsonPathException exception) {
-            throw new RuntimeException("Не удалось создать область из файла  " + newShapeFile);
-        }
+    public static int createShapeFromFileAndGetID(String newShapeFile) {
+        ShapeInput newShape = (ShapeInput) getDataFromJsonFile(newShapeFile, ShapeInput.class);
+        return createShapeFromJsonAndGetID(newShape);
     }
 
-    public static void waitForShapeStatusCompleted(int shapeId, int timeoutInSeconds, int durationInSeconds) throws InterruptedException, TimeoutException {
+    public static ValidatableResponse createShapeFromFile(String newShapeFile) {
+        ShapeInput newShape = (ShapeInput) getDataFromJsonFile(newShapeFile, ShapeInput.class);
+        return createShapeFromJson(newShape);
+    }
+
+    public static ValidatableResponse createShapeFromJson(ShapeInput inputJson) {
+        ValidatableResponse response = createNewShape(inputJson);
+        response.statusCode(200);
+        return response;
+    }
+
+    public static int createShapeFromJsonAndGetID(ShapeInput inputJson) {
+        ValidatableResponse response = createNewShape(inputJson);
+        response.statusCode(200);
+        return getIntFromJson(response, "id");
+    }
+
+    public static void waitForShapeStatusCompleted(int shapeId, int timeoutInSeconds, int durationInSeconds) throws TimeoutException {
         long start = System.currentTimeMillis();
         while (!timeoutIsReached(start, timeoutInSeconds, durationInSeconds)) {
             ValidatableResponse responseGetShapeData = getShapeDataById(shapeId);
@@ -34,7 +44,11 @@ public class ShapeHelper {
             if (status.equals(COMPLETED.getStatusName())) {
                 return;
             } else {
-                Thread.sleep(TimeUnit.SECONDS.toMillis(durationInSeconds));
+                try {
+                    Thread.sleep(TimeUnit.SECONDS.toMillis(durationInSeconds));
+                } catch (InterruptedException exception) {
+                    System.out.println("Ожидание завершения калькуляции для области прервано");
+                }
             }
         }
         throw new TimeoutException("Калькуляция не выполнена за ожидаемое время: " + timeoutInSeconds + " секунд");

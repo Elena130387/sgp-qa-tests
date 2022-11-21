@@ -10,7 +10,7 @@ import static util.Util.getTimestampNowAsString;
 
 @Data
 @Builder
-public class NewShape {
+public class ShapeInput {
     private String name;
     private List<PolygonInput> polygons;
 
