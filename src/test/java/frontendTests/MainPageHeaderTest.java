@@ -9,11 +9,11 @@ import pages.SgpMain;
 import util.JunitExtension;
 import util.Util;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.Constants.*;
 import static util.JunitExtension.BROWSER;
@@ -37,13 +37,19 @@ public class MainPageHeaderTest {
     }
 
     @Test
-    void checkMainPageViewAndUrl() throws IOException {
-        assertEquals(SGP_URL_DEV, mainPage.getPage().url(), "Неверный URL");
-        Util.checkScreenshot(
-                "actMainPageView",
-                "expMainPageView",
-                "checkMainPageView",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+    void checkLogoClick() {
+        mainPage.getPage().navigate(NEW_CALCULATION_URL);
+        mainPage.header.waitForHeader();
+        assertThat(mainPage.header.getNewShape()).isHidden();
+        mainPage.header.getTextLogo().click();
+        mainPage.header.waitForHeader();
+
+        assertAll(
+                () -> assertEquals(SGP_URL_DEV, mainPage.getPage().url(), "Неверный URL"),
+                () -> assertThat(mainPage.header.getNewShape()).isEnabled(),
+                () -> assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
+                () -> assertEquals(BASE_MAP_TYPE, mainPage.header.getChooseMapType().textContent(), "Тип карты отличается от дефолтного")
+        );
     }
 
 /*  FIREFOX: When running a test with authorization through an account
@@ -67,7 +73,7 @@ public class MainPageHeaderTest {
    */
 
     @Test
-    void checkFullscreenMode() throws IOException {
+    void checkFullscreenMode() {
         if (BROWSER.equals("FIREFOX")) {
             mainPage.getPage().setViewportSize(1500, 800);
         }
@@ -89,7 +95,7 @@ public class MainPageHeaderTest {
     }
 
     @Test
-    void checkColorMode() throws IOException {
+    void checkColorMode() {
         assertThat(mainPage.header.getColorModeBtn()).isEnabled();
         mainPage.header.getColorModeBtn().click();
         Util.checkScreenshot(
@@ -123,17 +129,6 @@ public class MainPageHeaderTest {
     }
 
     @Test
-    void checkLogoClick() {
-        mainPage.getPage().navigate(NEW_CALCULATION_URL);
-        mainPage.header.waitForHeader();
-        assertThat(mainPage.header.getNewShape()).isHidden();
-        mainPage.header.getTextLogo().click();
-        assertEquals(SGP_URL_DEV, mainPage.getPage().url(), "Неверный URL");
-        mainPage.header.waitForHeader();
-        assertThat(mainPage.header.getNewShape()).isEnabled();
-    }
-
-    @Test
     void checkChooseMapTypeItemsOrder() {
         mainPage.header.checkChooseMapTypeMenu();
         mainPage.header.checkDropdownItemsOrder(MAP_TYPES_LIST, mainPage.header.getMapTypeDropdownMenuItem());
@@ -146,7 +141,7 @@ public class MainPageHeaderTest {
             "Mapbox Light,actMapboxLight,expMapboxLight,checkMapboxLightOn,longWaiting",
             "Google Satellite,actGoogleSatellite,expGoogleSatellite,checkGoogleSatelliteOn,No",
             "Mapbox Satellite,actMapboxSatellite,expMapboxSatellite,checkMapboxSatelliteOn,longWaiting"})
-    public void checkChooseMapTypeItemClick(String mapTypeItem) throws IOException {
+    public void checkChooseMapTypeItemClick(String mapTypeItem) {
         List<String> mapTypeParams = Arrays.asList(mapTypeItem.split(","));
         mainPage.header.checkChooseMapTypeMenu();
         if (mapTypeParams.get(0).equals(BASE_MAP_TYPE)) {

@@ -56,8 +56,8 @@ public class SmallShapeTest {
         ValidatableResponse responseRenameShape = CalcManagement.shapeRename(renameShape, shapeId);
         responseRenameShape.statusCode(200);
 
-        ValidatableResponse responseGetNewShapeData = getShapeDataById(shapeId);
-        currentShapeName = getStringFromJson(responseGetNewShapeData, "name");
+        ValidatableResponse responseGetNewShapesData = getShapeDataById(shapeId);
+        currentShapeName = getStringFromJson(responseGetNewShapesData, "name");
         assertEquals(currentShapeName,
                 renameShape.getValue(), "Изменение наименования области не выполнено");
     }
@@ -67,9 +67,9 @@ public class SmallShapeTest {
         ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         responseDeleteShape.statusCode(200);
 
-        ValidatableResponse responseGetNewShapeData = getShapeDataById(shapeId);
+        ValidatableResponse responseGetNewShapesData = getShapeDataById(shapeId);
         assertEquals(DELETED.getStatusName(),
-                getStringFromJson(responseGetNewShapeData, "status"), "Область не была удалена");
+                getStringFromJson(responseGetNewShapesData, "status"), "Область не была удалена");
     }
 
 

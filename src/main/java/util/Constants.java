@@ -27,7 +27,7 @@ public class Constants {
     //</editor-fold>
 
     //<editor-fold desc="Basic UI Settings">
-    public static final String BASE_MAP_TYPE = "Bing Satellite";
+    public static final String BASE_MAP_TYPE = "Google Satellite";
 
     public static final int STANDART_PAGE_HEIGHT = 1280;
 

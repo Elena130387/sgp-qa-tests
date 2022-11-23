@@ -7,8 +7,6 @@ import pages.ShapeShowPage;
 import util.JunitExtension;
 import util.Util;
 
-import java.io.IOException;
-
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -30,7 +28,7 @@ public class MapControlTest {
     }
 
     @Test
-    void checkZoom() throws IOException {
+    void checkZoom() {
         shapeShowPage.mapControl.clickZoomIn(1);
         Util.checkScreenshot(
                 "actMainPageZoomIn",
@@ -66,7 +64,7 @@ public class MapControlTest {
     }
 
     @Test
-    void checkGlobalGrid() throws IOException {
+    void checkGlobalGrid() {
         shapeShowPage.mapControl.clickZoomOut(6);
         shapeShowPage.mapControl.getGlobalGridBtn().click();
         Util.checkScreenshot(
@@ -84,7 +82,7 @@ public class MapControlTest {
 
 
     @Test
-    void checkGeoSearch() throws IOException {
+    void checkGeoSearch() {
         shapeShowPage.mapControl.getGeoSearch().click();
         shapeShowPage.mapControl.getGeoSearch().type("Moscow");
         assertThat(shapeShowPage.mapControl.getGeoSearchList()).isVisible();
