@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static api.client.Estimator.getEstimatorDataById;
-import static api.client.Estimator.getJobExecutionIds;
+import static api.client.Estimator.*;
 import static api.dto.StatusesList.*;
 import static util.Util.timeoutIsReached;
 
@@ -64,6 +63,6 @@ public class CalculationHelper {
     }
 
     public static String getJobExecutionStatus(int jobExecutionId) {
-        return getEstimatorDataById(jobExecutionId).extract().body().path("jobExecution.status");
+        return getEstimatorStatusById(jobExecutionId);
     }
 }

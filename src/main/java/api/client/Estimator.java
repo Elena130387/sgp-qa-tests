@@ -4,6 +4,7 @@ import io.restassured.response.ValidatableResponse;
 
 import java.util.List;
 
+import static api.helper.JsonHelper.getStringFromJson;
 import static util.Constants.*;
 
 public class Estimator {
@@ -28,5 +29,9 @@ public class Estimator {
 
     public static ValidatableResponse stopJobExecutionById(int jobExecutionId) {
         return BaseRequests.postRequestWithId(jobExecutionId, ESTIMATOR_JOB_EXECUTION_STOP);
+    }
+
+    public static String getEstimatorStatusById(int id) {
+        return getStringFromJson(BaseRequests.getRequestWithId(id, ESTIMATOR_JOB_EXECUTION_STATUS_EP),"status");
     }
 }

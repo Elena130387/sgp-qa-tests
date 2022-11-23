@@ -34,6 +34,11 @@ public class MainPageHeaderTest {
     void openMainPage() {
         mainPage = new SgpMain().openMainPage();
         mainPage.selectDefaultSettings();
+
+        //close the list of created shapes if it is necessary
+        if (mainPage.shapesPanel.getShapesPanelVisible().isVisible()) {
+            mainPage.mapControl.getPolygonsSectionBtn().click();
+        }
     }
 
     @Test

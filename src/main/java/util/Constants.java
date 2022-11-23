@@ -65,6 +65,8 @@ public class Constants {
 
     public static final String ESTIMATOR_JOB_EXECUTION_ID_EP = ESTIMATOR_EXECUTIONS_EP + "/{id}";
 
+    public static final String ESTIMATOR_JOB_EXECUTION_STATUS_EP = ESTIMATOR_JOB_EXECUTION_ID_EP + "/status";
+
     public static final String ESTIMATOR_JOB_EXECUTION_STOP = ESTIMATOR_JOB_EXECUTION_ID_EP + ":stop";
 
     public static final String CALC_MAN_SHAPES_EP = CALC_MANAGEMENT_URL + SHAPES_EP;
