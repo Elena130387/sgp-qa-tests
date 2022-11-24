@@ -7,14 +7,16 @@ import util.JunitExtension;
 public class ShapesPanel {
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_ADDED_SHAPES = "[data-cy=shape]";
-    private static final String SELECTOR_SHAPES_PANEL = "[data-cy=aside]";
+    private static final String SELECTOR_SHAPES_PANEL_VISIBLE = "[data-cy=aside-visible]";
+    private static final String SELECTOR_SHAPES_PANEL_INVISIBLE = "[data-cy=aside-invisible]";
     private static final String SELECTOR_SHAPE_SEARCH = "[data-cy=search]";
 
     //</editor-fold>
 
     //<editor-fold desc="Elements">
     private final Locator addedShapes;
-    private final Locator shapesPanel;
+    private final Locator shapesPanelVisible;
+    private final Locator shapesPanelInvisible;
     private final Locator shapeSearch;
     //</editor-fold>
 
@@ -23,8 +25,12 @@ public class ShapesPanel {
         return addedShapes;
     }
 
-    public Locator getShapesPanel() {
-        return shapesPanel;
+    public Locator getShapesPanelVisible() {
+        return shapesPanelVisible;
+    }
+
+    public Locator getShapesPanelInvisible() {
+        return shapesPanelInvisible;
     }
 
     public Locator getShapeSearch() {
@@ -36,8 +42,9 @@ public class ShapesPanel {
     private final Page page = JunitExtension.page;
 
     public ShapesPanel() {
-        shapesPanel = page.locator(SELECTOR_SHAPES_PANEL);
-        addedShapes = shapesPanel.locator(SELECTOR_ADDED_SHAPES);
-        shapeSearch = shapesPanel.locator(SELECTOR_SHAPE_SEARCH);
+        shapesPanelVisible = page.locator(SELECTOR_SHAPES_PANEL_VISIBLE);
+        shapesPanelInvisible = page.locator(SELECTOR_SHAPES_PANEL_INVISIBLE);
+        addedShapes = shapesPanelVisible.locator(SELECTOR_ADDED_SHAPES);
+        shapeSearch = shapesPanelVisible.locator(SELECTOR_SHAPE_SEARCH);
     }
 }

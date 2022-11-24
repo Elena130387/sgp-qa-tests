@@ -56,7 +56,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
         }
 
         browserContext = browser.newContext(
-                new Browser.NewContextOptions().setStorageStatePath(STORAGE_PATH)); // View size 1280X720
+                new Browser.NewContextOptions().setStorageStatePath(STORAGE_PATH).setIgnoreHTTPSErrors(true)); // View size 1280X720
         page = browserContext.newPage();
 
         try {

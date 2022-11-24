@@ -27,7 +27,7 @@ public class Constants {
     //</editor-fold>
 
     //<editor-fold desc="Basic UI Settings">
-    public static final String BASE_MAP_TYPE = "Bing Satellite";
+    public static final String BASE_MAP_TYPE = "Google Satellite";
 
     public static final int STANDART_PAGE_HEIGHT = 1280;
 
@@ -64,6 +64,8 @@ public class Constants {
     public static final String ESTIMATOR_EXECUTIONS_EP = ESTIMATOR_URL + EXECUTIONS_EP;
 
     public static final String ESTIMATOR_JOB_EXECUTION_ID_EP = ESTIMATOR_EXECUTIONS_EP + "/{id}";
+
+    public static final String ESTIMATOR_JOB_EXECUTION_STATUS_EP = ESTIMATOR_JOB_EXECUTION_ID_EP + "/status";
 
     public static final String ESTIMATOR_JOB_EXECUTION_STOP = ESTIMATOR_JOB_EXECUTION_ID_EP + ":stop";
 

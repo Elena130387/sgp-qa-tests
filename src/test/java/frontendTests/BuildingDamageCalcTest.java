@@ -34,7 +34,7 @@ public class BuildingDamageCalcTest {
     @Test
     void checkChooseAndOpenCalcPolygonByName() {
         mainPage.mapControl.getPolygonsSectionBtn().click();
-        assertThat(mainPage.shapesPanel.getShapesPanel()).isVisible();
+        assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isVisible();
         mainPage.openShapeWithName(TEST_SHAPE_NAME);
         assertThat(shapeData.getOpenDetailsBtn()).isVisible();
         shapeData.getOpenDetailsBtn().click();

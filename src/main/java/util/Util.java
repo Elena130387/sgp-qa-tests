@@ -43,7 +43,7 @@ public class Util {
         return (System.currentTimeMillis() - start) / TimeUnit.SECONDS.toMillis(durationInSeconds) > timeoutInSeconds;
     }
 
-    private static void imageComparison(Path imgNow, Path imgExpect, String testName) throws IOException {
+    private static void imageComparison(Path imgNow, Path imgExpect, String testName) {
         BufferedImage expected = ImageComparisonUtil.readImageFromResources(String.valueOf(imgExpect));
         BufferedImage actual = ImageComparisonUtil.readImageFromResources(String.valueOf(imgNow));
 
@@ -51,7 +51,12 @@ public class Util {
         ImageComparison comparison = new ImageComparison(expected, actual, diffFile);
         ImageComparisonResult result = comparison.compareImages();
 
-        Files.delete(imgNow);
+        try {
+            Files.delete(imgNow);
+        } catch (IOException exception) {
+            System.out.println("Не удалось удалить файла  " + imgNow);
+        }
+
         float diffPercentage = result.getDifferencePercent();
         if (diffPercentage > 0.01) {
             BufferedImage resultImage = result.getResult();
@@ -61,7 +66,7 @@ public class Util {
         }
     }
 
-    public static void checkScreenshot(String actual, String expected, String testName, String expDir) throws IOException {
+    public static void checkScreenshot(String actual, String expected, String testName, String expDir) {
         page.waitForTimeout(3000);
         Path screenshot = doScreenshotFor(actual);
         Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "/" + expDir + expected + ".png");
@@ -80,7 +85,7 @@ public class Util {
                    getImg,
                     () -> {});
         */
-    public static void checkScreenshotLongWaiting(String actual, String expected, String testName, String expDir) throws IOException {
+    public static void checkScreenshotLongWaiting(String actual, String expected, String testName, String expDir) {
         page.waitForTimeout(5000);
         Path screenshot = doScreenshotFor(actual);
         Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "/" + expDir + expected + ".png");
