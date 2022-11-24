@@ -7,17 +7,26 @@ import util.JunitExtension;
 public class DetailedShapePanel {
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_BUTTON_BACK = "[data-cy=Back]";
-    private static final String SELECTOR_SHAPE_NAME = ".css-h4f2wu";
-    private static final String SELECTOR_SHAPE_OVERALL = "[data-cy=overall]";
-    private static final String SELECTOR_ESTIMATED_TAB = "[data-cy=estimated]";
+    private static final String SELECTOR_SHAPE_NAME = "[data-cy=shape-name-header]";
+    private static final String SELECTOR_SHAPE_COUNT_NUM = "[data-cy=shape-overall-polygon-count-number]";
+    private static final String SELECTOR_SHAPE_COUNT = "[data-cy=shape-overall-polygon-count]";
+    private static final String SELECTOR_SHAPE_DATE = "[data-cy=shape-overall-created-at-date]";
+    private static final String SELECTOR_SHAPE_CREATED = "[data-cy=shape-overall-created-at]";
+    private static final String SELECTOR_SHAPE_SIZE_NUM = "[data-cy=shape-overall-area-size-number]";
+    private static final String SELECTOR_SHAPE_SIZE = "[data-cy=shape-overall-area-size]";
     private static final String SELECTOR_BUILDING_DAMAGE_LAYER = "[data-cy=BuildingDamage]";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
     private final Locator buttonBack;
     private final Locator shapeName;
-    private final Locator shapeOverall;
-    private final Locator estimatedTab;
+    private final Locator shapeCountNum;
+    private final Locator shapeCount;
+    private final Locator shapeDate;
+    private final Locator shapeCreated;
+    private final Locator shapeSizeNum;
+    private final Locator shapeSize;
+
     private final Locator buildingDamageLayer;
 
     //</editor-fold>
@@ -32,12 +41,28 @@ public class DetailedShapePanel {
         return shapeName;
     }
 
-    public Locator getShapeOverall() {
-        return shapeOverall;
+    public Locator getShapeCountNum() {
+        return shapeCountNum;
     }
 
-    public Locator getEstimatedTab() {
-        return estimatedTab;
+    public Locator getShapeCount() {
+        return shapeCount;
+    }
+
+    public Locator getShapeDate() {
+        return shapeDate;
+    }
+
+    public Locator getShapeCreated() {
+        return shapeCreated;
+    }
+
+    public Locator getShapeSizeNum() {
+        return shapeSizeNum;
+    }
+
+    public Locator getShapeSize() {
+        return shapeSize;
     }
 
     public Locator buildingDamageLayer() {
@@ -50,8 +75,12 @@ public class DetailedShapePanel {
     public DetailedShapePanel() {
         buttonBack = page.locator(SELECTOR_BUTTON_BACK);
         shapeName = page.locator(SELECTOR_SHAPE_NAME);
-        shapeOverall = page.locator(SELECTOR_SHAPE_OVERALL);
-        estimatedTab = page.locator(SELECTOR_ESTIMATED_TAB);
+        shapeCountNum = page.locator(SELECTOR_SHAPE_COUNT_NUM);
+        shapeCount = page.locator(SELECTOR_SHAPE_COUNT);
+        shapeDate = page.locator(SELECTOR_SHAPE_DATE);
+        shapeCreated = page.locator(SELECTOR_SHAPE_CREATED);
+        shapeSizeNum = page.locator(SELECTOR_SHAPE_SIZE_NUM);
+        shapeSize = page.locator(SELECTOR_SHAPE_SIZE);
         buildingDamageLayer = page.locator(SELECTOR_BUILDING_DAMAGE_LAYER);
     }
 
