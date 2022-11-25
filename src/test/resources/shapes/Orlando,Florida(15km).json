@@ -1,0 +1,109 @@
+{
+  "id": 1125,
+  "name": "Орландо, Флорида (15 кв. км)",
+  "createTime": "2022-11-16T16:52:13.142328Z",
+  "status": "completed",
+  "orderIndex": 1088,
+  "progress": {
+    "total": 8291,
+    "completed": 8291
+  },
+  "models": {},
+  "polygons": [
+    {
+      "id": 1248,
+      "estimatorJobId": "1227",
+      "name": "Орландо, Флорида (15 кв. км)",
+      "coordinates": [
+        {
+          "lat": 28.773783870528366,
+          "lon": -81.30683227888699
+        },
+        {
+          "lat": 28.729233487143617,
+          "lon": -81.30709640818803
+        },
+        {
+          "lat": 28.730009501865222,
+          "lon": -81.27601237777104
+        },
+        {
+          "lat": 28.77348829821964,
+          "lon": -81.27518290300739
+        },
+        {
+          "lat": 28.773783870528366,
+          "lon": -81.30683227888699
+        }
+      ],
+      "startTime": "2022-11-16T16:52:13.353776Z",
+      "endTime": "2022-11-16T17:20:09.124812Z",
+      "status": "completed",
+      "processingPhase": "completed",
+      "shapeId": 1125,
+      "areaSize": 14.931865653835496,
+      "geoInfo": [
+        {
+          "countryCode": "US",
+          "admin1": "Florida",
+          "admin2": "Seminole County"
+        }
+      ],
+      "progress": {
+        "footprint": {
+          "total": 1568,
+          "completed": 1568
+        },
+        "objectDetection": {
+          "total": 1681,
+          "completed": 1681
+        },
+        "largeTiles": {
+          "total": 113,
+          "completed": 113
+        },
+        "defaultTiles": {
+          "total": 1568,
+          "completed": 1568
+        },
+        "height": {
+          "total": 1568,
+          "completed": 1568
+        },
+        "landUse": {
+          "total": 1568,
+          "completed": 1568
+        },
+        "population": {
+          "total": 225,
+          "completed": 225
+        }
+      }
+    }
+  ],
+  "initialPolygons": [
+    {
+      "id": 1239,
+      "coordinates": [
+        {
+          "lat": 28.773783870528366,
+          "lon": -81.30683227888699
+        },
+        {
+          "lat": 28.729233487143617,
+          "lon": -81.30709640818803
+        },
+        {
+          "lat": 28.730009501865222,
+          "lon": -81.27601237777104
+        },
+        {
+          "lat": 28.77348829821964,
+          "lon": -81.27518290300739
+        }
+      ],
+      "shapeId": 1125
+    }
+  ],
+  "areaSize": 14.931865653835496
+}
