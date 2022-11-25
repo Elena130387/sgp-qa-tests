@@ -2,12 +2,12 @@ package pages;
 
 import com.microsoft.playwright.Page;
 
-import static util.Constants.SHAPE_SHOW_PAGE_URL;
+import static util.Constants.SHAPE_SHOW_PAGE_WITH_ASIDE_FALSE_URL;
 
 public class ShapeShowPage extends BasePage {
 
     public ShapeShowPage openShapeShowPage(int SHAPE_ID) {
-        page.navigate(SHAPE_SHOW_PAGE_URL + SHAPE_ID);
+        page.navigate(SHAPE_SHOW_PAGE_WITH_ASIDE_FALSE_URL + SHAPE_ID);
         return this;
     }
 
