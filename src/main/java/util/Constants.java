@@ -87,6 +87,6 @@ public class Constants {
     //<editor-fold desc="Backend interfaces">
     public static final int DELETED_SHAPE_ID = 1;
 
-    public static final int CORRECT_SHAPE_ID = 215;
+    public static final int CORRECT_SHAPE_ID = 1125;
     //</editor-fold>
 };

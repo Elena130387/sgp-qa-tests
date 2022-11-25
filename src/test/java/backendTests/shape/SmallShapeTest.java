@@ -29,7 +29,7 @@ public class SmallShapeTest {
     private ValidatableResponse responseCreateShape;
     private ShapeInput newShape;
     public static final int DURATION_SEC = 1;
-    private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/smallShapeWithOnePolygon.json";
+    private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/shapeInput/smallShapeWithOnePolygon.json";
 
     @BeforeEach
     public void createTestShape() throws TimeoutException {
