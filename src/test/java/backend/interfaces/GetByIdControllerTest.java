@@ -32,6 +32,13 @@ public interface GetByIdControllerTest {
     }
 
     @Test
+    default void getEntity_withZeroId_expect204noContent() {
+        int id = 0;
+        ValidatableResponse response = getRequestWithId(id, getUrl());
+        response.statusCode(204);
+    }
+
+    @Test
     default void getEntity_withDeletedId_expect204noContent() {
         ValidatableResponse response = getRequestWithId(getCorrectId(), getUrl());
         response.statusCode(204);
