@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static util.Constants.CALCULATION_TIMEOUT_SEC;
 
-public class LargeShapeWithTwoPolygonsTest {
+public class ShapeWithTwoPolygonsTest {
     private String currentShapeName;
     private int shapeId;
     private ValidatableResponse responseCreateShape;
