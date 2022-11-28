@@ -1,4 +1,4 @@
-package frontendTests;
+package frontendTests.ShapeDetails;
 
 import elements.DetailedShapePanel;
 import org.junit.jupiter.api.BeforeEach;
