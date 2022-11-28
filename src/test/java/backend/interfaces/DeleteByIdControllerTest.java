@@ -25,15 +25,22 @@ public interface DeleteByIdControllerTest {
     }
 
     @Test
-    default void deleteEntity_withNonexistentId_expect204noContent() {
+    default void deleteEntity_withNonexistentId_expect200ok() {
         int id = 100000000;
         ValidatableResponse response = deleteRequestWithId(id, getUrl());
         response.statusCode(200);
     }
 
     @Test
-    default void deleteEntity_withDeletedId_expect204noContent() {
+    default void deleteEntity_withDeletedId_expect200ok() {
         ValidatableResponse response = deleteRequestWithId(getCorrectId(), getUrl());
+        response.statusCode(200);
+    }
+
+    @Test
+    default void deleteEntity_withZeroId_expect200ok() {
+        int id = 0;
+        ValidatableResponse response = deleteRequestWithId(id, getUrl());
         response.statusCode(200);
     }
 
