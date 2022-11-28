@@ -35,7 +35,7 @@ public class ShapeWithTwoPolygonsTest {
     private ShapeInput newShape;
     private List<Integer> jobExecutionIds = new ArrayList<>();
     public static final int DURATION_SEC = 1;
-    private static final String LARGE_SHAPE_WITH_TWO_POLYGONS_FILE = "./src/test/resources/shapeInput/largeShapeWithTwoPolygons.json";
+    private static final String LARGE_SHAPE_WITH_TWO_POLYGONS_FILE = "./src/test/resources/shapeInput/shapeWithTwoPolygons.json";
 
     @BeforeEach
     public void createTestShape() throws TimeoutException {
