@@ -11,6 +11,7 @@ public class Constants {
 
 
     //<editor-fold desc="Frontend tests urls and dirs">
+    public static final String SHAPE_CHOOSE_URL_MID = SGP_URL_DEV + "?shape=";
     public static final String SHAPE_CHOOSE_URL_MID_TRUE = SGP_URL_DEV + "?showAside=true&shape=";
 
     public static final String SHAPE_DETAILS_URL_END = "&detailed=true";
