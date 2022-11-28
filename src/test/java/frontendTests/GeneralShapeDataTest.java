@@ -1,7 +1,6 @@
 package frontendTests;
 
 import elements.DetailedShapePanel;
-import elements.ShapeData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,16 +9,13 @@ import pages.ShapeCalcPage;
 import util.Constants;
 import util.JunitExtension;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @ExtendWith(JunitExtension.class)
-public class GeneralShapeData {
-    SgpMain mainPage;
-    ShapeCalcPage shapeCalcPage;
+public class GeneralShapeDataTest {
     private final int SHAPE_ID = 611;
-    private final String SHAPE_CALC_PAGE_URL = Constants.SHAPE_CHOOSE_URL_MID + SHAPE_ID + Constants.SHAPE_DETAILS_URL_END;
+    private final String SHAPE_CALC_PAGE_URL = Constants.SHAPE_CHOOSE_URL_MID_TRUE + SHAPE_ID + Constants.SHAPE_DETAILS_URL_END;
     private final String TEST_SHAPE_NAME = "Парадайз, Калифорния - оценка повреждений зданий после лесного пожара 2018 года";
     private final String SHAPE_COUNT_NUM = "1";
     private final String SHAPE_COUNT = "# сегм.";
@@ -27,42 +23,24 @@ public class GeneralShapeData {
     private final String SHAPE_CREATED = "Создано";
     private final String SHAPE_SIZE_NUM = "2.00 кв. км";
     private final String SHAPE_SIZE = "Пл. области";
-    private final ShapeData shapeData = new ShapeData();
     private final DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
-
+    ShapeCalcPage shapeCalcPage;
+    SgpMain mainPage;
 
     @BeforeEach
-    void openMainPage() {
-        mainPage = new SgpMain().openMainPage();
-        mainPage.selectDefaultSettings();
-    }
-
-    @Test
-    void checkChooseAndOpenCalcPolygonByName() {
-        assertThat(mainPage.mapControl.getPolygonsSectionBtn()).isVisible();
-        assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isVisible();
-        mainPage.openShapeWithName(TEST_SHAPE_NAME);
-        assertThat(shapeData.getOpenDetailsBtn()).isVisible();
-        shapeData.getOpenDetailsBtn().click();
-        assertEquals(SHAPE_CALC_PAGE_URL,
-                mainPage.getPage().url(), "Неверный URL");
-
+    void openShapeCalcPage() {
+        shapeCalcPage = new ShapeCalcPage().openShapeCalcPage(SHAPE_ID);
     }
 
     @Test
     void checkDetailedShapeName() {
-        shapeCalcPage = new ShapeCalcPage().openShapeCalcPage(SHAPE_ID);
-        shapeCalcPage.selectDefaultSettings();
         assertEquals(TEST_SHAPE_NAME,
                 detailedShapePanel.getShapeName().textContent(),
                 "Неверное имя шейпа");
-
     }
 
     @Test
     void checkShapeGeneralData() {
-        shapeCalcPage = new ShapeCalcPage().openShapeCalcPage(SHAPE_ID);
-        shapeCalcPage.selectDefaultSettings();
         assertEquals(TEST_SHAPE_NAME,
                 detailedShapePanel.getShapeName().textContent(),
                 "Неверное имя шейпа");
@@ -84,5 +62,13 @@ public class GeneralShapeData {
         assertEquals(SHAPE_SIZE,
                 detailedShapePanel.getShapeSize().textContent(),
                 "Неверное название параметра");
+    }
+
+    @Test
+    void checkBackBtn() {
+        detailedShapePanel.getButtonBack().click();
+        assertEquals(SHAPE_CALC_PAGE_URL,
+                mainPage.getPage().url(),
+                "Неверный URL");
     }
 }
