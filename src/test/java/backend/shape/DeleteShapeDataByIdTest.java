@@ -1,6 +1,6 @@
-package backendTests.shape;
+package backend.shape;
 
-import backendTests.interfaces.DeleteByIdControllerTest;
+import backend.interfaces.DeleteByIdControllerTest;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

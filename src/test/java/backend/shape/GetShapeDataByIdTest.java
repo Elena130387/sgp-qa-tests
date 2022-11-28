@@ -1,7 +1,7 @@
-package backendTests.shape;
+package backend.shape;
 
 import api.dto.shape.Shape;
-import backendTests.interfaces.GetByIdControllerTest;
+import backend.interfaces.GetByIdControllerTest;
 import io.restassured.mapper.ObjectMapperType;
 import org.junit.jupiter.api.Test;
 

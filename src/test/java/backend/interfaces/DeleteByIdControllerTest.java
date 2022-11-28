@@ -1,4 +1,4 @@
-package backendTests.interfaces;
+package backend.interfaces;
 
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
