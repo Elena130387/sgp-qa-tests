@@ -1,7 +1,7 @@
 package backendTests.shape;
 
 import api.dto.shape.Shape;
-import interfaces.GetByIdControllerTest;
+import backendTests.interfaces.GetByIdControllerTest;
 import io.restassured.mapper.ObjectMapperType;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ import static api.helper.JsonHelper.getDataFromJsonFile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.Constants.*;
 
-public class GetShapeDataTest implements GetByIdControllerTest {
+public class GetShapeDataByIdTest implements GetByIdControllerTest {
     private static final String TEST_SHAPE_FILE = "./src/test/resources/shapes/Orlando,Florida(15km).json";
 
     @Override

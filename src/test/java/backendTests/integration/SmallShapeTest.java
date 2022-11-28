@@ -1,4 +1,4 @@
-package backendTests.shape;
+package backendTests.integration;
 
 import api.client.CalcManagement;
 import api.dto.shape.ShapeInput;
