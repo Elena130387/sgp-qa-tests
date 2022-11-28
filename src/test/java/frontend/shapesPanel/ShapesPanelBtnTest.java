@@ -1,4 +1,4 @@
-package frontendTests.shapesPanel;
+package frontend.shapesPanel;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

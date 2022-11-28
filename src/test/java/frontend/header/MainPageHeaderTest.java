@@ -1,4 +1,4 @@
-package frontendTests.header;
+package frontend.header;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
