@@ -13,9 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.Constants.BASE_MAP_TYPE;
-import static util.Constants.NEW_CALCULATION_URL;
 import static util.JunitExtension.BROWSER;
 
 
@@ -23,12 +21,6 @@ import static util.JunitExtension.BROWSER;
 public class MainPageHeaderTest {
     SgpMain mainPage;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
-    List<String> MAP_TYPES_LIST = Arrays.asList(
-            "Bing Satellite",
-            "Google Satellite",
-            "Mapbox Satellite",
-            "Mapbox Dark",
-            "Mapbox Light");
 
     @BeforeEach
     void openMainPage() {
@@ -99,28 +91,6 @@ public class MainPageHeaderTest {
                 "expColorModeOff",
                 "checkColorModeOff",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
-    }
-
-    @Test
-    void checkAddShapeMenuItemsOrder() {
-        List<String> itemsList = Arrays.asList("Создать вручную",
-                "Импортировать .json");
-        mainPage.header.checkAddShapeMenu();
-        mainPage.header.checkDropdownItemsOrder(itemsList, mainPage.header.getAddShapeDropdownMenuItem());
-    }
-
-    @Test
-    void checkAddShapeMenuCreateManualClick() {
-        mainPage.header.checkAddShapeMenu();
-        mainPage.header.clickDropdownItemByText("Создать вручную", mainPage.header.getAddShapeDropdownMenuItem());
-        assertEquals(NEW_CALCULATION_URL, mainPage.getPage().url(), "Неверный URL");
-        assertThat(mainPage.header.getNewShape()).isHidden();
-    }
-
-    @Test
-    void checkChooseMapTypeItemsOrder() {
-        mainPage.header.checkChooseMapTypeMenu();
-        mainPage.header.checkDropdownItemsOrder(MAP_TYPES_LIST, mainPage.header.getMapTypeDropdownMenuItem());
     }
 
     @ParameterizedTest
