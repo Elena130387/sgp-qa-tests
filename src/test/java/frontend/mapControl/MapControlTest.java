@@ -1,4 +1,4 @@
-package frontendTests;
+package frontend.mapControl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

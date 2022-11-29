@@ -1,4 +1,4 @@
-package frontendTests;
+package frontend.mapControl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static util.Constants.MAP_ZOOM_STANDART;
 
 @ExtendWith(JunitExtension.class)
-public class MapControlOnCalcViewPageTest {
+public class ResetViewportBtnTest {
 
     ShapeCalcPage shapeCalcPage;
     private final int SHAPE_ID = 215;

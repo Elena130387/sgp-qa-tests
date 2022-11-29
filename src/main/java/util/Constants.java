@@ -9,16 +9,22 @@ public class Constants {
 
     public static final int CALCULATION_TIMEOUT_SEC = 60;
 
-
     //<editor-fold desc="Frontend tests urls and dirs">
-    public static final String SHAPE_CHOOSE_URL_MID = SGP_URL_DEV + "?shape=";
-    public static final String SHAPE_CHOOSE_URL_MID_TRUE = SGP_URL_DEV + "?showAside=true&shape=";
+    public static final String SHOW_ASIDE_TRUE_URL = SGP_URL_DEV + "?showAside=true";
+
+    public static final String SHOW_ASIDE_FALSE_URL = SGP_URL_DEV + "?showAside=false";
+
+    public static final String SHAPE_URL_END = "&shape=";
+
+    public static final String SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL = SHOW_ASIDE_TRUE_URL + SHAPE_URL_END;
+
+    public static final String SHAPE_SHOW_PAGE_WITH_ASIDE_FALSE_URL = SHOW_ASIDE_FALSE_URL + SHAPE_URL_END;
 
     public static final String SHAPE_DETAILS_URL_END = "&detailed=true";
 
     public static final String NEW_CALCULATION_URL = SGP_URL_DEV + "?newCalculation=true&showAside=true";
 
-    public static final String SHAPE_SHOW_PAGE_URL = SGP_URL_DEV + "?showAside=false&shape=";
+
 
     public static final Path STORAGE_PATH = Paths.get("storage-state.json");
 
@@ -76,5 +82,11 @@ public class Constants {
 
     public static final String CALC_MAN_SHAPES_SET_NAME_EP = CALC_MAN_SHAPES_ID_EP + ":set-name";
 
+    //</editor-fold>
+
+    //<editor-fold desc="Backend interfaces">
+    public static final int DELETED_SHAPE_ID = 1;
+
+    public static final int CORRECT_SHAPE_ID = 1125;
     //</editor-fold>
 };

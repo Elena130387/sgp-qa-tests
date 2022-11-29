@@ -1,4 +1,4 @@
-package frontendTests;
+package frontend.header;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,9 +13,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static util.Constants.*;
+import static util.Constants.BASE_MAP_TYPE;
+import static util.Constants.NEW_CALCULATION_URL;
 import static util.JunitExtension.BROWSER;
 
 
@@ -39,22 +39,6 @@ public class MainPageHeaderTest {
         if (mainPage.shapesPanel.getShapesPanelVisible().isVisible()) {
             mainPage.mapControl.getPolygonsSectionBtn().click();
         }
-    }
-
-    @Test
-    void checkLogoClick() {
-        mainPage.getPage().navigate(NEW_CALCULATION_URL);
-        mainPage.header.waitForHeader();
-        assertThat(mainPage.header.getNewShape()).isHidden();
-        mainPage.header.getTextLogo().click();
-        mainPage.header.waitForHeader();
-
-        assertAll(
-                () -> assertEquals(SGP_URL_DEV, mainPage.getPage().url(), "Неверный URL"),
-                () -> assertThat(mainPage.header.getNewShape()).isEnabled(),
-                () -> assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertEquals(BASE_MAP_TYPE, mainPage.header.getChooseMapType().textContent(), "Тип карты отличается от дефолтного")
-        );
     }
 
 /*  FIREFOX: When running a test with authorization through an account
