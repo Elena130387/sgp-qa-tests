@@ -1,6 +1,7 @@
 package util;
 
 import com.microsoft.playwright.*;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
@@ -68,7 +69,7 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     }
 
     @Override
-    public void afterEach(ExtensionContext context) throws Exception {
+    public void afterEach(ExtensionContext context) {
         context.getExecutionException().ifPresent(e -> {
             Path path = doScreenshotFor(context.getRequiredTestMethod().getName());
         });
@@ -77,12 +78,24 @@ public class JunitExtension implements BeforeAllCallback, AfterEachCallback, Aft
     }
 
     public static Path doScreenshotFor(String methodName) {
-        String localPath = FAILURE_SCREENSHOTS_DIR + BROWSER + "/";
-        Path SCREENSHOTS_PATH = Paths.get(localPath + methodName
-                + "_" + Util.getTimestampNowAsString() + ".png");
+        Path SCREENSHOTS_PATH = getScreenshotsPath(methodName);
         Page.ScreenshotOptions screenshotPath = new Page.ScreenshotOptions().setPath(SCREENSHOTS_PATH);
         page.screenshot(screenshotPath);
         return SCREENSHOTS_PATH;
+    }
+
+    public static Path doScreenshotForElement(Locator element, String actual) {
+        Path SCREENSHOTS_PATH = getScreenshotsPath(actual);
+        Locator.ScreenshotOptions screenshotPath = new Locator.ScreenshotOptions().setPath(SCREENSHOTS_PATH);
+        element.screenshot(screenshotPath);
+        return SCREENSHOTS_PATH;
+    }
+
+    @NotNull
+    private static Path getScreenshotsPath(String methodName) {
+        String localPath = FAILURE_SCREENSHOTS_DIR + BROWSER + "/";
+        return Paths.get(localPath + methodName
+                + "_" + Util.getTimestampNowAsString() + ".png");
     }
 
     @Override

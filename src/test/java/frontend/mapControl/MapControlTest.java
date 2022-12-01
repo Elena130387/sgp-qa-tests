@@ -23,24 +23,26 @@ public class MapControlTest {
 
     @BeforeEach
     void openShapeShowPage() {
-        shapeShowPage = new ShapeShowPage().openShapeShowPageWithMapWait(SHAPE_ID, standartMapZoom);
+        shapeShowPage = new ShapeShowPage().openPageWithAsideFalseAndMapWait(SHAPE_ID, standartMapZoom);
         shapeShowPage.selectDefaultSettings();
     }
 
     @Test
     void checkZoom() {
         shapeShowPage.mapControl.clickZoomIn(1);
-        Util.checkScreenshot(
-                "actMainPageZoomIn",
-                "expMainPageZoomIn",
-                "checkMainPageZoomIn",
+        Util.checkScreenshotForElementWithWait(
+                shapeShowPage.mapBlock.getMap(),
+                "actZoomIn",
+                "expZoomIn",
+                "checkZoomIn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         shapeShowPage.mapControl.clickZoomOut(2);
-        Util.checkScreenshot(
-                "actMainPageZoomOut",
-                "expMainPageZoomOut",
-                "checkMainPageZoomOut",
+        Util.checkScreenshotForElementWithWait(
+                shapeShowPage.mapBlock.getMap(),
+                "actZoomOut",
+                "expZoomOut",
+                "checkZoomOut",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 
@@ -67,13 +69,16 @@ public class MapControlTest {
     void checkGlobalGrid() {
         shapeShowPage.mapControl.clickZoomOut(6);
         shapeShowPage.mapControl.getGlobalGridBtn().click();
-        Util.checkScreenshot(
+        Util.checkScreenshotForElementWithWait(
+                shapeShowPage.mapBlock.getMap(),
                 "actGlobalGridOn",
                 "expGlobalGridOn",
                 "checkGlobalGridOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
+
         shapeShowPage.mapControl.getGlobalGridBtn().click();
-        Util.checkScreenshot(
+        Util.checkScreenshotForElementWithWait(
+                shapeShowPage.mapBlock.getMap(),
                 "actGlobalGridOff",
                 "expGlobalGridOff",
                 "checkGlobalGridOff",
@@ -87,7 +92,8 @@ public class MapControlTest {
         shapeShowPage.mapControl.getGeoSearch().type("Moscow");
         assertThat(shapeShowPage.mapControl.getGeoSearchList()).isVisible();
         shapeShowPage.mapControl.getGeoSearchList().locator("text=Moscow").first().click();
-        Util.checkScreenshotLongWaiting(
+        Util.checkScreenshotForElementWithWait(
+                shapeShowPage.mapBlock.getMap(),
                 "actGeoSearchResult",
                 "expGeoSearchResult",
                 "checkGeoSearchResult",

@@ -26,7 +26,7 @@ public class CalculationHelper {
         }
     }
 
-    public static void waitForCalcStatus(int jobExecutionId, int timeoutInSeconds, int durationInSeconds, String statusName, String errorMsg) throws TimeoutException {
+    private static void waitForCalcStatus(int jobExecutionId, int timeoutInSeconds, int durationInSeconds, String statusName, String errorMsg) throws TimeoutException {
         long start = System.currentTimeMillis();
         while (!timeoutIsReached(start, timeoutInSeconds, durationInSeconds)) {
             String status = getJobExecutionStatus(jobExecutionId);
