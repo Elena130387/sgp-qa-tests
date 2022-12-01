@@ -16,7 +16,7 @@ public class LogoBtnTest {
 
     @Test
     void checkLogoClick() {
-        addShapePage = new AddShapePage().openAddShapePageWithAsideFalse();
+        addShapePage = new AddShapePage().openPageWithAsideFalse();
         addShapePage.header.getTextLogo().click();
         addShapePage.header.waitForHeader();
 

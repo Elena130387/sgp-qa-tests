@@ -4,26 +4,26 @@ import com.microsoft.playwright.Page;
 
 import static util.Constants.*;
 
-public class ShapeCalcPage extends BasePage {
+public class DetailedShapePage extends BasePage {
 
-    public ShapeCalcPage openShapeCalcPageWithAsideTrue(int SHAPE_ID) {
+    public DetailedShapePage openPageWithAsideTrue(int SHAPE_ID) {
         page.navigate(SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END);
         return this;
     }
 
-    public ShapeCalcPage openShapeCalcPageWithAsideFalse(int SHAPE_ID) {
+    public DetailedShapePage openPageWithAsideFalse(int SHAPE_ID) {
         page.navigate(SHAPE_SHOW_PAGE_WITH_ASIDE_FALSE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END);
         return this;
     }
 
-    public ShapeCalcPage openPageWithAsideTrueAndMapWait(int SHAPE_ID, String standartMapZoom) {
-        openShapeCalcPageWithAsideTrue(SHAPE_ID);
+    public DetailedShapePage openPageWithAsideTrueAndMapWait(int SHAPE_ID, String standartMapZoom) {
+        openPageWithAsideTrue(SHAPE_ID);
         waitStandartMapZoom(standartMapZoom);
         return this;
     }
 
-    public ShapeCalcPage openPageWithAsideFalseAndMapWait(int SHAPE_ID, String standartMapZoom) {
-        openShapeCalcPageWithAsideFalse(SHAPE_ID);
+    public DetailedShapePage openPageWithAsideFalseAndMapWait(int SHAPE_ID, String standartMapZoom) {
+        openPageWithAsideFalse(SHAPE_ID);
         waitStandartMapZoom(standartMapZoom);
         return this;
     }

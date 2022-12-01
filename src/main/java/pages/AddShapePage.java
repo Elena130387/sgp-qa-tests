@@ -7,12 +7,12 @@ import static util.Constants.NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL;
 
 public class AddShapePage extends BasePage {
 
-    public AddShapePage openAddShapePageWithAsideFalse() {
+    public AddShapePage openPageWithAsideFalse() {
         page.navigate(NEW_CALCULATION_URL_WITH_ASIDE_FALSE_URL);
         return this;
     }
 
-    public AddShapePage openAddShapePageWithAsideTrue() {
+    public AddShapePage openPageWithAsideTrue() {
         page.navigate(NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL);
         return this;
     }

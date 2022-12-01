@@ -4,7 +4,7 @@ import elements.DetailedShapePanel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import pages.ShapeCalcPage;
+import pages.DetailedShapePage;
 import util.JunitExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,11 +23,11 @@ public class GeneralShapeDataTest {
     private final String SHAPE_SIZE_NUM = "2.00 кв. км";
     private final String SHAPE_SIZE = "Пл. области";
     private final DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
-    ShapeCalcPage shapeCalcPage;
+    DetailedShapePage detailedShapePage;
 
     @BeforeEach
     void openShapeCalcPage() {
-        shapeCalcPage = new ShapeCalcPage().openShapeCalcPageWithAsideTrue(SHAPE_ID);
+        detailedShapePage = new DetailedShapePage().openPageWithAsideTrue(SHAPE_ID);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class GeneralShapeDataTest {
     void checkBackBtn() {
         detailedShapePanel.getButtonBack().click();
         assertEquals(SHAPE_CALC_PAGE_URL,
-                shapeCalcPage.getPage().url(),
+                detailedShapePage.getPage().url(),
                 "Неверный URL");
     }
 }
