@@ -16,6 +16,7 @@ public class MapControl {
     private static final String SELECTOR_COVERAGE = "[data-cy=coverage]";
     private static final String SELECTOR_GLOBAL_GRID = "[data-cy=globalGrid]";
     private static final String SELECTOR_GRID_LINES = "[data-cy=gridLines]";
+    private static final String SELECTOR_AGGREGATED = "[data-cy=aggregated]";
     private static final String SELECTOR_VIEWPORT = "[data-cy=viewport]";
     private static final String SELECTOR_POLYGONS_SECTION_OPEN_BTN = "[data-cy=polygon]";
     private static final String SELECTOR_GEO_SEARCH = "[data-cy=geoSearch]";
@@ -35,6 +36,7 @@ public class MapControl {
     private final Locator coverageBtn;
     private final Locator globalGridBtn;
     private final Locator gridLinesBtn;
+    private final Locator aggregationBtn;
     private final Locator viewportBtn;
     //</editor-fold>
 
@@ -87,6 +89,10 @@ public class MapControl {
         return gridLinesBtn;
     }
 
+    public Locator getAggregationBtn() {
+        return aggregationBtn;
+    }
+
     public Locator getViewportBtn() {
         return viewportBtn;
     }
@@ -108,6 +114,7 @@ public class MapControl {
         coverageBtn = coverageAndGridBar.locator(SELECTOR_COVERAGE);
         globalGridBtn = coverageAndGridBar.locator(SELECTOR_GLOBAL_GRID);
         gridLinesBtn = coverageAndGridBar.locator(SELECTOR_GRID_LINES);
+        aggregationBtn = coverageAndGridBar.locator(SELECTOR_AGGREGATED);
         viewportBtn = coverageAndGridBar.locator(SELECTOR_VIEWPORT);
     }
 
@@ -117,7 +124,7 @@ public class MapControl {
             num += 1;
             page.locator(zoomLocator).click();
         } while (num < Math.abs(clickNum));
-        page.waitForTimeout(1000);
+        page.waitForTimeout(500);
     }
 
     public void clickZoomIn(int clickNum) {

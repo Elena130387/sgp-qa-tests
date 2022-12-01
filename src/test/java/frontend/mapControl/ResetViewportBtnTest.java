@@ -20,7 +20,7 @@ public class ResetViewportBtnTest {
 
     @BeforeEach
     void openShapeCalcPage() {
-        shapeCalcPage = new ShapeCalcPage().openShapeCalcPageWithMapWait(SHAPE_ID, standartMapZoom);
+        shapeCalcPage = new ShapeCalcPage().openPageWithAsideTrueAndMapWait(SHAPE_ID, standartMapZoom);
         shapeCalcPage.selectDefaultSettings();
     }
 

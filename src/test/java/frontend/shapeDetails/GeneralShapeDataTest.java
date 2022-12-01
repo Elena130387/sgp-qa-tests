@@ -27,7 +27,7 @@ public class GeneralShapeDataTest {
 
     @BeforeEach
     void openShapeCalcPage() {
-        shapeCalcPage = new ShapeCalcPage().openShapeCalcPage(SHAPE_ID);
+        shapeCalcPage = new ShapeCalcPage().openShapeCalcPageWithAsideTrue(SHAPE_ID);
     }
 
     @Test

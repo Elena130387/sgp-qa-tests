@@ -61,14 +61,14 @@ public class MainPageHeaderTest {
         assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
         mainPage.header.getFullScreenBtn().focus();
         mainPage.header.getFullScreenBtn().click();
-        Util.checkScreenshot(
+        Util.checkScreenshotWithWait(
                 "actFullScreenModeOn",
                 "expFullScreenModeOn",
                 "checkFullScreenModeOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         mainPage.header.getFullScreenBtn().click();
-        Util.checkScreenshot(
+        Util.checkScreenshotWithWait(
                 "actFullScreenModeOff",
                 "expFullScreenModeOff",
                 "checkFullScreenModeOff",
@@ -79,14 +79,14 @@ public class MainPageHeaderTest {
     void checkColorMode() {
         assertThat(mainPage.header.getColorModeBtn()).isEnabled();
         mainPage.header.getColorModeBtn().click();
-        Util.checkScreenshot(
+        Util.checkScreenshotWithWait(
                 "actColorModeOn",
                 "expColorModeOn",
                 "checkColorModeOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         mainPage.header.getColorModeBtn().click();
-        Util.checkScreenshot(
+        Util.checkScreenshotWithWait(
                 "actColorModeOff",
                 "expColorModeOff",
                 "checkColorModeOff",
@@ -102,21 +102,23 @@ public class MainPageHeaderTest {
             "Mapbox Satellite,actMapboxSatellite,expMapboxSatellite,checkMapboxSatelliteOn,longWaiting"})
     public void checkChooseMapTypeItemClick(String mapTypeItem) {
         List<String> mapTypeParams = Arrays.asList(mapTypeItem.split(","));
-        mainPage.header.checkChooseMapTypeMenu();
+        mainPage.header.clickChooseMapTypeMenu();
         if (mapTypeParams.get(0).equals(BASE_MAP_TYPE)) {
             mainPage.header.clickDropdownFirstClickableItem(mainPage.header.getMapTypeDropdownMenuItem());
-            mainPage.header.checkChooseMapTypeMenu();
+            mainPage.header.clickChooseMapTypeMenu();
         }
         mainPage.header.clickDropdownItemByText(mapTypeParams.get(0), mainPage.header.getMapTypeDropdownMenuItem());
 
         if (mapTypeParams.get(4).equals("longWaiting")) {
-            Util.checkScreenshotLongWaiting(
+            Util.checkScreenshotForElementWithLongWait(
+                    mainPage.mapBlock.getMap(),
                     mapTypeParams.get(1),
                     mapTypeParams.get(2),
                     mapTypeParams.get(3),
                     EXPSCREENSHOTS_TEST_CLASS_DIR);
         } else {
-            Util.checkScreenshot(
+            Util.checkScreenshotForElementWithWait(
+                    mainPage.mapBlock.getMap(),
                     mapTypeParams.get(1),
                     mapTypeParams.get(2),
                     mapTypeParams.get(3),

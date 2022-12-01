@@ -10,20 +10,25 @@ public class Constants {
     public static final int CALCULATION_TIMEOUT_SEC = 60;
 
     //<editor-fold desc="Frontend tests urls and dirs">
-    public static final String SHOW_ASIDE_TRUE_URL = SGP_URL_DEV + "?showAside=true";
+    public static final String SHOW_ASIDE_TRUE_END = "showAside=true";
 
-    public static final String SHOW_ASIDE_FALSE_URL = SGP_URL_DEV + "?showAside=false";
+    public static final String SHOW_ASIDE_FALSE_END = "showAside=false";
 
     public static final String SHAPE_URL_END = "&shape=";
+
+    public static final String SHAPE_DETAILS_URL_END = "&detailed=true";
+
+    public static final String SHOW_ASIDE_TRUE_URL = SGP_URL_DEV + "?" + SHOW_ASIDE_TRUE_END;
+
+    public static final String SHOW_ASIDE_FALSE_URL = SGP_URL_DEV + "?" + SHOW_ASIDE_FALSE_END;
 
     public static final String SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL = SHOW_ASIDE_TRUE_URL + SHAPE_URL_END;
 
     public static final String SHAPE_SHOW_PAGE_WITH_ASIDE_FALSE_URL = SHOW_ASIDE_FALSE_URL + SHAPE_URL_END;
 
-    public static final String SHAPE_DETAILS_URL_END = "&detailed=true";
+    public static final String NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL = SGP_URL_DEV + "?newCalculation=true&" + SHOW_ASIDE_TRUE_END;
 
-    public static final String NEW_CALCULATION_URL = SGP_URL_DEV + "?newCalculation=true&showAside=true";
-
+    public static final String NEW_CALCULATION_URL_WITH_ASIDE_FALSE_URL = SGP_URL_DEV + "?newCalculation=true&" + SHOW_ASIDE_FALSE_END;
 
 
     public static final Path STORAGE_PATH = Paths.get("storage-state.json");

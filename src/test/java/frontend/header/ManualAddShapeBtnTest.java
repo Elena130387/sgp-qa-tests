@@ -7,18 +7,18 @@ import util.JunitExtension;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static util.Constants.NEW_CALCULATION_URL;
+import static util.Constants.NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL;
 
 @ExtendWith(JunitExtension.class)
-public class AddShapeManualBtnTest {
+public class ManualAddShapeBtnTest {
     SgpMain mainPage;
 
     @Test
     void checkAddShapeMenuCreateManualClick() {
         mainPage = new SgpMain().openMainPage();
-        mainPage.header.checkAddShapeMenu();
+        mainPage.header.clickAddShapeMenu();
         mainPage.header.clickDropdownItemByText("Создать вручную", mainPage.header.getAddShapeDropdownMenuItem());
-        assertEquals(NEW_CALCULATION_URL, mainPage.getPage().url(), "Неверный URL");
+        assertEquals(NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL, mainPage.getPage().url(), "Неверный URL");
         assertThat(mainPage.header.getNewShape()).isHidden();
     }
 }

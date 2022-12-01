@@ -28,14 +28,14 @@ public class MenuItemsOrderTest {
     void checkAddShapeMenuItemsOrder() {
         List<String> itemsList = Arrays.asList("Создать вручную",
                 "Импортировать .json");
-        mainPage.header.checkAddShapeMenu();
+        mainPage.header.clickAddShapeMenu();
         mainPage.header.checkDropdownItemsOrder(itemsList, mainPage.header.getAddShapeDropdownMenuItem());
     }
 
 
     @Test
     void checkChooseMapTypeItemsOrder() {
-        mainPage.header.checkChooseMapTypeMenu();
+        mainPage.header.clickChooseMapTypeMenu();
         mainPage.header.checkDropdownItemsOrder(MAP_TYPES_LIST, mainPage.header.getMapTypeDropdownMenuItem());
     }
 }

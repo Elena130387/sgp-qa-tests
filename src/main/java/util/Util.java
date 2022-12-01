@@ -51,13 +51,13 @@ public class Util {
         ImageComparison comparison = new ImageComparison(expected, actual, diffFile);
         ImageComparisonResult result = comparison.compareImages();
 
+        float diffPercentage = result.getDifferencePercent();
         try {
             Files.delete(imgNow);
         } catch (IOException exception) {
             System.out.println("Не удалось удалить файла  " + imgNow);
         }
 
-        float diffPercentage = result.getDifferencePercent();
         if (diffPercentage > 0.01) {
             BufferedImage resultImage = result.getResult();
             ImageComparisonUtil.saveImage(diffFile, resultImage);
@@ -66,28 +66,41 @@ public class Util {
         }
     }
 
-    public static void checkScreenshot(String actual, String expected, String testName, String expDir) {
+    public static void checkScreenshotWithWait(String actual, String expected, String testName, String expDir) {
         page.waitForTimeout(3000);
         Path screenshot = doScreenshotFor(actual);
         Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "/" + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
-    /*    For the map service Mapbox, there was an attempt to replace a simple wait with waiting for the
-        end of the request, but during the tests run, the system does not see this request, although when
-        you click F12 on the UI, the request is displayed in the spool. Therefore, we decided to leave
-        the method with a simple wait.
-        If you need to return to checking for the completion of loading the request, then instead of the
-        usual waiting, you need to write:
+    public static void checkScreenshotForElement(Locator element, String actual, String expected, String testName, String expDir) {
+        Path screenshot = doScreenshotForElement(element, actual);
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "/" + expDir + expected + ".png");
+        imageComparison(screenshot, expectedScreenshot, testName);
+    }
 
-        Predicate<Request> getImg = request ->request.url().contains("sprite@2x.png");
-             Request request1 = page.waitForRequest(
-                   getImg,
-                    () -> {});
-        */
-    public static void checkScreenshotLongWaiting(String actual, String expected, String testName, String expDir) {
+    public static void checkScreenshotForElementWithWait(Locator element, String actual, String expected, String testName, String expDir) {
+        page.waitForTimeout(3500);
+        Path screenshot = doScreenshotForElement(element, actual);
+        Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "/" + expDir + expected + ".png");
+        imageComparison(screenshot, expectedScreenshot, testName);
+    }
+
+    /*    For the map service Mapbox, there was an attempt to replace a simple wait with waiting for the
+     end of the request, but during the tests run, the system does not see this request, although when
+     you click F12 on the UI, the request is displayed in the spool. Therefore, we decided to leave
+     the method with a simple wait.
+     If you need to return to checking for the completion of loading the request, then instead of the
+     usual waiting, you need to write:
+
+     Predicate<Request> getImg = request ->request.url().contains("sprite@2x.png");
+          Request request1 = page.waitForRequest(
+                getImg,
+                 () -> {});
+     */
+    public static void checkScreenshotForElementWithLongWait(Locator element, String actual, String expected, String testName, String expDir) {
         page.waitForTimeout(5000);
-        Path screenshot = doScreenshotFor(actual);
+        Path screenshot = doScreenshotForElement(element, actual);
         Path expectedScreenshot = Paths.get(EXPECTED_SCREENSHOTS_DIR + BROWSER + "/" + expDir + expected + ".png");
         imageComparison(screenshot, expectedScreenshot, testName);
     }
