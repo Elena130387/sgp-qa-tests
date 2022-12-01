@@ -2,40 +2,29 @@ package frontend.header;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import pages.SgpMain;
+import pages.AddShapePage;
 import util.JunitExtension;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static util.Constants.*;
+import static util.Constants.SGP_URL_DEV;
 
 @ExtendWith(JunitExtension.class)
 public class LogoBtnTest {
-    SgpMain mainPage;
+    AddShapePage addShapePage;
 
     @Test
     void checkLogoClick() {
-        mainPage = new SgpMain().openMainPage();
-
-        mainPage.getPage().navigate(NEW_CALCULATION_URL);
-        mainPage.header.waitForHeader();
-        assertThat(mainPage.header.getNewShape()).isHidden();
-
-        //close the list of created shapes if it is necessary
-        if (mainPage.shapesPanel.getShapesPanelVisible().isVisible()) {
-            mainPage.mapControl.getPolygonsSectionBtn().click();
-        }
-        assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isHidden();
-
-        mainPage.header.getTextLogo().click();
-        mainPage.header.waitForHeader();
+        addShapePage = new AddShapePage().openPageWithAsideFalse();
+        addShapePage.header.getTextLogo().click();
+        addShapePage.header.waitForHeader();
 
         assertAll(
-                () -> assertEquals(SGP_URL_DEV, mainPage.getPage().url(), "Неверный URL"),
-                () -> assertThat(mainPage.header.getNewShape()).isEnabled(),
-                () -> assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(mainPage.mapControl.getPolygonsSectionBtn()).isVisible()
+                () -> assertEquals(SGP_URL_DEV, addShapePage.getPage().url(), "Неверный URL"),
+                () -> assertThat(addShapePage.header.getNewShape()).isEnabled(),
+                () -> assertThat(addShapePage.shapesPanel.getShapesPanelVisible()).isVisible(),
+                () -> assertThat(addShapePage.mapControl.getPolygonsSectionBtn()).isVisible()
         );
     }
 

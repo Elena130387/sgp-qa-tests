@@ -29,7 +29,7 @@ public class BasePage {
         // checking the base type of the map
         header.waitForHeader();
         if (!header.getChooseMapType().textContent().equals(BASE_MAP_TYPE)) {
-            header.checkChooseMapTypeMenu();
+            header.clickChooseMapTypeMenu();
             header.clickDropdownItemByText(BASE_MAP_TYPE, header.getMapTypeDropdownMenuItem());
         }
 

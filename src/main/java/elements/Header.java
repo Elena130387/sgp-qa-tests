@@ -102,13 +102,13 @@ public class Header extends Dropdown {
         page.waitForSelector(SELECTOR_HEADER);
     }
 
-    public void checkAddShapeMenu() {
+    public void clickAddShapeMenu() {
         assertThat(newShape).isEnabled();
         newShape.click();
         assertThat(addShapeDropdownMenu).isVisible();
     }
 
-    public void checkChooseMapTypeMenu() {
+    public void clickChooseMapTypeMenu() {
         assertThat(chooseMapType).isEnabled();
         chooseMapType.click();
         assertThat(mapTypeDropdownMenu).isVisible();
