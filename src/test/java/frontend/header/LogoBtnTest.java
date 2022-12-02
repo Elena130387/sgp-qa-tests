@@ -17,9 +17,9 @@ public class LogoBtnTest {
     @Test
     void checkLogoClick() {
         addShapePage = new AddShapePage().openPageWithAsideFalse();
-        addShapePage.header.getTextLogo().click();
         addShapePage.header.waitForHeader();
 
+        addShapePage.header.getTextLogo().click();
         assertAll(
                 () -> assertEquals(SGP_URL_DEV, addShapePage.getPage().url(), "Неверный URL"),
                 () -> assertThat(addShapePage.header.getNewShape()).isEnabled(),

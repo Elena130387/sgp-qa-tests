@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import pages.SgpMain;
+import pages.SgpMainPage;
 import util.JunitExtension;
 import util.Util;
 
@@ -14,22 +14,21 @@ import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static util.Constants.BASE_MAP_TYPE;
-import static util.JunitExtension.BROWSER;
 
 
 @ExtendWith(JunitExtension.class)
 public class MainPageHeaderTest {
-    SgpMain mainPage;
+    SgpMainPage sgpMainPage;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
 
     @BeforeEach
     void openMainPage() {
-        mainPage = new SgpMain().openMainPage();
-        mainPage.selectDefaultSettings();
+        sgpMainPage = new SgpMainPage().openMainPage();
+        sgpMainPage.selectDefaultSettings();
 
         //close the list of created shapes if it is necessary
-        if (mainPage.shapesPanel.getShapesPanelVisible().isVisible()) {
-            mainPage.mapControl.getPolygonsSectionBtn().click();
+        if (sgpMainPage.shapesPanel.getShapesPanelVisible().isVisible()) {
+            sgpMainPage.mapControl.getPolygonsSectionBtn().click();
         }
     }
 
@@ -55,20 +54,20 @@ public class MainPageHeaderTest {
 
     @Test
     void checkFullscreenMode() {
-        if (BROWSER.equals("FIREFOX")) {
-            mainPage.getPage().setViewportSize(1500, 800);
-        }
-        assertThat(mainPage.header.getFullScreenBtn()).isEnabled();
-        mainPage.header.getFullScreenBtn().focus();
-        mainPage.header.getFullScreenBtn().click();
-        Util.checkScreenshotWithWait(
+
+        assertThat(sgpMainPage.header.getFullScreenBtn()).isEnabled();
+        sgpMainPage.header.getFullScreenBtn().focus();
+        sgpMainPage.header.getFullScreenBtn().click();
+        Util.checkScreenshotForElement(
+                sgpMainPage.header.getFullScreenBtn(),
                 "actFullScreenModeOn",
                 "expFullScreenModeOn",
                 "checkFullScreenModeOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
-        mainPage.header.getFullScreenBtn().click();
-        Util.checkScreenshotWithWait(
+        sgpMainPage.header.getFullScreenBtn().click();
+        Util.checkScreenshotForElement(
+                sgpMainPage.header.getFullScreenBtn(),
                 "actFullScreenModeOff",
                 "expFullScreenModeOff",
                 "checkFullScreenModeOff",
@@ -77,15 +76,15 @@ public class MainPageHeaderTest {
 
     @Test
     void checkColorMode() {
-        assertThat(mainPage.header.getColorModeBtn()).isEnabled();
-        mainPage.header.getColorModeBtn().click();
+        assertThat(sgpMainPage.header.getColorModeBtn()).isEnabled();
+        sgpMainPage.header.getColorModeBtn().click();
         Util.checkScreenshotWithWait(
                 "actColorModeOn",
                 "expColorModeOn",
                 "checkColorModeOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
-        mainPage.header.getColorModeBtn().click();
+        sgpMainPage.header.getColorModeBtn().click();
         Util.checkScreenshotWithWait(
                 "actColorModeOff",
                 "expColorModeOff",
@@ -102,23 +101,23 @@ public class MainPageHeaderTest {
             "Mapbox Satellite,actMapboxSatellite,expMapboxSatellite,checkMapboxSatelliteOn,longWaiting"})
     public void checkChooseMapTypeItemClick(String mapTypeItem) {
         List<String> mapTypeParams = Arrays.asList(mapTypeItem.split(","));
-        mainPage.header.clickChooseMapTypeMenu();
+        sgpMainPage.header.getChooseMapType().click();
         if (mapTypeParams.get(0).equals(BASE_MAP_TYPE)) {
-            mainPage.header.clickDropdownFirstClickableItem(mainPage.header.getMapTypeDropdownMenuItem());
-            mainPage.header.clickChooseMapTypeMenu();
+            sgpMainPage.header.clickDropdownFirstClickableItem(sgpMainPage.header.getMapTypeDropdownMenuItem());
+            sgpMainPage.header.getChooseMapType().click();
         }
-        mainPage.header.clickDropdownItemByText(mapTypeParams.get(0), mainPage.header.getMapTypeDropdownMenuItem());
+        sgpMainPage.header.clickDropdownItemByText(mapTypeParams.get(0), sgpMainPage.header.getMapTypeDropdownMenuItem());
 
         if (mapTypeParams.get(4).equals("longWaiting")) {
             Util.checkScreenshotForElementWithLongWait(
-                    mainPage.mapBlock.getMap(),
+                    sgpMainPage.mapBlock.getMap(),
                     mapTypeParams.get(1),
                     mapTypeParams.get(2),
                     mapTypeParams.get(3),
                     EXPSCREENSHOTS_TEST_CLASS_DIR);
         } else {
             Util.checkScreenshotForElementWithWait(
-                    mainPage.mapBlock.getMap(),
+                    sgpMainPage.mapBlock.getMap(),
                     mapTypeParams.get(1),
                     mapTypeParams.get(2),
                     mapTypeParams.get(3),

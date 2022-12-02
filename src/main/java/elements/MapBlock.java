@@ -47,8 +47,8 @@ public class MapBlock {
         page.waitForSelector(SELECTOR_MAP);
     }
 
-    public void waitForStandartMapZoom(String standartMapZoom) {
-        page.waitForSelector("text=" + standartMapZoom);
+    public void waitForMapZoom(String mapZoom) {
+        page.waitForSelector("text=" + mapZoom);
     }
 
     public String getActualMapZoomWithoutSpace() {

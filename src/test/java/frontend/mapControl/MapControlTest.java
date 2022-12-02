@@ -7,7 +7,6 @@ import pages.ShapeShowPage;
 import util.JunitExtension;
 import util.Util;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static util.Constants.MAP_COMPASS_IMG_STANDART;
@@ -19,11 +18,11 @@ public class MapControlTest {
     ShapeShowPage shapeShowPage;
     private final int SHAPE_ID = 215;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
-    private final String standartMapZoom = MAP_ZOOM_STANDART;
+    private final String mapZoom = MAP_ZOOM_STANDART;
 
     @BeforeEach
     void openShapeShowPage() {
-        shapeShowPage = new ShapeShowPage().openPageWithAsideFalseAndMapWait(SHAPE_ID, standartMapZoom);
+        shapeShowPage = new ShapeShowPage().openPageWithAsideFalseAndMapWait(SHAPE_ID, mapZoom);
         shapeShowPage.selectDefaultSettings();
     }
 
@@ -82,21 +81,6 @@ public class MapControlTest {
                 "actGlobalGridOff",
                 "expGlobalGridOff",
                 "checkGlobalGridOff",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
-    }
-
-
-    @Test
-    void checkGeoSearch() {
-        shapeShowPage.mapControl.getGeoSearch().click();
-        shapeShowPage.mapControl.getGeoSearch().type("Moscow");
-        assertThat(shapeShowPage.mapControl.getGeoSearchList()).isVisible();
-        shapeShowPage.mapControl.getGeoSearchList().locator("text=Moscow").first().click();
-        Util.checkScreenshotForElementWithWait(
-                shapeShowPage.mapBlock.getMap(),
-                "actGeoSearchResult",
-                "expGeoSearchResult",
-                "checkGeoSearchResult",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 }

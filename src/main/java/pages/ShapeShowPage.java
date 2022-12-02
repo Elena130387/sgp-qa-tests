@@ -11,9 +11,9 @@ public class ShapeShowPage extends BasePage {
         return this;
     }
 
-    public ShapeShowPage openPageWithAsideFalseAndMapWait(int SHAPE_ID, String standartMapZoom) {
+    public ShapeShowPage openPageWithAsideFalseAndMapWait(int SHAPE_ID, String mapZoom) {
         openPageWithAsideFalse(SHAPE_ID);
-        waitStandartMapZoom(standartMapZoom);
+        waitForMapAndZoom(mapZoom);
         return this;
     }
 
