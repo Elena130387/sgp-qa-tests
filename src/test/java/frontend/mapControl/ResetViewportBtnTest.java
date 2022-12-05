@@ -15,12 +15,12 @@ public class ResetViewportBtnTest {
 
     DetailedShapePage detailedShapePage;
     private final int SHAPE_ID = 215;
-    private final String standartMapZoom = MAP_ZOOM_STANDART;
+    private final String mapZoom = MAP_ZOOM_STANDART;
 
 
     @BeforeEach
     void openShapeCalcPage() {
-        detailedShapePage = new DetailedShapePage().openPageWithAsideTrueAndMapWait(SHAPE_ID, standartMapZoom);
+        detailedShapePage = new DetailedShapePage().openPageWithAsideTrueAndMapWait(SHAPE_ID, mapZoom);
         detailedShapePage.selectDefaultSettings();
     }
 
@@ -28,9 +28,9 @@ public class ResetViewportBtnTest {
     void checkResetViewport() {
         detailedShapePage.mapControl.clickZoomOut(2);
         String actualZoom = detailedShapePage.mapBlock.getActualMapZoomWithoutSpace();
-        String STANDART_ZOOM_WITHOUT_SPACE = MAP_ZOOM_STANDART.replaceAll("\\s+", "");
+        String EXPECT_ZOOM_WITHOUT_SPACE = mapZoom.replaceAll("\\s+", "");
         assertNotEquals(
-                STANDART_ZOOM_WITHOUT_SPACE,
+                EXPECT_ZOOM_WITHOUT_SPACE,
                 actualZoom,
                 "Приближение карты не выполнено");
 
@@ -39,7 +39,7 @@ public class ResetViewportBtnTest {
 
         actualZoom = detailedShapePage.mapBlock.getActualMapZoomWithoutSpace();
         assertEquals(
-                STANDART_ZOOM_WITHOUT_SPACE,
+                EXPECT_ZOOM_WITHOUT_SPACE,
                 actualZoom,
                 "Возврат к стандартному zoom карты не выполнен");
     }

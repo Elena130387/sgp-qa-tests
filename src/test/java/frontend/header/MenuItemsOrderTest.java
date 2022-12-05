@@ -1,17 +1,18 @@
 package frontend.header;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import pages.SgpMain;
+import pages.SgpMainPage;
 import util.JunitExtension;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 @ExtendWith(JunitExtension.class)
 public class MenuItemsOrderTest {
-    SgpMain mainPage;
+    SgpMainPage sgpMainPage;
     List<String> MAP_TYPES_LIST = Arrays.asList(
             "Bing Satellite",
             "Google Satellite",
@@ -19,23 +20,12 @@ public class MenuItemsOrderTest {
             "Mapbox Dark",
             "Mapbox Light");
 
-    @BeforeEach
-    void openMainPage() {
-        mainPage = new SgpMain().openMainPage();
-    }
-
-    @Test
-    void checkAddShapeMenuItemsOrder() {
-        List<String> itemsList = Arrays.asList("Создать вручную",
-                "Импортировать .json");
-        mainPage.header.clickAddShapeMenu();
-        mainPage.header.checkDropdownItemsOrder(itemsList, mainPage.header.getAddShapeDropdownMenuItem());
-    }
-
-
     @Test
     void checkChooseMapTypeItemsOrder() {
-        mainPage.header.clickChooseMapTypeMenu();
-        mainPage.header.checkDropdownItemsOrder(MAP_TYPES_LIST, mainPage.header.getMapTypeDropdownMenuItem());
+        sgpMainPage = new SgpMainPage().openMainPageWithHeaderWait();
+
+        sgpMainPage.header.getChooseMapType().click();
+        assertThat(sgpMainPage.header.getMapTypeDropdownMenu()).isVisible();
+        sgpMainPage.header.checkDropdownItemsOrder(MAP_TYPES_LIST, sgpMainPage.header.getMapTypeDropdownMenuItem());
     }
 }
