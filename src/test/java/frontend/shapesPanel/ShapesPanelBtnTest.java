@@ -2,7 +2,7 @@ package frontend.shapesPanel;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import pages.SgpMain;
+import pages.SgpMainPage;
 import util.JunitExtension;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -12,30 +12,30 @@ import static util.Constants.*;
 
 @ExtendWith(JunitExtension.class)
 public class ShapesPanelBtnTest {
-    SgpMain mainPage;
+    SgpMainPage sgpMainPage;
 
     @Test
     void checkGetShapesPanelBtn() {
-        mainPage = new SgpMain().openMainPage();
+        sgpMainPage = new SgpMainPage().openMainPage();
 
         assertAll(
-                () -> assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(mainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
-                () -> assertEquals(SGP_URL_DEV, mainPage.getPage().url(), "Неверный URL")
+                () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
+                () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
+                () -> assertEquals(SGP_URL_DEV, sgpMainPage.getPage().url(), "Неверный URL")
         );
 
-        mainPage.mapControl.getPolygonsSectionBtn().click();
+        sgpMainPage.mapControl.getPolygonsSectionBtn().click();
         assertAll(
-                () -> assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isHidden(),
-                () -> assertThat(mainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
-                () -> assertEquals(SHOW_ASIDE_FALSE_URL, mainPage.getPage().url(), "Неверный URL")
+                () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isHidden(),
+                () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
+                () -> assertEquals(SHOW_ASIDE_FALSE_URL, sgpMainPage.getPage().url(), "Неверный URL")
         );
 
-        mainPage.mapControl.getPolygonsSectionBtn().click();
+        sgpMainPage.mapControl.getPolygonsSectionBtn().click();
         assertAll(
-                () -> assertThat(mainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(mainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
-                () -> assertEquals(SHOW_ASIDE_TRUE_URL, mainPage.getPage().url(), "Неверный URL")
+                () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
+                () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
+                () -> assertEquals(SHOW_ASIDE_TRUE_URL, sgpMainPage.getPage().url(), "Неверный URL")
         );
     }
 }

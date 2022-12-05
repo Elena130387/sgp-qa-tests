@@ -29,7 +29,7 @@ public class BasePage {
         // checking the base type of the map
         header.waitForHeader();
         if (!header.getChooseMapType().textContent().equals(BASE_MAP_TYPE)) {
-            header.clickChooseMapTypeMenu();
+            header.getChooseMapType().click();
             header.clickDropdownItemByText(BASE_MAP_TYPE, header.getMapTypeDropdownMenuItem());
         }
 
@@ -50,9 +50,9 @@ public class BasePage {
         }
     }
 
-    public void waitStandartMapZoom(String standartMapZoom) {
+    public void waitForMapAndZoom(String mapZoom) {
         mapBlock.waitForMap();
-        mapBlock.waitForStandartMapZoom(standartMapZoom);
+        mapBlock.waitForMapZoom(mapZoom);
     }
 
     public void openShapeWithName(String name) {

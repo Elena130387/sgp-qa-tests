@@ -16,15 +16,15 @@ public class DetailedShapePage extends BasePage {
         return this;
     }
 
-    public DetailedShapePage openPageWithAsideTrueAndMapWait(int SHAPE_ID, String standartMapZoom) {
+    public DetailedShapePage openPageWithAsideTrueAndMapWait(int SHAPE_ID, String mapZoom) {
         openPageWithAsideTrue(SHAPE_ID);
-        waitStandartMapZoom(standartMapZoom);
+        waitForMapAndZoom(mapZoom);
         return this;
     }
 
-    public DetailedShapePage openPageWithAsideFalseAndMapWait(int SHAPE_ID, String standartMapZoom) {
+    public DetailedShapePage openPageWithAsideFalseAndMapWait(int SHAPE_ID, String mapZoom) {
         openPageWithAsideFalse(SHAPE_ID);
-        waitStandartMapZoom(standartMapZoom);
+        waitForMapAndZoom(mapZoom);
         return this;
     }
 
