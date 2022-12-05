@@ -11,6 +11,12 @@ public class SgpMainPage extends BasePage {
         return this;
     }
 
+    public SgpMainPage openMainPageWithHeaderWait() {
+        page.navigate(SGP_URL_DEV);
+        header.waitForHeader();
+        return this;
+    }
+
     public Page getPage() {
         return this.page;
     }

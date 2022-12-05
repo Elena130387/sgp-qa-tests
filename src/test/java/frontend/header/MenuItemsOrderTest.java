@@ -22,8 +22,7 @@ public class MenuItemsOrderTest {
 
     @Test
     void checkChooseMapTypeItemsOrder() {
-        sgpMainPage = new SgpMainPage().openMainPage();
-        sgpMainPage.header.waitForHeader();
+        sgpMainPage = new SgpMainPage().openMainPageWithHeaderWait();
 
         sgpMainPage.header.getChooseMapType().click();
         assertThat(sgpMainPage.header.getMapTypeDropdownMenu()).isVisible();

@@ -15,8 +15,7 @@ public class AddShapeBtnTest {
 
     @Test
     void checkAddShapeBtnClick() {
-        sgpMainPage = new SgpMainPage().openMainPage();
-        sgpMainPage.header.waitForHeader();
+        sgpMainPage = new SgpMainPage().openMainPageWithHeaderWait();
 
         sgpMainPage.header.getNewShape().click();
         assertEquals(NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL, sgpMainPage.getPage().url(), "Неверный URL");
