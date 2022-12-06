@@ -28,6 +28,21 @@ public class DetailedShapePage extends BasePage {
         return this;
     }
 
+    public DetailedShapePage openPageWithEstimatedTab(int SHAPE_ID) {
+        page.navigate(SGP_URL_DEV + SHAPE_URL_MIDDLE + SHAPE_ID + SHAPE_DETAILS_URL_END + SHAPE_ESTIMATED_TAB_URL);
+        return this;
+    }
+
+    public DetailedShapePage openPageWithEconomicTab(int SHAPE_ID) {
+        page.navigate(SGP_URL_DEV + SHAPE_URL_MIDDLE + SHAPE_ID + SHAPE_DETAILS_URL_END + SHAPE_ECONOMIC_TAB_URL);
+        return this;
+    }
+
+    public DetailedShapePage openPageWithInsuranceTab(int SHAPE_ID) {
+        page.navigate(SGP_URL_DEV + SHAPE_URL_MIDDLE + SHAPE_ID + SHAPE_DETAILS_URL_END + SHAPE_INSURANCE_TAB_URL);
+        return this;
+    }
+
     public Page getPage() {
         return this.page;
     }
