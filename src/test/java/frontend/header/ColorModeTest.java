@@ -15,8 +15,7 @@ public class ColorModeTest {
 
     @Test
     void checkColorMode() {
-        sgpMainPage = new SgpMainPage().openMainPage();
-        sgpMainPage.selectDefaultSettings();
+        sgpMainPage = new SgpMainPage().openMainPageWithDefaultSettings();
 
         //close the list of created shapes if it is necessary
         if (sgpMainPage.shapesPanel.getShapesPanelVisible().isVisible()) {

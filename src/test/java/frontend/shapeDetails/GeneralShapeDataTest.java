@@ -1,7 +1,7 @@
 package frontend.shapeDetails;
 
 import elements.DetailedShapePanel;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.DetailedShapePage;
@@ -13,7 +13,8 @@ import static util.Constants.SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL;
 
 @ExtendWith(JunitExtension.class)
 public class GeneralShapeDataTest {
-    private final int SHAPE_ID = 611;
+    private static final int SHAPE_ID = 611;
+    static DetailedShapePage detailedShapePage;
     private final String SHAPE_CALC_PAGE_URL = SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID;
     private final String TEST_SHAPE_NAME = "Парадайз, Калифорния - оценка повреждений зданий после лесного пожара 2018 года";
     private final String SHAPE_COUNT_NUM = "1";
@@ -23,10 +24,9 @@ public class GeneralShapeDataTest {
     private final String SHAPE_SIZE_NUM = "2.00 кв. км";
     private final String SHAPE_SIZE = "Пл. области";
     private final DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
-    DetailedShapePage detailedShapePage;
 
-    @BeforeEach
-    void openShapeCalcPage() {
+    @BeforeAll
+    static void openShapeCalcPage() {
         detailedShapePage = new DetailedShapePage().openPageWithAsideTrue(SHAPE_ID);
     }
 

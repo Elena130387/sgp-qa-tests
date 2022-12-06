@@ -1,40 +1,65 @@
 package frontend.mapControl;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import pages.ShapeShowPage;
+import pages.DetailedShapePage;
 import util.JunitExtension;
 import util.Util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static util.Constants.MAP_ZOOM_STANDART;
 
 @ExtendWith(JunitExtension.class)
 public class ZoomTest {
-    ShapeShowPage shapeShowPage;
+    DetailedShapePage detailedShowPage;
     private final int SHAPE_ID = 215;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
     private final String mapZoom = MAP_ZOOM_STANDART;
 
+    @BeforeEach
+    void openShapeShowPage() {
+        detailedShowPage = new DetailedShapePage().openPageWithAsideFalseAndMapWait(SHAPE_ID, mapZoom);
+        detailedShowPage.selectDefaultSettings();
+    }
 
     @Test
     void checkZoom() {
-        shapeShowPage = new ShapeShowPage().openPageWithAsideFalseAndMapWait(SHAPE_ID, mapZoom);
-        shapeShowPage.selectDefaultSettings();
-
-        shapeShowPage.mapControl.clickZoomIn(1);
+        detailedShowPage.mapControl.clickZoomIn(1);
         Util.checkScreenshotForElementWithWait(
-                shapeShowPage.mapBlock.getMap(),
+                detailedShowPage.mapBlock.getMap(),
                 "actZoomIn",
                 "expZoomIn",
                 "checkZoomIn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
-        shapeShowPage.mapControl.clickZoomOut(2);
+        detailedShowPage.mapControl.clickZoomOut(2);
         Util.checkScreenshotForElementWithWait(
-                shapeShowPage.mapBlock.getMap(),
+                detailedShowPage.mapBlock.getMap(),
                 "actZoomOut",
                 "expZoomOut",
                 "checkZoomOut",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
+    }
+
+    @Test
+    void checkResetViewport() {
+        detailedShowPage.mapControl.clickZoomOut(2);
+        String actualZoom = detailedShowPage.mapBlock.getActualMapZoomWithoutSpace();
+        String EXPECT_ZOOM_WITHOUT_SPACE = mapZoom.replaceAll("\\s+", "");
+        assertNotEquals(
+                EXPECT_ZOOM_WITHOUT_SPACE,
+                actualZoom,
+                "Приближение карты не выполнено");
+
+        detailedShowPage.mapControl.getViewportBtn().click();
+        detailedShowPage.getPage().waitForTimeout(1000);
+
+        actualZoom = detailedShowPage.mapBlock.getActualMapZoomWithoutSpace();
+        assertEquals(
+                EXPECT_ZOOM_WITHOUT_SPACE,
+                actualZoom,
+                "Возврат к стандартному zoom карты не выполнен");
     }
 }

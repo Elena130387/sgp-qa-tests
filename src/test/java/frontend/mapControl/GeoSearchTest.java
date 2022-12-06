@@ -17,8 +17,7 @@ public class GeoSearchTest {
 
     @BeforeEach
     void openShapeShowPage() {
-        sgpMainPage = new SgpMainPage().openMainPage();
-        sgpMainPage.selectDefaultSettings();
+        sgpMainPage = new SgpMainPage().openMainPageWithDefaultSettings();
         sgpMainPage.mapControl.getGeoSearch().click();
     }
 
