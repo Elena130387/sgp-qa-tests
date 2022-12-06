@@ -2,6 +2,7 @@ package elements;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import elements.ShapeEstimatedTab.EstimatedTabGeneral;
 import util.JunitExtension;
 
 public class DetailedShapePanel {
@@ -14,7 +15,10 @@ public class DetailedShapePanel {
     private static final String SELECTOR_SHAPE_CREATED = "[data-cy=shape-overall-created-at]";
     private static final String SELECTOR_SHAPE_SIZE_NUM = "[data-cy=shape-overall-area-size-number]";
     private static final String SELECTOR_SHAPE_SIZE = "[data-cy=shape-overall-area-size]";
-    private static final String SELECTOR_BUILDING_DAMAGE_LAYER = "[data-cy=BuildingDamage]";
+    private static final String SELECTOR_OPENSOURCE_TAB_BTN = "[data-cy=opensource]";
+    private static final String SELECTOR_ESTIMATED_TAB_BTN = "[data-cy=estimated]";
+    private static final String SELECTOR_ECONOMIC_TAB_BTN = "[data-cy=economic]";
+    private static final String SELECTOR_INSURANCE_TAB_BTN = "[data-cy=insurance]";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
@@ -26,8 +30,10 @@ public class DetailedShapePanel {
     private final Locator shapeCreated;
     private final Locator shapeSizeNum;
     private final Locator shapeSize;
-
-    private final Locator buildingDamageLayer;
+    private final Locator opensourceTabBtn;
+    private final Locator estimatedTabBtn;
+    private final Locator economicTabBtn;
+    private final Locator insuranceTabBtn;
 
     //</editor-fold>
 
@@ -65,8 +71,17 @@ public class DetailedShapePanel {
         return shapeSize;
     }
 
-    public Locator buildingDamageLayer() {
-        return buildingDamageLayer;
+    public Locator getOpensourceTabBtn() {
+        return opensourceTabBtn;
+    }
+    public Locator getEstimatedTabBtn() {
+        return estimatedTabBtn;
+    }
+    public Locator getEconomicTabBtn() {
+        return economicTabBtn;
+    }
+    public Locator getInsuranceTabBtn() {
+        return insuranceTabBtn;
     }
     //</editor-fold>
 
@@ -81,8 +96,28 @@ public class DetailedShapePanel {
         shapeCreated = page.locator(SELECTOR_SHAPE_CREATED);
         shapeSizeNum = page.locator(SELECTOR_SHAPE_SIZE_NUM);
         shapeSize = page.locator(SELECTOR_SHAPE_SIZE);
-        buildingDamageLayer = page.locator(SELECTOR_BUILDING_DAMAGE_LAYER);
+        opensourceTabBtn = page.locator(SELECTOR_OPENSOURCE_TAB_BTN);
+        estimatedTabBtn = page.locator(SELECTOR_ESTIMATED_TAB_BTN);
+        economicTabBtn = page.locator(SELECTOR_ECONOMIC_TAB_BTN);
+        insuranceTabBtn = page.locator(SELECTOR_INSURANCE_TAB_BTN);
+    }
+    public OpensourceTab openOpensourceTab() {
+        opensourceTabBtn.click();
+        return new OpensourceTab();
     }
 
+    public EstimatedTabGeneral openEstimatedTab() {
+        estimatedTabBtn.click();
+        return new EstimatedTabGeneral();
+    }
 
+    public EconomicTab openEconomicTab() {
+        economicTabBtn.click();
+        return new EconomicTab();
+    }
+
+    public InsuranceTab openInsuranceTab() {
+        insuranceTabBtn.click();
+        return new InsuranceTab();
+    }
 }
