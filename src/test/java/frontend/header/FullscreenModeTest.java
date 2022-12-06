@@ -15,7 +15,7 @@ public class FullscreenModeTest {
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
 
     @BeforeEach
-    void openMainPage() {
+    void openSgpMainPage() {
         sgpMainPage = new SgpMainPage().openMainPageWithHeaderWait();
     }
 

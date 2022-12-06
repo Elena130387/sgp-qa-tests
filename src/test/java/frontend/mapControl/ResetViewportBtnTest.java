@@ -1,6 +1,5 @@
 package frontend.mapControl;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.DetailedShapePage;
@@ -18,14 +17,11 @@ public class ResetViewportBtnTest {
     private final String mapZoom = MAP_ZOOM_STANDART;
 
 
-    @BeforeEach
-    void openShapeCalcPage() {
-        detailedShapePage = new DetailedShapePage().openPageWithAsideTrueAndMapWait(SHAPE_ID, mapZoom);
-        detailedShapePage.selectDefaultSettings();
-    }
-
     @Test
     void checkResetViewport() {
+        detailedShapePage = new DetailedShapePage().openPageWithAsideTrueAndMapWait(SHAPE_ID, mapZoom);
+        detailedShapePage.selectDefaultSettings();
+
         detailedShapePage.mapControl.clickZoomOut(2);
         String actualZoom = detailedShapePage.mapBlock.getActualMapZoomWithoutSpace();
         String EXPECT_ZOOM_WITHOUT_SPACE = mapZoom.replaceAll("\\s+", "");

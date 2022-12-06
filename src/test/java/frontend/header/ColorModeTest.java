@@ -1,6 +1,5 @@
 package frontend.header;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.SgpMainPage;
@@ -11,11 +10,11 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 @ExtendWith(JunitExtension.class)
 public class ColorModeTest {
-    SgpMainPage sgpMainPage;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
+    SgpMainPage sgpMainPage;
 
-    @BeforeEach
-    void openMainPage() {
+    @Test
+    void checkColorMode() {
         sgpMainPage = new SgpMainPage().openMainPage();
         sgpMainPage.selectDefaultSettings();
 
@@ -23,10 +22,7 @@ public class ColorModeTest {
         if (sgpMainPage.shapesPanel.getShapesPanelVisible().isVisible()) {
             sgpMainPage.mapControl.getPolygonsSectionBtn().click();
         }
-    }
 
-    @Test
-    void checkColorMode() {
         assertThat(sgpMainPage.header.getColorModeBtn()).isEnabled();
         sgpMainPage.header.getColorModeBtn().click();
         Util.checkScreenshotWithWait(
