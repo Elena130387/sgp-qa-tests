@@ -2,7 +2,7 @@ package frontend.header;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import pages.AddShapePage;
+import pages.ShapeCreationPage;
 import util.JunitExtension;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -12,19 +12,19 @@ import static util.Constants.SGP_URL_DEV;
 
 @ExtendWith(JunitExtension.class)
 public class LogoBtnTest {
-    AddShapePage addShapePage;
+    ShapeCreationPage shapeCreationPage;
 
     @Test
     void checkLogoClick() {
-        addShapePage = new AddShapePage().openPageWithAsideFalse();
-        addShapePage.header.waitForHeader();
+        shapeCreationPage = new ShapeCreationPage().openPageWithAsideFalse();
+        shapeCreationPage.header.waitForHeader();
 
-        addShapePage.header.getTextLogo().click();
+        shapeCreationPage.header.getTextLogo().click();
         assertAll(
-                () -> assertEquals(SGP_URL_DEV, addShapePage.getPage().url(), "Неверный URL"),
-                () -> assertThat(addShapePage.header.getNewShape()).isEnabled(),
-                () -> assertThat(addShapePage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(addShapePage.mapControl.getPolygonsSectionBtn()).isVisible()
+                () -> assertEquals(SGP_URL_DEV, shapeCreationPage.getPage().url(), "Неверный URL"),
+                () -> assertThat(shapeCreationPage.header.getNewShape()).isEnabled(),
+                () -> assertThat(shapeCreationPage.shapesPanel.getShapesPanelVisible()).isVisible(),
+                () -> assertThat(shapeCreationPage.mapControl.getPolygonsSectionBtn()).isVisible()
         );
     }
 
