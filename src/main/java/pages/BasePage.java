@@ -8,6 +8,7 @@ import elements.MapControl;
 import elements.ShapesPanel;
 import util.JunitExtension;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static util.Constants.*;
 
 public class BasePage {
@@ -58,4 +59,29 @@ public class BasePage {
     public void openShapeWithName(String name) {
         shapesPanel.getAddedShapes().filter(new Locator.FilterOptions().setHasText(name)).click();
     }
+
+    public static Locator searchShapeByName(String name, boolean assertNoResults) {
+        ShapesPanel shapesPanel = new ShapesPanel();
+        shapesPanel.getShapeSearch().selectText();
+        shapesPanel.getShapeSearch().press("Delete");
+        shapesPanel.getShapeSearch().type(name);
+        Locator searchResults = shapesPanel.getAddedShapes();
+        if (assertNoResults) {
+            assertTrue(searchResults.count() > 0, "Поиск не дал результатов");
+        }
+        return searchResults;
+    }
+
+    public static void deleteShapeByName(String name) {
+        ShapeShowPage shapeShowPage = new ShapeShowPage();
+        Locator searchResults = searchShapeByName(name, false);
+        if (searchResults.count() == 0) return;
+        for (int i = searchResults.count() - 1; i >= 0; --i) {
+            searchResults.nth(i).click();
+            shapeShowPage.changeShapeMenuBtn.getMenuBtn().click();
+            shapeShowPage.changeShapeMenuBtn.getDeleteBtn().click();
+            shapeShowPage.changeShapeMenuBtn.getDeleteYes().click();
+        }
+    }
+
 }
