@@ -20,14 +20,13 @@ public class TablistTest {
     private final DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
 
     @BeforeEach
-    void openShapeCalcPage() {
+    void openDetailedShapePage() {
 
         detailedShapePage = new DetailedShapePage().openPageWithAsideTrue(SHAPE_ID);
     }
 
     @Test
     void openOpensourceTab() {
-        assertThat(detailedShapePanel.getOpensourceTabBtn()).isEnabled();
         detailedShapePanel.openOpensourceTab();
         assertEquals(SHAPE_URL + SHAPE_OPENSOURCE_TAB_URL, detailedShapePage.getPage().url(),
                 "Неверный URL");
@@ -35,7 +34,6 @@ public class TablistTest {
 
     @Test
     void openEstimatedTab() {
-        assertThat(detailedShapePanel.getEstimatedTabBtn()).isEnabled();
         detailedShapePanel.openEstimatedTab();
         assertEquals(SHAPE_URL + SHAPE_ESTIMATED_TAB_URL, detailedShapePage.getPage().url(),
                 "Неверный URL");
@@ -43,7 +41,6 @@ public class TablistTest {
 
     @Test
     void openEconomicTab() {
-        assertThat(detailedShapePanel.getEconomicTabBtn()).isEnabled();
         detailedShapePanel.openEconomicTab();
         assertEquals(SHAPE_URL + SHAPE_ECONOMIC_TAB_URL, detailedShapePage.getPage().url(),
                 "Неверный URL");
@@ -51,7 +48,6 @@ public class TablistTest {
 
     @Test
     void openInsuranceTab() {
-        assertThat(detailedShapePanel.getInsuranceTabBtn()).isEnabled();
         detailedShapePanel.openInsuranceTab();
         assertEquals(SHAPE_URL + SHAPE_INSURANCE_TAB_URL, detailedShapePage.getPage().url(),
                 "Неверный URL");
