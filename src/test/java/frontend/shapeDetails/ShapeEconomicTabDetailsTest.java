@@ -1,4 +1,4 @@
-package frontend.shapeDetails.ShapeEstimatedTabDetails;
+package frontend.shapeDetails;
 
 import elements.EconomicTab;
 import org.junit.jupiter.api.Test;
