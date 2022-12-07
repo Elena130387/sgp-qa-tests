@@ -17,6 +17,12 @@ public class SgpMainPage extends BasePage {
         return this;
     }
 
+    public SgpMainPage openMainPageWithDefaultSettings() {
+        page.navigate(SGP_URL_DEV);
+        selectDefaultSettings();
+        return this;
+    }
+
     public ShapeCreationPage openShapeCreationPageAsUser() {
         page.navigate(SGP_URL_DEV);
         header.waitForHeader();

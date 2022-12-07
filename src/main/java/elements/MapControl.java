@@ -14,6 +14,7 @@ public class MapControl {
     private static final String SELECTOR_COMPASS_IMG = ".mapboxgl-ctrl-icon";
     private static final String SELECTOR_COVERAGE_AND_GRID_BAR = "[data-cy=map-controls]";
     private static final String SELECTOR_COVERAGE = "[data-cy=coverage]";
+    private static final String SELECTOR_COVERAGE_HIGHLIGHTING = "[data-cy=highlighting]";
     private static final String SELECTOR_GLOBAL_GRID = "[data-cy=globalGrid]";
     private static final String SELECTOR_GRID_LINES = "[data-cy=gridLines]";
     private static final String SELECTOR_AGGREGATED = "[data-cy=aggregated]";
@@ -34,6 +35,7 @@ public class MapControl {
     private final Locator compassBtn;
     private final Locator compassBtnImg;
     private final Locator coverageBtn;
+    private final Locator coverageHighlightingBtn;
     private final Locator globalGridBtn;
     private final Locator gridLinesBtn;
     private final Locator aggregationBtn;
@@ -81,6 +83,10 @@ public class MapControl {
         return coverageBtn;
     }
 
+    public Locator getCoverageHighlightingBtn() {
+        return coverageHighlightingBtn;
+    }
+
     public Locator getGlobalGridBtn() {
         return globalGridBtn;
     }
@@ -112,6 +118,7 @@ public class MapControl {
         compassBtn = navigationBar.locator(SELECTOR_COMPASS);
         compassBtnImg = compassBtn.locator(SELECTOR_COMPASS_IMG);
         coverageBtn = coverageAndGridBar.locator(SELECTOR_COVERAGE);
+        coverageHighlightingBtn = coverageAndGridBar.locator(SELECTOR_COVERAGE_HIGHLIGHTING);
         globalGridBtn = coverageAndGridBar.locator(SELECTOR_GLOBAL_GRID);
         gridLinesBtn = coverageAndGridBar.locator(SELECTOR_GRID_LINES);
         aggregationBtn = coverageAndGridBar.locator(SELECTOR_AGGREGATED);

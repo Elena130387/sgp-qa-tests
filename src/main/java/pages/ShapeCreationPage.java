@@ -3,19 +3,13 @@ package pages;
 import com.microsoft.playwright.Page;
 import elements.ShapeCreationPanel;
 
-import static util.Constants.NEW_CALCULATION_URL_WITH_ASIDE_FALSE_URL;
 import static util.Constants.NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL;
 
 public class ShapeCreationPage extends BasePage {
     public final ShapeCreationPanel shapeCreationPanel = new ShapeCreationPanel();
 
-    public ShapeCreationPage openPageWithAsideTrue() {
+    public ShapeCreationPage openShapeCreationPage() {
         page.navigate(NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL);
-        return this;
-    }
-
-    public ShapeCreationPage openPageWithAsideFalse() {
-        page.navigate(NEW_CALCULATION_URL_WITH_ASIDE_FALSE_URL);
         return this;
     }
 

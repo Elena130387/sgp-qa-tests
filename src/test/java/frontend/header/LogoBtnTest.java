@@ -2,6 +2,7 @@ package frontend.header;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import pages.DetailedShapePage;
 import pages.ShapeCreationPage;
 import util.JunitExtension;
 
@@ -13,10 +14,12 @@ import static util.Constants.SGP_URL_DEV;
 @ExtendWith(JunitExtension.class)
 public class LogoBtnTest {
     ShapeCreationPage shapeCreationPage;
+    DetailedShapePage detailedShapePage;
+    private final int SHAPE_ID = 1277;
 
     @Test
-    void checkLogoClick() {
-        shapeCreationPage = new ShapeCreationPage().openPageWithAsideFalse();
+    void checkLogoClickFromShapeCreationPage() {
+        shapeCreationPage = new ShapeCreationPage().openShapeCreationPage();
         shapeCreationPage.header.waitForHeader();
 
         shapeCreationPage.header.getTextLogo().click();
@@ -28,4 +31,14 @@ public class LogoBtnTest {
         );
     }
 
+    @Test
+    void checkLogoClickFromPageWithAsideFalse() {
+        detailedShapePage = new DetailedShapePage().openPageWithAsideFalse(SHAPE_ID);
+
+        detailedShapePage.header.getTextLogo().click();
+        assertAll(
+                () -> assertThat(detailedShapePage.shapesPanel.getShapesPanelVisible()).isVisible(),
+                () -> assertThat(detailedShapePage.mapControl.getPolygonsSectionBtn()).isVisible()
+        );
+    }
 }

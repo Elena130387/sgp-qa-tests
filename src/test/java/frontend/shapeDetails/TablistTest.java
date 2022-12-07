@@ -7,21 +7,18 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import pages.DetailedShapePage;
 import util.JunitExtension;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.Constants.*;
 
 @ExtendWith(JunitExtension.class)
 public class TablistTest {
     DetailedShapePage detailedShapePage;
-
     private final int SHAPE_ID = 611;
     private final String SHAPE_URL = SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END;
     private final DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
 
     @BeforeEach
     void openDetailedShapePage() {
-
         detailedShapePage = new DetailedShapePage().openPageWithAsideTrue(SHAPE_ID);
     }
 

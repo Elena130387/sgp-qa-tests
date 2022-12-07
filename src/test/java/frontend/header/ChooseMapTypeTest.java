@@ -1,6 +1,6 @@
 package frontend.header;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -16,11 +16,11 @@ import static util.Constants.BASE_MAP_TYPE;
 
 @ExtendWith(JunitExtension.class)
 public class ChooseMapTypeTest {
-    SgpMainPage sgpMainPage;
+    static SgpMainPage sgpMainPage;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
 
-    @BeforeEach
-    void openMainPage() {
+    @BeforeAll
+    static void openSgpMainPage() {
         sgpMainPage = new SgpMainPage().openMainPageWithHeaderWait();
         sgpMainPage.selectDefaultSettings();
     }

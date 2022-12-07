@@ -44,11 +44,6 @@ public class BasePage {
             mapControl.getCompassBtn().click();
             page.waitForTimeout(1000);
         }
-
-        // checking that the shapes panel is open
-        if (shapesPanel.getShapesPanelVisible().isHidden()) {
-            mapControl.getPolygonsSectionBtn().click();
-        }
     }
 
     public void waitForMapAndZoom(String mapZoom) {
