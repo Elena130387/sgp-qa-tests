@@ -57,8 +57,8 @@ public class BasePage {
 
     public static Locator searchShapeByName(String name, boolean assertNoResults) {
         ShapesPanel shapesPanel = new ShapesPanel();
-        shapesPanel.getShapeSearch().selectText();
-        shapesPanel.getShapeSearch().press("Delete");
+        shapesPanel.getShapeSearch().click();
+        shapesPanel.getShapeSearch().clear();
         shapesPanel.getShapeSearch().type(name);
         Locator searchResults = shapesPanel.getAddedShapes();
         if (assertNoResults) {

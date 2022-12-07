@@ -125,4 +125,8 @@ public class ShapeCreationPanel {
         totalAreaName = crudShapePanel.locator(SELECTOR_TOTAL_AREA_NAME);
         totalAreaValue = crudShapePanel.locator(SELECTOR_TOTAL_AREA_VALUE);
     }
+
+    public void waitForShapeCreationPanel() {
+        page.waitForSelector(SELECTOR_CRUD_SHAPE_PANEL);
+    }
 }

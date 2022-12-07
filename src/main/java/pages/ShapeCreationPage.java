@@ -13,6 +13,12 @@ public class ShapeCreationPage extends BasePage {
         return this;
     }
 
+    public ShapeCreationPage openShapeCreationPageWithPanelWait(){
+        openShapeCreationPage();
+        shapeCreationPanel.waitForShapeCreationPanel();
+        return this;
+    }
+
     public Page getPage() {
         return this.page;
     }
