@@ -2,7 +2,7 @@ package frontend.mapControl;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import pages.ShapeShowPage;
+import pages.DetailedShapePage;
 import util.JunitExtension;
 import util.Util;
 
@@ -11,7 +11,7 @@ import static util.Constants.MAP_ZOOM_STANDART;
 @ExtendWith(JunitExtension.class)
 public class GlobalGridTest {
 
-    ShapeShowPage shapeShowPage;
+    DetailedShapePage detailedShowPage;
     private final int SHAPE_ID = 215;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
     private final String mapZoom = MAP_ZOOM_STANDART;
@@ -19,21 +19,21 @@ public class GlobalGridTest {
 
     @Test
     void checkGlobalGrid() {
-        shapeShowPage = new ShapeShowPage().openPageWithAsideFalseAndMapWait(SHAPE_ID, mapZoom);
-        shapeShowPage.selectDefaultSettings();
+        detailedShowPage = new DetailedShapePage().openPageWithAsideFalseAndMapWait(SHAPE_ID, mapZoom);
+        detailedShowPage.selectDefaultSettings();
 
-        shapeShowPage.mapControl.clickZoomOut(6);
-        shapeShowPage.mapControl.getGlobalGridBtn().click();
+        detailedShowPage.mapControl.clickZoomOut(6);
+        detailedShowPage.mapControl.getGlobalGridBtn().click();
         Util.checkScreenshotForElementWithWait(
-                shapeShowPage.mapBlock.getMap(),
+                detailedShowPage.mapBlock.getMap(),
                 "actGlobalGridOn",
                 "expGlobalGridOn",
                 "checkGlobalGridOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
-        shapeShowPage.mapControl.getGlobalGridBtn().click();
+        detailedShowPage.mapControl.getGlobalGridBtn().click();
         Util.checkScreenshotForElementWithWait(
-                shapeShowPage.mapBlock.getMap(),
+                detailedShowPage.mapBlock.getMap(),
                 "actGlobalGridOff",
                 "expGlobalGridOff",
                 "checkGlobalGridOff",

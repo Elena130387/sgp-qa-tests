@@ -19,7 +19,7 @@ public class ZoomTest {
     private final String mapZoom = MAP_ZOOM_STANDART;
 
     @BeforeEach
-    void openShapeShowPage() {
+    void openDetailedShowPage() {
         detailedShowPage = new DetailedShapePage().openPageWithAsideFalseAndMapWait(SHAPE_ID, mapZoom);
         detailedShowPage.selectDefaultSettings();
     }

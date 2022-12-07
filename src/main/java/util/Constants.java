@@ -38,8 +38,6 @@ public class Constants {
 
     public static final String NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL = SGP_URL_DEV + "?newCalculation=true&" + SHOW_ASIDE_TRUE_END;
 
-    public static final String NEW_CALCULATION_URL_WITH_ASIDE_FALSE_URL = SGP_URL_DEV + "?newCalculation=true&" + SHOW_ASIDE_FALSE_END;
-
 
     public static final Path STORAGE_PATH = Paths.get("storage-state.json");
 

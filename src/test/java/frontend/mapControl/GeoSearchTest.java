@@ -16,7 +16,7 @@ public class GeoSearchTest {
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
 
     @BeforeEach
-    void openShapeShowPage() {
+    void openSgpMainPage() {
         sgpMainPage = new SgpMainPage().openMainPageWithDefaultSettings();
         sgpMainPage.mapControl.getGeoSearch().click();
     }

@@ -7,11 +7,6 @@ import pages.DetailedShapePage;
 import util.JunitExtension;
 import util.Util;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static util.Constants.SGP_URL_DEV;
-
 @ExtendWith(JunitExtension.class)
 public class DerivativeRightsTest {
 
@@ -21,8 +16,8 @@ public class DerivativeRightsTest {
     private final String mapZoom = "2 km";
 
     @BeforeEach
-    void openShapeShowPage() {
-        detailedShapePage = new DetailedShapePage().openPageWithAsideTrueAndMapWait(SHAPE_ID, mapZoom);
+    void openDetailedShapePage() {
+        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID);
         detailedShapePage.selectDefaultSettings();
     }
 
