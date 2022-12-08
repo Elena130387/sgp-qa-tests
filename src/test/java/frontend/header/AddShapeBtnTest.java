@@ -6,6 +6,7 @@ import pages.SgpMainPage;
 import util.JunitExtension;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.Constants.NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL;
 
@@ -18,7 +19,10 @@ public class AddShapeBtnTest {
         sgpMainPage = new SgpMainPage().openMainPageWithHeaderWait();
 
         sgpMainPage.header.getNewShape().click();
-        assertEquals(NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL, sgpMainPage.getPage().url(), "Неверный URL");
-        assertThat(sgpMainPage.header.getNewShape()).isHidden();
+
+        assertAll(
+                () -> assertEquals(NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL, sgpMainPage.getPage().url(), "Неверный URL"),
+                () -> assertThat(sgpMainPage.header.getNewShape()).isHidden()
+        );
     }
 }

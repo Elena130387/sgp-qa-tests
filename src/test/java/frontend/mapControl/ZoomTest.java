@@ -44,7 +44,7 @@ public class ZoomTest {
     }
 
     @Test
-    void checkResetViewport() {
+    void checkResetViewportFromZoomOut() {
         detailedShowPage.mapControl.clickZoomOut(2);
         String actualZoom = detailedShowPage.mapBlock.getActualMapZoomWithoutSpace();
         String EXPECT_ZOOM_WITHOUT_SPACE = mapZoom.replaceAll("\\s+", "");
@@ -52,6 +52,26 @@ public class ZoomTest {
                 EXPECT_ZOOM_WITHOUT_SPACE,
                 actualZoom,
                 "Приближение карты не выполнено");
+
+        detailedShowPage.mapControl.getViewportBtn().click();
+        detailedShowPage.getPage().waitForTimeout(1000);
+
+        actualZoom = detailedShowPage.mapBlock.getActualMapZoomWithoutSpace();
+        assertEquals(
+                EXPECT_ZOOM_WITHOUT_SPACE,
+                actualZoom,
+                "Возврат к стандартному zoom карты не выполнен");
+    }
+
+    @Test
+    void checkResetViewportFromZoomIn() {
+        detailedShowPage.mapControl.clickZoomIn(2);
+        String actualZoom = detailedShowPage.mapBlock.getActualMapZoomWithoutSpace();
+        String EXPECT_ZOOM_WITHOUT_SPACE = mapZoom.replaceAll("\\s+", "");
+        assertNotEquals(
+                EXPECT_ZOOM_WITHOUT_SPACE,
+                actualZoom,
+                "Отдаление карты не выполнено");
 
         detailedShowPage.mapControl.getViewportBtn().click();
         detailedShowPage.getPage().waitForTimeout(1000);

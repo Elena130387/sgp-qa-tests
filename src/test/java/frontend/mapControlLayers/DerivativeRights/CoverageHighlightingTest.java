@@ -1,4 +1,4 @@
-package frontend.mapControl.DerivativeRights;
+package frontend.mapControlLayers.DerivativeRights;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +11,7 @@ public class CoverageHighlightingTest {
 
     DetailedShapePage detailedShapePage;
     private final int SHAPE_ID = 1277;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayersTest/";
 
 
     @Test

@@ -1,4 +1,4 @@
-package frontend.mapControl.DerivativeRights;
+package frontend.mapControlLayers.DerivativeRights;
 
 import elements.DetailedShapePanel;
 import org.junit.jupiter.api.Test;

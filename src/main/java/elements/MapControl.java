@@ -147,4 +147,8 @@ public class MapControl {
         state = state.substring(0, state.length() - 1);
         return state;
     }
+
+    public void waitForGridLinesBtn() {
+        page.waitForSelector(SELECTOR_GRID_LINES);
+    }
 }
