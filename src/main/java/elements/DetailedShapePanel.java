@@ -19,6 +19,7 @@ public class DetailedShapePanel {
     private static final String SELECTOR_ESTIMATED_TAB_BTN = "[data-cy=estimated]";
     private static final String SELECTOR_ECONOMIC_TAB_BTN = "[data-cy=economic]";
     private static final String SELECTOR_INSURANCE_TAB_BTN = "[data-cy=insurance]";
+    private static final String SELECTOR_DERIVATIVE_RIGHTS_MSG = "[data-cy=no-derivative-rights-warning]";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
@@ -34,6 +35,7 @@ public class DetailedShapePanel {
     private final Locator estimatedTabBtn;
     private final Locator economicTabBtn;
     private final Locator insuranceTabBtn;
+    private final Locator derivativeRightsMsg;
 
     //</editor-fold>
 
@@ -65,6 +67,10 @@ public class DetailedShapePanel {
 
     public Locator getShapeSizeNum() {
         return shapeSizeNum;
+    }
+
+    public Locator getDerivativeRightsMsg() {
+        return derivativeRightsMsg;
     }
 
     public Locator getShapeSize() {
@@ -100,6 +106,7 @@ public class DetailedShapePanel {
         estimatedTabBtn = page.locator(SELECTOR_ESTIMATED_TAB_BTN);
         economicTabBtn = page.locator(SELECTOR_ECONOMIC_TAB_BTN);
         insuranceTabBtn = page.locator(SELECTOR_INSURANCE_TAB_BTN);
+        derivativeRightsMsg = page.locator(SELECTOR_DERIVATIVE_RIGHTS_MSG);
     }
     public OpensourceTab openOpensourceTab() {
         opensourceTabBtn.click();

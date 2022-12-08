@@ -1,4 +1,4 @@
-package frontend.mapControl;
+package frontend.mapControlLayers;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +13,7 @@ public class GlobalGridTest {
 
     DetailedShapePage detailedShowPage;
     private final int SHAPE_ID = 215;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayersTest/";
     private final String mapZoom = MAP_ZOOM_STANDART;
 
 

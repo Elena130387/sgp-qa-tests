@@ -38,6 +38,12 @@ public class DetailedShapePage extends BasePage {
         return this;
     }
 
+    public DetailedShapePage openPageWithEconomicTabAndGridLinesBtnWait(int SHAPE_ID) {
+        page.navigate(SGP_URL_DEV + SHAPE_URL_MIDDLE + SHAPE_ID + SHAPE_DETAILS_URL_END + SHAPE_ECONOMIC_TAB_URL);
+        mapControl.waitForGridLinesBtn();
+        return this;
+    }
+
     public DetailedShapePage openPageWithInsuranceTab(int SHAPE_ID) {
         page.navigate(SGP_URL_DEV + SHAPE_URL_MIDDLE + SHAPE_ID + SHAPE_DETAILS_URL_END + SHAPE_INSURANCE_TAB_URL);
         return this;

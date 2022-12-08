@@ -1,6 +1,5 @@
-package frontend.mapControl;
+package frontend.mapControlLayers.DerivativeRights;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.DetailedShapePage;
@@ -8,31 +7,18 @@ import util.JunitExtension;
 import util.Util;
 
 @ExtendWith(JunitExtension.class)
-public class DerivativeRightsTest {
+public class CoverageHighlightingTest {
 
     DetailedShapePage detailedShapePage;
     private final int SHAPE_ID = 1277;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
-    private final String mapZoom = "2 km";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayersTest/";
 
-    @BeforeEach
-    void openDetailedShapePage() {
-        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID);
-        detailedShapePage.selectDefaultSettings();
-    }
-
-//    @Test
-//    void checkCoverageMessage() {
-//        assertAll(
-//                () -> assertEquals("100 % of tiles have no derivative rights",
-//                        detailedShapePage.page.locator("[data-cy=aside-visible]").locator(".css-1nrfgha").textContent(),
-//                        "Неверный текст сообщения"),
-//                () -> assertThat(detailedShapePage.page.locator("[data-cy=aside-visible]").locator(".css-1nrfgha")).isVisible()
-//        );
-//    }
 
     @Test
     void checkCoverageHighlighting() {
+        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID);
+        detailedShapePage.selectDefaultSettings();
+
         detailedShapePage.mapControl.getCoverageHighlightingBtn().click();
         Util.checkScreenshotForElementWithLongWait(
                 detailedShapePage.mapBlock.getMap(),
