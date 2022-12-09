@@ -24,7 +24,6 @@ public class ShapesPanelBtnTest {
 
     @Test
     void checkShapesPanelBtnClick() {
-
         // Default settings check
         assertAll(
                 () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
@@ -57,8 +56,22 @@ public class ShapesPanelBtnTest {
     }
 
     @Test
-    void checkTooltipsAndIcons() {
+    void checkShapesPanelBtnTooltips() {
+        // Default settings check
+        sgpMainPage.mapControl.checkPolygonsSectionHideTooltip("Скрыть секцию");
 
+        // Hidden panel check
+        sgpMainPage.mapControl.getPolygonsSectionBtn().click();
+        sgpMainPage.mapControl.checkPolygonsSectionShowTooltip("Отобразить секцию");
+
+        // Show panel check
+        sgpMainPage.mapControl.getPolygonsSectionBtn().click();
+        sgpMainPage.mapControl.checkPolygonsSectionHideTooltip("Скрыть секцию");
+
+    }
+
+    @Test
+    void checkShapesPanelBtnIcons() {
         // Default settings check
         Util.checkScreenshotForElement(
                 sgpMainPage.mapControl.getPolygonsSectionBtn(),
@@ -66,8 +79,6 @@ public class ShapesPanelBtnTest {
                 "expShapesPanelVisible",
                 "checkShapesPanelVisible",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
-
-        sgpMainPage.mapControl.checkPolygonsSectionHideTooltip("Скрыть секцию");
 
         // Hidden panel check
         sgpMainPage.mapControl.getPolygonsSectionBtn().click();
@@ -78,8 +89,6 @@ public class ShapesPanelBtnTest {
                 "checkShapesPanelInvisible",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
-        sgpMainPage.mapControl.checkPolygonsSectionShowTooltip("Отобразить секцию");
-
         // Show panel check
         sgpMainPage.mapControl.getPolygonsSectionBtn().click();
         Util.checkScreenshotForElement(
@@ -88,8 +97,5 @@ public class ShapesPanelBtnTest {
                 "expShapesPanelVisible",
                 "checkShapesPanelVisible",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
-
-        sgpMainPage.mapControl.checkPolygonsSectionHideTooltip("Скрыть секцию");
-
     }
 }
