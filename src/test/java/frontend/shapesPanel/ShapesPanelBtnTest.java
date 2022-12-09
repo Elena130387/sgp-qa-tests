@@ -21,6 +21,7 @@ public class ShapesPanelBtnTest {
         assertAll(
                 () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
                 () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
+                () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isEnabled(),
                 () -> assertEquals(SGP_URL_DEV, sgpMainPage.getPage().url(), "Неверный URL")
         );
 
@@ -28,6 +29,7 @@ public class ShapesPanelBtnTest {
         assertAll(
                 () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isHidden(),
                 () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
+                () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isEnabled(),
                 () -> assertEquals(SHOW_ASIDE_FALSE_URL, sgpMainPage.getPage().url(), "Неверный URL")
         );
 
@@ -35,6 +37,7 @@ public class ShapesPanelBtnTest {
         assertAll(
                 () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
                 () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
+                () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isEnabled(),
                 () -> assertEquals(SHOW_ASIDE_TRUE_URL, sgpMainPage.getPage().url(), "Неверный URL")
         );
     }
