@@ -3,6 +3,7 @@ package elements;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
+import util.Util;
 
 public class Header extends Dropdown {
     //<editor-fold desc="Selectors">
@@ -11,6 +12,8 @@ public class Header extends Dropdown {
     private static final String SELECTOR_CHOOSE_MAP_TYPE = "[data-cy=chooseSatellite]";
     private static final String SELECTOR_TEXT_LOGO = "[data-cy=text_logo]";
     private static final String SELECTOR_FULL_SCREEN = "[data-cy=fullScreen]";
+    private static final String SELECTOR_FULL_SCREEN_ON_TOOLTIP = "[data-tooltip=minimize-window]";
+    private static final String SELECTOR_FULL_SCREEN_OFF_TOOLTIP = "[data-tooltip=maximize-window]";
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
     private static final String SELECTOR_IMG_DARK_COLOR = ".css-cjmj0z";
     public static final String SELECTOR_MAP_TYPE_DROPDOWN_MENU = "[data-cy=map-style-dropdown-list]";
@@ -24,6 +27,8 @@ public class Header extends Dropdown {
     private final Locator chooseMapType;
     private final Locator textLogo;
     private final Locator fullScreenBtn;
+    private final Locator fullScreenOnTooltip;
+    private final Locator fullScreenOffTooltip;
     private final Locator colorModeBtn;
     private final Locator darkModeImg;
     private final Locator mapTypeDropdownMenu;
@@ -55,6 +60,14 @@ public class Header extends Dropdown {
         return fullScreenBtn;
     }
 
+    public Locator getFullScreenOnTooltip() {
+        return fullScreenOnTooltip;
+    }
+
+    public Locator getFullScreenOffTooltip() {
+        return fullScreenOffTooltip;
+    }
+
     public Locator getDarkModeImg() {
         return darkModeImg;
     }
@@ -79,11 +92,23 @@ public class Header extends Dropdown {
         mapTypeDropdownMenuItem = mapTypeDropdownMenu.locator(SELECTOR_DROPDOWN_ITEM);
         textLogo = header.locator(SELECTOR_TEXT_LOGO);
         fullScreenBtn = page.locator(SELECTOR_FULL_SCREEN);
+        fullScreenOnTooltip = page.locator(SELECTOR_FULL_SCREEN_ON_TOOLTIP);
+        fullScreenOffTooltip = page.locator(SELECTOR_FULL_SCREEN_OFF_TOOLTIP);
         colorModeBtn = header.locator(SELECTOR_COLOR_MODE);
         darkModeImg = colorModeBtn.locator(SELECTOR_IMG_DARK_COLOR);
     }
 
     public void waitForHeader() {
         page.waitForSelector(SELECTOR_HEADER);
+    }
+
+    public void checkFullscreenModeOnTooltip(String expText) {
+        fullScreenBtn.hover();
+        Util.assertTooltip(fullScreenOnTooltip, expText);
+    }
+
+    public void сheckFullscreenModeOffTooltip(String expText) {
+        fullScreenBtn.hover();
+        Util.assertTooltip(fullScreenOffTooltip, expText);
     }
 }

@@ -74,4 +74,14 @@ public class FullscreenModeTest {
                 "checkFullScreenModeOffEsc",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
+
+    @Test
+    void checkFullscreenModeTooltips() {
+        assertThat(sgpMainPage.header.getFullScreenBtn()).isEnabled();
+        sgpMainPage.header.getFullScreenBtn().click();
+        sgpMainPage.header.checkFullscreenModeOnTooltip("Выйти из полноэкранного режима");
+
+        sgpMainPage.header.getFullScreenBtn().click();
+        sgpMainPage.header.сheckFullscreenModeOffTooltip("Полноэкранный режим");
+    }
 }
