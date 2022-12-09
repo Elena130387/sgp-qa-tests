@@ -12,7 +12,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ExtendWith(JunitExtension.class)
 public class FullscreenModeTest {
     SgpMainPage sgpMainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
 
     @BeforeEach
     void openSgpMainPage() {

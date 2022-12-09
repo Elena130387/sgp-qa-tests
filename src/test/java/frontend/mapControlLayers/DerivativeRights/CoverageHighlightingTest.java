@@ -11,7 +11,7 @@ public class CoverageHighlightingTest {
 
     DetailedShapePage detailedShapePage;
     private final int SHAPE_ID = 1277;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayersTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
 
 
     @Test

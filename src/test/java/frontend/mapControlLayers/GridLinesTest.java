@@ -10,7 +10,7 @@ import util.Util;
 public class GridLinesTest {
     private final int SHAPE_ID = 611;
     DetailedShapePage detailedShowPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayersTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
 
     @Test
     void checkGridLines() {

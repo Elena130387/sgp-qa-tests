@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.SgpMainPage;
 import util.JunitExtension;
+import util.Util;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -13,26 +14,50 @@ import static util.Constants.*;
 @ExtendWith(JunitExtension.class)
 public class ShapesPanelBtnTest {
     SgpMainPage sgpMainPage;
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "ShapesPanelBtn/";
 
     @Test
     void checkGetShapesPanelBtn() {
         sgpMainPage = new SgpMainPage().openMainPage();
 
+        // Default settings check
         assertAll(
                 () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
+                () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelInvisible()).isHidden(),
                 () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
                 () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isEnabled(),
                 () -> assertEquals(SGP_URL_DEV, sgpMainPage.getPage().url(), "Неверный URL")
         );
 
+        Util.checkScreenshotForElement(
+                sgpMainPage.mapControl.getPolygonsSectionBtn(),
+                "actShapesPanelVisible",
+                "expShapesPanelVisible",
+                "checkShapesPanelVisible",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
+
+        sgpMainPage.mapControl.checkPolygonsSectionHideTooltip("Скрыть секцию");
+
+        // Hidden panel check
         sgpMainPage.mapControl.getPolygonsSectionBtn().click();
         assertAll(
                 () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isHidden(),
+                () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelInvisible()).isVisible(),
                 () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isVisible(),
                 () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isEnabled(),
                 () -> assertEquals(SHOW_ASIDE_FALSE_URL, sgpMainPage.getPage().url(), "Неверный URL")
         );
 
+        Util.checkScreenshotForElement(
+                sgpMainPage.mapControl.getPolygonsSectionBtn(),
+                "actShapesPanelInvisible",
+                "expShapesPanelInvisible",
+                "checkShapesPanelInvisible",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
+
+        sgpMainPage.mapControl.checkPolygonsSectionShowTooltip("Отобразить секцию");
+
+        // Show panel check
         sgpMainPage.mapControl.getPolygonsSectionBtn().click();
         assertAll(
                 () -> assertThat(sgpMainPage.shapesPanel.getShapesPanelVisible()).isVisible(),
@@ -40,5 +65,14 @@ public class ShapesPanelBtnTest {
                 () -> assertThat(sgpMainPage.mapControl.getPolygonsSectionBtn()).isEnabled(),
                 () -> assertEquals(SHOW_ASIDE_TRUE_URL, sgpMainPage.getPage().url(), "Неверный URL")
         );
+
+        Util.checkScreenshotForElement(
+                sgpMainPage.mapControl.getPolygonsSectionBtn(),
+                "actShapesPanelVisible",
+                "expShapesPanelVisible",
+                "checkShapesPanelVisible",
+                EXPSCREENSHOTS_TEST_CLASS_DIR);
+
+        sgpMainPage.mapControl.checkPolygonsSectionHideTooltip("Скрыть секцию");
     }
 }

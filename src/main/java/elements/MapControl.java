@@ -3,6 +3,7 @@ package elements;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
+import util.Util;
 
 public class MapControl {
 
@@ -20,6 +21,8 @@ public class MapControl {
     private static final String SELECTOR_AGGREGATED = "[data-cy=aggregated]";
     private static final String SELECTOR_VIEWPORT = "[data-cy=viewport]";
     private static final String SELECTOR_POLYGONS_SECTION_OPEN_BTN = "[data-cy=polygon]";
+    private static final String SELECTOR_POLYGONS_SECTION_HIDE_TOOLTIP = "[data-tooltip=hide-aside]";
+    private static final String SELECTOR_POLYGONS_SECTION_SHOW_TOOLTIP = "[data-tooltip=show-aside]";
     private static final String SELECTOR_GEO_SEARCH = "[data-cy=geoSearch]";
     private static final String SELECTOR_GEO_SEARCH_LIST = ".suggestions";
     //</editor-fold>
@@ -28,6 +31,8 @@ public class MapControl {
     private final Locator navigationBar;
     private final Locator coverageAndGridBar;
     private final Locator polygonsSectionBtn;
+    private final Locator polygonsSectionHideTooltip;
+    private final Locator polygonsSectionShowTooltip;
     private final Locator geoSearch;
     private final Locator zoomInBtn;
     private final Locator geoSearchList;
@@ -53,6 +58,14 @@ public class MapControl {
 
     public Locator getPolygonsSectionBtn() {
         return polygonsSectionBtn;
+    }
+
+    public Locator getPolygonsSectionHideTooltip() {
+        return polygonsSectionHideTooltip;
+    }
+
+    public Locator getPolygonsSectionShowTooltip() {
+        return polygonsSectionShowTooltip;
     }
 
     public Locator getGeoSearch() {
@@ -111,6 +124,8 @@ public class MapControl {
         navigationBar = page.locator(SELECTOR_NAVIGATION_BAR);
         coverageAndGridBar = page.locator(SELECTOR_COVERAGE_AND_GRID_BAR);
         polygonsSectionBtn = page.locator(SELECTOR_POLYGONS_SECTION_OPEN_BTN);
+        polygonsSectionHideTooltip = page.locator(SELECTOR_POLYGONS_SECTION_HIDE_TOOLTIP);
+        polygonsSectionShowTooltip = page.locator(SELECTOR_POLYGONS_SECTION_SHOW_TOOLTIP);
         geoSearch = page.locator(SELECTOR_GEO_SEARCH);
         geoSearchList = geoSearch.locator(SELECTOR_GEO_SEARCH_LIST);
         zoomOutBtn = navigationBar.locator(SELECTOR_ZOOM_OUT);
@@ -150,5 +165,15 @@ public class MapControl {
 
     public void waitForGridLinesBtn() {
         page.waitForSelector(SELECTOR_GRID_LINES);
+    }
+
+    public void checkPolygonsSectionHideTooltip(String expText) {
+        polygonsSectionBtn.focus();
+        Util.assertTooltip(polygonsSectionHideTooltip, expText);
+    }
+
+    public void checkPolygonsSectionShowTooltip(String expText) {
+        polygonsSectionBtn.focus();
+        Util.assertTooltip(polygonsSectionShowTooltip, expText);
     }
 }

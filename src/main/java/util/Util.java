@@ -58,7 +58,7 @@ public class Util {
             System.out.println("Не удалось удалить файла  " + imgNow);
         }
 
-        if (diffPercentage > 0.01) {
+        if (diffPercentage > 0.5) {
             BufferedImage resultImage = result.getResult();
             ImageComparisonUtil.saveImage(diffFile, resultImage);
 
@@ -105,10 +105,15 @@ public class Util {
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
-    public static void assertTooltip(Locator element, String text) {
+    public static void assertTooltipInAtrTitle(Locator element, String text) {
         element.hover();
-        String tooltipLocator = element.getAttribute("aria-describedby");
+        String tooltipLocator = element.getAttribute("title");
         Locator tooltipItself = element.page().locator(String.format("#%s", tooltipLocator));
         assertEquals(text, tooltipItself.textContent());
+    }
+
+    public static void assertTooltip(Locator element, String expText) {
+        String tooltipText = element.textContent();
+        assertEquals(expText, tooltipText);
     }
 }

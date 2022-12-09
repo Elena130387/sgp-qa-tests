@@ -10,7 +10,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 @ExtendWith(JunitExtension.class)
 public class ColorModeTest {
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
     SgpMainPage sgpMainPage;
 
     @Test
