@@ -30,7 +30,7 @@ public class ShapeCreationPanelTest {
     private static final String CHOOSE_FILE_BTN_TEXT = "Выбрать файл";
     private static final String CANCEL_BTN_TEXT = "Отменить";
     private static final String CALCULATE_BTN_TEXT = "Создать и Запустить расчет";
-    private static final String DRAW_POLYGON_TOOLTIP = "Создать вручную";
+    private static final String DRAW_POLYGON_TOOLTIP = "Создать вручную1";
     private static final String ONE_POLYGON_JSON = "./src/test/resources/shapeInput/onePolygonForUiTests.json";
     private static final String SHAPE_NAME_ONE_POLYGON_FROM_JSON = "Auto-test: json shape creation";
     private static final String TWO_POLYGONS_JSON = "./src/test/resources/shapeInput/twoPolygonsForUiTests.json";
@@ -73,9 +73,7 @@ public class ShapeCreationPanelTest {
                 () -> assertThat(shapeCreationPanel.getDrawPolygonBtn()).isVisible()
         );
 
-        shapeCreationPanel.getDrawPolygonBtn().hover();
-        assertEquals(DRAW_POLYGON_TOOLTIP, shapeCreationPanel.getDrawPolygonTooltip().textContent(),
-                "Неверный тултип на кнопке для отрисовки полигонов вручную");
+        shapeCreationPanel.checkDrawPolygonBtnTooltip(DRAW_POLYGON_TOOLTIP);
     }
 
     @Test
@@ -349,11 +347,11 @@ public class ShapeCreationPanelTest {
         );
     }
 
-    @AfterEach
-    // TODO: Когда на кнопку "Отмена" добавят очистку формы создания области, добавить эту очистку сюда
+//    @AfterEach
+//    // TODO: Когда на кнопку "Отмена" добавят очистку формы создания области, добавить эту очистку сюда
 
     @AfterAll
-    void cleanUp() {
+    static void cleanUp() {
         new SgpMainPage().openMainPageWithHeaderWait();
         BasePage.deleteShapeByName(SHAPE_NAME_ONE_MANUAL_POLYGON);
         BasePage.deleteShapeByName(SHAPE_NAME_TWO_MANUAL_POLYGONS);

@@ -109,7 +109,7 @@ public class Util {
         element.hover();
         String tooltipLocator = element.getAttribute("title");
         Locator tooltipItself = element.page().locator(String.format("#%s", tooltipLocator));
-        assertEquals(text, tooltipItself.textContent());
+        assertEquals(text, tooltipItself.textContent(), "Неверный тултип");
     }
 
     public static void assertTooltip(Locator element, Locator tooltip, String expText) {
