@@ -17,7 +17,7 @@ public class GridLinesTest {
 
     @BeforeEach
     void openSgpMainPage() {
-        detailedShowPage = new DetailedShapePage().openPageWithEconomicTabAndGridLinesBtnWait(SHAPE_ID);
+        detailedShowPage = new DetailedShapePage().openPageWithEconomicTabAndCoverageGridBarWait(SHAPE_ID);
     }
 
     @Test

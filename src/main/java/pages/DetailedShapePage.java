@@ -11,6 +11,12 @@ public class DetailedShapePage extends BasePage {
         return this;
     }
 
+    public DetailedShapePage openPageWithAsideTrueAndCoverageGridBarWait(int SHAPE_ID) {
+        page.navigate(SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END);
+        mapControl.waitForCoverageGridBar();
+        return this;
+    }
+
     public DetailedShapePage openPageWithAsideFalse(int SHAPE_ID) {
         page.navigate(SHAPE_SHOW_PAGE_WITH_ASIDE_FALSE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END);
         return this;
@@ -38,9 +44,9 @@ public class DetailedShapePage extends BasePage {
         return this;
     }
 
-    public DetailedShapePage openPageWithEconomicTabAndGridLinesBtnWait(int SHAPE_ID) {
+    public DetailedShapePage openPageWithEconomicTabAndCoverageGridBarWait(int SHAPE_ID) {
         page.navigate(SGP_URL_DEV + SHAPE_URL_MIDDLE + SHAPE_ID + SHAPE_DETAILS_URL_END + SHAPE_ECONOMIC_TAB_URL);
-        mapControl.waitForGridLinesBtn();
+        mapControl.waitForCoverageGridBar();
         return this;
     }
 

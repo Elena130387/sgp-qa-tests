@@ -13,15 +13,19 @@ public class MapControl {
     private static final String SELECTOR_ZOOM_OUT = ".mapboxgl-ctrl-zoom-out";
     private static final String SELECTOR_COMPASS = ".mapboxgl-ctrl-compass";
     private static final String SELECTOR_COMPASS_IMG = ".mapboxgl-ctrl-icon";
+
     private static final String SELECTOR_COVERAGE_AND_GRID_BAR = "[data-cy=map-controls]";
     private static final String SELECTOR_COVERAGE = "[data-cy=coverage]";
     private static final String SELECTOR_COVERAGE_HIGHLIGHTING = "[data-cy=highlighting]";
     private static final String SELECTOR_GLOBAL_GRID = "[data-cy=globalGrid]";
+    private static final String SELECTOR_GLOBAL_GRID_HIDE_TOOLTIP = "[data-tooltip=hide-grid]";
+    private static final String SELECTOR_GLOBAL_GRID_SHOW_TOOLTIP = "[data-tooltip=show-grid]";
     private static final String SELECTOR_GRID_LINES = "[data-cy=gridLines]";
     private static final String SELECTOR_GRID_LINES_HIDE_TOOLTIP = "[data-tooltip=hide-grid-lines]";
     private static final String SELECTOR_GRID_LINES_SHOW_TOOLTIP = "[data-tooltip=show-grid-lines]";
     private static final String SELECTOR_AGGREGATED = "[data-cy=aggregated]";
     private static final String SELECTOR_VIEWPORT = "[data-cy=viewport]";
+
     private static final String SELECTOR_POLYGONS_SECTION_OPEN_BTN = "[data-cy=polygon]";
     private static final String SELECTOR_POLYGONS_SECTION_HIDE_TOOLTIP = "[data-tooltip=hide-aside]";
     private static final String SELECTOR_POLYGONS_SECTION_SHOW_TOOLTIP = "[data-tooltip=show-aside]";
@@ -31,7 +35,7 @@ public class MapControl {
 
     //<editor-fold desc="Elements">
     private final Locator navigationBar;
-    private final Locator coverageAndGridBar;
+    private final Locator coverageGridBar;
     private final Locator polygonsSectionBtn;
     private final Locator polygonsSectionHideTooltip;
     private final Locator polygonsSectionShowTooltip;
@@ -44,6 +48,8 @@ public class MapControl {
     private final Locator coverageBtn;
     private final Locator coverageHighlightingBtn;
     private final Locator globalGridBtn;
+    private final Locator globalGridHideTooltip;
+    private final Locator globalGridShowTooltip;
     private final Locator gridLinesBtn;
     private final Locator gridLinesHideTooltip;
     private final Locator gridLinesShowTooltip;
@@ -90,7 +96,7 @@ public class MapControl {
 
     public MapControl() {
         navigationBar = page.locator(SELECTOR_NAVIGATION_BAR);
-        coverageAndGridBar = page.locator(SELECTOR_COVERAGE_AND_GRID_BAR);
+        coverageGridBar = page.locator(SELECTOR_COVERAGE_AND_GRID_BAR);
         polygonsSectionBtn = page.locator(SELECTOR_POLYGONS_SECTION_OPEN_BTN);
         polygonsSectionHideTooltip = page.locator(SELECTOR_POLYGONS_SECTION_HIDE_TOOLTIP);
         polygonsSectionShowTooltip = page.locator(SELECTOR_POLYGONS_SECTION_SHOW_TOOLTIP);
@@ -100,14 +106,16 @@ public class MapControl {
         zoomInBtn = navigationBar.locator(SELECTOR_ZOOM_IN);
         compassBtn = navigationBar.locator(SELECTOR_COMPASS);
         compassBtnImg = compassBtn.locator(SELECTOR_COMPASS_IMG);
-        coverageBtn = coverageAndGridBar.locator(SELECTOR_COVERAGE);
-        coverageHighlightingBtn = coverageAndGridBar.locator(SELECTOR_COVERAGE_HIGHLIGHTING);
-        globalGridBtn = coverageAndGridBar.locator(SELECTOR_GLOBAL_GRID);
-        gridLinesBtn = coverageAndGridBar.locator(SELECTOR_GRID_LINES);
+        coverageBtn = coverageGridBar.locator(SELECTOR_COVERAGE);
+        coverageHighlightingBtn = coverageGridBar.locator(SELECTOR_COVERAGE_HIGHLIGHTING);
+        globalGridBtn = coverageGridBar.locator(SELECTOR_GLOBAL_GRID);
+        globalGridHideTooltip = page.locator(SELECTOR_GLOBAL_GRID_HIDE_TOOLTIP);
+        globalGridShowTooltip = page.locator(SELECTOR_GLOBAL_GRID_SHOW_TOOLTIP);
+        gridLinesBtn = coverageGridBar.locator(SELECTOR_GRID_LINES);
         gridLinesHideTooltip = page.locator(SELECTOR_GRID_LINES_HIDE_TOOLTIP);
         gridLinesShowTooltip = page.locator(SELECTOR_GRID_LINES_SHOW_TOOLTIP);
-        aggregationBtn = coverageAndGridBar.locator(SELECTOR_AGGREGATED);
-        viewportBtn = coverageAndGridBar.locator(SELECTOR_VIEWPORT);
+        aggregationBtn = coverageGridBar.locator(SELECTOR_AGGREGATED);
+        viewportBtn = coverageGridBar.locator(SELECTOR_VIEWPORT);
     }
 
     private void clickZoom(String zoomLocator, int clickNum) {
@@ -133,8 +141,8 @@ public class MapControl {
         return state;
     }
 
-    public void waitForGridLinesBtn() {
-        page.waitForSelector(SELECTOR_GRID_LINES);
+    public void waitForCoverageGridBar() {
+        page.waitForSelector(SELECTOR_COVERAGE_AND_GRID_BAR);
     }
 
     public void checkPolygonsSectionHideTooltip(String expText) {
@@ -151,5 +159,13 @@ public class MapControl {
 
     public void checkGridLinesShowTooltip(String expText) {
         Util.assertTooltip(gridLinesBtn,gridLinesShowTooltip, expText);
+    }
+
+    public void checkGlobalGridHideTooltip(String expText) {
+        Util.assertTooltip(globalGridBtn,globalGridHideTooltip, expText);
+    }
+
+    public void checkGlobalGridShowTooltip(String expText) {
+        Util.assertTooltip(globalGridBtn,globalGridShowTooltip, expText);
     }
 }
