@@ -10,12 +10,13 @@ import util.Util;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static util.Constants.MAP_ZOOM_STANDART;
+import static util.Util.assertTooltipInAtrTitle;
 
 @ExtendWith(JunitExtension.class)
 public class ZoomTest {
     DetailedShapePage detailedShowPage;
     private final int SHAPE_ID = 215;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
     private final String mapZoom = MAP_ZOOM_STANDART;
 
     @BeforeEach
@@ -26,6 +27,7 @@ public class ZoomTest {
 
     @Test
     void checkZoom() {
+        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomInBtn(), "Zoom In");
         detailedShowPage.mapControl.clickZoomIn(1);
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
@@ -34,6 +36,7 @@ public class ZoomTest {
                 "checkZoomIn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
+        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomOutBtn(), "Zoom Out");
         detailedShowPage.mapControl.clickZoomOut(2);
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
@@ -44,7 +47,7 @@ public class ZoomTest {
     }
 
     @Test
-    void checkResetViewport() {
+    void checkResetViewportFromZoomOut() {
         detailedShowPage.mapControl.clickZoomOut(2);
         String actualZoom = detailedShowPage.mapBlock.getActualMapZoomWithoutSpace();
         String EXPECT_ZOOM_WITHOUT_SPACE = mapZoom.replaceAll("\\s+", "");
@@ -52,6 +55,28 @@ public class ZoomTest {
                 EXPECT_ZOOM_WITHOUT_SPACE,
                 actualZoom,
                 "Приближение карты не выполнено");
+
+        detailedShowPage.mapControl.getViewportBtn().click();
+        detailedShowPage.getPage().waitForTimeout(1000);
+
+        actualZoom = detailedShowPage.mapBlock.getActualMapZoomWithoutSpace();
+        assertEquals(
+                EXPECT_ZOOM_WITHOUT_SPACE,
+                actualZoom,
+                "Возврат к стандартному zoom карты не выполнен");
+
+        detailedShowPage.mapControl.checkResetViewportBtnTooltip("Reset viewport");
+    }
+
+    @Test
+    void checkResetViewportFromZoomIn() {
+        detailedShowPage.mapControl.clickZoomIn(2);
+        String actualZoom = detailedShowPage.mapBlock.getActualMapZoomWithoutSpace();
+        String EXPECT_ZOOM_WITHOUT_SPACE = mapZoom.replaceAll("\\s+", "");
+        assertNotEquals(
+                EXPECT_ZOOM_WITHOUT_SPACE,
+                actualZoom,
+                "Отдаление карты не выполнено");
 
         detailedShowPage.mapControl.getViewportBtn().click();
         detailedShowPage.getPage().waitForTimeout(1000);

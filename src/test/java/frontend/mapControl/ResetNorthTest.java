@@ -8,6 +8,7 @@ import util.JunitExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static util.Constants.MAP_COMPASS_IMG_STANDART;
+import static util.Util.assertTooltipInAtrTitle;
 
 @ExtendWith(JunitExtension.class)
 public class ResetNorthTest {
@@ -17,6 +18,7 @@ public class ResetNorthTest {
     void checkResetNorth() {
         sgpMainPage = new SgpMainPage().openMainPage();
 
+        assertTooltipInAtrTitle(sgpMainPage.mapControl.getCompassBtn(), "Reset North");
         sgpMainPage.mapBlock.turnMapToTheLeft(2);
         String compassState = sgpMainPage.mapControl.getCompassState();
         assertNotEquals(

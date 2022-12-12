@@ -13,7 +13,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class GeoSearchTest {
     SgpMainPage sgpMainPage;
     private final String CITY_NAME = "Moscow";
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
 
     @BeforeEach
     void openSgpMainPage() {

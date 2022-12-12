@@ -25,9 +25,11 @@ public class LogoBtnTest {
         shapeCreationPage.header.getTextLogo().click();
         assertAll(
                 () -> assertEquals(SGP_URL_DEV, shapeCreationPage.getPage().url(), "Неверный URL"),
+                () -> assertThat(shapeCreationPage.header.getNewShape()).isVisible(),
                 () -> assertThat(shapeCreationPage.header.getNewShape()).isEnabled(),
                 () -> assertThat(shapeCreationPage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(shapeCreationPage.mapControl.getPolygonsSectionBtn()).isVisible()
+                () -> assertThat(shapeCreationPage.mapControl.getPolygonsSectionBtn()).isVisible(),
+                () -> assertThat(shapeCreationPage.mapControl.getPolygonsSectionBtn()).isEnabled()
         );
     }
 
@@ -38,7 +40,8 @@ public class LogoBtnTest {
         detailedShapePage.header.getTextLogo().click();
         assertAll(
                 () -> assertThat(detailedShapePage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(detailedShapePage.mapControl.getPolygonsSectionBtn()).isVisible()
+                () -> assertThat(shapeCreationPage.mapControl.getPolygonsSectionBtn()).isVisible(),
+                () -> assertThat(detailedShapePage.mapControl.getPolygonsSectionBtn()).isEnabled()
         );
     }
 }
