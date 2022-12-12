@@ -22,7 +22,7 @@ public class EndToEndShapeCreationTest {
     private static final String CITY = "Detroit";
     private static final String EXPECTED_ZOOM = "3 km";
     private static final String MANUAL_SHAPE_CREATION_NAME = "Auto-test: manual shape creation";
-    private static final String PREPARED_JSON_FILE = "./src/test/resources/shapeInput/onePolygonForUiTests.json";
+    private static final String PREPARED_JSON_FILE = "./src/test/resources/shapeInput/smallShapeInTulunForUiTests.json";
     private static final String JSON_SHAPE_CREATION_NAME = "Auto-test: json shape creation";
     ShapeCreationPage shapeCreationPage;
     ShapeCreationPanel shapeCreationPanel;
@@ -50,7 +50,7 @@ public class EndToEndShapeCreationTest {
         shapeCreationPanel.getDrawPolygonBtn().click();
         shapeCreationPage.drawRectangleByScreenPositions(800, 300, 900, 400);
 
-        shapeCreationPanel.getCreateProcessBtn().click();
+        shapeCreationPanel.getCreateProcess().click();
 
         shapeShowPage.shapeData.waitForProgressBar();
         assertThat(shapeShowPage.changeShapeMenuBtn.getMenuBtn()).isVisible();
@@ -61,7 +61,7 @@ public class EndToEndShapeCreationTest {
         FileChooser fileChooser = page.waitForFileChooser(() -> shapeCreationPanel.getChooseFileBtn().click());
         fileChooser.setFiles(Paths.get(PREPARED_JSON_FILE));
 
-        shapeCreationPanel.getCreateProcessBtn().click();
+        shapeCreationPanel.getCreateProcess().click();
 
         shapeShowPage.shapeData.waitForProgressBar();
         assertThat(shapeShowPage.changeShapeMenuBtn.getMenuBtn()).isVisible();
