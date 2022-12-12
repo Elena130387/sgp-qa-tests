@@ -21,6 +21,7 @@ public class ShapeEstimatedTabGeneralTest {
     private final String ESTIMATED_BUILDING_DAMAGE = "Повреждения зданий";
     private final String ESTIMATED_POPULATION = "Население";
     private final String ESTIMATED_LANDUSE = "Тип землепользования, %";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "ShapeEstimatedTabGeneralTest/";
     private final EstimatedTabGeneral estimatedTabGeneral = new EstimatedTabGeneral();
     private final ObjectsLayer objectsLayer = new ObjectsLayer();
     private final BuildingsLayer buildingsLayer = new BuildingsLayer();
@@ -28,7 +29,6 @@ public class ShapeEstimatedTabGeneralTest {
     private final BuildingDamageLayer buildingDamageLayer = new BuildingDamageLayer();
     private final PopulationLayer populationLayer = new PopulationLayer();
     private final LanduseLayer landuseLayer = new LanduseLayer();
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "ShapeEstimatedTabGeneralTest/";
     DetailedShapePage detailedShapePage;
 
     @BeforeEach
