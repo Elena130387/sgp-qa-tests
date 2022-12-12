@@ -4,9 +4,9 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
 
-public class EstimatedTabBuildings {
+public class BuildingsLayer {
     //<editor-fold desc="Selectors">
-    private static final String SELECTOR_BUILDINGS = "[data-cy=buildings-title]";
+    private static final String SELECTOR_BUILDINGS_TITLE = "[data-cy=buildings-title]";
     private static final String SELECTOR_BUILDING_COUNT_TITLE = "[data-cy=building-count]";
     private static final String SELECTOR_BUILDING_COUNT_VALUE = "[data-cy=building-count-value]";
     private static final String SELECTOR_AVERAGE_HEIGHT_TYPE = "[data-cy=average-height]";
@@ -17,7 +17,7 @@ public class EstimatedTabBuildings {
     //</editor-fold>
 
     //<editor-fold desc="Elements">
-    private final Locator buildings;
+    private final Locator buildingsTitle;
     private final Locator buildingCountTitle;
     private final Locator buildingCountValue;
     private final Locator averageHeightType;
@@ -29,8 +29,8 @@ public class EstimatedTabBuildings {
 
     //<editor-fold desc="Getters">
 
-    public Locator getBuildings() {
-        return buildings;
+    public Locator getBuildingsTitle() {
+        return buildingsTitle;
     }
 
     public Locator getBuildingCountTitle() {
@@ -61,8 +61,8 @@ public class EstimatedTabBuildings {
 
     private final Page page = JunitExtension.page;
 
-    public EstimatedTabBuildings() {
-        buildings = page.locator(SELECTOR_BUILDINGS);
+    public BuildingsLayer() {
+        buildingsTitle = page.locator(SELECTOR_BUILDINGS_TITLE);
         buildingCountTitle = page.locator(SELECTOR_BUILDING_COUNT_TITLE);
         buildingCountValue = page.locator(SELECTOR_BUILDING_COUNT_VALUE);
         averageHeightType = page.locator(SELECTOR_AVERAGE_HEIGHT_TYPE);

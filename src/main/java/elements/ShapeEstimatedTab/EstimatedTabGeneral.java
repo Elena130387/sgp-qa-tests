@@ -10,11 +10,12 @@ public class EstimatedTabGeneral {
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_OBJECTS_LAYER = "[data-cy=objects]";
     private static final String SELECTOR_BUILDINGS_LAYER = "[data-cy=buildings]";
-    private static final String SELECTOR_BUILDING_HEIGHT_LAYER = "[data-cy=building-height]";
-    private static final String SELECTOR_BUILDING_DAMAGE_LAYER = "[data-cy=building-damage]";
-    private static final String SELECTOR_POPULATION_LAYER = "[data-cy=population-layer]";
-    private static final String SELECTOR_LANDUSE_LAYER = "[data-cy=land-use]";
+    private static final String SELECTOR_BUILDING_HEIGHT_LAYER = "[data-cy=buildingHeight]";
+    private static final String SELECTOR_BUILDING_DAMAGE_LAYER = "[data-cy=BuildingDamage]";
+    private static final String SELECTOR_POPULATION_LAYER = "[data-cy=population]";
+    private static final String SELECTOR_LANDUSE_LAYER = "[data-cy=landuse]";
     private static final String SELECTOR_LAYER_ICONS = ".css-4bw3ev";
+    private static final String SELECTOR_LAYER_CHECKBOX = ".css-e2du76";
 
     //</editor-fold>
 
@@ -25,13 +26,21 @@ public class EstimatedTabGeneral {
     private final Locator buildingDamageLayer;
     private final Locator populationLayer;
     private final Locator landuseLayer;
-    private final Locator layerIcons;
+    private final Locator objectsLayerIcon;
+    private final Locator buildingsLayerIcon;
+    private final Locator buildingHeightLayerIcon;
+    private final Locator buildingDamageLayerIcon;
+    private final Locator populationLayerIcon;
+    private final Locator landuseLayerIcon;
+    private final Locator buildingDamageLayerCheckbox;
+    private final Locator populationLayerCheckbox;
 
     //</editor-fold>
 
     //<editor-fold desc="Getters">
 
     public Locator getObjectsLayer() {
+
         return objectsLayer;
     }
 
@@ -55,8 +64,29 @@ public class EstimatedTabGeneral {
         return landuseLayer;
     }
 
-    public Locator getLayerIcons() {
-        return layerIcons;
+    public Locator getObjectsLayerIcon() {
+        return objectsLayerIcon;
+    }
+    public Locator getBuildingsLayerIcon() {
+        return buildingsLayerIcon;
+    }
+    public Locator getBuildingHeightLayerIcon() {
+        return buildingHeightLayerIcon;
+    }
+    public Locator getBuildingDamageLayerIcon() {
+        return buildingDamageLayerIcon;
+    }
+    public Locator getPopulationLayerIcon() {
+        return populationLayerIcon;
+    }
+    public Locator getLanduseLayerIcon() {
+        return landuseLayerIcon;
+    }
+    public Locator getBuildingDamageLayerCheckbox() {
+        return buildingDamageLayerCheckbox;
+    }
+    public Locator getPopulationLayerCheckbox() {
+        return populationLayerCheckbox;
     }
 
     //</editor-fold>
@@ -70,6 +100,13 @@ public class EstimatedTabGeneral {
         buildingDamageLayer = page.locator(SELECTOR_BUILDING_DAMAGE_LAYER);
         populationLayer = page.locator(SELECTOR_POPULATION_LAYER);
         landuseLayer = page.locator(SELECTOR_LANDUSE_LAYER);
-        layerIcons = page.locator(SELECTOR_LAYER_ICONS);
+        objectsLayerIcon = objectsLayer.locator(SELECTOR_LAYER_ICONS);
+        buildingsLayerIcon = buildingsLayer.locator(SELECTOR_LAYER_ICONS);
+        buildingHeightLayerIcon = buildingHeightLayer.locator(SELECTOR_LAYER_ICONS);
+        buildingDamageLayerIcon = buildingDamageLayer.locator(SELECTOR_LAYER_ICONS);
+        populationLayerIcon = populationLayer.locator(SELECTOR_LAYER_ICONS);
+        landuseLayerIcon = landuseLayer.locator(SELECTOR_LAYER_ICONS);
+        buildingDamageLayerCheckbox = buildingDamageLayer.locator(SELECTOR_LAYER_CHECKBOX);
+        populationLayerCheckbox = populationLayer.locator(SELECTOR_LAYER_CHECKBOX);
     }
 }
