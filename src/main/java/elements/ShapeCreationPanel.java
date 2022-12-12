@@ -4,6 +4,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import org.jetbrains.annotations.NotNull;
 import util.JunitExtension;
+import util.Util;
 
 import java.util.regex.Pattern;
 
@@ -176,4 +177,7 @@ public class ShapeCreationPanel {
         return Double.parseDouble(totalAreaInfo.replaceAll(UNITS, ""));
     }
 
+    public void checkDrawPolygonBtnTooltip(String expText) {
+        Util.assertTooltip(drawPolygonBtn,drawPolygonTooltip, expText);
+    }
 }

@@ -6,6 +6,8 @@ import pages.DetailedShapePage;
 import util.JunitExtension;
 import util.Util;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 @ExtendWith(JunitExtension.class)
 public class CoverageHighlightingTest {
 
@@ -34,5 +36,18 @@ public class CoverageHighlightingTest {
                 "expCoverageHighlightingOut",
                 "checkCoverageHighlightingOut",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
+    }
+
+    @Test
+    void checkGridLinesBtnTooltips() {
+        detailedShapePage = new DetailedShapePage().openPageWithAsideTrueAndCoverageGridBarWait(SHAPE_ID);
+
+        assertThat(detailedShapePage.mapControl.getCoverageHighlightingBtn()).isEnabled();
+        detailedShapePage.mapControl.getCoverageHighlightingBtn().click();
+        detailedShapePage.mapControl.checkCoverageHighlightHideTooltip("Disable highlighting tiles with no derivative rights");
+
+
+        detailedShapePage.mapControl.getCoverageHighlightingBtn().click();
+        detailedShapePage.mapControl.checkCoverageHighlightShowTooltip("Highlight tiles with no derivative rights");
     }
 }
