@@ -112,8 +112,9 @@ public class Util {
         assertEquals(text, tooltipItself.textContent());
     }
 
-    public static void assertTooltip(Locator element, String expText) {
-        String tooltipText = element.textContent();
+    public static void assertTooltip(Locator element, Locator tooltip, String expText) {
+        element.hover();
+        String tooltipText = tooltip.textContent();
         assertEquals(expText, tooltipText);
     }
 }

@@ -82,6 +82,6 @@ public class FullscreenModeTest {
         sgpMainPage.header.checkFullscreenModeOnTooltip("Выйти из полноэкранного режима");
 
         sgpMainPage.header.getFullScreenBtn().click();
-        sgpMainPage.header.сheckFullscreenModeOffTooltip("Полноэкранный режим");
+        sgpMainPage.header.checkFullscreenModeOffTooltip("Полноэкранный режим");
     }
 }

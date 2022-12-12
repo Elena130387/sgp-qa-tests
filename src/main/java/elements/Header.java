@@ -15,6 +15,7 @@ public class Header extends Dropdown {
     private static final String SELECTOR_FULL_SCREEN_ON_TOOLTIP = "[data-tooltip=minimize-window]";
     private static final String SELECTOR_FULL_SCREEN_OFF_TOOLTIP = "[data-tooltip=maximize-window]";
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
+    private static final String SELECTOR_COLOR_MODE_TOOLTIP = "[data-tooltip=color-mode]";
     private static final String SELECTOR_IMG_DARK_COLOR = ".css-cjmj0z";
     public static final String SELECTOR_MAP_TYPE_DROPDOWN_MENU = "[data-cy=map-style-dropdown-list]";
     private static final String SELECTOR_DROPDOWN_ITEM = "[data-cy=menuItem]";
@@ -30,6 +31,7 @@ public class Header extends Dropdown {
     private final Locator fullScreenOnTooltip;
     private final Locator fullScreenOffTooltip;
     private final Locator colorModeBtn;
+    private final Locator colorModeTooltip;
     private final Locator darkModeImg;
     private final Locator mapTypeDropdownMenu;
     private final Locator mapTypeDropdownMenuItem;
@@ -54,6 +56,10 @@ public class Header extends Dropdown {
 
     public Locator getColorModeBtn() {
         return colorModeBtn;
+    }
+
+    public Locator getColorModeTooltip() {
+        return colorModeTooltip;
     }
 
     public Locator getFullScreenBtn() {
@@ -95,6 +101,7 @@ public class Header extends Dropdown {
         fullScreenOnTooltip = page.locator(SELECTOR_FULL_SCREEN_ON_TOOLTIP);
         fullScreenOffTooltip = page.locator(SELECTOR_FULL_SCREEN_OFF_TOOLTIP);
         colorModeBtn = header.locator(SELECTOR_COLOR_MODE);
+        colorModeTooltip = page.locator(SELECTOR_COLOR_MODE_TOOLTIP);
         darkModeImg = colorModeBtn.locator(SELECTOR_IMG_DARK_COLOR);
     }
 
@@ -103,12 +110,14 @@ public class Header extends Dropdown {
     }
 
     public void checkFullscreenModeOnTooltip(String expText) {
-        fullScreenBtn.hover();
-        Util.assertTooltip(fullScreenOnTooltip, expText);
+        Util.assertTooltip(fullScreenBtn,fullScreenOnTooltip, expText);
     }
 
-    public void сheckFullscreenModeOffTooltip(String expText) {
-        fullScreenBtn.hover();
-        Util.assertTooltip(fullScreenOffTooltip, expText);
+    public void checkFullscreenModeOffTooltip(String expText) {
+        Util.assertTooltip(fullScreenBtn,fullScreenOffTooltip, expText);
+    }
+
+    public void checkColorModeTooltip(String expText) {
+        Util.assertTooltip(colorModeBtn,colorModeTooltip, expText);
     }
 }

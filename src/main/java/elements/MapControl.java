@@ -168,12 +168,10 @@ public class MapControl {
     }
 
     public void checkPolygonsSectionHideTooltip(String expText) {
-        polygonsSectionBtn.hover();
-        Util.assertTooltip(polygonsSectionHideTooltip, expText);
+        Util.assertTooltip(polygonsSectionBtn,polygonsSectionHideTooltip, expText);
     }
 
     public void checkPolygonsSectionShowTooltip(String expText) {
-        polygonsSectionBtn.hover();
-        Util.assertTooltip(polygonsSectionShowTooltip, expText);
+        Util.assertTooltip(polygonsSectionBtn,polygonsSectionShowTooltip, expText);
     }
 }
