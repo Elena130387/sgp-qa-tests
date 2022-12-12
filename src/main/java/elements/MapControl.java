@@ -18,6 +18,8 @@ public class MapControl {
     private static final String SELECTOR_COVERAGE_HIGHLIGHTING = "[data-cy=highlighting]";
     private static final String SELECTOR_GLOBAL_GRID = "[data-cy=globalGrid]";
     private static final String SELECTOR_GRID_LINES = "[data-cy=gridLines]";
+    private static final String SELECTOR_GRID_LINES_HIDE_TOOLTIP = "[data-tooltip=hide-grid-lines]";
+    private static final String SELECTOR_GRID_LINES_SHOW_TOOLTIP = "[data-tooltip=show-grid-lines]";
     private static final String SELECTOR_AGGREGATED = "[data-cy=aggregated]";
     private static final String SELECTOR_VIEWPORT = "[data-cy=viewport]";
     private static final String SELECTOR_POLYGONS_SECTION_OPEN_BTN = "[data-cy=polygon]";
@@ -43,29 +45,15 @@ public class MapControl {
     private final Locator coverageHighlightingBtn;
     private final Locator globalGridBtn;
     private final Locator gridLinesBtn;
+    private final Locator gridLinesHideTooltip;
+    private final Locator gridLinesShowTooltip;
     private final Locator aggregationBtn;
     private final Locator viewportBtn;
     //</editor-fold>
 
     //<editor-fold desc="Getters">
-    public Locator getNavigationBar() {
-        return navigationBar;
-    }
-
-    public Locator getCoverageAndGridBar() {
-        return coverageAndGridBar;
-    }
-
     public Locator getPolygonsSectionBtn() {
         return polygonsSectionBtn;
-    }
-
-    public Locator getPolygonsSectionHideTooltip() {
-        return polygonsSectionHideTooltip;
-    }
-
-    public Locator getPolygonsSectionShowTooltip() {
-        return polygonsSectionShowTooltip;
     }
 
     public Locator getGeoSearch() {
@@ -76,24 +64,8 @@ public class MapControl {
         return geoSearchList;
     }
 
-    public Locator getZoomInBtn() {
-        return zoomInBtn;
-    }
-
-    public Locator getZoomOutBtn() {
-        return zoomOutBtn;
-    }
-
     public Locator getCompassBtn() {
         return compassBtn;
-    }
-
-    public Locator getCompassBtnImg() {
-        return compassBtnImg;
-    }
-
-    public Locator getCoverageBtn() {
-        return coverageBtn;
     }
 
     public Locator getCoverageHighlightingBtn() {
@@ -106,10 +78,6 @@ public class MapControl {
 
     public Locator getGridLinesBtn() {
         return gridLinesBtn;
-    }
-
-    public Locator getAggregationBtn() {
-        return aggregationBtn;
     }
 
     public Locator getViewportBtn() {
@@ -136,6 +104,8 @@ public class MapControl {
         coverageHighlightingBtn = coverageAndGridBar.locator(SELECTOR_COVERAGE_HIGHLIGHTING);
         globalGridBtn = coverageAndGridBar.locator(SELECTOR_GLOBAL_GRID);
         gridLinesBtn = coverageAndGridBar.locator(SELECTOR_GRID_LINES);
+        gridLinesHideTooltip = page.locator(SELECTOR_GRID_LINES_HIDE_TOOLTIP);
+        gridLinesShowTooltip = page.locator(SELECTOR_GRID_LINES_SHOW_TOOLTIP);
         aggregationBtn = coverageAndGridBar.locator(SELECTOR_AGGREGATED);
         viewportBtn = coverageAndGridBar.locator(SELECTOR_VIEWPORT);
     }
@@ -173,5 +143,13 @@ public class MapControl {
 
     public void checkPolygonsSectionShowTooltip(String expText) {
         Util.assertTooltip(polygonsSectionBtn,polygonsSectionShowTooltip, expText);
+    }
+
+    public void checkGridLinesHideTooltip(String expText) {
+        Util.assertTooltip(gridLinesBtn,gridLinesHideTooltip, expText);
+    }
+
+    public void checkGridLinesShowTooltip(String expText) {
+        Util.assertTooltip(gridLinesBtn,gridLinesShowTooltip, expText);
     }
 }

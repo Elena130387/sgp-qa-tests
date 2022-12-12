@@ -115,6 +115,6 @@ public class Util {
     public static void assertTooltip(Locator element, Locator tooltip, String expText) {
         element.hover();
         String tooltipText = tooltip.textContent();
-        assertEquals(expText, tooltipText);
+        assertEquals(expText, tooltipText, "Неверный тултип");
     }
 }
