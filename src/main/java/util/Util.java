@@ -58,7 +58,7 @@ public class Util {
             System.out.println("Не удалось удалить файла  " + imgNow);
         }
 
-        if (diffPercentage > 0.01) {
+        if (diffPercentage > 0.5) {
             BufferedImage resultImage = result.getResult();
             ImageComparisonUtil.saveImage(diffFile, resultImage);
 
