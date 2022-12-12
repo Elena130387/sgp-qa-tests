@@ -4,9 +4,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
 
-import static util.Constants.MAP_ZOOM_STANDART;
-
-public class EstimatedTabObjects {
+public class ObjectsLayer {
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_OBJECTS_TITLE = "[data-cy=objects-title]";
     private static final String SELECTOR_SMALL_OBJECTS_TITLE = "[data-cy=малые-объекты-title]";
@@ -132,7 +130,7 @@ public class EstimatedTabObjects {
 
     private final Page page = JunitExtension.page;
 
-    public EstimatedTabObjects() {
+    public ObjectsLayer() {
         objectsTitle = page.locator(SELECTOR_OBJECTS_TITLE);
         smallObjectsTitle = page.locator(SELECTOR_SMALL_OBJECTS_TITLE);
         smallObjectsValue = page.locator(SELECTOR_SMALL_OBJECTS_VALUE);
