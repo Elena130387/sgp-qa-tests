@@ -1,6 +1,7 @@
 package frontend.shapeDetails.EstimatedTab;
 
 import elements.ShapeEstimatedTab.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @ExtendWith(JunitExtension.class)
 public class ShapeEstimatedTabGeneralTest {
-    private final int SHAPE_ID = 1124;
+    private static final int SHAPE_ID = 1124;
     private final String ESTIMATED_OBJECTS_LAYER = "Объекты";
     private final String ESTIMATED_BUILDINGS = "Здания";
     private final String ESTIMATED_BUILDING_HEIGHT = "Высота зданий";
@@ -29,10 +30,10 @@ public class ShapeEstimatedTabGeneralTest {
     private final BuildingDamageLayer buildingDamageLayer = new BuildingDamageLayer();
     private final PopulationLayer populationLayer = new PopulationLayer();
     private final LanduseLayer landuseLayer = new LanduseLayer();
-    DetailedShapePage detailedShapePage;
+    static DetailedShapePage detailedShapePage;
 
-    @BeforeEach
-    void openTestPage() {
+    @BeforeAll
+    static void openTestPage() {
         detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID);
     }
 
