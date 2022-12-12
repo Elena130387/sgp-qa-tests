@@ -10,6 +10,7 @@ import util.Util;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static util.Constants.MAP_ZOOM_STANDART;
+import static util.Util.assertTooltipInAtrTitle;
 
 @ExtendWith(JunitExtension.class)
 public class ZoomTest {
@@ -26,6 +27,7 @@ public class ZoomTest {
 
     @Test
     void checkZoom() {
+        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomInBtn(), "Zoom In");
         detailedShowPage.mapControl.clickZoomIn(1);
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
@@ -34,6 +36,7 @@ public class ZoomTest {
                 "checkZoomIn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
+        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomOutBtn(), "Zoom Out");
         detailedShowPage.mapControl.clickZoomOut(2);
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),

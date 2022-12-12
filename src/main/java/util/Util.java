@@ -107,9 +107,8 @@ public class Util {
 
     public static void assertTooltipInAtrTitle(Locator element, String text) {
         element.hover();
-        String tooltipLocator = element.getAttribute("title");
-        Locator tooltipItself = element.page().locator(String.format("#%s", tooltipLocator));
-        assertEquals(text, tooltipItself.textContent(), "Неверный тултип");
+        String tooltipText = element.getAttribute("title");
+        assertEquals(text, tooltipText, "Неверный тултип");
     }
 
     public static void assertTooltip(Locator element, Locator tooltip, String expText) {

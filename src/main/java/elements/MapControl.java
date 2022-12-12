@@ -68,6 +68,14 @@ public class MapControl {
         return polygonsSectionBtn;
     }
 
+    public Locator getZoomInBtn() {
+        return zoomInBtn;
+    }
+
+    public Locator getZoomOutBtn() {
+        return zoomOutBtn;
+    }
+
     public Locator getGeoSearch() {
         return geoSearch;
     }
