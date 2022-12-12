@@ -12,7 +12,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ExtendWith(JunitExtension.class)
 public class FullscreenModeTest {
     SgpMainPage sgpMainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
 
     @BeforeEach
     void openSgpMainPage() {
@@ -73,5 +73,15 @@ public class FullscreenModeTest {
                 "expFullScreenModeOff",
                 "checkFullScreenModeOffEsc",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
+    }
+
+    @Test
+    void checkFullscreenModeTooltips() {
+        assertThat(sgpMainPage.header.getFullScreenBtn()).isEnabled();
+        sgpMainPage.header.getFullScreenBtn().click();
+        sgpMainPage.header.checkFullscreenModeOnTooltip("Выйти из полноэкранного режима");
+
+        sgpMainPage.header.getFullScreenBtn().click();
+        sgpMainPage.header.checkFullscreenModeOffTooltip("Полноэкранный режим");
     }
 }

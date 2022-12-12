@@ -105,10 +105,16 @@ public class Util {
         imageComparison(screenshot, expectedScreenshot, testName);
     }
 
-    public static void assertTooltip(Locator element, String text) {
+    public static void assertTooltipInAtrTitle(Locator element, String text) {
         element.hover();
-        String tooltipLocator = element.getAttribute("aria-describedby");
+        String tooltipLocator = element.getAttribute("title");
         Locator tooltipItself = element.page().locator(String.format("#%s", tooltipLocator));
         assertEquals(text, tooltipItself.textContent());
+    }
+
+    public static void assertTooltip(Locator element, Locator tooltip, String expText) {
+        element.hover();
+        String tooltipText = tooltip.textContent();
+        assertEquals(expText, tooltipText);
     }
 }

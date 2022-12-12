@@ -17,7 +17,7 @@ import static util.Constants.BASE_MAP_TYPE;
 @ExtendWith(JunitExtension.class)
 public class ChooseMapTypeTest {
     static SgpMainPage sgpMainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeaderTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
 
     @BeforeAll
     static void openSgpMainPage() {

@@ -15,7 +15,7 @@ import static util.Constants.MAP_ZOOM_STANDART;
 public class ZoomTest {
     DetailedShapePage detailedShowPage;
     private final int SHAPE_ID = 215;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
     private final String mapZoom = MAP_ZOOM_STANDART;
 
     @BeforeEach

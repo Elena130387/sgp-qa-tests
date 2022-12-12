@@ -13,7 +13,7 @@ public class GlobalGridTest {
 
     DetailedShapePage detailedShowPage;
     private final int SHAPE_ID = 215;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayersTest/";
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
     private final String mapZoom = MAP_ZOOM_STANDART;
 
 
