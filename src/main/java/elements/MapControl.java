@@ -17,6 +17,8 @@ public class MapControl {
     private static final String SELECTOR_COVERAGE_AND_GRID_BAR = "[data-cy=map-controls]";
     private static final String SELECTOR_COVERAGE = "[data-cy=coverage]";
     private static final String SELECTOR_COVERAGE_HIGHLIGHTING = "[data-cy=highlighting]";
+    private static final String SELECTOR_COVERAGE_HIGHLIGHTING_HIDE_TOOLTIP = "[data-tooltip=not-highlight-tiles]";
+    private static final String SELECTOR_COVERAGE_HIGHLIGHTING_SHOW_TOOLTIP = "[data-tooltip=highlight-tiles]";
     private static final String SELECTOR_GLOBAL_GRID = "[data-cy=globalGrid]";
     private static final String SELECTOR_GLOBAL_GRID_HIDE_TOOLTIP = "[data-tooltip=hide-grid]";
     private static final String SELECTOR_GLOBAL_GRID_SHOW_TOOLTIP = "[data-tooltip=show-grid]";
@@ -47,6 +49,8 @@ public class MapControl {
     private final Locator compassBtnImg;
     private final Locator coverageBtn;
     private final Locator coverageHighlightingBtn;
+    private final Locator coverageHighlightHideTooltip;
+    private final Locator coverageHighlightShowTooltip;
     private final Locator globalGridBtn;
     private final Locator globalGridHideTooltip;
     private final Locator globalGridShowTooltip;
@@ -100,14 +104,19 @@ public class MapControl {
         polygonsSectionBtn = page.locator(SELECTOR_POLYGONS_SECTION_OPEN_BTN);
         polygonsSectionHideTooltip = page.locator(SELECTOR_POLYGONS_SECTION_HIDE_TOOLTIP);
         polygonsSectionShowTooltip = page.locator(SELECTOR_POLYGONS_SECTION_SHOW_TOOLTIP);
+
         geoSearch = page.locator(SELECTOR_GEO_SEARCH);
         geoSearchList = geoSearch.locator(SELECTOR_GEO_SEARCH_LIST);
+
         zoomOutBtn = navigationBar.locator(SELECTOR_ZOOM_OUT);
         zoomInBtn = navigationBar.locator(SELECTOR_ZOOM_IN);
         compassBtn = navigationBar.locator(SELECTOR_COMPASS);
+
         compassBtnImg = compassBtn.locator(SELECTOR_COMPASS_IMG);
         coverageBtn = coverageGridBar.locator(SELECTOR_COVERAGE);
         coverageHighlightingBtn = coverageGridBar.locator(SELECTOR_COVERAGE_HIGHLIGHTING);
+        coverageHighlightHideTooltip = page.locator(SELECTOR_COVERAGE_HIGHLIGHTING_HIDE_TOOLTIP);
+        coverageHighlightShowTooltip = page.locator(SELECTOR_COVERAGE_HIGHLIGHTING_SHOW_TOOLTIP);
         globalGridBtn = coverageGridBar.locator(SELECTOR_GLOBAL_GRID);
         globalGridHideTooltip = page.locator(SELECTOR_GLOBAL_GRID_HIDE_TOOLTIP);
         globalGridShowTooltip = page.locator(SELECTOR_GLOBAL_GRID_SHOW_TOOLTIP);
@@ -167,5 +176,13 @@ public class MapControl {
 
     public void checkGlobalGridShowTooltip(String expText) {
         Util.assertTooltip(globalGridBtn,globalGridShowTooltip, expText);
+    }
+
+    public void checkCoverageHighlightHideTooltip(String expText) {
+        Util.assertTooltip(coverageHighlightingBtn,coverageHighlightHideTooltip, expText);
+    }
+
+    public void checkCoverageHighlightShowTooltip(String expText) {
+        Util.assertTooltip(coverageHighlightingBtn,coverageHighlightShowTooltip, expText);
     }
 }
