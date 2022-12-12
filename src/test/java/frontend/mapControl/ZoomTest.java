@@ -61,6 +61,8 @@ public class ZoomTest {
                 EXPECT_ZOOM_WITHOUT_SPACE,
                 actualZoom,
                 "Возврат к стандартному zoom карты не выполнен");
+
+        detailedShowPage.mapControl.checkResetViewportBtnTooltip("Reset viewport");
     }
 
     @Test

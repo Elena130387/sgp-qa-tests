@@ -26,7 +26,8 @@ public class MapControl {
     private static final String SELECTOR_GRID_LINES_HIDE_TOOLTIP = "[data-tooltip=hide-grid-lines]";
     private static final String SELECTOR_GRID_LINES_SHOW_TOOLTIP = "[data-tooltip=show-grid-lines]";
     private static final String SELECTOR_AGGREGATED = "[data-cy=aggregated]";
-    private static final String SELECTOR_VIEWPORT = "[data-cy=viewport]";
+    private static final String SELECTOR_RESET_VIEWPORT = "[data-cy=viewport]";
+    private static final String SELECTOR_RESET_VIEWPORT_TOOLTIP = "[data-tooltip=reset-viewport]";
 
     private static final String SELECTOR_POLYGONS_SECTION_OPEN_BTN = "[data-cy=polygon]";
     private static final String SELECTOR_POLYGONS_SECTION_HIDE_TOOLTIP = "[data-tooltip=hide-aside]";
@@ -59,6 +60,7 @@ public class MapControl {
     private final Locator gridLinesShowTooltip;
     private final Locator aggregationBtn;
     private final Locator viewportBtn;
+    private final Locator resetViewportBtnTooltip;
     //</editor-fold>
 
     //<editor-fold desc="Getters">
@@ -124,7 +126,8 @@ public class MapControl {
         gridLinesHideTooltip = page.locator(SELECTOR_GRID_LINES_HIDE_TOOLTIP);
         gridLinesShowTooltip = page.locator(SELECTOR_GRID_LINES_SHOW_TOOLTIP);
         aggregationBtn = coverageGridBar.locator(SELECTOR_AGGREGATED);
-        viewportBtn = coverageGridBar.locator(SELECTOR_VIEWPORT);
+        viewportBtn = coverageGridBar.locator(SELECTOR_RESET_VIEWPORT);
+        resetViewportBtnTooltip = page.locator(SELECTOR_RESET_VIEWPORT_TOOLTIP);
     }
 
     private void clickZoom(String zoomLocator, int clickNum) {
@@ -184,5 +187,9 @@ public class MapControl {
 
     public void checkCoverageHighlightShowTooltip(String expText) {
         Util.assertTooltip(coverageHighlightingBtn,coverageHighlightShowTooltip, expText);
+    }
+
+    public void checkResetViewportBtnTooltip(String expText) {
+        Util.assertTooltip(viewportBtn,resetViewportBtnTooltip, expText);
     }
 }
