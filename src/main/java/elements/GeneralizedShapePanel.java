@@ -4,7 +4,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
 
-public class ShapeData {
+public class GeneralizedShapePanel {
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_SHAPE_NAME = "[data-cy=name]";
     private static final String SELECTOR_SHAPE_OVERALL = "[data-cy=overall]";
@@ -83,7 +83,7 @@ public class ShapeData {
 
     private final Page page = JunitExtension.page;
 
-    public ShapeData() {
+    public GeneralizedShapePanel() {
         shapeName = page.locator(SELECTOR_SHAPE_NAME);
         shapeOverall = page.locator(SELECTOR_SHAPE_OVERALL);
         polygonsCountNumber = page.locator(SELECTOR_POLYGONS_COUNT_NUMBER);

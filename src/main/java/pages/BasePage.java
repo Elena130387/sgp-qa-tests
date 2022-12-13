@@ -68,14 +68,14 @@ public class BasePage {
     }
 
     public static void deleteShapeByName(String name) {
-        ShapeShowPage shapeShowPage = new ShapeShowPage();
+        GeneralizedShapePage generalizedShapePage = new GeneralizedShapePage();
         Locator searchResults = searchShapeByName(name, false);
         if (searchResults.count() == 0) return;
         for (int i = searchResults.count() - 1; i >= 0; --i) {
             searchResults.nth(i).click();
-            shapeShowPage.changeShapeMenuBtn.getMenuBtn().click();
-            shapeShowPage.changeShapeMenuBtn.getDeleteBtn().click();
-            shapeShowPage.changeShapeMenuBtn.getDeleteYes().click();
+            generalizedShapePage.changeShapeMenuBtn.getMenuBtn().click();
+            generalizedShapePage.changeShapeMenuBtn.getDeleteBtn().click();
+            generalizedShapePage.changeShapeMenuBtn.getDeleteYes().click();
         }
     }
 

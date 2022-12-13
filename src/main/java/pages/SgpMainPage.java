@@ -1,10 +1,12 @@
 package pages;
 
 import com.microsoft.playwright.Page;
+import elements.ShapesPanel;
 
 import static util.Constants.SGP_URL_DEV;
 
 public class SgpMainPage extends BasePage {
+    public final ShapesPanel shapesPanel = new ShapesPanel();
 
     public SgpMainPage openMainPage() {
         page.navigate(SGP_URL_DEV);

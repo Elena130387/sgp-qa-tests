@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
 public class ShapeCreationPanel {
 
     //<editor-fold desc="Selectors">
-    private static final String SELECTOR_CRUD_SHAPE_PANEL = "[data-cy=aside-visible]";
     private static final String SELECTOR_PANEL_NAME = "[data-cy=crudShape]";
     private static final String SELECTOR_SHAPE_NAME_INPUT_HEADER = ".css-2zgq6q";
     private static final String SELECTOR_SHAPE_NAME_INPUT = "[data-cy=name]";
@@ -38,7 +37,6 @@ public class ShapeCreationPanel {
     //</editor-fold>
 
     //<editor-fold desc="Elements">
-    private final Locator crudShapePanel;
     private final Locator panelName;
     private final Locator shapeNameInputHeader;
     private final Locator shapeNameInput;
@@ -59,10 +57,6 @@ public class ShapeCreationPanel {
     //</editor-fold>
 
     //<editor-fold desc="Getters">
-
-    public Locator getCrudShapePanel() {
-        return crudShapePanel;
-    }
 
     public Locator getPanelName() {
         return panelName;
@@ -137,47 +131,46 @@ public class ShapeCreationPanel {
     private final Page page = JunitExtension.page;
 
     public ShapeCreationPanel() {
-        crudShapePanel = page.locator(SELECTOR_CRUD_SHAPE_PANEL);
-        panelName = crudShapePanel.locator(SELECTOR_PANEL_NAME);
-        shapeNameInputHeader = crudShapePanel.locator(SELECTOR_SHAPE_NAME_INPUT_HEADER);
-        shapeNameInput = crudShapePanel.locator(SELECTOR_SHAPE_NAME_INPUT);
-        chooseFileBtn = crudShapePanel.locator(SELECTOR_CHOOSE_FILE_BTN);
-        cancelBtn = crudShapePanel.locator(SELECTOR_CANCEL_BTN);
-        createProcessBtn = crudShapePanel.locator(SELECTOR_CREATE_PROCESS_BTN);
+        panelName = page.locator(SELECTOR_PANEL_NAME);
+        shapeNameInputHeader = page.locator(SELECTOR_SHAPE_NAME_INPUT_HEADER);
+        shapeNameInput = page.locator(SELECTOR_SHAPE_NAME_INPUT);
+        chooseFileBtn = page.locator(SELECTOR_CHOOSE_FILE_BTN);
+        cancelBtn = page.locator(SELECTOR_CANCEL_BTN);
+        createProcessBtn = page.locator(SELECTOR_CREATE_PROCESS_BTN);
         drawPolygonBtn = page.locator(SELECTOR_DRAW_POLYGON_BTN);
         drawPolygonTooltip = page.locator(SELECTOR_DRAW_POLYGON_TOOLTIP);
-        segmentOneName = crudShapePanel.locator(SELECTOR_SEGMENT_ONE_NAME);
-        segmentTwoName = crudShapePanel.locator(SELECTOR_SEGMENT_TWO_NAME);
-        segmentOneArea = crudShapePanel.locator(SELECTOR_SEGMENT_ONE_AREA);
-        segmentTwoArea = crudShapePanel.locator(SELECTOR_SEGMENT_TWO_AREA);
-        deleteSegmentBtn = crudShapePanel.locator(SELECTOR_DELETE_SEGMENT_BTN);
-        totalAreaName = crudShapePanel.locator(SELECTOR_TOTAL_AREA_NAME);
-        totalAreaValue = crudShapePanel.locator(SELECTOR_TOTAL_AREA_VALUE);
-        nameError = crudShapePanel.locator(SELECTOR_NAME_ERROR);
-        polygonsError = crudShapePanel.locator(SELECTOR_POLYGONS_ERROR);
+        segmentOneName = page.locator(SELECTOR_SEGMENT_ONE_NAME);
+        segmentTwoName = page.locator(SELECTOR_SEGMENT_TWO_NAME);
+        segmentOneArea = page.locator(SELECTOR_SEGMENT_ONE_AREA);
+        segmentTwoArea = page.locator(SELECTOR_SEGMENT_TWO_AREA);
+        deleteSegmentBtn = page.locator(SELECTOR_DELETE_SEGMENT_BTN);
+        totalAreaName = page.locator(SELECTOR_TOTAL_AREA_NAME);
+        totalAreaValue = page.locator(SELECTOR_TOTAL_AREA_VALUE);
+        nameError = page.locator(SELECTOR_NAME_ERROR);
+        polygonsError = page.locator(SELECTOR_POLYGONS_ERROR);
     }
 
     public void waitForShapeCreationPanel() {
-        page.waitForSelector(SELECTOR_CRUD_SHAPE_PANEL);
+        page.waitForSelector(SELECTOR_PANEL_NAME);
     }
 
-    public boolean isSegmentInformationMatchPattern (String segmentInfo) {
+    public boolean isSegmentInformationMatchPattern(String segmentInfo) {
         return Pattern.matches(AREA + AREA_VALUE_PATTERN + UNITS, segmentInfo);
     }
 
-    public double segmentAreaValue (@NotNull String segmentInfo) {
+    public double segmentAreaValue(@NotNull String segmentInfo) {
         return Double.parseDouble(segmentInfo.replaceAll(AREA, "").replaceAll(UNITS, ""));
     }
 
-    public boolean isTotalAreaInformationMatchPattern (String totalAreaInfo) {
+    public boolean isTotalAreaInformationMatchPattern(String totalAreaInfo) {
         return Pattern.matches(AREA_VALUE_PATTERN + UNITS, totalAreaInfo);
     }
 
-    public double totalAreaValue (@NotNull String totalAreaInfo) {
+    public double totalAreaValue(@NotNull String totalAreaInfo) {
         return Double.parseDouble(totalAreaInfo.replaceAll(UNITS, ""));
     }
 
     public void checkDrawPolygonBtnTooltip(String expText) {
-        Util.assertTooltip(drawPolygonBtn,drawPolygonTooltip, expText);
+        Util.assertTooltip(drawPolygonBtn, drawPolygonTooltip, expText);
     }
 }
