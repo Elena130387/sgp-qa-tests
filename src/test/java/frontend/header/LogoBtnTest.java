@@ -28,8 +28,8 @@ public class LogoBtnTest {
                 () -> assertThat(shapeCreationPage.header.getNewShape()).isVisible(),
                 () -> assertThat(shapeCreationPage.header.getNewShape()).isEnabled(),
                 () -> assertThat(shapeCreationPage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(shapeCreationPage.mapControl.getPolygonsSectionBtn()).isVisible(),
-                () -> assertThat(shapeCreationPage.mapControl.getPolygonsSectionBtn()).isEnabled()
+                () -> assertThat(shapeCreationPage.mapControl.getShapesPanelHideShowBtn()).isVisible(),
+                () -> assertThat(shapeCreationPage.mapControl.getShapesPanelHideShowBtn()).isEnabled()
         );
     }
 
@@ -40,8 +40,8 @@ public class LogoBtnTest {
         detailedShapePage.header.getTextLogo().click();
         assertAll(
                 () -> assertThat(detailedShapePage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(shapeCreationPage.mapControl.getPolygonsSectionBtn()).isVisible(),
-                () -> assertThat(detailedShapePage.mapControl.getPolygonsSectionBtn()).isEnabled()
+                () -> assertThat(shapeCreationPage.mapControl.getShapesPanelHideShowBtn()).isVisible(),
+                () -> assertThat(detailedShapePage.mapControl.getShapesPanelHideShowBtn()).isEnabled()
         );
     }
 }

@@ -29,9 +29,9 @@ public class MapControl {
     private static final String SELECTOR_RESET_VIEWPORT = "[data-cy=viewport]";
     private static final String SELECTOR_RESET_VIEWPORT_TOOLTIP = "[data-tooltip=reset-viewport]";
 
-    private static final String SELECTOR_POLYGONS_SECTION_OPEN_BTN = "[data-cy=polygon]";
-    private static final String SELECTOR_POLYGONS_SECTION_HIDE_TOOLTIP = "[data-tooltip=hide-aside]";
-    private static final String SELECTOR_POLYGONS_SECTION_SHOW_TOOLTIP = "[data-tooltip=show-aside]";
+    private static final String SELECTOR_SHAPES_PANEL_HIDE_SHOW_BTN = "[data-cy=polygon]";
+    private static final String SELECTOR_SHAPES_PANEL_HIDE_TOOLTIP = "[data-tooltip=hide-aside]";
+    private static final String SELECTOR_SHAPES_PANEL_SHOW_TOOLTIP = "[data-tooltip=show-aside]";
     private static final String SELECTOR_GEO_SEARCH = "[data-cy=geoSearch]";
     private static final String SELECTOR_GEO_SEARCH_LIST = ".suggestions";
     //</editor-fold>
@@ -39,9 +39,9 @@ public class MapControl {
     //<editor-fold desc="Elements">
     private final Locator navigationBar;
     private final Locator coverageGridBar;
-    private final Locator polygonsSectionBtn;
-    private final Locator polygonsSectionHideTooltip;
-    private final Locator polygonsSectionShowTooltip;
+    private final Locator shapesPanelHideShowBtn;
+    private final Locator shapesPanelHideTooltip;
+    private final Locator shapesPanelShowTooltip;
     private final Locator geoSearch;
     private final Locator zoomInBtn;
     private final Locator geoSearchList;
@@ -64,8 +64,8 @@ public class MapControl {
     //</editor-fold>
 
     //<editor-fold desc="Getters">
-    public Locator getPolygonsSectionBtn() {
-        return polygonsSectionBtn;
+    public Locator getShapesPanelHideShowBtn() {
+        return shapesPanelHideShowBtn;
     }
 
     public Locator getZoomInBtn() {
@@ -111,9 +111,9 @@ public class MapControl {
     public MapControl() {
         navigationBar = page.locator(SELECTOR_NAVIGATION_BAR);
         coverageGridBar = page.locator(SELECTOR_COVERAGE_AND_GRID_BAR);
-        polygonsSectionBtn = page.locator(SELECTOR_POLYGONS_SECTION_OPEN_BTN);
-        polygonsSectionHideTooltip = page.locator(SELECTOR_POLYGONS_SECTION_HIDE_TOOLTIP);
-        polygonsSectionShowTooltip = page.locator(SELECTOR_POLYGONS_SECTION_SHOW_TOOLTIP);
+        shapesPanelHideShowBtn = page.locator(SELECTOR_SHAPES_PANEL_HIDE_SHOW_BTN);
+        shapesPanelHideTooltip = page.locator(SELECTOR_SHAPES_PANEL_HIDE_TOOLTIP);
+        shapesPanelShowTooltip = page.locator(SELECTOR_SHAPES_PANEL_SHOW_TOOLTIP);
 
         geoSearch = page.locator(SELECTOR_GEO_SEARCH);
         geoSearchList = geoSearch.locator(SELECTOR_GEO_SEARCH_LIST);
@@ -165,39 +165,39 @@ public class MapControl {
         page.waitForSelector(SELECTOR_COVERAGE_AND_GRID_BAR);
     }
 
-    public void checkPolygonsSectionHideTooltip(String expText) {
-        Util.assertTooltip(polygonsSectionBtn,polygonsSectionHideTooltip, expText);
+    public void checkShapesPanelHideTooltip(String expText) {
+        Util.assertTooltip(shapesPanelHideShowBtn, shapesPanelHideTooltip, expText);
     }
 
-    public void checkPolygonsSectionShowTooltip(String expText) {
-        Util.assertTooltip(polygonsSectionBtn,polygonsSectionShowTooltip, expText);
+    public void checkShapesPanelShowTooltip(String expText) {
+        Util.assertTooltip(shapesPanelHideShowBtn, shapesPanelShowTooltip, expText);
     }
 
     public void checkGridLinesHideTooltip(String expText) {
-        Util.assertTooltip(gridLinesBtn,gridLinesHideTooltip, expText);
+        Util.assertTooltip(gridLinesBtn, gridLinesHideTooltip, expText);
     }
 
     public void checkGridLinesShowTooltip(String expText) {
-        Util.assertTooltip(gridLinesBtn,gridLinesShowTooltip, expText);
+        Util.assertTooltip(gridLinesBtn, gridLinesShowTooltip, expText);
     }
 
     public void checkGlobalGridHideTooltip(String expText) {
-        Util.assertTooltip(globalGridBtn,globalGridHideTooltip, expText);
+        Util.assertTooltip(globalGridBtn, globalGridHideTooltip, expText);
     }
 
     public void checkGlobalGridShowTooltip(String expText) {
-        Util.assertTooltip(globalGridBtn,globalGridShowTooltip, expText);
+        Util.assertTooltip(globalGridBtn, globalGridShowTooltip, expText);
     }
 
     public void checkCoverageHighlightHideTooltip(String expText) {
-        Util.assertTooltip(coverageHighlightingBtn,coverageHighlightHideTooltip, expText);
+        Util.assertTooltip(coverageHighlightingBtn, coverageHighlightHideTooltip, expText);
     }
 
     public void checkCoverageHighlightShowTooltip(String expText) {
-        Util.assertTooltip(coverageHighlightingBtn,coverageHighlightShowTooltip, expText);
+        Util.assertTooltip(coverageHighlightingBtn, coverageHighlightShowTooltip, expText);
     }
 
     public void checkResetViewportBtnTooltip(String expText) {
-        Util.assertTooltip(viewportBtn,resetViewportBtnTooltip, expText);
+        Util.assertTooltip(viewportBtn, resetViewportBtnTooltip, expText);
     }
 }

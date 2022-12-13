@@ -23,7 +23,7 @@ public class ColorModeTest {
     void checkColorMode() {
         //close the list of created shapes if it is necessary
         if (sgpMainPage.shapesPanel.getShapesPanelVisible().isVisible()) {
-            sgpMainPage.mapControl.getPolygonsSectionBtn().click();
+            sgpMainPage.mapControl.getShapesPanelHideShowBtn().click();
         }
 
         assertThat(sgpMainPage.header.getColorModeBtn()).isEnabled();
