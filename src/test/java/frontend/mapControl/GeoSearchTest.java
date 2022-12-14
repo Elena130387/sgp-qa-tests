@@ -12,7 +12,6 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ExtendWith(JunitExtension.class)
 public class GeoSearchTest {
     SgpMainPage sgpMainPage;
-    private final String CITY_NAME = "Moscow";
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
 
     @BeforeEach
@@ -23,10 +22,10 @@ public class GeoSearchTest {
 
     @Test
     void checkLatinCityGeoSearch() {
-        sgpMainPage.mapControl.getGeoSearch().type("Moscow");
+        sgpMainPage.mapControl.getGeoSearch().type("Orlando");
         assertThat(sgpMainPage.mapControl.getGeoSearchList()).isVisible();
 
-        sgpMainPage.mapControl.getGeoSearchList().locator("text=" + CITY_NAME).first().click();
+        sgpMainPage.mapControl.getGeoSearchList().locator("text=Орландо").first().click();
         Util.checkScreenshotForElementWithWait(
                 sgpMainPage.mapBlock.getMap(),
                 "actLatinCityGeoSearch",
@@ -42,7 +41,7 @@ public class GeoSearchTest {
         sgpMainPage.getPage().keyboard().press("Backspace");
         assertThat(sgpMainPage.mapControl.getGeoSearchList()).isVisible();
 
-        sgpMainPage.mapControl.getGeoSearchList().locator("text=" + CITY_NAME).first().click();
+        sgpMainPage.mapControl.getGeoSearchList().locator("text=Москва").first().click();
         Util.checkScreenshotForElementWithWait(
                 sgpMainPage.mapBlock.getMap(),
                 "actCyrillicCityGeoSearch",
