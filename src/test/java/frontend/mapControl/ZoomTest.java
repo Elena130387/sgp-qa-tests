@@ -26,8 +26,14 @@ public class ZoomTest {
     }
 
     @Test
-    void checkZoom() {
+    void checkZoomBtAndResetViewportBtnTooltips() {
+        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomOutBtn(), "Zoom Out");
         assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomInBtn(), "Zoom In");
+        detailedShowPage.mapControl.checkResetViewportBtnTooltip("Reset viewport");
+    }
+
+    @Test
+    void checkZoom() {
         detailedShowPage.mapControl.clickZoomIn(1);
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
@@ -36,7 +42,6 @@ public class ZoomTest {
                 "checkZoomIn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
-        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomOutBtn(), "Zoom Out");
         detailedShowPage.mapControl.clickZoomOut(2);
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
@@ -64,8 +69,6 @@ public class ZoomTest {
                 EXPECT_ZOOM_WITHOUT_SPACE,
                 actualZoom,
                 "Возврат к стандартному zoom карты не выполнен");
-
-        detailedShowPage.mapControl.checkResetViewportBtnTooltip("Reset viewport");
     }
 
     @Test
