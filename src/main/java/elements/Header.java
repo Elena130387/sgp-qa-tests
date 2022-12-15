@@ -5,7 +5,7 @@ import com.microsoft.playwright.Page;
 import util.JunitExtension;
 import util.Util;
 
-public class Header extends Dropdown {
+public class Header {
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_HEADER = "[data-cy=header-div]";
     private static final String SELECTOR_NEW_SHAPE = "[data-cy=create]";
@@ -17,9 +17,6 @@ public class Header extends Dropdown {
     private static final String SELECTOR_COLOR_MODE = "[data-cy=colorMode]";
     private static final String SELECTOR_COLOR_MODE_TOOLTIP = "[data-tooltip=color-mode]";
     private static final String SELECTOR_IMG_DARK_COLOR = ".css-cjmj0z";
-    public static final String SELECTOR_MAP_TYPE_DROPDOWN_MENU = "[data-cy=map-style-dropdown-list]";
-    private static final String SELECTOR_DROPDOWN_ITEM = "[data-cy=menuItem]";
-
     //</editor-fold>
 
     //<editor-fold desc="Elements">
@@ -33,8 +30,6 @@ public class Header extends Dropdown {
     private final Locator colorModeBtn;
     private final Locator colorModeTooltip;
     private final Locator darkModeImg;
-    private final Locator mapTypeDropdownMenu;
-    private final Locator mapTypeDropdownMenuItem;
     //</editor-fold>
 
     //<editor-fold desc="Getters">
@@ -77,15 +72,6 @@ public class Header extends Dropdown {
     public Locator getDarkModeImg() {
         return darkModeImg;
     }
-
-    public Locator getMapTypeDropdownMenu() {
-        return mapTypeDropdownMenu;
-    }
-
-    public Locator getMapTypeDropdownMenuItem() {
-        return mapTypeDropdownMenuItem;
-    }
-
     //</editor-fold>
 
     private final Page page = JunitExtension.page;
@@ -94,8 +80,6 @@ public class Header extends Dropdown {
         header = page.locator(SELECTOR_HEADER);
         newShape = header.locator(SELECTOR_NEW_SHAPE);
         chooseMapType = header.locator(SELECTOR_CHOOSE_MAP_TYPE);
-        mapTypeDropdownMenu = page.locator(SELECTOR_MAP_TYPE_DROPDOWN_MENU);
-        mapTypeDropdownMenuItem = mapTypeDropdownMenu.locator(SELECTOR_DROPDOWN_ITEM);
         textLogo = header.locator(SELECTOR_TEXT_LOGO);
         fullScreenBtn = page.locator(SELECTOR_FULL_SCREEN);
         fullScreenOnTooltip = page.locator(SELECTOR_FULL_SCREEN_ON_TOOLTIP);

@@ -25,7 +25,7 @@ public class MenuItemsOrderTest {
         sgpMainPage = new SgpMainPage().openMainPageWithHeaderWait();
 
         sgpMainPage.header.getChooseMapType().click();
-        assertThat(sgpMainPage.header.getMapTypeDropdownMenu()).isVisible();
-        sgpMainPage.header.checkDropdownItemsOrder(MAP_TYPES_LIST, sgpMainPage.header.getMapTypeDropdownMenuItem());
+        assertThat(sgpMainPage.mapTypeDropdown.getMapTypeDropdownMenu()).isVisible();
+        sgpMainPage.mapTypeDropdown.checkDropdownItemsOrder(MAP_TYPES_LIST, sgpMainPage.mapTypeDropdown.getMapTypeDropdownMenuItem());
     }
 }
