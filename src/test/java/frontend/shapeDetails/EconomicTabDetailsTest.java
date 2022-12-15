@@ -9,7 +9,7 @@ import util.JunitExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(JunitExtension.class)
-public class ShapeEconomicTabDetailsTest {
+public class EconomicTabDetailsTest {
     private final int SHAPE_ID = 611;
     private final String ECONOMIC_TITLE = "Экономический риск";
     private final String ECONOMIC_GENERAL = "Общий";
