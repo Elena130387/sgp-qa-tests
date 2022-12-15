@@ -18,7 +18,6 @@ public class ResetNorthTest {
     void checkResetNorth() {
         sgpMainPage = new SgpMainPage().openMainPage();
 
-        assertTooltipInAtrTitle(sgpMainPage.mapControl.getCompassBtn(), "Reset North");
         sgpMainPage.mapBlock.turnMapToTheLeft(2);
         String compassState = sgpMainPage.mapControl.getCompassState();
         assertNotEquals(
@@ -34,5 +33,7 @@ public class ResetNorthTest {
                 MAP_COMPASS_IMG_STANDART,
                 compassState,
                 "Поворот карты к базовому расположению не выполнен");
+
+        assertTooltipInAtrTitle(sgpMainPage.mapControl.getCompassBtn(), "Reset North");
     }
 }
