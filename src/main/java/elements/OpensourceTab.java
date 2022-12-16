@@ -3,6 +3,7 @@ package elements;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
+import util.Util;
 
 public class OpensourceTab {
     //<editor-fold desc="Selectors">
@@ -158,5 +159,25 @@ public class OpensourceTab {
         housingAveragePriceValue = page.locator(SELECTOR_HOUSING_AVERAGE_PRICE_VALUE);
         housingMedianPrice = page.locator(SELECTOR_HOUSING_MEDIAN_PRICE);
         housingMedianPriceValue = page.locator(SELECTOR_HOUSING_MEDIAN_PRICE_VALUE);
+    }
+
+    public void checkGeographicDetailsInfoTooltip(String expText) {
+        Util.assertTooltip(geographicDetailsInfoIcon, geographicDetailsInfoTooltip, expText);
+    }
+
+    public void checkPopulationQuestionTooltip(String expText) {
+        Util.assertTooltip(populationQuestionIcon, populationQuestionTooltip, expText);
+    }
+
+    public void checkHousingUnitCountQuestionTooltip(String expText) {
+        Util.assertTooltip(housingUnitCountQuestionIcon, housingUnitCountQuestionTooltip, expText);
+    }
+
+    public void checkHousingDistributionQuestionTooltip(String expText) {
+        Util.assertTooltip(housingDistributionQuestionIcon, housingDistributionQuestionTooltip, expText);
+    }
+
+    public void checkHousingPriceQuestionTooltip(String expText) {
+        Util.assertTooltip(housingPriceQuestionIcon, housingPriceQuestionTooltip, expText);
     }
 }

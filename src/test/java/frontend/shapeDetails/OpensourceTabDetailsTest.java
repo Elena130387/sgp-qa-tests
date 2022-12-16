@@ -21,18 +21,23 @@ public class OpensourceTabDetailsTest {
     private static final int SHAPE_ID = 1254;
     private final String CENSUS_DATA = "Census данные";
     private final String GEOGRAPHIC_DETAILS = " Географические детали";
+    private final String EXP_GEOGRAPHIC_DETAILS_TOOLTIP = "Horry County, South Carolina";
     private final String POPULATION_TITLE = "Население";
+    private final String EXP_POPULATION_TOOLTIP = "Средний доход на душу населения и количество жителей для выбранной области";
     private final String INCOME_PER_CAPITA = "Средний доход на душу населения";
     private final String INCOME_PER_CAPITA_VALUE = "25 804 USD";
     private final String POPULATION_DATA = "Количество жителей";
     private final String POPULATION_DATA_VALUE = "310 186";
     private final String HOUSING_TITLE = "Количество жилых помещений";
+    private final String EXP_HOUSING_TOOLTIP = "Количество жилых помещений для выбранной области";
     private final String HOUSING_TOTAL = "Все жилые помещения";
     private final String HOUSING_TOTAL_VALUE = "198 229";
     private final String HOUSING_IN_USE = "Жилые помещения, занимаемые владельцами";
     private final String HOUSING_IN_USE_VALUE = "87 486";
     private final String HOUSING_DISTRIBUTION = "Распределение жилых помещений";
+    private final String EXP_HOUSING_DISTRIBUTION_TOOLTIP = "Распределение жилых помещений для выбранной области";
     private final String HOUSING_PRICE_TITLE = "Цена жилого помещения";
+    private final String EXP_HOUSING_PRICE_TOOLTIP = "Средняя цена и медиана для выбранной области";
     private final String HOUSING_AVERAGE_PRICE = "Средняя";
     private final String HOUSING_AVERAGE_PRICE_VALUE = "202 946 USD";
     private final String HOUSING_MEDIAN_PRICE = "Медиана";
@@ -52,9 +57,7 @@ public class OpensourceTabDetailsTest {
         assertEquals(GEOGRAPHIC_DETAILS,
                 opensourceTab.getGeographicDetails().textContent(),
                 "Неверное название заголовка 'Географические детали'");
-        assertTooltip(opensourceTab.getGeographicDetailsInfoIcon(),
-                opensourceTab.getGeographicDetailsInfoTooltip(),
-                "Horry County, South Carolina");
+        opensourceTab.checkGeographicDetailsInfoTooltip(EXP_GEOGRAPHIC_DETAILS_TOOLTIP);
     }
 
     @Test
@@ -62,9 +65,7 @@ public class OpensourceTabDetailsTest {
         assertEquals(POPULATION_TITLE,
                 opensourceTab.getPopulationTitle().textContent(),
                 "Неверное название блока 'Население'");
-        assertTooltip(opensourceTab.getPopulationQuestionIcon(),
-                opensourceTab.getPopulationQuestionTooltip(),
-                "Средний доход на душу населения и количество жителей для выбранной области");
+        opensourceTab.checkPopulationQuestionTooltip(EXP_POPULATION_TOOLTIP);
         assertEquals(INCOME_PER_CAPITA,
                 opensourceTab.getIncomePerCapita().textContent(),
                 "Неверное название параметра 'Средний доход на душу населения'");
@@ -84,9 +85,7 @@ public class OpensourceTabDetailsTest {
         assertEquals(HOUSING_TITLE,
                 opensourceTab.getHousingUnitCountTitle().textContent(),
                 "Неверное название блока 'Количество жилых помещений'");
-        assertTooltip(opensourceTab.getHousingUnitCountQuestionIcon(),
-                opensourceTab.getHousingUnitCountQuestionTooltip(),
-                "Количество жилых помещений для выбранной области");
+        opensourceTab.checkHousingUnitCountQuestionTooltip(EXP_HOUSING_TOOLTIP);
         assertEquals(HOUSING_TOTAL,
                 opensourceTab.getHousingTotal().textContent(),
                 "Неверное название параметра 'Все жилые помещения'");
@@ -112,9 +111,7 @@ public class OpensourceTabDetailsTest {
                 "expDistributionChart",
                 "checkDistributionChart",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
-        assertTooltip(opensourceTab.getHousingDistributionQuestionIcon(),
-                opensourceTab.getHousingDistributionQuestionTooltip(),
-                "Распределение жилых помещений для выбранной области");
+        opensourceTab.checkHousingDistributionQuestionTooltip(EXP_HOUSING_DISTRIBUTION_TOOLTIP);
     }
 
     @Test
@@ -122,9 +119,7 @@ public class OpensourceTabDetailsTest {
         assertEquals(HOUSING_PRICE_TITLE,
                 opensourceTab.getHousingPriceTitle().textContent(),
                 "Неверное название блока 'Цена жилого помещения'");
-        assertTooltip(opensourceTab.getHousingPriceQuestionIcon(),
-                opensourceTab.getHousingPriceQuestionTooltip(),
-                "Средняя цена и медиана для выбранной области");
+        opensourceTab.checkHousingPriceQuestionTooltip(EXP_HOUSING_PRICE_TOOLTIP);
         assertEquals(HOUSING_AVERAGE_PRICE,
                 opensourceTab.getHousingAveragePrice().textContent(),
                 "Неверное название параметра 'Средняя'");
