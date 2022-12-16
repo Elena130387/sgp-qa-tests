@@ -36,10 +36,10 @@ public class ChooseMapTypeTest {
         List<String> mapTypeParams = Arrays.asList(mapTypeItem.split(","));
         sgpMainPage.header.getChooseMapType().click();
         if (mapTypeParams.get(0).equals(BASE_MAP_TYPE)) {
-            sgpMainPage.header.clickDropdownFirstClickableItem(sgpMainPage.header.getMapTypeDropdownMenuItem());
+            sgpMainPage.mapTypeDropdown.clickDropdownFirstClickableItem(sgpMainPage.mapTypeDropdown.getMapTypeDropdownMenuItem());
             sgpMainPage.header.getChooseMapType().click();
         }
-        sgpMainPage.header.clickDropdownItemByText(mapTypeParams.get(0), sgpMainPage.header.getMapTypeDropdownMenuItem());
+        sgpMainPage.mapTypeDropdown.clickDropdownItemByText(mapTypeParams.get(0), sgpMainPage.mapTypeDropdown.getMapTypeDropdownMenuItem());
 
         if (mapTypeParams.get(4).equals("longWaiting")) {
             Util.checkScreenshotForElementWithLongWait(
