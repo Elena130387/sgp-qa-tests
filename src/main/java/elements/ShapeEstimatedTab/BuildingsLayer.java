@@ -11,8 +11,8 @@ public class BuildingsLayer {
     private static final String SELECTOR_BUILDING_COUNT_VALUE = "[data-cy=building-count-value]";
     private static final String SELECTOR_AVERAGE_HEIGHT_TYPE = "[data-cy=average-height]";
     private static final String SELECTOR_AVERAGE_HEIGHT_VALUE = "[data-cy=average-height-value]";
-    private static final String SELECTOR_AVERAGE_COVERAGE_TYPE = "[data-cy=average-area-coverage]";
-    private static final String SELECTOR_AVERAGE_COVERAGE_VALUE = "[data-cy=average-area-coverage-value]";
+    private static final String SELECTOR_BUILDING_COVERAGE_TYPE = "[data-cy=average-area-coverage]";
+    private static final String SELECTOR_BUILDING_COVERAGE_VALUE = "[data-cy=average-area-coverage-value]";
 
     //</editor-fold>
 
@@ -22,8 +22,8 @@ public class BuildingsLayer {
     private final Locator buildingCountValue;
     private final Locator averageHeightType;
     private final Locator averageHeightValue;
-    private final Locator averageCoverageType;
-    private final Locator averageCoverageValue;
+    private final Locator buildingCoverageType;
+    private final Locator buildingCoverageValue;
 
     //</editor-fold>
 
@@ -49,12 +49,12 @@ public class BuildingsLayer {
         return averageHeightValue;
     }
 
-    public Locator getAverageCoverageType() {
-        return averageCoverageType;
+    public Locator getBuildingCoverageType() {
+        return buildingCoverageType;
     }
 
-    public Locator getAverageCoverageValue() {
-        return averageCoverageValue;
+    public Locator getBuildingCoverageValue() {
+        return buildingCoverageValue;
     }
 
     //</editor-fold>
@@ -67,7 +67,7 @@ public class BuildingsLayer {
         buildingCountValue = page.locator(SELECTOR_BUILDING_COUNT_VALUE);
         averageHeightType = page.locator(SELECTOR_AVERAGE_HEIGHT_TYPE);
         averageHeightValue = page.locator(SELECTOR_AVERAGE_HEIGHT_VALUE);
-        averageCoverageType = page.locator(SELECTOR_AVERAGE_COVERAGE_TYPE);
-        averageCoverageValue = page.locator(SELECTOR_AVERAGE_COVERAGE_VALUE);
+        buildingCoverageType = page.locator(SELECTOR_BUILDING_COVERAGE_TYPE);
+        buildingCoverageValue = page.locator(SELECTOR_BUILDING_COVERAGE_VALUE);
     }
 }

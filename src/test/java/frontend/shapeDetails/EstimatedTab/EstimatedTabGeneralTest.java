@@ -2,7 +2,6 @@ package frontend.shapeDetails.EstimatedTab;
 
 import elements.ShapeEstimatedTab.*;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.DetailedShapePage;
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @ExtendWith(JunitExtension.class)
-public class ShapeEstimatedTabGeneralTest {
+public class EstimatedTabGeneralTest {
     private static final int SHAPE_ID = 1124;
     private final String ESTIMATED_OBJECTS_LAYER = "Объекты";
     private final String ESTIMATED_BUILDINGS = "Здания";
