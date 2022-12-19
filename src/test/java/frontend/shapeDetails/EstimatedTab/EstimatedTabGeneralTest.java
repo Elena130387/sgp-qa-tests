@@ -1,6 +1,6 @@
 package frontend.shapeDetails.EstimatedTab;
 
-import elements.ShapeEstimatedTab.*;
+import elements.shapeEstimatedTab.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

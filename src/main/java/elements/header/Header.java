@@ -1,4 +1,4 @@
-package elements.Header;
+package elements.header;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
