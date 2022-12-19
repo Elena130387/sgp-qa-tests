@@ -11,8 +11,10 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 @ExtendWith(JunitExtension.class)
 public class ColorModeTest {
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
     SgpMainPage sgpMainPage;
+    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
+    private final String COLOR_MODE_ON_TOOLTIP = "Цветовой режим";
+    private final String COLOR_MODE_OFF_TOOLTIP = "Цветовой режим";
 
     @BeforeEach
     void openSgpMainPage() {
@@ -46,9 +48,9 @@ public class ColorModeTest {
     void checkColorModeTooltips() {
         assertThat(sgpMainPage.header.getColorModeBtn()).isEnabled();
         sgpMainPage.header.getColorModeBtn().click();
-        sgpMainPage.header.checkColorModeTooltip("Цветовой режим");
+        sgpMainPage.header.checkColorModeTooltip(COLOR_MODE_ON_TOOLTIP);
 
         sgpMainPage.header.getColorModeBtn().click();
-        sgpMainPage.header.checkColorModeTooltip("Цветовой режим");
+        sgpMainPage.header.checkColorModeTooltip(COLOR_MODE_OFF_TOOLTIP);
     }
 }

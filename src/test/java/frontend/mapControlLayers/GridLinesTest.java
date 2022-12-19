@@ -14,6 +14,8 @@ public class GridLinesTest {
     private final int SHAPE_ID = 611;
     DetailedShapePage detailedShowPage;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
+    private final String GRID_LINES_SHOW_TOOLTIP = "Show grid lines";
+    private final String GRID_LINES_HIDE_TOOLTIP = "Hide grid lines";
 
     @BeforeEach
     void openSgpMainPage() {
@@ -45,9 +47,9 @@ public class GridLinesTest {
     void checkGridLinesBtnTooltips() {
         assertThat(detailedShowPage.mapControl.getGridLinesBtn()).isEnabled();
         detailedShowPage.mapControl.getGridLinesBtn().click();
-        detailedShowPage.mapControl.checkGridLinesShowTooltip("Show grid lines");
+        detailedShowPage.mapControl.checkGridLinesShowTooltip(GRID_LINES_SHOW_TOOLTIP);
 
         detailedShowPage.mapControl.getGridLinesBtn().click();
-        detailedShowPage.mapControl.checkGridLinesHideTooltip("Hide grid lines");
+        detailedShowPage.mapControl.checkGridLinesHideTooltip(GRID_LINES_HIDE_TOOLTIP);
     }
 }

@@ -16,6 +16,8 @@ public class GlobalGridTest {
     private final int SHAPE_ID = 215;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
     private final String mapZoom = MAP_ZOOM_STANDART;
+    private final String GLOBAL_GRID_LINES_SHOW_TOOLTIP = "Show global grid";
+    private final String GLOBAL_GRID_LINES_HIDE_TOOLTIP = "Hide global grid";
 
     @Test
     void checkGlobalGrid() {
@@ -46,10 +48,10 @@ public class GlobalGridTest {
 
         assertThat(detailedShowPage.mapControl.getGlobalGridBtn()).isEnabled();
         detailedShowPage.mapControl.getGlobalGridBtn().click();
-        detailedShowPage.mapControl.checkGlobalGridHideTooltip("Hide global grid");
+        detailedShowPage.mapControl.checkGlobalGridHideTooltip(GLOBAL_GRID_LINES_HIDE_TOOLTIP);
 
 
         detailedShowPage.mapControl.getGlobalGridBtn().click();
-        detailedShowPage.mapControl.checkGlobalGridShowTooltip("Show global grid");
+        detailedShowPage.mapControl.checkGlobalGridShowTooltip(GLOBAL_GRID_LINES_SHOW_TOOLTIP);
     }
 }
