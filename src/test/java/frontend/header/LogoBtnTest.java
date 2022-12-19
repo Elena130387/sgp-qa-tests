@@ -39,8 +39,9 @@ public class LogoBtnTest {
 
         detailedShapePage.header.getTextLogo().click();
         assertAll(
+                () -> assertEquals(SGP_URL_DEV, detailedShapePage.getPage().url(), "Неверный URL"),
                 () -> assertThat(detailedShapePage.shapesPanel.getShapesPanelVisible()).isVisible(),
-                () -> assertThat(shapeCreationPage.mapControl.getShapesPanelHideShowBtn()).isVisible(),
+                () -> assertThat(detailedShapePage.mapControl.getShapesPanelHideShowBtn()).isVisible(),
                 () -> assertThat(detailedShapePage.mapControl.getShapesPanelHideShowBtn()).isEnabled()
         );
     }

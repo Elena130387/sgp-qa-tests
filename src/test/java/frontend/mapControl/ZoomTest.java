@@ -18,6 +18,9 @@ public class ZoomTest {
     private final int SHAPE_ID = 215;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
     private final String mapZoom = MAP_ZOOM_STANDART;
+    private final String ZOOM_IN_BTN_TOOLTIP = "Zoom In";
+    private final String ZOOM_OUT_BTN_TOOLTIP = "Zoom Out";
+    private final String RESET_VIEWPORT_BTN_TOOLTIP = "Reset viewport";
 
     @BeforeEach
     void openDetailedShowPage() {
@@ -27,9 +30,9 @@ public class ZoomTest {
 
     @Test
     void checkZoomBtAndResetViewportBtnTooltips() {
-        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomOutBtn(), "Zoom Out");
-        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomInBtn(), "Zoom In");
-        detailedShowPage.mapControl.checkResetViewportBtnTooltip("Reset viewport");
+        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomOutBtn(), ZOOM_OUT_BTN_TOOLTIP);
+        assertTooltipInAtrTitle(detailedShowPage.mapControl.getZoomInBtn(), ZOOM_IN_BTN_TOOLTIP);
+        detailedShowPage.mapControl.checkResetViewportBtnTooltip(RESET_VIEWPORT_BTN_TOOLTIP);
     }
 
     @Test

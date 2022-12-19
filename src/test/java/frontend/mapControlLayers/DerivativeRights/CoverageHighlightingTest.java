@@ -14,7 +14,8 @@ public class CoverageHighlightingTest {
     DetailedShapePage detailedShapePage;
     private final int SHAPE_ID = 1277;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
-
+    private final String COVERAGE_HIGHLIGHTING_SHOW_TOOLTIP = "Highlight tiles with no derivative rights";
+    private final String COVERAGE_HIGHLIGHTING_HIDE_TOOLTIP = "Disable highlighting tiles with no derivative rights";
 
     @Test
     void checkCoverageHighlighting() {
@@ -39,15 +40,15 @@ public class CoverageHighlightingTest {
     }
 
     @Test
-    void checkGridLinesBtnTooltips() {
+    void checkCoverageHighlightingTooltips() {
         detailedShapePage = new DetailedShapePage().openPageWithAsideTrueAndCoverageGridBarWait(SHAPE_ID);
 
         assertThat(detailedShapePage.mapControl.getCoverageHighlightingBtn()).isEnabled();
         detailedShapePage.mapControl.getCoverageHighlightingBtn().click();
-        detailedShapePage.mapControl.checkCoverageHighlightHideTooltip("Disable highlighting tiles with no derivative rights");
+        detailedShapePage.mapControl.checkCoverageHighlightHideTooltip(COVERAGE_HIGHLIGHTING_HIDE_TOOLTIP);
 
 
         detailedShapePage.mapControl.getCoverageHighlightingBtn().click();
-        detailedShapePage.mapControl.checkCoverageHighlightShowTooltip("Highlight tiles with no derivative rights");
+        detailedShapePage.mapControl.checkCoverageHighlightShowTooltip(COVERAGE_HIGHLIGHTING_SHOW_TOOLTIP);
     }
 }

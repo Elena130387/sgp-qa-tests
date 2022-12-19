@@ -13,6 +13,7 @@ import static util.Util.assertTooltipInAtrTitle;
 @ExtendWith(JunitExtension.class)
 public class ResetNorthTest {
     SgpMainPage sgpMainPage;
+    private final String RESET_NORTH_BTN_TOOLTIP = "Reset North";
 
     @Test
     void checkResetNorth() {
@@ -34,6 +35,6 @@ public class ResetNorthTest {
                 compassState,
                 "Поворот карты к базовому расположению не выполнен");
 
-        assertTooltipInAtrTitle(sgpMainPage.mapControl.getCompassBtn(), "Reset North");
+        assertTooltipInAtrTitle(sgpMainPage.mapControl.getCompassBtn(), RESET_NORTH_BTN_TOOLTIP);
     }
 }

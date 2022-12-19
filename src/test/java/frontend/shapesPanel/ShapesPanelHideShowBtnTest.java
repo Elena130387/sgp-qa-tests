@@ -16,6 +16,8 @@ import static util.Constants.*;
 public class ShapesPanelHideShowBtnTest {
     SgpMainPage sgpMainPage;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "ShapesPanelHideShowBtn/";
+    private final String SHAPES_PANEL_SHOW_TOOLTIP = "Отобразить секцию";
+    private final String SHAPES_PANEL_HIDE_TOOLTIP = "Скрыть секцию";
 
     @BeforeEach
     void openSgpMainPage() {
@@ -58,15 +60,15 @@ public class ShapesPanelHideShowBtnTest {
     @Test
     void checkShapesPanelHideShowBtnTooltips() {
         // Default settings check
-        sgpMainPage.mapControl.checkShapesPanelHideTooltip("Скрыть секцию");
+        sgpMainPage.mapControl.checkShapesPanelHideTooltip(SHAPES_PANEL_HIDE_TOOLTIP);
 
         // Hidden panel check
         sgpMainPage.mapControl.getShapesPanelHideShowBtn().click();
-        sgpMainPage.mapControl.checkShapesPanelShowTooltip("Отобразить секцию");
+        sgpMainPage.mapControl.checkShapesPanelShowTooltip(SHAPES_PANEL_SHOW_TOOLTIP);
 
         // Show panel check
         sgpMainPage.mapControl.getShapesPanelHideShowBtn().click();
-        sgpMainPage.mapControl.checkShapesPanelHideTooltip("Скрыть секцию");
+        sgpMainPage.mapControl.checkShapesPanelHideTooltip(SHAPES_PANEL_HIDE_TOOLTIP);
 
     }
 
