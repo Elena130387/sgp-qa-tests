@@ -23,6 +23,8 @@ public class CoverageHighlightingTest {
         detailedShapePage.selectDefaultSettings();
 
         detailedShapePage.mapControl.getCoverageHighlightingBtn().click();
+        //      Remove focus from the button so that the tooltip is not displayed
+        detailedShapePage.mapControl.getGeoSearch().click();
         Util.checkScreenshotForElementWithLongWait(
                 detailedShapePage.mapBlock.getMap(),
                 "actCoverageHighlightingIn",
@@ -31,6 +33,8 @@ public class CoverageHighlightingTest {
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         detailedShapePage.mapControl.getCoverageHighlightingBtn().click();
+        //      Remove focus from the button so that the tooltip is not displayed
+        detailedShapePage.mapControl.getGeoSearch().click();
         Util.checkScreenshotForElementWithLongWait(
                 detailedShapePage.mapBlock.getMap(),
                 "actCoverageHighlightingOut",

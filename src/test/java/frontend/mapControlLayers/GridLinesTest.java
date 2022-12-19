@@ -27,6 +27,9 @@ public class GridLinesTest {
         detailedShowPage.selectDefaultSettings();
 
         detailedShowPage.mapControl.getGridLinesBtn().click();
+
+        //      Remove focus from the button so that the tooltip is not displayed
+        detailedShowPage.mapControl.getGeoSearch().click();
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
                 "actGridLinesOff",
@@ -35,11 +38,14 @@ public class GridLinesTest {
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         detailedShowPage.mapControl.getGridLinesBtn().click();
+
+        //      Remove focus from the button so that the tooltip is not displayed
+        detailedShowPage.mapControl.getGeoSearch().click();
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
-                "actGridLinesBtnOn",
-                "expGridLinesBtnOn",
-                "checkGridLinesBtnOn",
+                "actGridLinesOn",
+                "expGridLinesOn",
+                "checkGridLinesOn",
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
     }
 
