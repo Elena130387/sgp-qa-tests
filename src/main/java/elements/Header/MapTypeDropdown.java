@@ -1,7 +1,8 @@
-package elements;
+package elements.Header;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import elements.AbstractElement.Dropdown;
 import util.JunitExtension;
 
 public class MapTypeDropdown extends Dropdown {

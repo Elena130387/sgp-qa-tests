@@ -1,4 +1,4 @@
-package elements;
+package elements.AbstractElement;
 
 import com.microsoft.playwright.Locator;
 

@@ -14,33 +14,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CoverageMessageTest {
     DetailedShapePage detailedShapePage;
     DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
-    private final int SHAPE_ID_100_Percent = 1277;
-    private final int SHAPE_ID_No_100_Percent = 1455;
+    private final int SHAPE_ID_100_PERCENT = 1277;
+    private final int SHAPE_ID_No_100_PERCENT = 1455;
     private final String PERCENT_NO_100_TEXT = "27.3";
     private final String PERCENT_100_TEXT = "100";
     private final String MESSAGE_TEXT = " % of tiles have no derivative rights";
 
     @Test
     void check100PercentCoverageMessage() {
-        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID_100_Percent);
+        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID_100_PERCENT);
         Assert(0, PERCENT_100_TEXT);
 
-        detailedShapePage = new DetailedShapePage().openPageWithEconomicTab(SHAPE_ID_100_Percent);
+        detailedShapePage = new DetailedShapePage().openPageWithEconomicTab(SHAPE_ID_100_PERCENT);
         Assert(1, PERCENT_100_TEXT);
 
-        detailedShapePage = new DetailedShapePage().openPageWithInsuranceTab(SHAPE_ID_100_Percent);
+        detailedShapePage = new DetailedShapePage().openPageWithInsuranceTab(SHAPE_ID_100_PERCENT);
         Assert(2, PERCENT_100_TEXT);
     }
 
     @Test
     void checkNo100PercentCoverageMessage() {
-        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID_No_100_Percent);
+        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID_No_100_PERCENT);
         Assert(0, PERCENT_NO_100_TEXT);
 
-        detailedShapePage = new DetailedShapePage().openPageWithEconomicTab(SHAPE_ID_No_100_Percent);
+        detailedShapePage = new DetailedShapePage().openPageWithEconomicTab(SHAPE_ID_No_100_PERCENT);
         Assert(1, PERCENT_NO_100_TEXT);
 
-        detailedShapePage = new DetailedShapePage().openPageWithInsuranceTab(SHAPE_ID_No_100_Percent);
+        detailedShapePage = new DetailedShapePage().openPageWithInsuranceTab(SHAPE_ID_No_100_PERCENT);
         Assert(2, PERCENT_NO_100_TEXT);
     }
 

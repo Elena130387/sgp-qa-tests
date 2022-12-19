@@ -3,6 +3,10 @@ package pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import elements.*;
+import elements.Header.Header;
+import elements.Map.MapBlock;
+import elements.Map.MapControl;
+import MapTypeDropdown;
 import util.JunitExtension;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
