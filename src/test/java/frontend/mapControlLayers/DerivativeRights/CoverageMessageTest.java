@@ -14,24 +14,40 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CoverageMessageTest {
     DetailedShapePage detailedShapePage;
     DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
-    private final int SHAPE_ID = 1277;
+    private final int SHAPE_ID_100_Percent = 1277;
+    private final int SHAPE_ID_No_100_Percent = 1455;
+    private final String PERCENT_NO_100_TEXT = "27.3";
+    private final String PERCENT_100_TEXT = "100";
+    private final String MESSAGE_TEXT = " % of tiles have no derivative rights";
 
     @Test
-    void checkCoverageMessage() {
-        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID);
-        Assert(0);
+    void check100PercentCoverageMessage() {
+        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID_100_Percent);
+        Assert(0, PERCENT_100_TEXT);
 
-        detailedShapePage = new DetailedShapePage().openPageWithEconomicTab(SHAPE_ID);
-        Assert(1);
+        detailedShapePage = new DetailedShapePage().openPageWithEconomicTab(SHAPE_ID_100_Percent);
+        Assert(1, PERCENT_100_TEXT);
 
-        detailedShapePage = new DetailedShapePage().openPageWithInsuranceTab(SHAPE_ID);
-        Assert(2);
+        detailedShapePage = new DetailedShapePage().openPageWithInsuranceTab(SHAPE_ID_100_Percent);
+        Assert(2, PERCENT_100_TEXT);
     }
 
-    private void Assert(int n) {
+    @Test
+    void checkNo100PercentCoverageMessage() {
+        detailedShapePage = new DetailedShapePage().openPageWithEstimatedTab(SHAPE_ID_No_100_Percent);
+        Assert(0, PERCENT_NO_100_TEXT);
+
+        detailedShapePage = new DetailedShapePage().openPageWithEconomicTab(SHAPE_ID_No_100_Percent);
+        Assert(1, PERCENT_NO_100_TEXT);
+
+        detailedShapePage = new DetailedShapePage().openPageWithInsuranceTab(SHAPE_ID_No_100_Percent);
+        Assert(2, PERCENT_NO_100_TEXT);
+    }
+
+    private void Assert(int n, String percent) {
         assertAll(
                 () -> assertThat(detailedShapePanel.getDerivativeRightsMsg().nth(n)).isVisible(),
-                () -> assertEquals("100 % of tiles have no derivative rights",
+                () -> assertEquals(percent + MESSAGE_TEXT,
                         detailedShapePanel.getDerivativeRightsMsg().nth(n).textContent(),
                         "Неверный текст сообщения")
         );
