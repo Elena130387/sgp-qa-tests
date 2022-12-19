@@ -16,7 +16,7 @@ public class GeneralShapeDataTest {
     private final int SHAPE_ID = 611;
     DetailedShapePage detailedShapePage;
     private final String SHAPE_CALC_PAGE_URL = SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID;
-    private final String TEST_SHAPE_NAME = "Парадайз, Калифорния - оценка повреждений зданий после лесного пожара 2018 года (НЕ УДАЛЯТЬ)";
+    private final String TEST_SHAPE_NAME = "(НЕ УДАЛЯТЬ) Парадайз, Калифорния - оценка повреждений зданий после лесного пожара 2018 года";
     private final String SHAPE_COUNT_NUM = "1";
     private final String SHAPE_COUNT = "# сегм.";
     private final String SHAPE_DATE = "2022-11-03";

@@ -30,6 +30,9 @@ public class ColorModeTest {
 
         assertThat(sgpMainPage.header.getColorModeBtn()).isEnabled();
         sgpMainPage.header.getColorModeBtn().click();
+
+        //      Remove focus from the button so that the tooltip is not displayed
+        sgpMainPage.mapControl.getGeoSearch().click();
         Util.checkScreenshotWithWait(
                 "actColorModeOn",
                 "expColorModeOn",
@@ -37,6 +40,8 @@ public class ColorModeTest {
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         sgpMainPage.header.getColorModeBtn().click();
+        //      Remove focus from the button so that the tooltip is not displayed
+        sgpMainPage.mapControl.getGeoSearch().click();
         Util.checkScreenshotWithWait(
                 "actColorModeOff",
                 "expColorModeOff",
