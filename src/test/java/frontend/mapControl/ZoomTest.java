@@ -15,7 +15,7 @@ import static util.Util.assertTooltipInAtrTitle;
 @ExtendWith(JunitExtension.class)
 public class ZoomTest {
     DetailedShapePage detailedShowPage;
-    private final int SHAPE_ID = 215;
+    private final int SHAPE_ID = 611;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
     private final String mapZoom = MAP_ZOOM_STANDART;
     private final String ZOOM_IN_BTN_TOOLTIP = "Zoom In";

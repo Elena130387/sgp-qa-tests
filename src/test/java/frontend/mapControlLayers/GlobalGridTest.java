@@ -13,7 +13,7 @@ import static util.Constants.MAP_ZOOM_STANDART;
 public class GlobalGridTest {
 
     DetailedShapePage detailedShowPage;
-    private final int SHAPE_ID = 215;
+    private final int SHAPE_ID = 611;
     private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
     private final String mapZoom = MAP_ZOOM_STANDART;
     private final String GLOBAL_GRID_LINES_SHOW_TOOLTIP = "Show global grid";
@@ -26,6 +26,9 @@ public class GlobalGridTest {
 
         detailedShowPage.mapControl.clickZoomOut(6);
         detailedShowPage.mapControl.getGlobalGridBtn().click();
+
+        //      Remove focus from the button so that the tooltip is not displayed
+        detailedShowPage.mapControl.getGeoSearch().click();
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
                 "actGlobalGridOn",
@@ -34,6 +37,9 @@ public class GlobalGridTest {
                 EXPSCREENSHOTS_TEST_CLASS_DIR);
 
         detailedShowPage.mapControl.getGlobalGridBtn().click();
+
+        //      Remove focus from the button so that the tooltip is not displayed
+        detailedShowPage.mapControl.getGeoSearch().click();
         Util.checkScreenshotForElementWithWait(
                 detailedShowPage.mapBlock.getMap(),
                 "actGlobalGridOff",
