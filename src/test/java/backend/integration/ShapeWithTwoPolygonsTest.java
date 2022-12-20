@@ -16,7 +16,6 @@ import java.util.concurrent.TimeoutException;
 import static api.client.CalcManagement.deleteShapeDataById;
 import static api.client.CalcManagement.getShapeDataById;
 import static api.client.Estimator.*;
-import static api.dto.StatusesList.DELETED;
 import static api.dto.StatusesList.STOPPED;
 import static api.helper.CalculationHelper.waitForCalculationStarting;
 import static api.helper.CalculationHelper.waitForCalculationStop;
