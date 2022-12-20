@@ -73,10 +73,7 @@ public class ShapeWithTwoPolygonsTest {
     void deleteCalculatingShape() {
         ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         responseDeleteShape.statusCode(200);
-
-        ValidatableResponse responseGetNewShapesData = getShapeDataById(shapeId);
-        assertEquals(DELETED.getStatusName(),
-                getStringFromJson(responseGetNewShapesData, "status"), "Область не была удалена");
+        assertTrue(getShapeDataById(shapeId).extract().statusCode() == 204, "Область не была удалена");
     }
 
     @Test
@@ -96,9 +93,7 @@ public class ShapeWithTwoPolygonsTest {
     @AfterEach
     public void deleteTestShape() {
         System.out.println(shapeId);
-
-        String testShapeStatus = getStringFromJson(getShapeDataById(shapeId), "status");
-        if (!testShapeStatus.equals(DELETED.getStatusName())) {
+        if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         }
 

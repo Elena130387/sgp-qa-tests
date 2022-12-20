@@ -14,8 +14,19 @@ public interface DeleteByIdControllerTest {
     int getDeletedId();
 
     @Test
-    default void deleteEntity_withIncorrectId_expect400Error() {
+    default void deleteEntity_withIncorrectStringId_expect400Error() {
         String id = "text";
+        ValidatableResponse response = RestAssured
+                .given()
+                .when()
+                .delete(getUrl(), id)
+                .then();
+        response.statusCode(400);
+    }
+
+    @Test
+    default void deleteEntity_withIncorrectDoubleId_expect400Error() {
+        double id = 2.7;
         ValidatableResponse response = RestAssured
                 .given()
                 .when()

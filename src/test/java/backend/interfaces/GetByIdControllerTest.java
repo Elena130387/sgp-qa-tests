@@ -14,12 +14,23 @@ public interface GetByIdControllerTest {
     int getDeletedId();
 
     @Test
-    default void getEntity_withIncorrectId_expect400Error() {
+    default void getEntity_withIncorrectStringId_expect400Error() {
         String id = "text";
         ValidatableResponse response = RestAssured
                 .given()
                 .when()
                 .get(getUrl(), id)
+                .then();
+        response.statusCode(400);
+    }
+
+    @Test
+    default void deleteEntity_withIncorrectDoubleId_expect400Error() {
+        double id = 2.7;
+        ValidatableResponse response = RestAssured
+                .given()
+                .when()
+                .delete(getUrl(), id)
                 .then();
         response.statusCode(400);
     }
@@ -40,13 +51,13 @@ public interface GetByIdControllerTest {
 
     @Test
     default void getEntity_withDeletedId_expect204noContent() {
-        ValidatableResponse response = getRequestWithId(getCorrectId(), getUrl());
+        ValidatableResponse response = getRequestWithId(getDeletedId(), getUrl());
         response.statusCode(204);
     }
 
     @Test
     default void getEntity_withCorrectId_expect200ok() {
-        ValidatableResponse response = getRequestWithId(getDeletedId(), getUrl());
+        ValidatableResponse response = getRequestWithId(getCorrectId(), getUrl());
         response.statusCode(200);
     }
 }
