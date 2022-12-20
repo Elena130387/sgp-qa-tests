@@ -2,11 +2,11 @@ package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import elements.*;
+import elements.ShapesPanel;
 import elements.header.Header;
+import elements.header.MapTypeDropdown;
 import elements.map.MapBlock;
 import elements.map.MapControl;
-import MapTypeDropdown;
 import util.JunitExtension;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

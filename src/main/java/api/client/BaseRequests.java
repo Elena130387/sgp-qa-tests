@@ -46,6 +46,13 @@ public class BaseRequests {
     //</editor-fold>
 
     //<editor-fold desc="GET Requests">
+    public static ValidatableResponse getRequest(String url) {
+        return given()
+                .when()
+                .get(url)
+                .then();
+    }
+
     public static ValidatableResponse getRequestWithId(int id, String url) {
         return given()
                 .when()
@@ -87,7 +94,7 @@ public class BaseRequests {
                 .then();
     }
 
-    public static ValidatableResponse getRequestWithQueryParams(int id, Map<String, String> params, String url) {
+    public static ValidatableResponse getRequestWithIdAndQueryParams(int id, Map<String, String> params, String url) {
         return given()
                 .queryParams(params)
                 .when()
@@ -105,7 +112,7 @@ public class BaseRequests {
     //</editor-fold>
 
     //<editor-fold desc="PUT Request">
-    public static <T> ValidatableResponse putRequest(T input, int id, String url) {
+    public static <T> ValidatableResponse putRequestWithId(T input, int id, String url) {
         return given()
                 .contentType(ContentType.JSON)
                 .body(input)

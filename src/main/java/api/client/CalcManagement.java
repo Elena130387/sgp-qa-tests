@@ -9,7 +9,7 @@ import static util.Constants.*;
 public class CalcManagement {
 
     public static ValidatableResponse shapeRename(ShapeRename input, int id) {
-        return BaseRequests.putRequest(input, id, CALC_MAN_SHAPES_SET_NAME_EP);
+        return BaseRequests.putRequestWithId(input, id, CALC_MAN_SHAPES_SET_NAME_EP);
     }
 
     public static ValidatableResponse getShapeDataById(int id) {
@@ -26,5 +26,9 @@ public class CalcManagement {
 
     public static ValidatableResponse getLimitNumberOfShapes(int limit) {
         return BaseRequests.getRequestWithParam(limit, CALC_MAN_SHAPES_EP);
+    }
+
+    public static ValidatableResponse getListOfAllShapes() {
+        return BaseRequests.getRequest(CALC_MAN_SHAPES_EP);
     }
 }
