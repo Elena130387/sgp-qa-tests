@@ -25,12 +25,12 @@ public interface GetByIdControllerTest {
     }
 
     @Test
-    default void deleteEntity_withIncorrectDoubleId_expect400Error() {
+    default void getEntity_withIncorrectDoubleId_expect400Error() {
         double id = 2.7;
         ValidatableResponse response = RestAssured
                 .given()
                 .when()
-                .delete(getUrl(), id)
+                .get(getUrl(), id)
                 .then();
         response.statusCode(400);
     }
