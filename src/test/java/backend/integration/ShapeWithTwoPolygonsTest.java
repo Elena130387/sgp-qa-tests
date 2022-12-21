@@ -16,7 +16,6 @@ import java.util.concurrent.TimeoutException;
 import static api.client.CalcManagement.deleteShapeDataById;
 import static api.client.CalcManagement.getShapeDataById;
 import static api.client.Estimator.*;
-import static api.dto.StatusesList.DELETED;
 import static api.dto.StatusesList.STOPPED;
 import static api.helper.CalculationHelper.waitForCalculationStarting;
 import static api.helper.CalculationHelper.waitForCalculationStop;
@@ -73,10 +72,7 @@ public class ShapeWithTwoPolygonsTest {
     void deleteCalculatingShape() {
         ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         responseDeleteShape.statusCode(200);
-
-        ValidatableResponse responseGetNewShapesData = getShapeDataById(shapeId);
-        assertEquals(DELETED.getStatusName(),
-                getStringFromJson(responseGetNewShapesData, "status"), "Область не была удалена");
+        assertTrue(getShapeDataById(shapeId).extract().statusCode() == 204, "Область не была удалена");
     }
 
     @Test
@@ -96,9 +92,7 @@ public class ShapeWithTwoPolygonsTest {
     @AfterEach
     public void deleteTestShape() {
         System.out.println(shapeId);
-
-        String testShapeStatus = getStringFromJson(getShapeDataById(shapeId), "status");
-        if (!testShapeStatus.equals(DELETED.getStatusName())) {
+        if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         }
 

@@ -2,7 +2,7 @@ package elements;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import elements.ShapeEstimatedTab.EstimatedTabGeneral;
+import elements.shapeEstimatedTab.EstimatedTabGeneral;
 import util.JunitExtension;
 
 public class DetailedShapePanel {

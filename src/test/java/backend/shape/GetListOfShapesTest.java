@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GetListOfShapesTest {
 
@@ -19,5 +20,12 @@ public class GetListOfShapesTest {
         List<Shape> shapesList = JsonHelper.<Shape>getObjectsListFromJson(responseShapesList);
         assertEquals(limit,
                 shapesList.size(), "Количество областей в ответе не совпадает с заданным");
+    }
+
+    @Test
+    void getLimitOfAllShapes() {
+        ValidatableResponse responseShapesList = CalcManagement.getListOfAllShapes();
+        List<Shape> shapesList = JsonHelper.<Shape>getObjectsListFromJson(responseShapesList);
+        assertTrue(shapesList.size() > 0, "Количество областей в запросе равно " + shapesList.size());
     }
 }

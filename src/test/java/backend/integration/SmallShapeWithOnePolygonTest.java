@@ -13,7 +13,6 @@ import java.util.concurrent.TimeoutException;
 
 import static api.client.CalcManagement.deleteShapeDataById;
 import static api.client.CalcManagement.getShapeDataById;
-import static api.dto.StatusesList.DELETED;
 import static api.helper.JsonHelper.*;
 import static api.helper.PolygonHelper.verifyPolygonNumberAndCoordinates;
 import static api.helper.ShapeHelper.createShapeFromJson;
@@ -66,10 +65,7 @@ public class SmallShapeWithOnePolygonTest {
     void deleteCompletedShape() {
         ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         responseDeleteShape.statusCode(200);
-
-        ValidatableResponse responseGetNewShapesData = getShapeDataById(shapeId);
-        assertEquals(DELETED.getStatusName(),
-                getStringFromJson(responseGetNewShapesData, "status"), "Область не была удалена");
+        assertTrue(getShapeDataById(shapeId).extract().statusCode() == 204, "Область не была удалена");
     }
 
 
@@ -77,8 +73,7 @@ public class SmallShapeWithOnePolygonTest {
     public void deleteTestShape() {
         System.out.println(shapeId);
 
-        String testShapeStatus = getStringFromJson(getShapeDataById(shapeId), "status");
-        if (!testShapeStatus.equals(DELETED.getStatusName())) {
+        if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         }
     }

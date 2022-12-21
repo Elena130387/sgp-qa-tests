@@ -43,8 +43,7 @@ public class DeleteShapeDataByIdTest implements DeleteByIdControllerTest {
 
     @AfterAll
     public static void deleteTestShape() {
-        String testShapeStatus = getStringFromJson(getShapeDataById(shapeId), "status");
-        if (!testShapeStatus.equals(DELETED.getStatusName())) {
+        if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
             ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
         }
     }
