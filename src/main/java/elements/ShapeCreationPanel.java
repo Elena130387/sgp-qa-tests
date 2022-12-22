@@ -28,6 +28,7 @@ public class ShapeCreationPanel {
     private static final String SELECTOR_TOTAL_AREA_VALUE = "[data-cy=total-area-value]";
     private static final String SELECTOR_NAME_ERROR = "[data-cy=nameError]";
     private static final String SELECTOR_POLYGONS_ERROR = "[data-cy=polygonsError]";
+    private static final String SELECTOR_TOO_LARGE_AREA_ERROR = "[data-cy=error]";
     //</editor-fold>
 
     //<editor-fold desc="Regexes">
@@ -54,6 +55,7 @@ public class ShapeCreationPanel {
     private final Locator totalAreaValue;
     private final Locator nameError;
     private final Locator polygonsError;
+    private final Locator tooLargeAreaError;
     //</editor-fold>
 
     //<editor-fold desc="Getters">
@@ -126,6 +128,10 @@ public class ShapeCreationPanel {
         return polygonsError;
     }
 
+    public Locator getTooLargeAreaError() {
+        return tooLargeAreaError;
+    }
+
     //</editor-fold>
 
     private final Page page = JunitExtension.page;
@@ -148,6 +154,7 @@ public class ShapeCreationPanel {
         totalAreaValue = page.locator(SELECTOR_TOTAL_AREA_VALUE);
         nameError = page.locator(SELECTOR_NAME_ERROR);
         polygonsError = page.locator(SELECTOR_POLYGONS_ERROR);
+        tooLargeAreaError = page.locator(SELECTOR_TOO_LARGE_AREA_ERROR);
     }
 
     public void waitForShapeCreationPanel() {

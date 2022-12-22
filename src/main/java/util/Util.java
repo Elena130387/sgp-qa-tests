@@ -96,7 +96,7 @@ public class Util {
      Predicate<Request> getImg = request ->request.url().contains("sprite@2x.png");
           Request request1 = page.waitForRequest(
                 getImg,
-                 () -> {});
+                 () -> {here we have to specify the action that triggers the requests});
      */
     public static void checkScreenshotForElementWithLongWait(Locator element, String actual, String expected, String testName, String expDir) {
         page.waitForTimeout(5000);

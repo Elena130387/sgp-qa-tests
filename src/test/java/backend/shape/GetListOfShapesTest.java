@@ -23,7 +23,7 @@ public class GetListOfShapesTest {
     }
 
     @Test
-    void getLimitOfAllShapes() {
+    void getListOfAllShapes() {
         ValidatableResponse responseShapesList = CalcManagement.getListOfAllShapes();
         List<Shape> shapesList = JsonHelper.<Shape>getObjectsListFromJson(responseShapesList);
         assertTrue(shapesList.size() > 0, "Количество областей в запросе равно " + shapesList.size());
