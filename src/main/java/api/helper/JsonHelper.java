@@ -1,5 +1,6 @@
 package api.helper;
 
+import api.dto.shape.Shape;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.hasKey;
 
 public class JsonHelper {
@@ -37,6 +39,12 @@ public class JsonHelper {
     public static String getStringFromJson(ValidatableResponse response, String name) {
         response.assertThat().body("$", hasKey(name));
         return response.extract().body().jsonPath().getString(name);
+    }
+
+    public static <T> T getObjectsListFromJson(ValidatableResponse response, Class<T> classOfT) {
+        String json = response.extract().body().asPrettyString();
+        Gson gson = new Gson();
+        return gson.fromJson(json, classOfT);
     }
 
     public static <T> List getObjectsListFromJson(ValidatableResponse response) {

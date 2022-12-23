@@ -31,4 +31,8 @@ public class CalcManagement {
     public static ValidatableResponse getListOfAllShapes() {
         return BaseRequests.getRequest(CALC_MAN_SHAPES_EP);
     }
+
+    public static ValidatableResponse getSortedListOfShapes(String sort) {
+        return BaseRequests.getRequestWithParam(sort, CALC_MAN_SHAPES_EP);
+    }
 }

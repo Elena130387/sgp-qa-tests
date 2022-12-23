@@ -69,6 +69,14 @@ public class BaseRequests {
                 .then();
     }
 
+    public static ValidatableResponse getRequestWithParam(String sort, String url) {
+        return given()
+                .param("sort", sort)
+                .when()
+                .get(url)
+                .then();
+    }
+
     public static ValidatableResponse getRequestWithParam(int limit, String url) {
         return given()
                 .param("filter[limit]", limit)
