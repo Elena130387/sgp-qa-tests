@@ -1,12 +1,14 @@
 package pages;
 
 import com.microsoft.playwright.Page;
+import elements.ShapeControlButtons;
 import elements.ShapesPanel;
 
 import static util.Constants.SGP_URL_DEV;
 
 public class SgpMainPage extends BasePage {
     public final ShapesPanel shapesPanel = new ShapesPanel();
+    public final ShapeControlButtons shapeControlButtons = new ShapeControlButtons();
 
     public SgpMainPage openMainPage() {
         page.navigate(SGP_URL_DEV);
@@ -16,6 +18,12 @@ public class SgpMainPage extends BasePage {
     public SgpMainPage openMainPageWithHeaderWait() {
         page.navigate(SGP_URL_DEV);
         header.waitForHeader();
+        return this;
+    }
+
+    public SgpMainPage openMainPageWithShapesPanelWait() {
+        page.navigate(SGP_URL_DEV);
+        shapesPanel.waitForShapesPanel();
         return this;
     }
 

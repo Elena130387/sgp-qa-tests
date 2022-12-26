@@ -32,9 +32,9 @@ public class Constants {
 
     public static final String SHOW_ASIDE_FALSE_URL = SGP_URL_DEV + "?" + SHOW_ASIDE_FALSE_END;
 
-    public static final String SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL = SHOW_ASIDE_TRUE_URL + SHAPE_URL_END;
+    public static final String GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL = SHOW_ASIDE_TRUE_URL + SHAPE_URL_END;
 
-    public static final String SHAPE_SHOW_PAGE_WITH_ASIDE_FALSE_URL = SHOW_ASIDE_FALSE_URL + SHAPE_URL_END;
+    public static final String GENERALIZED_SHAPE_PAGE_WITH_ASIDE_FALSE_URL = SHOW_ASIDE_FALSE_URL + SHAPE_URL_END;
 
     public static final String NEW_CALCULATION_URL_WITH_ASIDE_TRUE_URL = SGP_URL_DEV + "?newCalculation=true&" + SHOW_ASIDE_TRUE_END;
 

@@ -14,7 +14,7 @@ import static util.Constants.*;
 public class TablistTest {
     DetailedShapePage detailedShapePage;
     private final int SHAPE_ID = 611;
-    private final String SHAPE_URL = SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END;
+    private final String SHAPE_URL = GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END;
     private final DetailedShapePanel detailedShapePanel = new DetailedShapePanel();
 
     @BeforeEach

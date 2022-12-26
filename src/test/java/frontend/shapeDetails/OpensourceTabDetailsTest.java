@@ -1,6 +1,5 @@
 package frontend.shapeDetails;
 
-import com.microsoft.playwright.Locator;
 import elements.OpensourceTab;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,9 +8,7 @@ import pages.DetailedShapePage;
 import util.JunitExtension;
 import util.Util;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static util.Util.assertTooltip;
 
 @ExtendWith(JunitExtension.class)
 public class OpensourceTabDetailsTest {
