@@ -5,6 +5,8 @@ import com.microsoft.playwright.Page;
 import util.JunitExtension;
 import util.Util;
 
+import static util.Util.assertTooltip;
+
 public class MapControl {
 
     //<editor-fold desc="Selectors">
@@ -166,38 +168,38 @@ public class MapControl {
     }
 
     public void checkShapesPanelHideTooltip(String expText) {
-        Util.assertTooltip(shapesPanelHideShowBtn, shapesPanelHideTooltip, expText);
+        assertTooltip(shapesPanelHideShowBtn, shapesPanelHideTooltip, expText);
     }
 
     public void checkShapesPanelShowTooltip(String expText) {
-        Util.assertTooltip(shapesPanelHideShowBtn, shapesPanelShowTooltip, expText);
+        assertTooltip(shapesPanelHideShowBtn, shapesPanelShowTooltip, expText);
     }
 
     public void checkGridLinesHideTooltip(String expText) {
-        Util.assertTooltip(gridLinesBtn, gridLinesHideTooltip, expText);
+        assertTooltip(gridLinesBtn, gridLinesHideTooltip, expText);
     }
 
     public void checkGridLinesShowTooltip(String expText) {
-        Util.assertTooltip(gridLinesBtn, gridLinesShowTooltip, expText);
+        assertTooltip(gridLinesBtn, gridLinesShowTooltip, expText);
     }
 
     public void checkGlobalGridHideTooltip(String expText) {
-        Util.assertTooltip(globalGridBtn, globalGridHideTooltip, expText);
+        assertTooltip(globalGridBtn, globalGridHideTooltip, expText);
     }
 
     public void checkGlobalGridShowTooltip(String expText) {
-        Util.assertTooltip(globalGridBtn, globalGridShowTooltip, expText);
+        assertTooltip(globalGridBtn, globalGridShowTooltip, expText);
     }
 
     public void checkCoverageHighlightHideTooltip(String expText) {
-        Util.assertTooltip(coverageHighlightingBtn, coverageHighlightHideTooltip, expText);
+        assertTooltip(coverageHighlightingBtn, coverageHighlightHideTooltip, expText);
     }
 
     public void checkCoverageHighlightShowTooltip(String expText) {
-        Util.assertTooltip(coverageHighlightingBtn, coverageHighlightShowTooltip, expText);
+        assertTooltip(coverageHighlightingBtn, coverageHighlightShowTooltip, expText);
     }
 
     public void checkResetViewportBtnTooltip(String expText) {
-        Util.assertTooltip(viewportBtn, resetViewportBtnTooltip, expText);
+        assertTooltip(viewportBtn, resetViewportBtnTooltip, expText);
     }
 }
