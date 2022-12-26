@@ -2,6 +2,7 @@ package frontend;
 
 import com.microsoft.playwright.FileChooser;
 import elements.ShapeCreationPanel;
+import elements.ShapesPanel;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,12 +17,12 @@ import java.nio.file.Paths;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static util.Constants.SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL;
+import static util.Constants.GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL;
 import static util.JunitExtension.page;
 
 @ExtendWith(JunitExtension.class)
 public class EndToEndShapeCreationTest {
-    private static final String CITY = "Detroit";
+    private static final String CITY = "Детройт";
     private static final String EXPECTED_ZOOM = "3 km";
     private static final String SHAPE_NAME_ONE_MANUAL_POLYGON = "Auto-test: shape with one manual polygon";
     private static final String SHAPE_NAME_TWO_MANUAL_POLYGONS = "Auto-test: shape with two manual polygons";
@@ -45,6 +46,8 @@ public class EndToEndShapeCreationTest {
     void checkOneManualPolygonCreation() {
         shapeCreationPage.mapControl.getGeoSearch().click();
         shapeCreationPage.mapControl.getGeoSearch().type(CITY);
+        shapeCreationPage.mapControl.getGeoSearch().click();
+        shapeCreationPage.getPage().keyboard().press("Backspace");
         shapeCreationPage.mapControl.getGeoSearchList().locator("text=" + CITY).first().click();
         shapeCreationPage.getPage().waitForTimeout(TIMEOUT_FOR_MAP_FOCUSING);
 
@@ -61,10 +64,13 @@ public class EndToEndShapeCreationTest {
         shapeCreationPanel.getCreateProcessBtn().click();
 
         generalizedShapePage.generalizedShapePanel.waitForProgressBar();
+        generalizedShapePage.getPage().getByText(SHAPE_NAME_ONE_MANUAL_POLYGON).nth(0).hover();
 
         assertAll(
-                () -> assertTrue(generalizedShapePage.getPage().url().startsWith(SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL)),
-                () -> assertThat(generalizedShapePage.changeShapeMenuBtn.getMenuBtn()).isVisible(),
+                () -> assertTrue(generalizedShapePage.getPage().url().startsWith(GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL)),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getRenameShapeBtn()).isVisible(),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getDeleteShapeBtn()).isVisible(),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getCollapseBtn()).isVisible(),
                 () -> assertThat(generalizedShapePage.generalizedShapePanel.getStopCalculationBtn()).isVisible(),
                 () -> assertEquals("1", generalizedShapePage.generalizedShapePanel.getPolygonsCountNumber().textContent(),
                         "Ожидается, что в области один полигон")
@@ -75,6 +81,8 @@ public class EndToEndShapeCreationTest {
     void checkTwoManualPolygonsCreation() {
         shapeCreationPage.mapControl.getGeoSearch().click();
         shapeCreationPage.mapControl.getGeoSearch().type(CITY);
+        shapeCreationPage.mapControl.getGeoSearch().click();
+        shapeCreationPage.getPage().keyboard().press("Backspace");
         shapeCreationPage.mapControl.getGeoSearchList().locator("text=" + CITY).first().click();
         shapeCreationPage.getPage().waitForTimeout(TIMEOUT_FOR_MAP_FOCUSING);
 
@@ -92,10 +100,13 @@ public class EndToEndShapeCreationTest {
         shapeCreationPanel.getCreateProcessBtn().click();
 
         generalizedShapePage.generalizedShapePanel.waitForProgressBar();
+        generalizedShapePage.getPage().getByText(SHAPE_NAME_TWO_MANUAL_POLYGONS).nth(0).hover();
 
         assertAll(
-                () -> assertTrue(generalizedShapePage.getPage().url().startsWith(SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL)),
-                () -> assertThat(generalizedShapePage.changeShapeMenuBtn.getMenuBtn()).isVisible(),
+                () -> assertTrue(generalizedShapePage.getPage().url().startsWith(GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL)),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getRenameShapeBtn()).isVisible(),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getDeleteShapeBtn()).isVisible(),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getCollapseBtn()).isVisible(),
                 () -> assertThat(generalizedShapePage.generalizedShapePanel.getStopCalculationBtn()).isVisible(),
                 () -> assertEquals("2", generalizedShapePage.generalizedShapePanel.getPolygonsCountNumber().textContent(),
                         "Ожидается, что в области два полигона")
@@ -110,10 +121,13 @@ public class EndToEndShapeCreationTest {
         shapeCreationPanel.getCreateProcessBtn().click();
 
         generalizedShapePage.generalizedShapePanel.waitForProgressBar();
+        generalizedShapePage.getPage().getByText(SHAPE_NAME_ONE_POLYGON_FROM_JSON).nth(0).hover();
 
         assertAll(
-                () -> assertTrue(generalizedShapePage.getPage().url().startsWith(SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL)),
-                () -> assertThat(generalizedShapePage.changeShapeMenuBtn.getMenuBtn()).isVisible(),
+                () -> assertTrue(generalizedShapePage.getPage().url().startsWith(GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL)),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getRenameShapeBtn()).isVisible(),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getDeleteShapeBtn()).isVisible(),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getCollapseBtn()).isVisible(),
                 () -> assertThat(generalizedShapePage.generalizedShapePanel.getStopCalculationBtn()).isVisible(),
                 () -> assertEquals("1", generalizedShapePage.generalizedShapePanel.getPolygonsCountNumber().textContent(),
                         "Ожидается, что в области один полигон")
@@ -128,10 +142,13 @@ public class EndToEndShapeCreationTest {
         shapeCreationPanel.getCreateProcessBtn().click();
 
         generalizedShapePage.generalizedShapePanel.waitForProgressBar();
+        generalizedShapePage.getPage().getByText(SHAPE_NAME_TWO_POLYGONS_FROM_JSON).nth(0).hover();
 
         assertAll(
-                () -> assertTrue(generalizedShapePage.getPage().url().startsWith(SHAPE_SHOW_PAGE_WITH_ASIDE_TRUE_URL)),
-                () -> assertThat(generalizedShapePage.changeShapeMenuBtn.getMenuBtn()).isVisible(),
+                () -> assertTrue(generalizedShapePage.getPage().url().startsWith(GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL)),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getRenameShapeBtn()).isVisible(),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getDeleteShapeBtn()).isVisible(),
+                () -> assertThat(generalizedShapePage.generalizedShapePanel.getCollapseBtn()).isVisible(),
                 () -> assertThat(generalizedShapePage.generalizedShapePanel.getStopCalculationBtn()).isVisible(),
                 () -> assertEquals("2", generalizedShapePage.generalizedShapePanel.getPolygonsCountNumber().textContent(),
                         "Ожидается, что в области два полигона")
@@ -142,15 +159,17 @@ public class EndToEndShapeCreationTest {
     void stopCalculation() {
         generalizedShapePage.generalizedShapePanel.getStopCalculationBtn().click();
         generalizedShapePage.generalizedShapePanel.getStopCalculationYes().click();
+        generalizedShapePage.generalizedShapePanel.waitForStoppedCalculationIcon();
     }
 
     @AfterAll
     static void cleanUp() {
-        new SgpMainPage().openMainPageWithHeaderWait();
-        SgpMainPage.deleteShapeByName(SHAPE_NAME_ONE_MANUAL_POLYGON);
-        SgpMainPage.deleteShapeByName(SHAPE_NAME_TWO_MANUAL_POLYGONS);
-        SgpMainPage.deleteShapeByName(SHAPE_NAME_ONE_POLYGON_FROM_JSON);
-        SgpMainPage.deleteShapeByName(SHAPE_NAME_TWO_POLYGONS_FROM_JSON);
+        SgpMainPage sgpMainPage = new SgpMainPage().openMainPageWithHeaderWait();
+        ShapesPanel shapesPanel = sgpMainPage.shapesPanel;
+        shapesPanel.deleteShapeByName(SHAPE_NAME_ONE_MANUAL_POLYGON);
+        shapesPanel.deleteShapeByName(SHAPE_NAME_TWO_MANUAL_POLYGONS);
+        shapesPanel.deleteShapeByName(SHAPE_NAME_ONE_POLYGON_FROM_JSON);
+        shapesPanel.deleteShapeByName(SHAPE_NAME_TWO_POLYGONS_FROM_JSON);
     }
 
 }

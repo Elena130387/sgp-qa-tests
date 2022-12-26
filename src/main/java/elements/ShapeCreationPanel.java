@@ -4,9 +4,10 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import org.jetbrains.annotations.NotNull;
 import util.JunitExtension;
-import util.Util;
 
 import java.util.regex.Pattern;
+
+import static util.Util.assertTooltip;
 
 public class ShapeCreationPanel {
 
@@ -178,6 +179,6 @@ public class ShapeCreationPanel {
     }
 
     public void checkDrawPolygonBtnTooltip(String expText) {
-        Util.assertTooltip(drawPolygonBtn, drawPolygonTooltip, expText);
+        assertTooltip(drawPolygonBtn, drawPolygonTooltip, expText);
     }
 }

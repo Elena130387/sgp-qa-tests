@@ -5,6 +5,8 @@ import com.microsoft.playwright.Page;
 import util.JunitExtension;
 import util.Util;
 
+import static util.Util.assertTooltip;
+
 public class Header {
     //<editor-fold desc="Selectors">
     private static final String SELECTOR_HEADER = "[data-cy=header-div]";
@@ -94,14 +96,14 @@ public class Header {
     }
 
     public void checkFullscreenModeOnTooltip(String expText) {
-        Util.assertTooltip(fullScreenBtn,fullScreenOnTooltip, expText);
+        assertTooltip(fullScreenBtn,fullScreenOnTooltip, expText);
     }
 
     public void checkFullscreenModeOffTooltip(String expText) {
-        Util.assertTooltip(fullScreenBtn,fullScreenOffTooltip, expText);
+        assertTooltip(fullScreenBtn,fullScreenOffTooltip, expText);
     }
 
     public void checkColorModeTooltip(String expText) {
-        Util.assertTooltip(colorModeBtn,colorModeTooltip, expText);
+        assertTooltip(colorModeBtn,colorModeTooltip, expText);
     }
 }

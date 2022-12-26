@@ -3,7 +3,8 @@ package elements;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
-import util.Util;
+
+import static util.Util.assertTooltip;
 
 public class OpensourceTab {
     //<editor-fold desc="Selectors">
@@ -84,38 +85,133 @@ public class OpensourceTab {
         return censusData;
     }
 
-    public Locator getGeographicDetails() { return geographicDetails; }
-    public Locator getGeographicDetailsInfoIcon() { return geographicDetailsInfoIcon; }
-    public Locator getGeographicDetailsInfoTooltip() { return geographicDetailsInfoTooltip; }
-    public Locator getPopulationSection() { return populationSection; }
-    public Locator getPopulationTitle() { return populationTitle; }
-    public Locator getPopulationQuestionIcon() { return populationQuestionIcon; }
-    public Locator getPopulationQuestionTooltip() { return populationQuestionTooltip; }
-    public Locator getIncomePerCapita() { return incomePerCapita; }
-    public Locator getIncomePerCapitaValue() { return incomePerCapitaValue; }
-    public Locator getPopulationData() { return populationData; }
-    public Locator getPopulationDataValue() { return populationDataValue; }
-    public Locator getHousingUnitCountSection() { return housingUnitCountSection; }
-    public Locator getHousingUnitCountTitle() { return housingUnitCountTitle; }
-    public Locator getHousingUnitCountQuestionIcon() { return  housingUnitCountQuestionIcon; }
-    public Locator getHousingUnitCountQuestionTooltip() { return  housingUnitCountQuestionTooltip; }
-    public Locator getHousingTotal() { return housingTotal; }
-    public Locator getHousingTotalValue() { return housingTotalValue; }
-    public Locator getHousingInUse() { return housingInUse; }
-    public Locator getHousingInUseValue() { return housingInUseValue; }
-    public Locator getHousingDistributionSection() { return housingDistributionSection; }
-    public Locator getHousingDistributionTitle() { return housingDistributionTitle; }
-    public Locator getHousingDistributionQuestionIcon() { return housingDistributionQuestionIcon; }
-    public Locator getHousingDistributionQuestionTooltip() { return housingDistributionQuestionTooltip; }
-    public Locator getHousingDistributionChart() { return housingDistributionChart; }
-    public Locator getHousingPriceSection() { return housingPriceSection; }
-    public Locator getHousingPriceTitle() { return housingPriceTitle; }
-    public Locator getHousingPriceQuestionIcon() { return housingPriceQuestionIcon; }
-    public Locator getHousingPriceQuestionTooltip() { return housingPriceQuestionTooltip; }
-    public Locator getHousingAveragePrice() { return housingAveragePrice; }
-    public Locator getHousingAveragePriceValue() { return housingAveragePriceValue; }
-    public Locator getHousingMedianPrice() { return housingMedianPrice; }
-    public Locator getHousingMedianPriceValue() { return housingMedianPriceValue; }
+    public Locator getGeographicDetails() {
+        return geographicDetails;
+    }
+
+    public Locator getGeographicDetailsInfoIcon() {
+        return geographicDetailsInfoIcon;
+    }
+
+    public Locator getGeographicDetailsInfoTooltip() {
+        return geographicDetailsInfoTooltip;
+    }
+
+    public Locator getPopulationSection() {
+        return populationSection;
+    }
+
+    public Locator getPopulationTitle() {
+        return populationTitle;
+    }
+
+    public Locator getPopulationQuestionIcon() {
+        return populationQuestionIcon;
+    }
+
+    public Locator getPopulationQuestionTooltip() {
+        return populationQuestionTooltip;
+    }
+
+    public Locator getIncomePerCapita() {
+        return incomePerCapita;
+    }
+
+    public Locator getIncomePerCapitaValue() {
+        return incomePerCapitaValue;
+    }
+
+    public Locator getPopulationData() {
+        return populationData;
+    }
+
+    public Locator getPopulationDataValue() {
+        return populationDataValue;
+    }
+
+    public Locator getHousingUnitCountSection() {
+        return housingUnitCountSection;
+    }
+
+    public Locator getHousingUnitCountTitle() {
+        return housingUnitCountTitle;
+    }
+
+    public Locator getHousingUnitCountQuestionIcon() {
+        return housingUnitCountQuestionIcon;
+    }
+
+    public Locator getHousingUnitCountQuestionTooltip() {
+        return housingUnitCountQuestionTooltip;
+    }
+
+    public Locator getHousingTotal() {
+        return housingTotal;
+    }
+
+    public Locator getHousingTotalValue() {
+        return housingTotalValue;
+    }
+
+    public Locator getHousingInUse() {
+        return housingInUse;
+    }
+
+    public Locator getHousingInUseValue() {
+        return housingInUseValue;
+    }
+
+    public Locator getHousingDistributionSection() {
+        return housingDistributionSection;
+    }
+
+    public Locator getHousingDistributionTitle() {
+        return housingDistributionTitle;
+    }
+
+    public Locator getHousingDistributionQuestionIcon() {
+        return housingDistributionQuestionIcon;
+    }
+
+    public Locator getHousingDistributionQuestionTooltip() {
+        return housingDistributionQuestionTooltip;
+    }
+
+    public Locator getHousingDistributionChart() {
+        return housingDistributionChart;
+    }
+
+    public Locator getHousingPriceSection() {
+        return housingPriceSection;
+    }
+
+    public Locator getHousingPriceTitle() {
+        return housingPriceTitle;
+    }
+
+    public Locator getHousingPriceQuestionIcon() {
+        return housingPriceQuestionIcon;
+    }
+
+    public Locator getHousingPriceQuestionTooltip() {
+        return housingPriceQuestionTooltip;
+    }
+
+    public Locator getHousingAveragePrice() {
+        return housingAveragePrice;
+    }
+
+    public Locator getHousingAveragePriceValue() {
+        return housingAveragePriceValue;
+    }
+
+    public Locator getHousingMedianPrice() {
+        return housingMedianPrice;
+    }
+
+    public Locator getHousingMedianPriceValue() {
+        return housingMedianPriceValue;
+    }
 
     //</editor-fold>
 
@@ -162,22 +258,22 @@ public class OpensourceTab {
     }
 
     public void checkGeographicDetailsInfoTooltip(String expText) {
-        Util.assertTooltip(geographicDetailsInfoIcon, geographicDetailsInfoTooltip, expText);
+        assertTooltip(geographicDetailsInfoIcon, geographicDetailsInfoTooltip, expText);
     }
 
     public void checkPopulationQuestionTooltip(String expText) {
-        Util.assertTooltip(populationQuestionIcon, populationQuestionTooltip, expText);
+        assertTooltip(populationQuestionIcon, populationQuestionTooltip, expText);
     }
 
     public void checkHousingUnitCountQuestionTooltip(String expText) {
-        Util.assertTooltip(housingUnitCountQuestionIcon, housingUnitCountQuestionTooltip, expText);
+        assertTooltip(housingUnitCountQuestionIcon, housingUnitCountQuestionTooltip, expText);
     }
 
     public void checkHousingDistributionQuestionTooltip(String expText) {
-        Util.assertTooltip(housingDistributionQuestionIcon, housingDistributionQuestionTooltip, expText);
+        assertTooltip(housingDistributionQuestionIcon, housingDistributionQuestionTooltip, expText);
     }
 
     public void checkHousingPriceQuestionTooltip(String expText) {
-        Util.assertTooltip(housingPriceQuestionIcon, housingPriceQuestionTooltip, expText);
+        assertTooltip(housingPriceQuestionIcon, housingPriceQuestionTooltip, expText);
     }
 }
