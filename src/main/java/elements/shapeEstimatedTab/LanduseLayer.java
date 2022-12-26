@@ -62,6 +62,7 @@ public class LanduseLayer {
     public Locator getStreetValue() {
         return streetValue;
     }
+
     public Locator getCommercialType() {
         return commercialType;
     }
@@ -73,39 +74,51 @@ public class LanduseLayer {
     public Locator getIndustrialType() {
         return industrialType;
     }
+
     public Locator getIndustrialValue() {
         return industrialValue;
     }
+
     public Locator getResidentialType() {
         return residentialType;
     }
+
     public Locator getResidentialValue() {
         return residentialValue;
     }
+
     public Locator getNatureType() {
         return natureType;
     }
+
     public Locator getNatureValue() {
         return natureValue;
     }
+
     public Locator getCultivatedType() {
         return cultivatedType;
     }
+
     public Locator getCultivatedValue() {
         return cultivatedValue;
     }
+
     public Locator getUnavailableType() {
         return unavailableType;
     }
+
     public Locator getUnavailableValue() {
         return unavailableValue;
     }
+
     public Locator getNoneType() {
         return noneType;
     }
+
     public Locator getNoneValue() {
         return noneValue;
     }
+
     public Locator getCalculationStatus() {
         return calculationStatus;
     }

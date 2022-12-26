@@ -20,13 +20,13 @@ public class Constants {
 
     public static final String SHAPE_DETAILS_URL_END = "&detailed=true";
 
-    public static final String SHAPE_OPENSOURCE_TAB_URL =  "&tab=opensource";
+    public static final String SHAPE_OPENSOURCE_TAB_URL = "&tab=opensource";
 
-    public static final String SHAPE_ESTIMATED_TAB_URL =  "&tab=estimated";
+    public static final String SHAPE_ESTIMATED_TAB_URL = "&tab=estimated";
 
-    public static final String SHAPE_ECONOMIC_TAB_URL =  "&tab=economic-exposure";
+    public static final String SHAPE_ECONOMIC_TAB_URL = "&tab=economic-exposure";
 
-    public static final String SHAPE_INSURANCE_TAB_URL =  "&tab=insurance-exposure";
+    public static final String SHAPE_INSURANCE_TAB_URL = "&tab=insurance-exposure";
 
     public static final String SHOW_ASIDE_TRUE_URL = SGP_URL_DEV + "?" + SHOW_ASIDE_TRUE_END;
 
@@ -102,4 +102,4 @@ public class Constants {
 
     public static final int CORRECT_SHAPE_ID = 1125;
     //</editor-fold>
-};
+}

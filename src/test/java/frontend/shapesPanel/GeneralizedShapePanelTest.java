@@ -92,25 +92,25 @@ public class GeneralizedShapePanelTest {
     }
 
     @Test
-    void checkDeleteWindowCommonViewFromGeneralizedShapePanel(){
+    void checkDeleteWindowCommonViewFromGeneralizedShapePanel() {
         generalizedShapePanel.checkDeleteWindowCommonView(SHAPE_NAME);
     }
 
     @Test
-    void checkShapeCollapsing(){
+    void checkShapeCollapsing() {
         generalizedShapePanel.getCollapseBtn().click();
         assertEquals(SHOW_ASIDE_TRUE_URL, generalizedShapePage.getPage().url(), "Неверный URL");
     }
 
     @Test
-    void checkClickByShapeName(){
+    void checkClickByShapeName() {
         generalizedShapePage.getPage().getByText(SHAPE_NAME).click();
         assertEquals(GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END,
                 generalizedShapePage.getPage().url(), "Неверный URL");
     }
 
     @Test
-    void checkProgressBarAndCalculationStopping(){
+    void checkProgressBarAndCalculationStopping() {
         shapeCreationPage = new ShapeCreationPage().openShapeCreationPageWithPanelWait();
         shapeCreationPanel = shapeCreationPage.shapeCreationPanel;
 
@@ -132,7 +132,7 @@ public class GeneralizedShapePanelTest {
     }
 
     @Test
-    void checkStoppedCalculationIconAndItsTooltip(){
+    void checkStoppedCalculationIconAndItsTooltip() {
         generalizedShapePage = new GeneralizedShapePage().openGeneralizedShapePageWithAsideTrue(SHAPE_WITH_STOP_ICON_ID);
         Util.checkScreenshotForElement(
                 generalizedShapePanel.getStoppedCalculationIcon(),
@@ -145,7 +145,7 @@ public class GeneralizedShapePanelTest {
     }
 
     @Test
-    void checkFailedCalculationIconAndItsTooltip(){
+    void checkFailedCalculationIconAndItsTooltip() {
         generalizedShapePage = new GeneralizedShapePage().openGeneralizedShapePageWithAsideTrue(SHAPE_WITH_FAIL_ICON_ID);
         Util.checkScreenshotForElement(
                 generalizedShapePanel.getFailedCalculationIcon(),

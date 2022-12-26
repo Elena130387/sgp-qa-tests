@@ -81,7 +81,8 @@ public class ShapesPanelTest {
     }
 
     @Test
-    @Disabled //TODO: сделать data-cy селектор на эту группу элементов и можно будет включать
+    @Disabled
+        //TODO: сделать data-cy селектор на эту группу элементов и можно будет включать
     void checkRenameDeleteExpandIconsTogetherOnShapesPanel() {
         shapesPanel.getShapeInShapesList().nth(ORDINAL_NUMBER_OF_CHECKED_SHAPE).hover();
         shapesPanel.checkRenameDeleteExpandIconsTogether("heckRenameDeleteExpandIconsTogetherOnShapesPanel");
@@ -126,7 +127,7 @@ public class ShapesPanelTest {
     }
 
     @Test
-    void checkDeleteWindowCommonViewFromShapesPanel(){
+    void checkDeleteWindowCommonViewFromShapesPanel() {
         shapesPanel.searchShapeByName(SHAPE_NAME_FOR_EXPAND_OR_OPENING, true);
         shapesPanel.getShapeName().nth(ORDINAL_NUMBER_OF_CHECKED_SHAPE).hover();
         shapesPanel.checkDeleteWindowCommonView(SHAPE_NAME_FOR_EXPAND_OR_OPENING);
@@ -156,7 +157,7 @@ public class ShapesPanelTest {
     }
 
     @Test
-    void checkShapeExpanding(){
+    void checkShapeExpanding() {
         shapesPanel.searchShapeByName(SHAPE_NAME_FOR_EXPAND_OR_OPENING, true);
         shapesPanel.getShapeName().nth(ORDINAL_NUMBER_OF_CHECKED_SHAPE).hover();
         shapesPanel.getExpandBtn().click();
@@ -165,7 +166,7 @@ public class ShapesPanelTest {
     }
 
     @Test
-    void checkClickByShapeName(){
+    void checkClickByShapeName() {
         shapesPanel.searchShapeByName(SHAPE_NAME_FOR_EXPAND_OR_OPENING, true);
         shapesPanel.getShapeName().click();
         assertEquals(SGP_URL_DEV + SHAPE_URL_MIDDLE + SHAPE_ID_FOR_EXPAND_OR_OPENING + SHAPE_DETAILS_URL_END,

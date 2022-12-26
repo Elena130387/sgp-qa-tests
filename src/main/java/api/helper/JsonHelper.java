@@ -1,6 +1,5 @@
 package api.helper;
 
-import api.dto.shape.Shape;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.hasKey;
 
 public class JsonHelper {

@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static api.client.Estimator.*;
+import static api.client.Estimator.getEstimatorStatusById;
+import static api.client.Estimator.getJobExecutionIds;
 import static api.dto.StatusesList.*;
 import static util.Util.timeoutIsReached;
 

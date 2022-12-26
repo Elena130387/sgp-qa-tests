@@ -9,8 +9,6 @@ import java.util.concurrent.TimeoutException;
 
 import static api.client.CalcManagement.deleteShapeDataById;
 import static api.client.CalcManagement.getShapeDataById;
-import static api.dto.StatusesList.DELETED;
-import static api.helper.JsonHelper.getStringFromJson;
 import static api.helper.ShapeHelper.createShapeFromFileAndGetID;
 import static api.helper.ShapeHelper.waitForShapeStatusCompleted;
 import static util.Constants.*;

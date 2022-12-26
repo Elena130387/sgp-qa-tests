@@ -3,7 +3,6 @@ package elements.map;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
-import util.Util;
 
 import static util.Util.assertTooltip;
 

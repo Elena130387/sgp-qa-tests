@@ -32,6 +32,6 @@ public class Estimator {
     }
 
     public static String getEstimatorStatusById(int id) {
-        return getStringFromJson(BaseRequests.getRequestWithId(id, ESTIMATOR_JOB_EXECUTION_STATUS_EP),"status");
+        return getStringFromJson(BaseRequests.getRequestWithId(id, ESTIMATOR_JOB_EXECUTION_STATUS_EP), "status");
     }
 }

@@ -37,18 +37,37 @@ public class InsuranceTab {
         return insuranceTitle;
     }
 
-    public Locator getResidentialType() { return residentialType; }
+    public Locator getResidentialType() {
+        return residentialType;
+    }
 
-    public Locator getResidentialValue() { return residentialValue; }
-    public Locator getCommercialType() { return commercialType; }
+    public Locator getResidentialValue() {
+        return residentialValue;
+    }
 
-    public Locator getCommercialValue() { return commercialValue; }
-    public Locator getIndustrialType() { return industrialType; }
+    public Locator getCommercialType() {
+        return commercialType;
+    }
 
-    public Locator getIndustrialValue() { return industrialValue; }
-    public Locator getAgriculturalType() { return agriculturalType; }
+    public Locator getCommercialValue() {
+        return commercialValue;
+    }
 
-    public Locator getAgriculturalValue() { return agriculturalValue; }
+    public Locator getIndustrialType() {
+        return industrialType;
+    }
+
+    public Locator getIndustrialValue() {
+        return industrialValue;
+    }
+
+    public Locator getAgriculturalType() {
+        return agriculturalType;
+    }
+
+    public Locator getAgriculturalValue() {
+        return agriculturalValue;
+    }
 
     //</editor-fold>
 

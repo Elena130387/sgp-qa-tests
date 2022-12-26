@@ -44,6 +44,7 @@ public class BuildingHeightLayer {
     public Locator getBuildings3LessHeightValue() {
         return buildings3LessHeightValue;
     }
+
     public Locator getBuildings3To8Height() {
         return buildings3To8Height;
     }
@@ -51,6 +52,7 @@ public class BuildingHeightLayer {
     public Locator getBuildings3To8HeightValue() {
         return buildings3To8HeightValue;
     }
+
     public Locator getBuildings8MoreHeight() {
         return buildings8MoreHeight;
     }

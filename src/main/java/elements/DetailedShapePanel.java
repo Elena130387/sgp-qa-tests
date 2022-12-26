@@ -80,12 +80,15 @@ public class DetailedShapePanel {
     public Locator getOpensourceTabBtn() {
         return opensourceTabBtn;
     }
+
     public Locator getEstimatedTabBtn() {
         return estimatedTabBtn;
     }
+
     public Locator getEconomicTabBtn() {
         return economicTabBtn;
     }
+
     public Locator getInsuranceTabBtn() {
         return insuranceTabBtn;
     }
@@ -108,6 +111,7 @@ public class DetailedShapePanel {
         insuranceTabBtn = page.locator(SELECTOR_INSURANCE_TAB_BTN);
         derivativeRightsMsg = page.locator(SELECTOR_DERIVATIVE_RIGHTS_MSG);
     }
+
     public OpensourceTab openOpensourceTab() {
         opensourceTabBtn.click();
         return new OpensourceTab();

@@ -62,6 +62,7 @@ public class BuildingDamageLayer {
     public Locator getMajorDamageBuildingsValue() {
         return majorDamageBuildingsValue;
     }
+
     public Locator getMinorDamageBuildings() {
         return minorDamageBuildings;
     }
@@ -69,6 +70,7 @@ public class BuildingDamageLayer {
     public Locator getMinorDamageBuildingsValue() {
         return minorDamageBuildingsValue;
     }
+
     public Locator getNoDamageBuildings() {
         return noDamageBuildings;
     }
@@ -76,8 +78,14 @@ public class BuildingDamageLayer {
     public Locator getNoDamageBuildingsValue() {
         return noDamageBuildingsValue;
     }
-    public Locator getTotalDamageBuildings() { return totalDamageBuildings; }
-    public Locator getTotalDamageBuildingsValue() {return totalDamageBuildingsValue; }
+
+    public Locator getTotalDamageBuildings() {
+        return totalDamageBuildings;
+    }
+
+    public Locator getTotalDamageBuildingsValue() {
+        return totalDamageBuildingsValue;
+    }
 
     //</editor-fold>
 

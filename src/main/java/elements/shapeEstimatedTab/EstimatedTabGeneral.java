@@ -67,24 +67,31 @@ public class EstimatedTabGeneral {
     public Locator getObjectsLayerIcon() {
         return objectsLayerIcon;
     }
+
     public Locator getBuildingsLayerIcon() {
         return buildingsLayerIcon;
     }
+
     public Locator getBuildingHeightLayerIcon() {
         return buildingHeightLayerIcon;
     }
+
     public Locator getBuildingDamageLayerIcon() {
         return buildingDamageLayerIcon;
     }
+
     public Locator getPopulationLayerIcon() {
         return populationLayerIcon;
     }
+
     public Locator getLanduseLayerIcon() {
         return landuseLayerIcon;
     }
+
     public Locator getBuildingDamageLayerCheckbox() {
         return buildingDamageLayerCheckbox;
     }
+
     public Locator getPopulationLayerCheckbox() {
         return populationLayerCheckbox;
     }

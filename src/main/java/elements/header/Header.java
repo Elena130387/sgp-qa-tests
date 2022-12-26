@@ -3,7 +3,6 @@ package elements.header;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
-import util.Util;
 
 import static util.Util.assertTooltip;
 
@@ -96,14 +95,14 @@ public class Header {
     }
 
     public void checkFullscreenModeOnTooltip(String expText) {
-        assertTooltip(fullScreenBtn,fullScreenOnTooltip, expText);
+        assertTooltip(fullScreenBtn, fullScreenOnTooltip, expText);
     }
 
     public void checkFullscreenModeOffTooltip(String expText) {
-        assertTooltip(fullScreenBtn,fullScreenOffTooltip, expText);
+        assertTooltip(fullScreenBtn, fullScreenOffTooltip, expText);
     }
 
     public void checkColorModeTooltip(String expText) {
-        assertTooltip(colorModeBtn,colorModeTooltip, expText);
+        assertTooltip(colorModeBtn, colorModeTooltip, expText);
     }
 }

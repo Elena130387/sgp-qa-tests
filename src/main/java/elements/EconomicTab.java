@@ -25,9 +25,13 @@ public class EconomicTab {
         return economicTitle;
     }
 
-    public Locator getEconomicGeneral() { return economicGeneral; }
+    public Locator getEconomicGeneral() {
+        return economicGeneral;
+    }
 
-    public Locator getEconomicGeneralValue() { return economicGeneralValue; }
+    public Locator getEconomicGeneralValue() {
+        return economicGeneralValue;
+    }
 
     //</editor-fold>
 

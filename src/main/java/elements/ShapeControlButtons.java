@@ -78,57 +78,75 @@ public class ShapeControlButtons {
     public Locator getRenameShapeBtn() {
         return renameShapeBtn;
     }
+
     public Locator getRenameShapeTooltip() {
         return renameShapeTooltip;
     }
+
     public Locator getRenameShapeHeader() {
         return renameShapeHeader;
     }
+
     public Locator getRenameShapeCloseWindow() {
         return renameShapeCloseWindow;
     }
+
     public Locator getRenameShapeInput() {
         return renameShapeInput;
     }
+
     public Locator getRenameShapeYes() {
         return renameShapeYes;
     }
+
     public Locator getRenameShapeNo() {
         return renameShapeNo;
     }
+
     public Locator getDeleteShapeBtn() {
         return deleteShapeBtn;
     }
+
     public Locator getDeleteShapeTooltip() {
         return deleteShapeTooltip;
     }
+
     public Locator getDeleteShapeHeader() {
         return deleteShapeHeader;
     }
+
     public Locator getDeleteShapeCloseWindow() {
         return deleteShapeCloseWindow;
     }
+
     public Locator getDeleteShapeText() {
         return deleteShapeText;
     }
+
     public Locator getDeleteShapeYes() {
         return deleteShapeYes;
     }
+
     public Locator getDeleteShapeNo() {
         return deleteShapeNo;
     }
+
     public Locator getExpandBtn() {
         return expandBtn;
     }
+
     public Locator getExpandTooltip() {
         return expandTooltip;
     }
+
     public Locator getCollapseBtn() {
         return collapseBtn;
     }
+
     public Locator getCollapseTooltip() {
         return collapseTooltip;
     }
+
     public Locator getRenameDeleteExpandIconsTogether() {
         return renameDeleteExpandIconsTogether;
     }
