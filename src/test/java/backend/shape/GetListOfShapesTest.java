@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static util.Constants.CALC_MAN_SHAPES_EP;
 
 public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
-    private final String PEGE_SIZE_ERROR_MESSAGE = "Page size must not be less than one!";
+    private final String PAGE_SIZE_ERROR_MESSAGE = "Page size must not be less than one!";
     private final int DEFAULT_LIMIT_VALUE = 1000;
     @Test
     void getLimitNumberOfShapes() {
@@ -86,7 +86,7 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
         int limit = 0;
         ValidatableResponse response = CalcManagement.getLimitNumberOfShapes(limit);
         String message = getStringFromJson(response, "message");
-        assertEquals(PEGE_SIZE_ERROR_MESSAGE,
+        assertEquals(PAGE_SIZE_ERROR_MESSAGE,
                 message, "Сообщение об ошибке не соответвтует ожидаемому");
         response.statusCode(500);
     }
@@ -96,7 +96,7 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
         int limit = -4;
         ValidatableResponse response = getRequestWithParam(limit, getUrl());
         String message = getStringFromJson(response, "message");
-        assertEquals(PEGE_SIZE_ERROR_MESSAGE,
+        assertEquals(PAGE_SIZE_ERROR_MESSAGE,
                 message, "Сообщение об ошибке не соответвтует ожидаемому");
     }
 
