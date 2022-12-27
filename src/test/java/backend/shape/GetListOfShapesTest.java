@@ -11,14 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static api.client.BaseRequests.getRequestWithParam;
-import static api.helper.JsonHelper.getStringFromJson;
 import static org.codehaus.groovy.runtime.InvokerHelper.asList;
 import static org.junit.jupiter.api.Assertions.*;
 import static util.Constants.CALC_MAN_SHAPES_EP;
 
 public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
-    private final String PAGE_SIZE_ERROR_MESSAGE = "Page size must not be less than one!";
     private final int DEFAULT_LIMIT_VALUE = 1000;
     @Test
     void getLimitNumberOfShapes() {
@@ -79,25 +76,6 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
 
         assertEquals(sortAscListShapeIds,
                 actualListShapeIds, "Сортировка областей не соответствует ожидаемой");
-    }
-
-    @Test
-    void getEntity_withZeroLimit_expect500Error() {
-        int limit = 0;
-        ValidatableResponse response = CalcManagement.getLimitNumberOfShapes(limit);
-        String message = getStringFromJson(response, "message");
-        assertEquals(PAGE_SIZE_ERROR_MESSAGE,
-                message, "Сообщение об ошибке не соответвтует ожидаемому");
-        response.statusCode(500);
-    }
-
-    @Test
-    void getEntity_withNegativeLimit_expectErrorMessage() {
-        int limit = -4;
-        ValidatableResponse response = getRequestWithParam(limit, getUrl());
-        String message = getStringFromJson(response, "message");
-        assertEquals(PAGE_SIZE_ERROR_MESSAGE,
-                message, "Сообщение об ошибке не соответвтует ожидаемому");
     }
 
     @Override
