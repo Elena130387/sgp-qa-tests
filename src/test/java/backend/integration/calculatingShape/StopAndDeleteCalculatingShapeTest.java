@@ -19,7 +19,6 @@ import static api.helper.JsonHelper.*;
 import static api.helper.ShapeHelper.createShapeFromJson;
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static util.Constants.CALCULATION_TIMEOUT_SEC;
 
 public class StopAndDeleteCalculatingShapeTest {
@@ -44,7 +43,8 @@ public class StopAndDeleteCalculatingShapeTest {
     void deleteCalculatingShape() {
         ValidatableResponse responseDeleteShape = deleteShapeById(shapeId);
         responseDeleteShape.statusCode(200);
-        assertTrue(getShapeDataById(shapeId).extract().statusCode() == 204, "Область не была удалена");
+        assertEquals(204,
+                getShapeDataById(shapeId).extract().statusCode(), "Область не была удалена");
     }
 
     @Test
@@ -61,7 +61,7 @@ public class StopAndDeleteCalculatingShapeTest {
     }
 
     @Test
-    void stopCalculatingShapeBy() throws TimeoutException {
+    void stopCalculatingShapeById() throws TimeoutException {
         stopShapeCalculationById(shapeId);
 
         waitForCalculationStop(shapeId, 10, DURATION_SEC);
