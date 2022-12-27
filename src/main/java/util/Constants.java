@@ -49,13 +49,13 @@ public class Constants {
     //<editor-fold desc="Basic UI Settings">
     public static final String BASE_MAP_TYPE = "Google Satellite";
 
-    public static final int STANDART_PAGE_HEIGHT = 1280;
+    public static final int STANDARD_PAGE_HEIGHT = 1280;
 
-    public static final int STANDART_PAGE_WIDTH = 720;
+    public static final int STANDARD_PAGE_WIDTH = 720;
 
-    public static final String MAP_COMPASS_IMG_STANDART = "transform: rotate(0deg)";
+    public static final String MAP_COMPASS_IMG_STANDARD = "transform: rotate(0deg)";
 
-    public static final String MAP_ZOOM_STANDART = "300 m";
+    public static final String MAP_ZOOM_STANDARD = "300 m";
     //</editor-fold>
 
     //<editor-fold desc="Basic urls for project's models">

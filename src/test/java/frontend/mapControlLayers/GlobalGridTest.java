@@ -7,15 +7,15 @@ import util.JunitExtension;
 import util.Util;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static util.Constants.MAP_ZOOM_STANDART;
+import static util.Constants.MAP_ZOOM_STANDARD;
 
 @ExtendWith(JunitExtension.class)
 public class GlobalGridTest {
 
     DetailedShapePage detailedShowPage;
     private final int SHAPE_ID = 611;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
-    private final String mapZoom = MAP_ZOOM_STANDART;
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
+    private final String mapZoom = MAP_ZOOM_STANDARD;
     private final String GLOBAL_GRID_LINES_SHOW_TOOLTIP = "Show global grid";
     private final String GLOBAL_GRID_LINES_HIDE_TOOLTIP = "Hide global grid";
 
@@ -34,7 +34,7 @@ public class GlobalGridTest {
                 "actGlobalGridOn",
                 "expGlobalGridOn",
                 "checkGlobalGridOn",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         detailedShowPage.mapControl.getGlobalGridBtn().click();
 
@@ -45,7 +45,7 @@ public class GlobalGridTest {
                 "actGlobalGridOff",
                 "expGlobalGridOff",
                 "checkGlobalGridOff",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test

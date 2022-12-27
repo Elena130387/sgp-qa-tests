@@ -9,15 +9,15 @@ import util.Util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static util.Constants.MAP_ZOOM_STANDART;
+import static util.Constants.MAP_ZOOM_STANDARD;
 import static util.Util.assertTooltipInAtrTitle;
 
 @ExtendWith(JunitExtension.class)
 public class ZoomTest {
     DetailedShapePage detailedShowPage;
     private final int SHAPE_ID = 611;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
-    private final String mapZoom = MAP_ZOOM_STANDART;
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
+    private final String mapZoom = MAP_ZOOM_STANDARD;
     private final String ZOOM_IN_BTN_TOOLTIP = "Zoom In";
     private final String ZOOM_OUT_BTN_TOOLTIP = "Zoom Out";
     private final String RESET_VIEWPORT_BTN_TOOLTIP = "Reset viewport";
@@ -43,7 +43,7 @@ public class ZoomTest {
                 "actZoomIn",
                 "expZoomIn",
                 "checkZoomIn",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         detailedShowPage.mapControl.clickZoomOut(2);
         Util.checkScreenshotForElementWithWait(
@@ -51,7 +51,7 @@ public class ZoomTest {
                 "actZoomOut",
                 "expZoomOut",
                 "checkZoomOut",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test

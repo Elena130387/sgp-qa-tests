@@ -12,7 +12,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ExtendWith(JunitExtension.class)
 public class FullscreenModeTest {
     SgpMainPage sgpMainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
     private final String FULLSCREEN_MODE_ON_TOOLTIP = "Выйти из полноэкранного режима";
     private final String FULLSCREEN_MODE_OFF_TOOLTIP = "Полноэкранный режим";
 
@@ -50,7 +50,7 @@ public class FullscreenModeTest {
                 "actFullScreenModeOn",
                 "expFullScreenModeOn",
                 "checkFullScreenModeOn",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         sgpMainPage.header.getFullScreenBtn().click();
         Util.checkScreenshotForElement(
@@ -58,7 +58,7 @@ public class FullscreenModeTest {
                 "actFullScreenModeOff",
                 "expFullScreenModeOff",
                 "checkFullScreenModeOff",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class FullscreenModeTest {
                 "actFullScreenModeOffEsc",
                 "expFullScreenModeOff",
                 "checkFullScreenModeOffEsc",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test

@@ -7,7 +7,7 @@ import util.JunitExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static util.Constants.MAP_COMPASS_IMG_STANDART;
+import static util.Constants.MAP_COMPASS_IMG_STANDARD;
 import static util.Util.assertTooltipInAtrTitle;
 
 @ExtendWith(JunitExtension.class)
@@ -22,7 +22,7 @@ public class ResetNorthTest {
         sgpMainPage.mapBlock.turnMapToTheLeft(2);
         String compassState = sgpMainPage.mapControl.getCompassState();
         assertNotEquals(
-                MAP_COMPASS_IMG_STANDART,
+                MAP_COMPASS_IMG_STANDARD,
                 compassState,
                 "Поворот карты влево не выполнен");
 
@@ -31,7 +31,7 @@ public class ResetNorthTest {
 
         compassState = sgpMainPage.mapControl.getCompassState();
         assertEquals(
-                MAP_COMPASS_IMG_STANDART,
+                MAP_COMPASS_IMG_STANDARD,
                 compassState,
                 "Поворот карты к базовому расположению не выполнен");
 

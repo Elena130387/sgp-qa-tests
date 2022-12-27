@@ -24,8 +24,8 @@ public class CalcManagement {
         return BaseRequests.deleteRequestWithId(id, CALC_MAN_SHAPES_ID_EP);
     }
 
-    public static ValidatableResponse stopShapeCalculationById(int id) {
-        return BaseRequests.getRequestWithId(id, CALC_MAN_SHAPES_STOP_EP);
+    public static void stopShapeCalculationById(int id) {
+        BaseRequests.getRequestWithId(id, CALC_MAN_SHAPES_STOP_EP);
     }
 
     public static ValidatableResponse getLimitNumberOfShapes(int limit) {

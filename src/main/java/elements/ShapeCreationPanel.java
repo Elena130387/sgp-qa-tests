@@ -89,10 +89,6 @@ public class ShapeCreationPanel {
         return drawPolygonBtn;
     }
 
-    public Locator getDrawPolygonTooltip() {
-        return drawPolygonTooltip;
-    }
-
     public Locator getSegmentOneName() {
         return segmentOneName;
     }

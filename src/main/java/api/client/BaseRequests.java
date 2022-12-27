@@ -20,7 +20,7 @@ public class BaseRequests {
     }
 
     //<editor-fold desc="POST Requests">
-    public static <T> ValidatableResponse postRequestWithId(int id, String url) {
+    public static ValidatableResponse postRequestWithId(int id, String url) {
         return given()
                 .contentType(ContentType.JSON)
                 .post(url, id)

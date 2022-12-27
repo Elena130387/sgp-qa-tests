@@ -93,10 +93,6 @@ public class OpensourceTab {
         return geographicDetailsInfoIcon;
     }
 
-    public Locator getGeographicDetailsInfoTooltip() {
-        return geographicDetailsInfoTooltip;
-    }
-
     public Locator getPopulationSection() {
         return populationSection;
     }
@@ -107,10 +103,6 @@ public class OpensourceTab {
 
     public Locator getPopulationQuestionIcon() {
         return populationQuestionIcon;
-    }
-
-    public Locator getPopulationQuestionTooltip() {
-        return populationQuestionTooltip;
     }
 
     public Locator getIncomePerCapita() {
@@ -141,10 +133,6 @@ public class OpensourceTab {
         return housingUnitCountQuestionIcon;
     }
 
-    public Locator getHousingUnitCountQuestionTooltip() {
-        return housingUnitCountQuestionTooltip;
-    }
-
     public Locator getHousingTotal() {
         return housingTotal;
     }
@@ -173,10 +161,6 @@ public class OpensourceTab {
         return housingDistributionQuestionIcon;
     }
 
-    public Locator getHousingDistributionQuestionTooltip() {
-        return housingDistributionQuestionTooltip;
-    }
-
     public Locator getHousingDistributionChart() {
         return housingDistributionChart;
     }
@@ -191,10 +175,6 @@ public class OpensourceTab {
 
     public Locator getHousingPriceQuestionIcon() {
         return housingPriceQuestionIcon;
-    }
-
-    public Locator getHousingPriceQuestionTooltip() {
-        return housingPriceQuestionTooltip;
     }
 
     public Locator getHousingAveragePrice() {

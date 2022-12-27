@@ -20,11 +20,6 @@ public class MapBlock {
     public Locator getMap() {
         return map;
     }
-
-    public Locator getMapZoom() {
-        return mapZoom;
-    }
-
     //</editor-fold>
 
     private final Page page = JunitExtension.page;

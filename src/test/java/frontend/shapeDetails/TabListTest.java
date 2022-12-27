@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.Constants.*;
 
 @ExtendWith(JunitExtension.class)
-public class TablistTest {
+public class TabListTest {
     DetailedShapePage detailedShapePage;
     private final int SHAPE_ID = 611;
     private final String SHAPE_URL = GENERALIZED_SHAPE_PAGE_WITH_ASIDE_TRUE_URL + SHAPE_ID + SHAPE_DETAILS_URL_END;

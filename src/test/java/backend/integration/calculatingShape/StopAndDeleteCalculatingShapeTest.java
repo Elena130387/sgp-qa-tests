@@ -23,17 +23,15 @@ import static util.Constants.CALCULATION_TIMEOUT_SEC;
 
 public class StopAndDeleteCalculatingShapeTest {
     private int shapeId;
-    private ValidatableResponse responseCreateShape;
-    private ShapeInput newShape;
     private List<Integer> jobExecutionIds = new ArrayList<>();
     public static final int DURATION_SEC = 1;
     private static final String LARGE_SHAPE_WITH_TWO_POLYGONS_FILE = "./src/test/resources/shapeInput/shapeWithTwoPolygons.json";
 
     @BeforeEach
     public void createTestShape() throws TimeoutException {
-        newShape = (ShapeInput) getDataFromJsonFile(LARGE_SHAPE_WITH_TWO_POLYGONS_FILE, ShapeInput.class);
+        ShapeInput newShape = (ShapeInput) getDataFromJsonFile(LARGE_SHAPE_WITH_TWO_POLYGONS_FILE, ShapeInput.class);
         newShape.AddDateToShapeName();
-        responseCreateShape = createShapeFromJson(newShape);
+        ValidatableResponse responseCreateShape = createShapeFromJson(newShape);
         shapeId = getIntFromJson(responseCreateShape, "id");
         waitForCalculationStarting(shapeId, CALCULATION_TIMEOUT_SEC, DURATION_SEC);
         jobExecutionIds = getJobExecutionIds(shapeId, 2, 0);

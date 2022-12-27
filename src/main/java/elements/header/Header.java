@@ -54,20 +54,8 @@ public class Header {
         return colorModeBtn;
     }
 
-    public Locator getColorModeTooltip() {
-        return colorModeTooltip;
-    }
-
     public Locator getFullScreenBtn() {
         return fullScreenBtn;
-    }
-
-    public Locator getFullScreenOnTooltip() {
-        return fullScreenOnTooltip;
-    }
-
-    public Locator getFullScreenOffTooltip() {
-        return fullScreenOffTooltip;
     }
 
     public Locator getDarkModeImg() {

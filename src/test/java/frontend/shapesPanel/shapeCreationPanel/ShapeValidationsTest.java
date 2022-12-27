@@ -73,9 +73,7 @@ public class ShapeValidationsTest {
         shapeCreationPage
                 .getPage()
                 .waitForRequestFinished(request,
-                        () -> {
-                            shapeCreationPanel.getCreateProcessBtn().click();
-                        });
+                        () -> shapeCreationPanel.getCreateProcessBtn().click());
 
 
         assertAll(

@@ -12,7 +12,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ExtendWith(JunitExtension.class)
 public class GeoSearchTest {
     SgpMainPage sgpMainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "MapControl/";
 
     @BeforeEach
     void openSgpMainPage() {
@@ -31,7 +31,7 @@ public class GeoSearchTest {
                 "actLatinCityGeoSearch",
                 "expLatinCityGeoSearch",
                 "checkLatinCityGeoSearch",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
@@ -47,6 +47,6 @@ public class GeoSearchTest {
                 "actCyrillicCityGeoSearch",
                 "expCyrillicCityGeoSearch",
                 "checkCyrillicCityGeoSearch",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 }

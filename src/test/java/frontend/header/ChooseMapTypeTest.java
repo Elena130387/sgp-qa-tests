@@ -17,7 +17,7 @@ import static util.Constants.BASE_MAP_TYPE;
 @ExtendWith(JunitExtension.class)
 public class ChooseMapTypeTest {
     static SgpMainPage sgpMainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
 
     @BeforeAll
     static void openSgpMainPage() {
@@ -47,14 +47,14 @@ public class ChooseMapTypeTest {
                     mapTypeParams.get(1),
                     mapTypeParams.get(2),
                     mapTypeParams.get(3),
-                    EXPSCREENSHOTS_TEST_CLASS_DIR);
+                    EXP_SCREENSHOTS_TEST_CLASS_DIR);
         } else {
             Util.checkScreenshotForElementWithWait(
                     sgpMainPage.mapBlock.getMap(),
                     mapTypeParams.get(1),
                     mapTypeParams.get(2),
                     mapTypeParams.get(3),
-                    EXPSCREENSHOTS_TEST_CLASS_DIR);
+                    EXP_SCREENSHOTS_TEST_CLASS_DIR);
         }
     }
 }

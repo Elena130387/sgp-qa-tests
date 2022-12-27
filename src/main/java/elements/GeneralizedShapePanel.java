@@ -95,10 +95,6 @@ public class GeneralizedShapePanel extends ShapeControlButtons {
         return stopCalculationBtn;
     }
 
-    public Locator getStopCalculationTooltip() {
-        return stopCalculationTooltip;
-    }
-
     public Locator getStopCalculationYes() {
         return stopCalculationYes;
     }
@@ -111,18 +107,9 @@ public class GeneralizedShapePanel extends ShapeControlButtons {
         return stoppedCalculationIcon;
     }
 
-    public Locator getStoppedCalculationTooltip() {
-        return stoppedCalculationTooltip;
-    }
-
     public Locator getFailedCalculationIcon() {
         return failedCalculationIcon;
     }
-
-    public Locator getFailedCalculationTooltip() {
-        return failedCalculationTooltip;
-    }
-
     //</editor-fold>
 
     private final Page page = JunitExtension.page;

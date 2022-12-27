@@ -13,7 +13,7 @@ public class CoverageHighlightingTest {
 
     DetailedShapePage detailedShapePage;
     private final int SHAPE_ID = 1277;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
     private final String COVERAGE_HIGHLIGHTING_SHOW_TOOLTIP = "Highlight tiles with no derivative rights";
     private final String COVERAGE_HIGHLIGHTING_HIDE_TOOLTIP = "Disable highlighting tiles with no derivative rights";
 
@@ -30,7 +30,7 @@ public class CoverageHighlightingTest {
                 "actCoverageHighlightingIn",
                 "expCoverageHighlightingIn",
                 "checkCoverageHighlightingIn",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         detailedShapePage.mapControl.getCoverageHighlightingBtn().click();
         //      Remove focus from the button so that the tooltip is not displayed
@@ -40,7 +40,7 @@ public class CoverageHighlightingTest {
                 "actCoverageHighlightingOut",
                 "expCoverageHighlightingOut",
                 "checkCoverageHighlightingOut",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test

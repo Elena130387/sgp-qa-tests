@@ -13,7 +13,7 @@ public class EstimatedTabGeneral {
     private static final String SELECTOR_BUILDING_HEIGHT_LAYER = "[data-cy=buildingHeight]";
     private static final String SELECTOR_BUILDING_DAMAGE_LAYER = "[data-cy=BuildingDamage]";
     private static final String SELECTOR_POPULATION_LAYER = "[data-cy=population]";
-    private static final String SELECTOR_LANDUSE_LAYER = "[data-cy=landuse]";
+    private static final String SELECTOR_LAND_USE_LAYER = "[data-cy=landuse]";
     private static final String SELECTOR_LAYER_ICONS = ".css-4bw3ev";
     private static final String SELECTOR_LAYER_CHECKBOX = ".css-e2du76";
 
@@ -25,13 +25,13 @@ public class EstimatedTabGeneral {
     private final Locator buildingHeightLayer;
     private final Locator buildingDamageLayer;
     private final Locator populationLayer;
-    private final Locator landuseLayer;
+    private final Locator landUseLayer;
     private final Locator objectsLayerIcon;
     private final Locator buildingsLayerIcon;
     private final Locator buildingHeightLayerIcon;
     private final Locator buildingDamageLayerIcon;
     private final Locator populationLayerIcon;
-    private final Locator landuseLayerIcon;
+    private final Locator landUseLayerIcon;
     private final Locator buildingDamageLayerCheckbox;
     private final Locator populationLayerCheckbox;
 
@@ -60,8 +60,8 @@ public class EstimatedTabGeneral {
         return populationLayer;
     }
 
-    public Locator getLanduseLayer() {
-        return landuseLayer;
+    public Locator getLandUseLayer() {
+        return landUseLayer;
     }
 
     public Locator getObjectsLayerIcon() {
@@ -84,8 +84,8 @@ public class EstimatedTabGeneral {
         return populationLayerIcon;
     }
 
-    public Locator getLanduseLayerIcon() {
-        return landuseLayerIcon;
+    public Locator getLandUseLayerIcon() {
+        return landUseLayerIcon;
     }
 
     public Locator getBuildingDamageLayerCheckbox() {
@@ -106,13 +106,13 @@ public class EstimatedTabGeneral {
         buildingHeightLayer = page.locator(SELECTOR_BUILDING_HEIGHT_LAYER);
         buildingDamageLayer = page.locator(SELECTOR_BUILDING_DAMAGE_LAYER);
         populationLayer = page.locator(SELECTOR_POPULATION_LAYER);
-        landuseLayer = page.locator(SELECTOR_LANDUSE_LAYER);
+        landUseLayer = page.locator(SELECTOR_LAND_USE_LAYER);
         objectsLayerIcon = objectsLayer.locator(SELECTOR_LAYER_ICONS);
         buildingsLayerIcon = buildingsLayer.locator(SELECTOR_LAYER_ICONS);
         buildingHeightLayerIcon = buildingHeightLayer.locator(SELECTOR_LAYER_ICONS);
         buildingDamageLayerIcon = buildingDamageLayer.locator(SELECTOR_LAYER_ICONS);
         populationLayerIcon = populationLayer.locator(SELECTOR_LAYER_ICONS);
-        landuseLayerIcon = landuseLayer.locator(SELECTOR_LAYER_ICONS);
+        landUseLayerIcon = landUseLayer.locator(SELECTOR_LAYER_ICONS);
         buildingDamageLayerCheckbox = buildingDamageLayer.locator(SELECTOR_LAYER_CHECKBOX);
         populationLayerCheckbox = populationLayer.locator(SELECTOR_LAYER_CHECKBOX);
     }

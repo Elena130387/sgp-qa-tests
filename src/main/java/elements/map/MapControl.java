@@ -122,8 +122,8 @@ public class MapControl {
         zoomOutBtn = navigationBar.locator(SELECTOR_ZOOM_OUT);
         zoomInBtn = navigationBar.locator(SELECTOR_ZOOM_IN);
         compassBtn = navigationBar.locator(SELECTOR_COMPASS);
-
         compassBtnImg = compassBtn.locator(SELECTOR_COMPASS_IMG);
+
         coverageBtn = coverageGridBar.locator(SELECTOR_COVERAGE);
         coverageHighlightingBtn = coverageGridBar.locator(SELECTOR_COVERAGE_HIGHLIGHTING);
         coverageHighlightHideTooltip = page.locator(SELECTOR_COVERAGE_HIGHLIGHTING_HIDE_TOOLTIP);

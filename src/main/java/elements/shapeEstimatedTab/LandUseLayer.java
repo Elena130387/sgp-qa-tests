@@ -4,9 +4,9 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import util.JunitExtension;
 
-public class LanduseLayer {
+public class LandUseLayer {
     //<editor-fold desc="Selectors">
-    private static final String SELECTOR_LANDUSE_TITLE = "[data-cy=land-use-title]";
+    private static final String SELECTOR_LAND_USE_TITLE = "[data-cy=land-use-title]";
     private static final String SELECTOR_STREET_TYPE = "[data-cy=уличная зона]";
     private static final String SELECTOR_STREET_VALUE = "[data-cy=уличная зона-value]";
     private static final String SELECTOR_COMMERCIAL_TYPE = "[data-cy=коммерческий]";
@@ -28,7 +28,7 @@ public class LanduseLayer {
     //</editor-fold>
 
     //<editor-fold desc="Elements">
-    private final Locator landuseTitle;
+    private final Locator landUseTitle;
     private final Locator streetType;
     private final Locator streetValue;
     private final Locator commercialType;
@@ -51,8 +51,8 @@ public class LanduseLayer {
 
     //<editor-fold desc="Getters">
 
-    public Locator getLanduseTitle() {
-        return landuseTitle;
+    public Locator getLandUseTitle() {
+        return landUseTitle;
     }
 
     public Locator getStreetType() {
@@ -127,8 +127,8 @@ public class LanduseLayer {
 
     private final Page page = JunitExtension.page;
 
-    public LanduseLayer() {
-        landuseTitle = page.locator(SELECTOR_LANDUSE_TITLE);
+    public LandUseLayer() {
+        landUseTitle = page.locator(SELECTOR_LAND_USE_TITLE);
         streetType = page.locator(SELECTOR_STREET_TYPE);
         streetValue = page.locator(SELECTOR_STREET_VALUE);
         commercialType = page.locator(SELECTOR_COMMERCIAL_TYPE);

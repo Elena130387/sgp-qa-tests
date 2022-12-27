@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class OpensourceTabDetailsTest {
     static DetailedShapePage detailedShapePage;
     private final OpensourceTab opensourceTab = new OpensourceTab();
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "OpensourceTab/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "OpensourceTab/";
     private static final int SHAPE_ID = 1254;
     private final String CENSUS_DATA = "Census данные";
     private final String GEOGRAPHIC_DETAILS = " Географические детали";
@@ -107,7 +107,7 @@ public class OpensourceTabDetailsTest {
                 "actDistributionChart",
                 "expDistributionChart",
                 "checkDistributionChart",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
         opensourceTab.checkHousingDistributionQuestionTooltip(EXP_HOUSING_DISTRIBUTION_TOOLTIP);
     }
 

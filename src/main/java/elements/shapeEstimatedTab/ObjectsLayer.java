@@ -66,7 +66,7 @@ public class ObjectsLayer {
         return largeObjectsTitle;
     }
 
-    public Locator getLargelObjectsValue() {
+    public Locator getLargeObjectsValue() {
         return largeObjectsValue;
     }
 

@@ -44,10 +44,6 @@ public class ShapesPanel extends ShapeControlButtons {
         return shapeName;
     }
 
-    public Locator getShapeNameTooltip() {
-        return shapeNameTooltip;
-    }
-
     public Locator getShapeSearch() {
         return shapeSearch;
     }

@@ -23,7 +23,7 @@ public class ShapeCreationPanelTest {
     private static final String CALCULATE_BTN_TEXT = "Создать и Запустить расчет";
     private static final String DRAW_POLYGON_TOOLTIP = "Создать вручную";
 
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "ShapeCreationPanel/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "ShapeCreationPanel/";
 
     ShapeCreationPage shapeCreationPage;
     ShapeCreationPanel shapeCreationPanel;
@@ -60,7 +60,7 @@ public class ShapeCreationPanelTest {
                 "actDrawPolygonSwitchedOffIcon",
                 "expDrawPolygonSwitchedOffIcon",
                 "checkDrawPolygonSwitchedOffIcon",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         shapeCreationPanel.checkDrawPolygonBtnTooltip(DRAW_POLYGON_TOOLTIP);
     }
@@ -74,7 +74,7 @@ public class ShapeCreationPanelTest {
                 "actDrawPolygonSwitchedOnIcon",
                 "expDrawPolygonSwitchedOnIcon",
                 "checkDrawPolygonSwitchedOnIcon",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         shapeCreationPanel.checkDrawPolygonBtnTooltip(DRAW_POLYGON_TOOLTIP);
     }

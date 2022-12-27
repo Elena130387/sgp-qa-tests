@@ -20,15 +20,15 @@ public class EstimatedTabGeneralTest {
     private final String ESTIMATED_BUILDING_HEIGHT = "Высота зданий";
     private final String ESTIMATED_BUILDING_DAMAGE = "Повреждения зданий";
     private final String ESTIMATED_POPULATION = "Население";
-    private final String ESTIMATED_LANDUSE = "Тип землепользования, %";
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "ShapeEstimatedTabGeneralTest/";
+    private final String ESTIMATED_LAND_USE = "Тип землепользования, %";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "ShapeEstimatedTabGeneralTest/";
     private final EstimatedTabGeneral estimatedTabGeneral = new EstimatedTabGeneral();
     private final ObjectsLayer objectsLayer = new ObjectsLayer();
     private final BuildingsLayer buildingsLayer = new BuildingsLayer();
     private final BuildingHeightLayer buildingHeightLayer = new BuildingHeightLayer();
     private final BuildingDamageLayer buildingDamageLayer = new BuildingDamageLayer();
     private final PopulationLayer populationLayer = new PopulationLayer();
-    private final LanduseLayer landuseLayer = new LanduseLayer();
+    private final LandUseLayer landuseLayer = new LandUseLayer();
     static DetailedShapePage detailedShapePage;
 
     @BeforeAll
@@ -46,7 +46,7 @@ public class EstimatedTabGeneralTest {
                 "actObjectsIcon",
                 "expObjectsIcon",
                 "checkObjectsIcon",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class EstimatedTabGeneralTest {
                 "actBuildingsIcon",
                 "expBuildingsIcon",
                 "checkBuildingsIcon",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class EstimatedTabGeneralTest {
                 "actBuildingHeightIcon",
                 "expBuildingsIcon",
                 "checkBuildingHeightIcon",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
@@ -87,7 +87,7 @@ public class EstimatedTabGeneralTest {
                 "actBuildingDamageIcon",
                 "expBuildingsIcon",
                 "checkBuildingDamageIcon",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
@@ -102,19 +102,19 @@ public class EstimatedTabGeneralTest {
                 "actPopulationIcon",
                 "expPopulationIcon",
                 "checkPopulationIcon",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
-    void checkLanduseLayerTitleAndIcon() {
-        assertEquals(ESTIMATED_LANDUSE,
-                landuseLayer.getLanduseTitle().textContent(),
+    void checkLandUseLayerTitleAndIcon() {
+        assertEquals(ESTIMATED_LAND_USE,
+                landuseLayer.getLandUseTitle().textContent(),
                 "Неверное имя слоя 'Тип землепользования, %'");
         Util.checkScreenshotForElement(
-                estimatedTabGeneral.getLanduseLayerIcon(),
-                "actLanduseIcon",
-                "expLanduseIcon",
-                "checkLanduseIcon",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                estimatedTabGeneral.getLandUseLayerIcon(),
+                "actLandUseIcon",
+                "expLandUseIcon",
+                "checkLandUseIcon",
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 }

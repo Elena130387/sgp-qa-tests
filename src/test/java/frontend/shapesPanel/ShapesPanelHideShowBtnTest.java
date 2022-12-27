@@ -15,7 +15,7 @@ import static util.Constants.*;
 @ExtendWith(JunitExtension.class)
 public class ShapesPanelHideShowBtnTest {
     SgpMainPage sgpMainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "ShapesPanelHideShowBtn/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "ShapesPanelHideShowBtn/";
     private final String SHAPES_PANEL_SHOW_TOOLTIP = "Отобразить секцию";
     private final String SHAPES_PANEL_HIDE_TOOLTIP = "Скрыть секцию";
 
@@ -80,7 +80,7 @@ public class ShapesPanelHideShowBtnTest {
                 "actShapesPanelVisible",
                 "expShapesPanelVisible",
                 "checkShapesPanelVisible",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         // Hidden panel check
         sgpMainPage.mapControl.getShapesPanelHideShowBtn().click();
@@ -89,7 +89,7 @@ public class ShapesPanelHideShowBtnTest {
                 "actShapesPanelInvisible",
                 "expShapesPanelInvisible",
                 "checkShapesPanelInvisible",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         // Show panel check
         sgpMainPage.mapControl.getShapesPanelHideShowBtn().click();
@@ -98,6 +98,6 @@ public class ShapesPanelHideShowBtnTest {
                 "actShapesPanelVisible",
                 "expShapesPanelVisible",
                 "checkShapesPanelVisible",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 }

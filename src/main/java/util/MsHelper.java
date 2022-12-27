@@ -4,7 +4,6 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
@@ -16,8 +15,8 @@ public class MsHelper {
     private static final String LOGIN_URL = "https://login.microsoftonline.com/";
 
     public static void login() throws FileNotFoundException {
-        BufferedReader storageStateFile = new BufferedReader(new FileReader(new File(String.valueOf(STORAGE_PATH))));
-        if (storageStateFile.lines().count() == 0) {
+        BufferedReader storageStateFile = new BufferedReader(new FileReader(String.valueOf(STORAGE_PATH)));
+        if (storageStateFile.lines().findAny().isEmpty()) {
             String USERNAME = Util.getVariable("EMAIL");
             String PASSWORD = Util.getVariable("PASSWORD");
 

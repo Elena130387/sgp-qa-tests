@@ -49,7 +49,7 @@ public class ShapeControlButtons {
 
     private static final String SELECTOR_RENAME_DELETE_EXPAND_ICONS_TOGETHER = ".css-70qvj9";
 
-    private static final String EXPSCREENSHOTS_TEST_CLASS_DIR = "ShapeControlButtons/";
+    private static final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "ShapeControlButtons/";
     //</editor-fold>
 
     //<editor-fold desc="Elements">
@@ -79,10 +79,6 @@ public class ShapeControlButtons {
         return renameShapeBtn;
     }
 
-    public Locator getRenameShapeTooltip() {
-        return renameShapeTooltip;
-    }
-
     public Locator getRenameShapeHeader() {
         return renameShapeHeader;
     }
@@ -105,10 +101,6 @@ public class ShapeControlButtons {
 
     public Locator getDeleteShapeBtn() {
         return deleteShapeBtn;
-    }
-
-    public Locator getDeleteShapeTooltip() {
-        return deleteShapeTooltip;
     }
 
     public Locator getDeleteShapeHeader() {
@@ -135,16 +127,8 @@ public class ShapeControlButtons {
         return expandBtn;
     }
 
-    public Locator getExpandTooltip() {
-        return expandTooltip;
-    }
-
     public Locator getCollapseBtn() {
         return collapseBtn;
-    }
-
-    public Locator getCollapseTooltip() {
-        return collapseTooltip;
     }
 
     public Locator getRenameDeleteExpandIconsTogether() {
@@ -182,7 +166,7 @@ public class ShapeControlButtons {
                 "actRenameIcon",
                 "expRenameIcon",
                 testName,
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         assertTooltip(renameShapeBtn, renameShapeTooltip, RENAME_SHAPE_TOOLTIP_TEXT);
     }
@@ -193,7 +177,7 @@ public class ShapeControlButtons {
                 "actDeleteIcon",
                 "expDeleteIcon",
                 testName,
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         assertTooltip(deleteShapeBtn, deleteShapeTooltip, DELETE_SHAPE_TOOLTIP_TEXT);
     }
@@ -204,7 +188,7 @@ public class ShapeControlButtons {
                 "actExpandIcon",
                 "expExpandIcon",
                 testName,
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         assertTooltip(expandBtn, expandTooltip, EXPAND_TOOLTIP_TEXT);
     }
@@ -215,7 +199,7 @@ public class ShapeControlButtons {
                 "actCollapseIcon",
                 "expCollapseIcon",
                 testName,
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
         assertTooltip(collapseBtn, collapseTooltip, COLLAPSE_TOOLTIP_TEXT);
     }
 
@@ -225,7 +209,7 @@ public class ShapeControlButtons {
                 "actRenameDeleteExpandIconsTogether",
                 "expRenameDeleteExpandIconsTogether",
                 testName,
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     public void checkRenameWindowCommonView(String expectedShapeName) {

@@ -27,8 +27,8 @@ public class Estimator {
         return BaseRequests.deleteRequestWithQueryParams(jobExecutionIds, ESTIMATOR_EXECUTIONS_EP);
     }
 
-    public static ValidatableResponse stopJobExecutionById(int jobExecutionId) {
-        return BaseRequests.postRequestWithId(jobExecutionId, ESTIMATOR_JOB_EXECUTION_STOP);
+    public static void stopJobExecutionById(int jobExecutionId) {
+        BaseRequests.postRequestWithId(jobExecutionId, ESTIMATOR_JOB_EXECUTION_STOP);
     }
 
     public static String getEstimatorStatusById(int id) {

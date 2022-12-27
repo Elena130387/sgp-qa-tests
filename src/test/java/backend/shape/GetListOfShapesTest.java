@@ -43,13 +43,11 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
         List<Integer> actualListShapeIds = new ArrayList<>();
         ValidatableResponse responseShapesList = CalcManagement.getListOfAllShapes();
         List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
-        shapesList.forEach(shape -> {
-            actualListShapeIds.add(shape.getId());
-        });
+        shapesList.forEach(shape -> actualListShapeIds.add(shape.getId()));
         List<Integer> sortDescListShapeIds = new ArrayList<>(actualListShapeIds);
 
         // sort the list in descending order
-        Collections.sort(sortDescListShapeIds, Collections.reverseOrder());
+        sortDescListShapeIds.sort(Collections.reverseOrder());
 
         System.out.println(actualListShapeIds);
         System.out.println(sortDescListShapeIds);
@@ -63,9 +61,7 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
         List<Integer> actualListShapeIds = new ArrayList<>();
         ValidatableResponse responseShapesList = CalcManagement.getSortedListOfShapes("id,asc");
         List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
-        shapesList.forEach(shape -> {
-            actualListShapeIds.add(shape.getId());
-        });
+        shapesList.forEach(shape -> actualListShapeIds.add(shape.getId()));
         List<Integer> sortAscListShapeIds = new ArrayList<>(actualListShapeIds);
 
         // sort the list in ascending order

@@ -12,7 +12,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ExtendWith(JunitExtension.class)
 public class ColorModeTest {
     SgpMainPage sgpMainPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "MainPageHeader/";
     private final String COLOR_MODE_ON_TOOLTIP = "Цветовой режим";
     private final String COLOR_MODE_OFF_TOOLTIP = "Цветовой режим";
 
@@ -37,7 +37,7 @@ public class ColorModeTest {
                 "actColorModeOn",
                 "expColorModeOn",
                 "checkColorModeOn",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         sgpMainPage.header.getColorModeBtn().click();
         //      Remove focus from the button so that the tooltip is not displayed
@@ -46,7 +46,7 @@ public class ColorModeTest {
                 "actColorModeOff",
                 "expColorModeOff",
                 "checkColorModeOff",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test

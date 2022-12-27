@@ -24,8 +24,8 @@ public class BasePage {
         Integer width = page.viewportSize().width;
 
         // page size check
-        if (!height.equals(STANDART_PAGE_HEIGHT) || !width.equals(STANDART_PAGE_WIDTH)) {
-            page.setViewportSize(STANDART_PAGE_HEIGHT, STANDART_PAGE_WIDTH);
+        if (!height.equals(STANDARD_PAGE_HEIGHT) || !width.equals(STANDARD_PAGE_WIDTH)) {
+            page.setViewportSize(STANDARD_PAGE_WIDTH, STANDARD_PAGE_HEIGHT);
         }
 
         // checking the base type of the map
@@ -41,7 +41,7 @@ public class BasePage {
         }
 
         // checking that the map is not rotated
-        if (!mapControl.getCompassState().equals(MAP_COMPASS_IMG_STANDART)) {
+        if (!mapControl.getCompassState().equals(MAP_COMPASS_IMG_STANDARD)) {
             mapControl.getCompassBtn().click();
             page.waitForTimeout(1000);
         }

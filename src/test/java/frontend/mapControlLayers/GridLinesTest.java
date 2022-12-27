@@ -13,7 +13,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class GridLinesTest {
     private final int SHAPE_ID = 611;
     DetailedShapePage detailedShowPage;
-    private final String EXPSCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
+    private final String EXP_SCREENSHOTS_TEST_CLASS_DIR = "MapControlLayers/";
     private final String GRID_LINES_SHOW_TOOLTIP = "Show grid lines";
     private final String GRID_LINES_HIDE_TOOLTIP = "Hide grid lines";
 
@@ -35,7 +35,7 @@ public class GridLinesTest {
                 "actGridLinesOff",
                 "expGridLinesOff",
                 "checkGridLinesOff",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
 
         detailedShowPage.mapControl.getGridLinesBtn().click();
 
@@ -46,7 +46,7 @@ public class GridLinesTest {
                 "actGridLinesOn",
                 "expGridLinesOn",
                 "checkGridLinesOn",
-                EXPSCREENSHOTS_TEST_CLASS_DIR);
+                EXP_SCREENSHOTS_TEST_CLASS_DIR);
     }
 
     @Test
