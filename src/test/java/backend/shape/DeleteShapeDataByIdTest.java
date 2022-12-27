@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 
 import java.util.concurrent.TimeoutException;
 
-import static api.client.CalcManagement.deleteShapeDataById;
+import static api.client.CalcManagement.deleteShapeById;
 import static api.client.CalcManagement.getShapeDataById;
 import static api.helper.ShapeHelper.createShapeFromFileAndGetID;
 import static api.helper.ShapeHelper.waitForShapeStatusCompleted;
@@ -42,7 +42,7 @@ public class DeleteShapeDataByIdTest implements DeleteByIdControllerTest {
     @AfterAll
     public static void deleteTestShape() {
         if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
-            ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
+            ValidatableResponse responseDeleteShape = deleteShapeById(shapeId);
         }
     }
 }

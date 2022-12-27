@@ -1,24 +1,23 @@
-package backend.integration;
+package backend.integration.calculatingShape;
 
 import api.client.CalcManagement;
 import api.dto.shape.ShapeInput;
 import api.dto.shape.ShapeRename;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.ValidatableResponse;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
-import static api.client.CalcManagement.deleteShapeDataById;
+import static api.client.CalcManagement.deleteShapeById;
 import static api.client.CalcManagement.getShapeDataById;
-import static api.client.Estimator.*;
-import static api.dto.StatusesList.STOPPED;
+import static api.client.Estimator.deleteJobExecutionsByIds;
+import static api.client.Estimator.getJobExecutionIds;
 import static api.helper.CalculationHelper.waitForCalculationStarting;
-import static api.helper.CalculationHelper.waitForCalculationStop;
 import static api.helper.JsonHelper.*;
 import static api.helper.PolygonHelper.verifyPolygonNumberAndCoordinates;
 import static api.helper.ShapeHelper.createShapeFromJson;
@@ -29,15 +28,15 @@ import static util.Constants.CALCULATION_TIMEOUT_SEC;
 
 public class ShapeWithTwoPolygonsTest {
     private String currentShapeName;
-    private int shapeId;
-    private ValidatableResponse responseCreateShape;
-    private ShapeInput newShape;
-    private List<Integer> jobExecutionIds = new ArrayList<>();
+    private static int shapeId;
+    private static ValidatableResponse responseCreateShape;
+    private static ShapeInput newShape;
+    private static List<Integer> jobExecutionIds = new ArrayList<>();
     public static final int DURATION_SEC = 1;
     private static final String LARGE_SHAPE_WITH_TWO_POLYGONS_FILE = "./src/test/resources/shapeInput/shapeWithTwoPolygons.json";
 
-    @BeforeEach
-    public void createTestShape() throws TimeoutException {
+    @BeforeAll
+    public static void createTestShape() throws TimeoutException {
         newShape = (ShapeInput) getDataFromJsonFile(LARGE_SHAPE_WITH_TWO_POLYGONS_FILE, ShapeInput.class);
         newShape.AddDateToShapeName();
         responseCreateShape = createShapeFromJson(newShape);
@@ -68,32 +67,11 @@ public class ShapeWithTwoPolygonsTest {
                 renameShape.getValue(), "Изменение наименования области не выполнено");
     }
 
-    @Test
-    void deleteCalculatingShape() {
-        ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
-        responseDeleteShape.statusCode(200);
-        assertTrue(getShapeDataById(shapeId).extract().statusCode() == 204, "Область не была удалена");
-    }
-
-    @Test
-    void stopCalculatingShape() throws TimeoutException {
-        for (Integer jobExecutionId : jobExecutionIds) {
-            stopJobExecutionById(jobExecutionId);
-        }
-
-        waitForCalculationStop(shapeId, 10, DURATION_SEC);
-
-        ValidatableResponse responseGetNewShapeData = getShapeDataById(shapeId);
-        assertEquals(STOPPED.getStatusName(),
-                getStringFromJson(responseGetNewShapeData, "status"), "Расчет области не был остановлен");
-    }
-
-
-    @AfterEach
-    public void deleteTestShape() {
+    @AfterAll
+    public static void deleteTestShape() {
         System.out.println(shapeId);
         if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
-            ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
+            ValidatableResponse responseDeleteShape = deleteShapeById(shapeId);
         }
 
         try {

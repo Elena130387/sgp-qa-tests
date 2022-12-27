@@ -91,9 +91,11 @@ public class Constants {
 
     public static final String CALC_MAN_SHAPES_EP = CALC_MANAGEMENT_URL + SHAPES_EP;
 
-    public static final String CALC_MAN_SHAPES_ID_EP = CALC_MAN_SHAPES_EP + "/{id}";
+    public static final String CALC_MAN_SHAPES_ID_EP = CALC_MAN_SHAPES_EP + "/{shapeId}";
 
     public static final String CALC_MAN_SHAPES_SET_NAME_EP = CALC_MAN_SHAPES_ID_EP + ":set-name";
+
+    public static final String CALC_MAN_SHAPES_STOP_EP = CALC_MAN_SHAPES_ID_EP + ":stop";
 
     //</editor-fold>
 

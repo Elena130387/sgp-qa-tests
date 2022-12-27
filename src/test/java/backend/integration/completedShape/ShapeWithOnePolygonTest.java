@@ -1,17 +1,17 @@
-package backend.integration;
+package backend.integration.completedShape;
 
 import api.client.CalcManagement;
 import api.dto.shape.ShapeInput;
 import api.dto.shape.ShapeRename;
 import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.ValidatableResponse;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeoutException;
 
-import static api.client.CalcManagement.deleteShapeDataById;
+import static api.client.CalcManagement.deleteShapeById;
 import static api.client.CalcManagement.getShapeDataById;
 import static api.helper.JsonHelper.*;
 import static api.helper.PolygonHelper.verifyPolygonNumberAndCoordinates;
@@ -22,16 +22,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static util.Constants.CALCULATION_TIMEOUT_SEC;
 
 
-public class SmallShapeWithOnePolygonTest {
+public class ShapeWithOnePolygonTest {
     private String currentShapeName;
-    private int shapeId;
-    private ValidatableResponse responseCreateShape;
-    private ShapeInput newShape;
+    private static int shapeId;
+    private static ValidatableResponse responseCreateShape;
+    private static ShapeInput newShape;
     public static final int DURATION_SEC = 1;
     private static final String SMALL_SHAPE_WITH_ONE_POLYGON_FILE = "./src/test/resources/shapeInput/smallShapeWithOnePolygon.json";
 
-    @BeforeEach
-    public void createTestShape() throws TimeoutException {
+    @BeforeAll
+    public static void createTestShape() throws TimeoutException {
         newShape = (ShapeInput) getDataFromJsonFile(SMALL_SHAPE_WITH_ONE_POLYGON_FILE, ShapeInput.class);
         newShape.AddDateToShapeName();
         responseCreateShape = createShapeFromJson(newShape);
@@ -61,20 +61,12 @@ public class SmallShapeWithOnePolygonTest {
                 renameShape.getValue(), "Изменение наименования области не выполнено");
     }
 
-    @Test
-    void deleteCompletedShape() {
-        ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
-        responseDeleteShape.statusCode(200);
-        assertTrue(getShapeDataById(shapeId).extract().statusCode() == 204, "Область не была удалена");
-    }
-
-
-    @AfterEach
-    public void deleteTestShape() {
+    @AfterAll
+    public static void deleteTestShape() {
         System.out.println(shapeId);
 
         if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
-            ValidatableResponse responseDeleteShape = deleteShapeDataById(shapeId);
+            ValidatableResponse responseDeleteShape = deleteShapeById(shapeId);
         }
     }
 }
