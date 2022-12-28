@@ -28,7 +28,7 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
     }
 
     @Test
-    void getListOfAllShapes() {
+    void getListOfShapesWithDefaultLimit() {
         ValidatableResponse responseShapesList = CalcManagement.getListOfAllShapes();
         responseShapesList.statusCode(200);
         List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
