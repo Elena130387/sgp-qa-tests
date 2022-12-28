@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
-import static api.client.CalcManagement.deleteShapeById;
+import static api.client.CalcManagement.deleteShapeByIdWithoutResponseReturn;
 import static api.client.CalcManagement.getShapeDataById;
-import static api.client.Estimator.deleteJobExecutionsByIds;
+import static api.client.Estimator.deleteJobExecutionsByIdsWithoutResponseReturn;
 import static api.client.Estimator.getJobExecutionIds;
 import static api.helper.CalculationHelper.waitForCalculationStarting;
 import static api.helper.JsonHelper.*;
@@ -71,7 +71,7 @@ public class ShapeWithTwoPolygonsTest {
     public static void deleteTestShape() {
         System.out.println(shapeId);
         if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
-            ValidatableResponse responseDeleteShape = deleteShapeById(shapeId);
+            deleteShapeByIdWithoutResponseReturn(shapeId);
         }
 
         try {
@@ -79,7 +79,6 @@ public class ShapeWithTwoPolygonsTest {
         } catch (InterruptedException exception) {
             System.out.println("Прервано ожидание обновления статуса области в базе данных");
         }
-
-        ValidatableResponse responseDeleteJobExecutions = deleteJobExecutionsByIds(jobExecutionIds);
+        deleteJobExecutionsByIdsWithoutResponseReturn(jobExecutionIds);
     }
 }

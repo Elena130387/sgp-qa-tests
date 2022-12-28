@@ -27,6 +27,10 @@ public class Estimator {
         return BaseRequests.deleteRequestWithQueryParams(jobExecutionIds, ESTIMATOR_EXECUTIONS_EP);
     }
 
+    public static void deleteJobExecutionsByIdsWithoutResponseReturn(List<Integer> jobExecutionIds) {
+        BaseRequests.deleteRequestWithQueryParams(jobExecutionIds, ESTIMATOR_EXECUTIONS_EP);
+    }
+
     public static void stopJobExecutionById(int jobExecutionId) {
         BaseRequests.postRequestWithId(jobExecutionId, ESTIMATOR_JOB_EXECUTION_STOP);
     }

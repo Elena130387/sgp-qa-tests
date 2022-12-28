@@ -24,6 +24,10 @@ public class CalcManagement {
         return BaseRequests.deleteRequestWithId(id, CALC_MAN_SHAPES_ID_EP);
     }
 
+    public static void deleteShapeByIdWithoutResponseReturn(int id) {
+        BaseRequests.deleteRequestWithId(id, CALC_MAN_SHAPES_ID_EP);
+    }
+
     public static void stopShapeCalculationById(int id) {
         BaseRequests.getRequestWithId(id, CALC_MAN_SHAPES_STOP_EP);
     }

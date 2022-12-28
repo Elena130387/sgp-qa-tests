@@ -73,7 +73,7 @@ public class StopAndDeleteCalculatingShapeTest {
     public void deleteTestShape() {
         System.out.println(shapeId);
         if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
-            ValidatableResponse responseDeleteShape = deleteShapeById(shapeId);
+            deleteShapeByIdWithoutResponseReturn(shapeId);
         }
 
         try {
@@ -81,7 +81,6 @@ public class StopAndDeleteCalculatingShapeTest {
         } catch (InterruptedException exception) {
             System.out.println("Прервано ожидание обновления статуса области в базе данных");
         }
-
-        ValidatableResponse responseDeleteJobExecutions = deleteJobExecutionsByIds(jobExecutionIds);
+        deleteJobExecutionsByIdsWithoutResponseReturn(jobExecutionIds);
     }
 }
