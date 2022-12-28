@@ -21,6 +21,7 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
     void getLimitNumberOfShapes() {
         int limit = 3;
         ValidatableResponse responseShapesList = CalcManagement.getLimitNumberOfShapes(limit);
+        responseShapesList.statusCode(200);
         List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
         assertEquals(limit,
                 shapesList.size(), "Количество областей в ответе не совпадает с заданным");
@@ -40,17 +41,12 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
 
     @Test
     void checkDescSortByIdInShapesList() {
-        List<Integer> actualListShapeIds = new ArrayList<>();
         ValidatableResponse responseShapesList = CalcManagement.getListOfAllShapes();
-        List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
-        shapesList.forEach(shape -> actualListShapeIds.add(shape.getId()));
+        List<Integer> actualListShapeIds = getActualListShapesIds(responseShapesList);
         List<Integer> sortDescListShapeIds = new ArrayList<>(actualListShapeIds);
 
         // sort the list in descending order
         sortDescListShapeIds.sort(Collections.reverseOrder());
-
-        System.out.println(actualListShapeIds);
-        System.out.println(sortDescListShapeIds);
 
         assertEquals(sortDescListShapeIds,
                 actualListShapeIds, "Сортировка областей не соответствует ожидаемой");
@@ -58,17 +54,12 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
 
     @Test
     void checkAscSortByIdInShapesList() {
-        List<Integer> actualListShapeIds = new ArrayList<>();
         ValidatableResponse responseShapesList = CalcManagement.getSortedListOfShapes("id,asc");
-        List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
-        shapesList.forEach(shape -> actualListShapeIds.add(shape.getId()));
+        List<Integer> actualListShapeIds = getActualListShapesIds(responseShapesList);
         List<Integer> sortAscListShapeIds = new ArrayList<>(actualListShapeIds);
 
         // sort the list in ascending order
         Collections.sort(sortAscListShapeIds);
-
-        System.out.println(actualListShapeIds);
-        System.out.println(sortAscListShapeIds);
 
         assertEquals(sortAscListShapeIds,
                 actualListShapeIds, "Сортировка областей не соответствует ожидаемой");
@@ -82,5 +73,12 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
     @Override
     public int getCorrectLimit() {
         return 9;
+    }
+
+    private List<Integer> getActualListShapesIds(ValidatableResponse responseShapesList){
+        List<Integer> actualListShapeIds = new ArrayList<>();
+        List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
+        shapesList.forEach(shape -> actualListShapeIds.add(shape.getId()));
+        return actualListShapeIds;
     }
 }
