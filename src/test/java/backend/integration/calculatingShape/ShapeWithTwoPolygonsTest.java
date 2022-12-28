@@ -22,8 +22,7 @@ import static api.helper.JsonHelper.*;
 import static api.helper.PolygonHelper.verifyPolygonNumberAndCoordinates;
 import static api.helper.ShapeHelper.createShapeFromJson;
 import static java.lang.Thread.sleep;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static util.Constants.CALCULATION_TIMEOUT_SEC;
 
 public class ShapeWithTwoPolygonsTest {
@@ -48,9 +47,12 @@ public class ShapeWithTwoPolygonsTest {
     @Test
     void createLargeShape() {
         currentShapeName = getStringFromJson(responseCreateShape, "name");
-        assertEquals(currentShapeName,
-                newShape.getName(), "У созданной области название не совпадает с заданным");
-        assertTrue(shapeId > 0, "ID созданной области должно быть > 0");
+
+        assertAll(
+                () -> assertEquals(currentShapeName,
+                        newShape.getName(), "У созданной области название не совпадает с заданным"),
+                () -> assertTrue(shapeId > 0, "ID созданной области должно быть > 0")
+        );
 
         verifyPolygonNumberAndCoordinates(newShape.getPolygons(), responseCreateShape.extract().as(ShapeInput.class, ObjectMapperType.GSON).getPolygons());
     }
