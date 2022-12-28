@@ -23,11 +23,7 @@ public class Estimator {
                 .extract().body().path("content.findAll { it.jobExecution.shape.shapeId==" + shapeId + "}.jobExecution.id");
     }
 
-    public static ValidatableResponse deleteJobExecutionsByIds(List<Integer> jobExecutionIds) {
-        return BaseRequests.deleteRequestWithQueryParams(jobExecutionIds, ESTIMATOR_EXECUTIONS_EP);
-    }
-
-    public static void deleteJobExecutionsByIdsWithoutResponseReturn(List<Integer> jobExecutionIds) {
+    public static void deleteJobExecutionsByIds(List<Integer> jobExecutionIds) {
         BaseRequests.deleteRequestWithQueryParams(jobExecutionIds, ESTIMATOR_EXECUTIONS_EP);
     }
 

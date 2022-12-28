@@ -15,7 +15,7 @@ import java.util.concurrent.TimeoutException;
 
 import static api.client.CalcManagement.deleteShapeByIdWithoutResponseReturn;
 import static api.client.CalcManagement.getShapeDataById;
-import static api.client.Estimator.deleteJobExecutionsByIdsWithoutResponseReturn;
+import static api.client.Estimator.deleteJobExecutionsByIds;
 import static api.client.Estimator.getJobExecutionIds;
 import static api.helper.CalculationHelper.waitForCalculationStarting;
 import static api.helper.JsonHelper.*;
@@ -79,6 +79,6 @@ public class ShapeWithTwoPolygonsTest {
         } catch (InterruptedException exception) {
             System.out.println("Прервано ожидание обновления статуса области в базе данных");
         }
-        deleteJobExecutionsByIdsWithoutResponseReturn(jobExecutionIds);
+        deleteJobExecutionsByIds(jobExecutionIds);
     }
 }

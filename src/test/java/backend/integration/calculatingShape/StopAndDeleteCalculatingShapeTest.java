@@ -81,6 +81,6 @@ public class StopAndDeleteCalculatingShapeTest {
         } catch (InterruptedException exception) {
             System.out.println("Прервано ожидание обновления статуса области в базе данных");
         }
-        deleteJobExecutionsByIdsWithoutResponseReturn(jobExecutionIds);
+        deleteJobExecutionsByIds(jobExecutionIds);
     }
 }
