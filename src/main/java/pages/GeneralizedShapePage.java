@@ -13,7 +13,7 @@ public class GeneralizedShapePage extends BasePage {
         return this;
     }
 
-    public GeneralizedShapePage openPageWithAsideFalseAndMapWait(int SHAPE_ID, String mapZoom) {
+    public GeneralizedShapePage openPageWithAsideTrueAndMapWait(int SHAPE_ID, String mapZoom) {
         openGeneralizedShapePageWithAsideTrue(SHAPE_ID);
         waitForMapAndZoom(mapZoom);
         return this;
