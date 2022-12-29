@@ -45,7 +45,7 @@ public class ShapeWithTwoPolygonsTest {
     }
 
     @Test
-    void createLargeShape() {
+    void checkTwoPolygonsShapeCreation() {
         currentShapeName = getStringFromJson(responseCreateShape, "name");
 
         assertAll(

@@ -44,7 +44,7 @@ public interface DeleteByIdControllerTest {
 
     @Test
     default void deleteEntity_withDeletedId_expect200ok() {
-        ValidatableResponse response = deleteRequestWithId(getCorrectId(), getUrl());
+        ValidatableResponse response = deleteRequestWithId(getDeletedId(), getUrl());
         response.statusCode(200);
     }
 
@@ -57,7 +57,7 @@ public interface DeleteByIdControllerTest {
 
     @Test
     default void deleteEntity_withCorrectId_expect200ok() {
-        ValidatableResponse response = deleteRequestWithId(getDeletedId(), getUrl());
+        ValidatableResponse response = deleteRequestWithId(getCorrectId(), getUrl());
         response.statusCode(200);
     }
 }

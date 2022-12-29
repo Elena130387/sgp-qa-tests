@@ -39,7 +39,7 @@ public class ShapeWithOnePolygonTest {
     }
 
     @Test
-    void createSmallShape() {
+    void checkSmallShapeCreation() {
         currentShapeName = getStringFromJson(responseCreateShape, "name");
 
         assertAll(

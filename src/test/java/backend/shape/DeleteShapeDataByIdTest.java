@@ -1,13 +1,12 @@
 package backend.shape;
 
 import backend.interfaces.DeleteByIdControllerTest;
-import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.util.concurrent.TimeoutException;
 
-import static api.client.CalcManagement.deleteShapeById;
+import static api.client.CalcManagement.deleteShapeByIdWithoutResponseReturn;
 import static api.client.CalcManagement.getShapeDataById;
 import static api.helper.ShapeHelper.createShapeFromFileAndGetID;
 import static api.helper.ShapeHelper.waitForShapeStatusCompleted;
@@ -42,7 +41,7 @@ public class DeleteShapeDataByIdTest implements DeleteByIdControllerTest {
     @AfterAll
     public static void deleteTestShape() {
         if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
-            ValidatableResponse responseDeleteShape = deleteShapeById(shapeId);
+            deleteShapeByIdWithoutResponseReturn(shapeId);
         }
     }
 }
