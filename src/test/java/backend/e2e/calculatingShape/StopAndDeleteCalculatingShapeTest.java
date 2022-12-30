@@ -1,4 +1,4 @@
-package backend.integration.calculatingShape;
+package backend.e2e.calculatingShape;
 
 import api.dto.shape.ShapeInput;
 import io.restassured.response.ValidatableResponse;

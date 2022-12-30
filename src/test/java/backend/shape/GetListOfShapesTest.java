@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static api.helper.ShapeHelper.getListOfShapesIdsFromResponse;
 import static org.codehaus.groovy.runtime.InvokerHelper.asList;
 import static org.junit.jupiter.api.Assertions.*;
 import static util.Constants.CALC_MAN_SHAPES_EP;
 
 public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
     private final int DEFAULT_LIMIT_VALUE = 1000;
+
     @Test
     void getLimitNumberOfShapes() {
         int limit = 3;
@@ -42,7 +44,7 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
     @Test
     void checkDescSortByIdInShapesList() {
         ValidatableResponse responseShapesList = CalcManagement.getListOfAllShapes();
-        List<Integer> actualListShapeIds = getActualListShapesIds(responseShapesList);
+        List<Integer> actualListShapeIds = getListOfShapesIdsFromResponse(responseShapesList);
         List<Integer> sortDescListShapeIds = new ArrayList<>(actualListShapeIds);
 
         // sort the list in descending order
@@ -55,7 +57,7 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
     @Test
     void checkAscSortByIdInShapesList() {
         ValidatableResponse responseShapesList = CalcManagement.getSortedListOfShapes("id,asc");
-        List<Integer> actualListShapeIds = getActualListShapesIds(responseShapesList);
+        List<Integer> actualListShapeIds = getListOfShapesIdsFromResponse(responseShapesList);
         List<Integer> sortAscListShapeIds = new ArrayList<>(actualListShapeIds);
 
         // sort the list in ascending order
@@ -73,12 +75,5 @@ public class GetListOfShapesTest implements GetObjectsListParamLimitTest {
     @Override
     public int getCorrectLimit() {
         return 9;
-    }
-
-    private List<Integer> getActualListShapesIds(ValidatableResponse responseShapesList){
-        List<Integer> actualListShapeIds = new ArrayList<>();
-        List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
-        shapesList.forEach(shape -> actualListShapeIds.add(shape.getId()));
-        return actualListShapeIds;
     }
 }

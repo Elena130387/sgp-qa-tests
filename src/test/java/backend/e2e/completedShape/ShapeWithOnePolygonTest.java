@@ -1,4 +1,4 @@
-package backend.integration.completedShape;
+package backend.e2e.completedShape;
 
 import api.client.CalcManagement;
 import api.dto.shape.ShapeInput;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeoutException;
 
-import static api.client.CalcManagement.deleteShapeById;
+import static api.client.CalcManagement.deleteShapeByIdWithoutResponseReturn;
 import static api.client.CalcManagement.getShapeDataById;
 import static api.helper.JsonHelper.*;
 import static api.helper.PolygonHelper.verifyPolygonNumberAndCoordinates;
@@ -68,7 +68,7 @@ public class ShapeWithOnePolygonTest {
         System.out.println(shapeId);
 
         if (!(getShapeDataById(shapeId).extract().statusCode() == 204)) {
-            ValidatableResponse responseDeleteShape = deleteShapeById(shapeId);
+            deleteShapeByIdWithoutResponseReturn(shapeId);
         }
     }
 }

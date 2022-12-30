@@ -1,8 +1,11 @@
 package api.helper;
 
+import api.dto.shape.Shape;
 import api.dto.shape.ShapeInput;
 import io.restassured.response.ValidatableResponse;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -10,6 +13,7 @@ import static api.client.CalcManagement.createNewShape;
 import static api.client.CalcManagement.getShapeDataById;
 import static api.dto.StatusesList.COMPLETED;
 import static api.helper.JsonHelper.*;
+import static org.codehaus.groovy.runtime.InvokerHelper.asList;
 import static util.Util.timeoutIsReached;
 
 public class ShapeHelper {
@@ -52,5 +56,12 @@ public class ShapeHelper {
             }
         }
         throw new TimeoutException("Калькуляция не выполнена за ожидаемое время: " + timeoutInSeconds + " секунд");
+    }
+
+    public static List<Integer> getListOfShapesIdsFromResponse(ValidatableResponse responseShapesList) {
+        List<Integer> listIds = new ArrayList<>();
+        List<Shape> shapesList = asList(JsonHelper.getObjectsListFromJson(responseShapesList, Shape[].class));
+        shapesList.forEach(shape -> listIds.add(shape.getId()));
+        return listIds;
     }
 }
