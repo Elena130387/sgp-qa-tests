@@ -76,6 +76,7 @@ public class ShapeWithTwoPolygonsTest {
             deleteShapeByIdWithoutResponseReturn(shapeId);
         }
 
+        // TODO код ниже удалить после реализации задачи https://dev.azure.com/Syncretis/SmartGeoPlatform-Ecomonitoring/_boards/board/t/SmartGeoPlatform-Ecomonitoring%20Team/Stories/?workitem=24686
         try {
             sleep(12000);
         } catch (InterruptedException exception) {

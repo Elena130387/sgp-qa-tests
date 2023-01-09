@@ -9,9 +9,12 @@ import java.util.List;
 
 import static api.client.CalcManagement.deleteShapeByIdWithoutResponseReturn;
 import static api.client.CalcManagement.getListOfRunningShapes;
+import static api.client.Estimator.deleteJobExecutionsByIds;
+import static api.client.Estimator.getJobExecutionIds;
 import static api.helper.CalculationHelper.waitForCalculationStarting;
 import static api.helper.ShapeHelper.createShapeFromFileAndGetID;
 import static api.helper.ShapeHelper.getListOfShapesIdsFromResponse;
+import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static util.Constants.CALCULATION_TIMEOUT_SEC;
@@ -45,5 +48,14 @@ public class GetListOfRunningShapes {
     public void afterTestExecution() {
         deleteShapeByIdWithoutResponseReturn(firstShapeId);
         deleteShapeByIdWithoutResponseReturn(secondShapeId);
+
+        // TODO код ниже удалить после реализации задачи https://dev.azure.com/Syncretis/SmartGeoPlatform-Ecomonitoring/_boards/board/t/SmartGeoPlatform-Ecomonitoring%20Team/Stories/?workitem=24686
+        try {
+            sleep(12000);
+        } catch (InterruptedException exception) {
+            System.out.println("Прервано ожидание обновления статуса области в базе данных");
+        }
+        deleteJobExecutionsByIds(getJobExecutionIds(firstShapeId, 2, 0));
+        deleteJobExecutionsByIds(getJobExecutionIds(secondShapeId, 2, 0));
     }
 }
